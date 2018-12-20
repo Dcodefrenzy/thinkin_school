@@ -1,2 +1,4 @@
 .vagrant/
 Vagrantfile
+demo_models/
+views/
