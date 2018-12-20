@@ -1560,6 +1560,25 @@ function getProjects($dbconn,$start, $record){
     return $result;
   }
 
+  function getAllTrainings($dbconn,$start, $record){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM training ORDER BY id DESC  LIMIT $start, $record");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+      $result [] = $row;
+    }
+    return $result;
+  }
+
+
+  function getOneTraining($dbconn, $hid){
+    $stmt = $dbconn->prepare("SELECT * FROM training WHERE hash_id = :hid");
+    $stmt->bindParam(':hid', $hid);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_BOTH);
+    return $row;
+  }
+
 function getAllEvents($dbconn,$start, $record){
   $result = [];
   $stmt = $dbconn->prepare("SELECT * FROM events ORDER BY id DESC  LIMIT $start, $record");
@@ -1577,6 +1596,10 @@ function getAllEvents($dbconn,$start, $record){
     $row = $stmt->fetch(PDO::FETCH_BOTH);
     return $row;
   }
+  //after an email is sent the user click on a link adn that will redirect him to a page that will call this function which will change the verification to verified
+ /* function bookingVerification($dbconn,$msil,$userID, $bookingId ){
+
+  }*/
 
   function checkBooking($dbconn, $post, $hid, $book){
     $stmt = $dbconn->prepare("SELECT * FROM booking WHERE email = :email AND booking_id = :book_id AND booking =:bo");
@@ -1591,7 +1614,7 @@ function getAllEvents($dbconn,$start, $record){
       if ( $row>= 1) {
        $msg= $post['name'];
       $err = preg_replace('/\s+/', '_', $msg);
-      header("Location:book-event?hid=$hid&&t=$book&&err=$err");
+      header("Location:book?hid=$hid&&t=$book&&err=$err");
     }else{
        book($dbconn, $post, $hid, $book);
     }
@@ -1622,7 +1645,7 @@ try {
   }
     $success = $post['name'];
   $note = preg_replace('/\s+/', '_', $success);
-  header("Location:book-event?hid=$hid&&t=$book&&note=$note");
+  header("Location:book?hid=$hid&&t=$book&&note=$note");
 }
 
   function getOneProject($dbconn,$hid){

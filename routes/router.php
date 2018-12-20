@@ -251,22 +251,32 @@ switch ($uri[1]) {
   include APP_PATH."/thinking_views/events.php";
   break;
 
+
+  case "training-details?hid=$hid":
+  include APP_PATH."/thinking_views/training_details.php";
+  break;
+
+
+  case "trainings":
+  include APP_PATH."/thinking_views/trainings.php";
+  break;
+
   case "events-details?hid=$hid":
   include APP_PATH."/thinking_views/events-details.php";
   break;
 
 
-  case "book-event?hid=$hid&&t=$t":
+  case "book?hid=$hid&&t=$t":
   include APP_PATH."/thinking_views/book-events.php";
   break;
 
 
 
-  case "book-event?hid=$hid&&t=$t&&note=$note":
+  case "book?hid=$hid&&t=$t&&note=$note":
   include APP_PATH."/thinking_views/book-events.php";
   break;
 
-  case "book-event?hid=$hid&&t=$t&&err=$err":
+  case "book?hid=$hid&&t=$t&&err=$err":
   include APP_PATH."/thinking_views/book-events.php";
   break;
 

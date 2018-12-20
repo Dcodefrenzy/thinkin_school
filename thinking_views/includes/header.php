@@ -81,7 +81,8 @@
           </ul>
         </li>
         <li><a href="gallery">Gallery</a></li>
-        <li><a href="#">Events</a></li>
+        <li><a href="events">Events</a></li>
+         <li><a href="trainings">Trainings</a></li>
         <li><a href="projects">Projects</a></li>
         <li><a href="#">Blog</a>
         <ul class="dropdown">
@@ -165,7 +166,8 @@
           </ul>
         </li>
         <li><a href="gallery">Gallery</a></li>
-        <li><a href="#">Events</a></li>
+        <li><a href="events">Events</a></li>
+        <li><a href="trainings">Trainings</a></li>
         <li><a href="projects">Projects</a></li>
         <li><a href="blog">Blog</a>
         <ul class="dropdown">

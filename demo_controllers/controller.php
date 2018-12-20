@@ -2856,7 +2856,7 @@ function getEvents($dbconn,$tb,$get){
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
-    $bd = previewBody($description, 20);
+    $bd = previewBody($description, 10);
     $level =  adminLevel($dbconn,$get);
     if($level == 3 || $level == "MASTER"){
       echo '<tr><td class="add-img-td">
@@ -2908,6 +2908,11 @@ function getEvents($dbconn,$tb,$get){
       </a>
       <a href="event-status?id='.$hash_id.'&t=past">
       <button class="btn btn-basic btn-sm" type="submit">past</button>
+      </a>
+      </td>
+      <td class="ads-details-td">
+      <a href="manage-event-participant?t=event&hid='.$hash_id.'">
+      <button class="btn btn-common btn-sm" type="submit">Participant</button>
       </a>
       </td></tr>';
     }
@@ -3039,6 +3044,9 @@ function getTrainings($dbconn,$tb,$get){
       <a href="training-status?id='.$hash_id.'&t=past">
       <button class="btn btn-basic btn-sm" type="submit">past</button>
       </a>
+      </td>
+      <td class="ads-details-td">
+      <a href="manage-training-participant?t=training&hid='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Participant</button></a>
       </td></tr>';
     }
     if($level == 2 || $level == 4 || $level == 5 || $level == 6){
@@ -3828,6 +3836,165 @@ function PgetQuote($dbconn,$get){
       <td class="price-td">
       <p>You cannnot perform this action</p>
       </td></tr>';
+    }
+  }
+}
+function getTrainingBookings($dbconn,$get,$tb, $hid){
+  $stmt = $dbconn->prepare("SELECT * FROM booking WHERE booking = :event AND booking_id = :hid ORDER BY id DESC");
+  $data= [
+      ':event' => $tb,
+      ':hid' => $hid
+  ];
+  $stmt->execute($data);
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+
+    $level =  adminLevel($dbconn,$get);
+    if($level == 3 || $level == "MASTER"){
+      echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+    if($level == 2 || $level == 4 || $level == 5 || $level == 6){
+            echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+    if($level == 1){
+      echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+  }
+}
+
+function getEventBookings($dbconn,$get,$tb, $hid){
+  $stmt = $dbconn->prepare("SELECT * FROM booking WHERE booking = :event AND booking_id = :hid ORDER BY id DESC");
+  $data= [
+      ':event' => $tb,
+      ':hid' => $hid
+  ];
+  $stmt->execute($data);
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+
+    $level =  adminLevel($dbconn,$get);
+    if($level == 3 || $level == "MASTER"){
+      echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+    if($level == 2 || $level == 4 || $level == 5 || $level == 6){
+            echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+    if($level == 1){
+      echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
     }
   }
 }

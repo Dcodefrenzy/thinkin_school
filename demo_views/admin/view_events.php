@@ -65,6 +65,7 @@ $lname = ucwords($lastname);
     <th>Edit</th>
     <th>Delete</th>
     <th>status</th>
+    <th>Participant</th>
   </tr>
 <tbody>
 
