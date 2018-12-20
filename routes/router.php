@@ -408,6 +408,18 @@ switch ($uri[1]) {
   include APP_PATH."/views/users/book_services.php";
   break;
 
+  case 'user-registration':
+  include APP_PATH."/thinking_views/users_register.php";
+  break;
+
+   case 'user-login':
+  include APP_PATH."/thinking_views/user_login.php";
+  break;
+
+  case "user-login?err=$err":
+  include APP_PATH."/thinking_views/user_login.php";
+  break;
+
 
 }
 
