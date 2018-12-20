@@ -213,7 +213,7 @@ catch(PDOException $e){
   logs($dbconn, 'added', $post['event_name'],'events',$sess);
   $success = "Event Info Added";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/View-events?success=$succ");
+  header("Location:/view-events?success=$succ");
 }
 
 function cleans($string){

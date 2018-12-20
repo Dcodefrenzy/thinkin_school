@@ -257,7 +257,7 @@ switch ($uri[1]) {
   break;
 
 
-  case "trainings":
+  case "training":
   include APP_PATH."/thinking_views/trainings.php";
   break;
 

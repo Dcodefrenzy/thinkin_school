@@ -95,17 +95,18 @@
           </ul>
           </li>
         <li><a href="#">Contact</a></li> 
-        <?php if (!$_SESSION['username']) {
-             '<li><a href="user-register">Sign-Up</a>
-        <ul class="dropdown">
-           <li><a href="user-login">Loigin</a></li>
-          </ul>
-          </li>';
-        }else{
+        <?php if (isset($_SESSION['username'])) {
           echo '<li><a href="#">Welcome '.$_SESSION['username'].'</a>
         <ul class="dropdown">';
         echo '<li><a href="logout">Logout</a></li>
         </ul></li>';
+
+        }else{
+          '<li><a href="user-register">Sign-Up</a>
+        <ul class="dropdown">
+           <li><a href="user-login">Loigin</a></li>
+          </ul>
+          </li>';
         } ?>
      
       </ul>
@@ -192,17 +193,18 @@
           </ul>
           </li>
         <li><a href="#">Contact</a></li> 
-        <?php if (!$_SESSION['username']) {
-             '<li><a href="user-register">Sign-Up</a>
-        <ul class="dropdown">
-           <li><a href="user-login">Loigin</a></li>
-          </ul>
-          </li>';
-        }else{
+        <?php if (isset($_SESSION['username'])) {
           echo '<li><a href="#">Welcome '.$_SESSION['username'].'</a>
         <ul class="dropdown">';
         echo '<li><a href="logout">Logout</a></li>
         </ul></li>';
+
+        }else{
+          '<li><a href="user-register">Sign-Up</a>
+        <ul class="dropdown">
+           <li><a href="user-login">Loigin</a></li>
+          </ul>
+          </li>';
         } ?>
      
       </ul>

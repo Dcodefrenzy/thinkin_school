@@ -172,8 +172,8 @@ Book
 </div>
 <input class="btn btn-common log-btn" type="submit" name="submit" value="submit">
 </form>
-<a href="events">
-<button class="btn btn-common red-btn">Go to events</button>
+<a href=<?php echo $booking; ?>>
+<button class="btn btn-common red-btn">Go Back</button>
 </a>
 </div>
 </div>

@@ -55,7 +55,7 @@ include "includes/header.php";
             <li><?php echo $bd; ?> <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></i></li>
 
           </ul>
-          <a <?php echo 'href=book-event?hid='.$hash_id.'&&t=event';?>>Book Now<span></span></a>
+          <a <?php echo 'href=book?hid='.$hash_id.'&&t=event';?>>Book Now<span></span></a>
           <br/><br/>
            <a <?php echo 'href=events-details?hid='.$hash_id.'';?>>View More Details<span></span></a> 
           </div>

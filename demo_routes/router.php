@@ -209,6 +209,10 @@ switch ($uri[1]) {
   include APP_PATH."/demo_views/admin/view_users.php";
   break;
 
+  case "view-events?success=$success":
+  include APP_PATH."/demo_views/admin/view_events.php";
+  break;
+  
   case "view-events":
   include APP_PATH."/demo_views/admin/view_events.php";
   break;
