@@ -404,24 +404,24 @@ if(file_exists($old_image)){
 
 
 
-function doUserRegister($dbconn, $input, $sid){
+function doUserRegister($dbconn, $input){
   try{
-    $hash = password_hash($input['hash'], PASSWORD_BCRYPT);
+    $hash = password_hash($input['pword'], PASSWORD_BCRYPT);
     $rand = rand(0000000000,111111111);
     $emailtop = explode("@",$input['email']);
     $hash_id = $emailtop[0].$rand.$emailtop[1];
 
     $stmt =$dbconn->prepare("INSERT INTO users(firstname,lastname,email,phone_number,username,hash, hash_id) VALUES(:fname, :lname, :em, :pm, :uname, :h, :hid)");
 
-    $stmt->bindParam(":fname", $input['fname']);
-    $stmt->bindParam(":lname", $input['lname']);
+    $stmt->bindParam(":fname", $input['firstname']);
+    $stmt->bindParam(":lname", $input['lastname']);
     $stmt->bindParam(":em", $input['email']);
-    $stmt->bindParam(":pm", $input['pnumber']);
-    $stmt->bindParam(":uname", $input['uname']);
+    $stmt->bindParam(":pm", $input['phonenumber']);
+    $stmt->bindParam(":uname", $input['username']);
     $stmt->bindParam(":h", $hash);
     $stmt->bindParam(":hid", $hash_id);
     $stmt->execute();
-    userLogin($dbconn,$sid,$input);
+    userLogin($dbconn,$input);
   }catch(PDOException $e){
     die("Oops");
   }
@@ -429,7 +429,7 @@ function doUserRegister($dbconn, $input, $sid){
 }
 
 
-function userLogin($dbconn, $sid,$input){
+function userLogin($dbconn,$input){
   try{
 
     $stmt = $dbconn->prepare("SELECT * FROM users WHERE email = :e ");
@@ -437,20 +437,15 @@ function userLogin($dbconn, $sid,$input){
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_BOTH);
 
-    if($stmt->rowCount() > 0 && password_verify($input['hash'], $row['hash'])){
-
-
+    if($stmt->rowCount() > 0 && password_verify($input['pword'], $row['hash'])){
       extract($row);
-
       $_SESSION['username'] = $username;
       $_SESSION['id'] = $hash_id;
-
-      updateCart($dbconn, $sid, $hash_id);
       header("Location:/home");
     }else{
       $mes = "Invalid Email or Password";
-      $message = preg_replace('/\s+/', '_', $mes);
-      header("Location:user_login?msg=$message");
+      $err = preg_replace('/\s+/', '_', $mes);
+      header("Location:user-login?err=$err");
     }
     }catch(PDOException $e){
       die("no");
@@ -1560,6 +1555,25 @@ function getProjects($dbconn,$start, $record){
     return $result;
   }
 
+  function getAllTrainings($dbconn,$start, $record){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM training ORDER BY id DESC  LIMIT $start, $record");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+      $result [] = $row;
+    }
+    return $result;
+  }
+
+
+  function getOneTraining($dbconn, $hid){
+    $stmt = $dbconn->prepare("SELECT * FROM training WHERE hash_id = :hid");
+    $stmt->bindParam(':hid', $hid);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_BOTH);
+    return $row;
+  }
+
 function getAllEvents($dbconn,$start, $record){
   $result = [];
   $stmt = $dbconn->prepare("SELECT * FROM events ORDER BY id DESC  LIMIT $start, $record");
@@ -1577,6 +1591,10 @@ function getAllEvents($dbconn,$start, $record){
     $row = $stmt->fetch(PDO::FETCH_BOTH);
     return $row;
   }
+  //after an email is sent the user click on a link adn that will redirect him to a page that will call this function which will change the verification to verified
+ /* function bookingVerification($dbconn,$msil,$userID, $bookingId ){
+
+  }*/
 
   function checkBooking($dbconn, $post, $hid, $book){
     $stmt = $dbconn->prepare("SELECT * FROM booking WHERE email = :email AND booking_id = :book_id AND booking =:bo");
@@ -1591,7 +1609,7 @@ function getAllEvents($dbconn,$start, $record){
       if ( $row>= 1) {
        $msg= $post['name'];
       $err = preg_replace('/\s+/', '_', $msg);
-      header("Location:book-event?hid=$hid&&t=$book&&err=$err");
+      header("Location:book?hid=$hid&&t=$book&&err=$err");
     }else{
        book($dbconn, $post, $hid, $book);
     }
@@ -1622,7 +1640,7 @@ try {
   }
     $success = $post['name'];
   $note = preg_replace('/\s+/', '_', $success);
-  header("Location:book-event?hid=$hid&&t=$book&&note=$note");
+  header("Location:book?hid=$hid&&t=$book&&note=$note");
 }
 
   function getOneProject($dbconn,$hid){

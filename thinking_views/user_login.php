@@ -2,11 +2,6 @@
 ob_start();
 session_start();
 
-if (isset($_GET['hid'])|| ($_GET['t'])) {
-  $hid = $_GET['hid'];
-  $booking = $_GET['t'];
-}
-
   $error = [];
 if(array_key_exists('submit', $_POST)){
 
@@ -14,18 +9,13 @@ if(array_key_exists('submit', $_POST)){
     $error['email']="Enter a email";
   }
 
-  if(empty($_POST['number'])){
-    $error['number']="Enter a Phone Number";
-  }
-
-  if(empty($_POST['name'])){
-    $error['name']="Enter your Full Name";
+  if(empty($_POST['pword'])){
+    $error['pword']="Enter a password";
   }
 
   if(empty($error)){
-    $_POST['verification'] = 'not verified';
     $clean = array_map('trim', $_POST);
-    checkBooking($conn, $clean, $hid, $booking);
+    userLogin($conn, $clean);
   }
 }
 
@@ -76,7 +66,7 @@ if(array_key_exists('submit', $_POST)){
 <div class="row">
 <div class="col-md-12">
 <div class="breadcrumb-wrapper">
-<h2 class="page-title">Welcome To Our Booking Page</h2>
+<h2 class="page-title">Login to your the BoardSpeck Web Office</h2>
 </div>
 </div>
 </div>
@@ -96,7 +86,7 @@ $msg = str_replace('_', ' ', $_GET['err']);
 <div class="inner-box posting">
 <div class="alert alert-danger alert-lg" role="alert">
 <h2 class="postin-title">x Ops! '.$msg.' </h2>
-<p>Have Registered for this '.$booking.'</p>
+<p>Please use correct password</p>
 </div>
 </div>
 </div>';
@@ -114,25 +104,25 @@ $msg = str_replace('_', ' ', $_GET['wn']);
 </div>';
 }
 if (isset($_GET['sgn'])){
-$msg = str_replace('_', ' ', $_GET['success']);
-
-  echo '<div class="col-md-12">
-<div class="inner-box posting">
-<div class="alert alert-sucess alert-lg" role="alert">
-<h2 class="postin-title">Success! '.$msg.' </h2>
-<p>You have been successfully verified. Thanks</p>
-</div>
-</div>
-</div>';
-}
-if (isset($_GET['note'])){
-$msg = str_replace('_', ' ', $_GET['note']);
+$msg = str_replace('_', ' ', $_GET['sgn']);
 
   echo '<div class="col-md-12">
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
-<h2 class="postin-title">Note! '.$msg.' </h2>
-<p>A link will be send to your mail to, please click the link for verification.Note: Only the verified are allowed to partake in this '.$booking.' Thanks</p>
+<h2 class="postin-title">Warning! '.$msg.' </h2>
+<p>BoardSpeck admin pages cannot be accessed without signin. Thanks</p>
+</div>
+</div>
+</div>';
+}
+if (isset($_GET['ssp'])){
+$msg = str_replace('_', ' ', $_GET['ssp']);
+
+  echo '<div class="col-md-12">
+<div class="inner-box posting">
+<div class="alert alert-warning alert-lg" role="alert">
+<h2 class="postin-title">Warning! '.$msg.' </h2>
+<p>Contact BoardSpeck Admin. Thanks</p>
 </div>
 </div>
 </div>';
@@ -146,34 +136,34 @@ $msg = str_replace('_', ' ', $_GET['note']);
 <div class="col-sm-6 col-sm-offset-4 col-md-4 col-md-offset-4">
 <div class="page-login-form box">
 <h3>
-Book
+Login
 </h3>
-<form role="form" class="login-form" method="POST" action="">
-<div class="form-group">
-  <?php $display = displayErrors($error, 'email'); echo $display?>
-<div class="input-icon">
-<i class="icon fa fa-user"></i>
-<input type="text" id="sender-email" class="form-control" name="email" placeholder="Email" required="">
-</div>
-</div>
-<?php $display = displayErrors($error, 'name'); echo $display?>
+<form role="form" class="login-form" method="POSt" action="">
 <div class="form-group">
 <div class="input-icon">
 <i class="icon fa fa-user"></i>
-<input type="text" id="sender-email" class="form-control" name="name" placeholder="Name" required="">
+<input type="text" id="sender-email" class="form-control" name="email" placeholder="Email">
 </div>
 </div>
 <div class="form-group">
-  <?php $display = displayErrors($error, 'number'); echo $display?>
 <div class="input-icon">
-<i class="icon fa fa-user"></i>
-<input type="number" id="sender-email" class="form-control" name="number" placeholder="Phone Number" required="">
+<i class="icon fa fa-unlock-alt"></i>
+<input type="password" name="pword" class="form-control" placeholder="Password">
 </div>
+</div>
+<div class="checkbox">
+<input type="checkbox" id="remember" name="rememberme" value="forever" style="float: left;">
+<label for="remember">Remember me</label>
 </div>
 <input class="btn btn-common log-btn" type="submit" name="submit" value="submit">
 </form>
-<a href=<?php echo $booking; ?>>
-<button class="btn btn-common red-btn">Go Back</button>
+<ul class="form-links">
+<li class="pull-left"><a href="adminRegistration">Don't have an account?</a></li>
+<li class="pull-right"><a href="forgot-password.html">Lost your password?</a></li>
+</ul>
+<br/>
+<a href="index">
+<button class="btn btn-common red-btn">Go to home</button>
 </a>
 </div>
 </div>

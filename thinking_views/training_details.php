@@ -5,18 +5,18 @@ if (isset($_GET['hid'])) {
 }else{
   header("Location: events");
 }
- $event = getOneEvent($conn, $hash);
-extract($event);
+ $training = getOneTraining($conn, $hash);
+extract($training);
  ?>
 <!-- end header -->
 <section class="page-header">
 	<div class="container">
 		 <ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">Home</a></li>
-			<li class="breadcrumb-item"><a href="#">Events</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Event Details</li>
+			<li class="breadcrumb-item"><a href="#">Trainings</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Training Details</li>
 		  </ol>
-		  <h2>EVENT</h2>
+		  <h2>TRAINING</h2>
 		  <p>As the person who owns the legal rights to intellectual property, an author.</p>
 	</div>
 	<!-- end container -->
@@ -29,15 +29,15 @@ extract($event);
          <div class="post wow fadeIn">
          	<figure class="post-image"> <img src=" <?php echo $image_1; ?>" alt="Image"></figure>
          	<div class="post-content">
-          <h4><?php echo $event_name; ?></h4>
+          <h4><?php echo $name; ?></h4>
           <span><?php echo "<b>Event Status:</b>".$status; ?></span>
           <small><?php echo "<b>Location:</b> ".$venue; ?></small>
           <small><?php echo $start_date." <b>-</b> ".$end_date; ?></small>
-          <small><?php echo "<b>Time:</b> ".$event_time; ?></small>
+          <small><?php echo "<b>Time:</b> ".$training_time; ?></small>
           <p><?php echo $description; ?></p>
                    <div class="form-group col-md-4">
             <label>&nbsp;</label>
-             <a <?php echo 'href=book?hid='.$hash_id.'&&t=event';?>>
+             <a <?php echo 'href=book?hid='.$hash_id.'&&t=training';?>>
             <input type="submit" value="Book Event" name="submit">
             </a>
           </div>

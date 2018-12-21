@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 
@@ -58,13 +59,15 @@
 <aside class="sandwich-menu">
   <div class="logo"> <img src="images/logo.png" alt="Image"> </div>
   <!-- end logo -->
-   <ul class="nav-menu">
-        <li><a href="home">Home</a></li>
+      <ul class="nav-menu">
+       <li><a href="home">Home</a></li>
         <li><a href="#">Corpration</a>
           <ul class="dropdown">
             <li><a href="about">About Us</a></li>
+            <li><a href="gallery">Gallery</a></li>
             <li><a href="team-members">Team Members</a></li>
             <li><a href="clients">Clients</a></li>
+            <li><a href="projects">Projects</a></li>
             <li><a href="#">Career</a></li>
           </ul>
         </li>
@@ -74,18 +77,16 @@
               $services = getServices($conn); 
               foreach ($services as $key => $service) {
                   extract($service);
-          ?>
-          <li><a <?php echo 'href=service?hid='.$hash_id.''; ?>><?php echo $title; ?></a></li>
+           ?>
+        <li><a <?php echo 'href=service?hid='.$hash_id.''; ?>><?php echo $title; ?></a></li>
           <?php } ?>
-              
           </ul>
         </li>
-        <li><a href="gallery">Gallery</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="projects">Projects</a></li>
-        <li><a href="#">Blog</a>
+        <li><a href="events">Events</a></li>
+        <li><a href="trainings">Trainings</a></li>
+        <li><a href="blog">Blog</a>
         <ul class="dropdown">
-                  <?php $category = getCat($conn); 
+        <?php $category = getCat($conn); 
         foreach ($category as $key => $categories) {
           extract($categories);
           ?>
@@ -93,7 +94,21 @@
        <?php } ?>
           </ul>
           </li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Contact</a></li> 
+        <?php if (isset($_SESSION['username'])) {
+          echo '<li><a href="#">Welcome '.$_SESSION['username'].'</a>
+        <ul class="dropdown">';
+        echo '<li><a href="logout">Logout</a></li>
+        </ul></li>';
+
+        }else{
+          '<li><a href="user-register">Sign-Up</a>
+        <ul class="dropdown">
+           <li><a href="user-login">Loigin</a></li>
+          </ul>
+          </li>';
+        } ?>
+     
       </ul>
       <!-- end nav-menu -->
   <p>Uon is a creative multi-concept Themeforest layout will help business owners create awesome websites.</p>
@@ -147,9 +162,10 @@
         <li><a href="#">Corpration</a>
           <ul class="dropdown">
             <li><a href="about">About Us</a></li>
-            <li><a href="mission-vision">Mission - Vision</a></li>
+            <li><a href="gallery">Gallery</a></li>
             <li><a href="team-members">Team Members</a></li>
             <li><a href="clients">Clients</a></li>
+            <li><a href="projects">Projects</a></li>
             <li><a href="#">Career</a></li>
           </ul>
         </li>
@@ -164,9 +180,8 @@
           <?php } ?>
           </ul>
         </li>
-        <li><a href="gallery">Gallery</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="projects">Projects</a></li>
+        <li><a href="events">Events</a></li>
+        <li><a href="trainings">Trainings</a></li>
         <li><a href="blog">Blog</a>
         <ul class="dropdown">
         <?php $category = getCat($conn); 
@@ -177,7 +192,21 @@
        <?php } ?>
           </ul>
           </li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Contact</a></li> 
+        <?php if (isset($_SESSION['username'])) {
+          echo '<li><a href="#">Welcome '.$_SESSION['username'].'</a>
+        <ul class="dropdown">';
+        echo '<li><a href="logout">Logout</a></li>
+        </ul></li>';
+
+        }else{
+          '<li><a href="user-register">Sign-Up</a>
+        <ul class="dropdown">
+           <li><a href="user-login">Loigin</a></li>
+          </ul>
+          </li>';
+        } ?>
+     
       </ul>
       <!-- end nav-menu -->
       <ul class="language">

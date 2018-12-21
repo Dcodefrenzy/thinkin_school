@@ -20,6 +20,11 @@ if(isset($_GET['msg'])){
   $msg = $_GET['msg'];
 }
 
+$hid = NULL;
+if(isset($_GET['hid'])){
+  $hid = $_GET['hid'];
+}
+
 $ssp = NULL;
 if(isset($_GET['ssp'])){
   $ssp = $_GET['ssp'];
@@ -204,8 +209,20 @@ switch ($uri[1]) {
   include APP_PATH."/demo_views/admin/view_users.php";
   break;
 
+  case "view-events?success=$success":
+  include APP_PATH."/demo_views/admin/view_events.php";
+  break;
+  
   case "view-events":
   include APP_PATH."/demo_views/admin/view_events.php";
+  break;
+
+  case "manage-event-participant?t=$t&hid=$hid":
+  include APP_PATH."/demo_views/admin/event_bookings.php";
+  break;
+
+  case "manage-training-participant?t=$t&hid=$hid":
+  include APP_PATH."/demo_views/admin/training_bookings.php";
   break;
 
   case "view-events?success=$success":

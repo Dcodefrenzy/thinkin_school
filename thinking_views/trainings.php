@@ -14,9 +14,9 @@ include "includes/header.php";
   <div class="container">
      <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Events</li>
+      <li class="breadcrumb-item active" aria-current="page">Trainings</li>
       </ol>
-      <h2>EVENTS</h2>
+      <h2>TRAININGS</h2>
       <p>As the person who owns the legal rights to intellectual property, an author.</p>
   </div>
   <!-- end container -->
@@ -33,15 +33,15 @@ include "includes/header.php";
         <!-- end section-title -->
       </div>
       <!-- end col-12 -->
-              <?php     $events = getAllEvents($conn, $start_from, $record_per_page); ?>
-              <?php foreach ($events as $key => $event) {
-            extract($event);
+           <?php     $trainings = getAllTrainings($conn, $start_from, $record_per_page); ?>
+              <?php foreach ($trainings as $key => $training) {
+            extract($training);
             $bd = previewBody($description, 20);
           ?>
       <div class="col-md-4">
         <div class="price-box">
          <div style="background:url(<?php echo $image_1; ?>); width: 100%; height: 250px; background-size: 150%;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
-          <h3><?php echo $event_name; ?></h3>
+          <h3><?php echo $name; ?></h3>
             <h5></h5>
 
           <h4>Price: <?php echo $price ?></h4> 
@@ -51,13 +51,13 @@ include "includes/header.php";
    
           <ul>
             <li><?php echo "From ".$start_date." to ".$end_date; ?> <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></i></li>
-             <li><?php echo $event_time; ?> <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></i></li>
+             <li><?php echo $training_time; ?> <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></i></li>
             <li><?php echo $bd; ?> <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></i></li>
 
           </ul>
-          <a <?php echo 'href=book?hid='.$hash_id.'&&t=event';?>>Book Now<span></span></a>
+          <a <?php echo 'href=book?hid='.$hash_id.'&&t=training';?>>Book Now<span></span></a>
           <br/><br/>
-           <a <?php echo 'href=events-details?hid='.$hash_id.'';?>>View More Details<span></span></a> 
+           <a <?php echo 'href=training-details?hid='.$hash_id.'';?>>View More Details<span></span></a> 
           </div>
           <!-- end price-box -->
       </div>
