@@ -78,6 +78,10 @@ if (isset($_GET['sub_cat_id'])) {
   if (isset($_GET['hash_id'])) {
     $hash_id = $_GET['hash_id'];
   }
+  $page = NULL;
+  if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+  }
 
 $t = NULL;
 if(isset($_GET['t'])){
@@ -226,6 +230,21 @@ switch ($uri[1]) {
   include APP_PATH."/thinking_views/blog.php";
   break;
 
+
+  case "blogs?page=$page&hid=$hid":
+  include APP_PATH."/thinking_views/blog.php";
+  break;
+
+
+  case "blogs":
+  include APP_PATH."/thinking_views/blog.php";
+  break;
+
+  case "blogs?page=$page":
+  include APP_PATH."/thinking_views/blog.php";
+  break;
+
+
   case "service?hid=$hid":
   include APP_PATH."/thinking_views/services.php";
   break; 
@@ -357,7 +376,7 @@ switch ($uri[1]) {
   include APP_PATH."/views/users/users_login.php";
   break;
 
-  case "register":
+  case "user-register":
   include APP_PATH."/views/users/users_register.php";
   break;
 
@@ -418,6 +437,9 @@ switch ($uri[1]) {
 
   case "user-login?err=$err":
   include APP_PATH."/thinking_views/user_login.php";
+  break;
+  case 'team-members':
+  include APP_PATH. "/thinking_views/team.php";
   break;
 
 

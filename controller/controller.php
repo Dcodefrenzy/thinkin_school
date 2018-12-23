@@ -875,15 +875,6 @@ function getPaginationForAllProduct($dbconn,  $record){
   return $result;
 }
 
-function getTotalRecord($dbconn,  $record){
-  $stmt= $dbconn->prepare("SELECT * FROM product ORDER BY product_id DESC");
-  $stmt->execute();
-  $total_record=$stmt->rowCount();
-
-  $total_pages = ceil($total_record/$record);
-  return $total_pages;
-
-}
 
 function getTotalRecordForProductId($dbconn, $hid,  $record){
   $stmt= $dbconn->prepare("SELECT * FROM product WHERE final_category = :hid ORDER BY product_id DESC");
@@ -1440,10 +1431,26 @@ function viewBlog($dbconn, $hashID){
   return $row;
 }
 
-function blogs($dbconn, $hashID){
+function blogs($dbconn, $hashID, $start, $record){
   $result = [];
-  $stmt= $dbconn->prepare('SELECT * FROM blog WHERE category_id = :hid');
+    $show = "show";
+  $stmt= $dbconn->prepare("SELECT * FROM blog WHERE category_id = :hid AND  visibility = :show ORDER BY id DESC  LIMIT $start, $record");
   $stmt->bindParam(':hid', $hashID);
+      $stmt->bindParam(':show', $show);
+  $stmt->execute();
+  while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+    $result [] = $row; 
+
+  }
+  
+  return $result;
+}
+
+function allBlogs($dbconn, $start, $record){
+  $result = [];
+  $show = "show";
+  $stmt= $dbconn->prepare("SELECT * FROM blog WHERE visibility = :show ORDER BY id DESC  LIMIT $start, $record");
+    $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
     $result [] = $row; 
@@ -1455,8 +1462,47 @@ function blogs($dbconn, $hashID){
 
 function Catblog($dbconn, $hashID){
   $result = [];
-  $stmt= $dbconn->prepare('SELECT * FROM blog WHERE category_id = :hid ORDER BY id DESC LIMIT 5');
+  $show = "show";
+  $stmt= $dbconn->prepare('SELECT * FROM blog WHERE category_id = :hid AND visibility = :show ORDER BY id DESC LIMIT 5');
   $stmt->bindParam(':hid', $hashID);
+    $stmt->bindParam(':show', $show);
+  $stmt->execute();
+  while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+      
+    $result [] = $row; 
+  }
+ 
+  return $result;
+}
+function getTotalRecordBlog($dbconn,  $record){
+    $show = "show";
+  $stmt= $dbconn->prepare("SELECT * FROM blog WHERE visibility = :show ORDER BY id DESC");
+      $stmt->bindParam(':show', $show);
+  $stmt->execute();
+  $total_record=$stmt->rowCount();
+
+  $total_pages = ceil($total_record/$record);
+  return $total_pages;
+
+}
+function getTotalRecordForCatBlog($dbconn, $cat_id,  $record){
+    $show = "show";
+  $stmt= $dbconn->prepare("SELECT * FROM blog WHERE category_id = :cat_id AND  visibility = :show ORDER BY id DESC");
+  $stmt ->bindParam(':cat_id', $cat_id);
+      $stmt->bindParam(':show', $show);
+  $stmt->execute();
+  $total_record=$stmt->rowCount();
+
+  $total_pages = ceil($total_record/$record);
+  return $total_pages;
+
+}
+
+function homeBlog($dbconn){
+  $result = [];
+    $show = "show";
+  $stmt= $dbconn->prepare("SELECT * FROM blog WHERE visibility = :show ORDER BY id DESC LIMIT 4");
+      $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
       
@@ -1574,6 +1620,16 @@ function getProjects($dbconn,$start, $record){
     return $row;
   }
 
+  function getLatestTraining($dbconn){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM training ORDER BY id DESC  ");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+      $result [] = $row;
+    }
+    return $result[0];
+  }
+
 function getAllEvents($dbconn,$start, $record){
   $result = [];
   $stmt = $dbconn->prepare("SELECT * FROM events ORDER BY id DESC  LIMIT $start, $record");
@@ -1582,6 +1638,16 @@ function getAllEvents($dbconn,$start, $record){
       $result [] = $row;
     }
     return $result;
+  }
+
+  function getLatestEvent($dbconn){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM events ORDER BY id DESC  ");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+      $result [] = $row;
+    }
+    return $result[0];
   }
 
   function getOneEvent($dbconn, $hid){

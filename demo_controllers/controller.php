@@ -190,7 +190,7 @@ function addEvents($dbconn,$post,$destination,$sess){
   $split = explode(" ",$post['event_name']);
   $id = $rnd.cleans($split['0']);
   $hash_id = str_shuffle($id.'events');
-  $stmt = $dbconn->prepare("INSERT INTO events VALUES(NULL, :ht, :ve, :txt, :sta, :price, :hid, :img, :sess, :std, :timed,:endd, NOW(),NOW())");
+  $stmt = $dbconn->prepare("INSERT INTO events VALUES(NULL, :ht, :ve, :txt, :sta, :price, :hid, :img, :sess, :std, :endd, :timed, NOW(),NOW())");
   $data = [
     ':ht' => $post['event_name'],
     ':ve' => $post['venue'],

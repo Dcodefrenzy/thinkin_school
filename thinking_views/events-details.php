@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 include "includes/header.php";
 if (isset($_GET['hid'])) {
   $hash = $_GET['hid'];
@@ -29,6 +30,13 @@ extract($event);
          <div class="post wow fadeIn">
          	<figure class="post-image"> <img src=" <?php echo $image_1; ?>" alt="Image"></figure>
          	<div class="post-content">
+                      <ul class="social-share">
+      <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+      <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+<!--      <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
+      <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+<!--      <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li> -->
+      </ul>
           <h4><?php echo $event_name; ?></h4>
           <span><?php echo "<b>Event Status:</b>".$status; ?></span>
           <small><?php echo "<b>Location:</b> ".$venue; ?></small>
@@ -94,58 +102,36 @@ extract($event);
          	<!-- end post-content -->
         <!--  </div> -->
          <!-- end post -->
-          <ul class="pagination wow fadeIn">
+<!--           <ul class="pagination wow fadeIn">
     <li class="page-item">
       <a class="page-link" href="#" tabindex="-1">PREV</a>
     </li>
     <li class="page-item">
       <a class="page-link" href="#">NEXT</a>
     </li>
-  </ul>
+  </ul> -->
         </div>
         <!-- end col-7 -->
         <div class="col-md-5 col-12">
           <aside class="sidebar">
-            <div class="widget categories wow fadeIn">
-              <h4 class="widget-title">Categories</h4>
-              <ul>
-                <li class="active"><a href="#">BUSINESS</a></li>
-                <li><a href="#">INVESTMENT</a></li>
-                <li><a href="#">ACCOUNTING</a></li>
-                <li><a href="#">SERVICES</a></li>
-                <li><a href="#">TAXES & TERMS</a></li>
-              </ul>
-              <!-- end side-menu --> 
-            </div>
-            <!-- end widget -->
-            <div class="widget tags wow fadeIn">
-              <h4 class="widget-title">Popular Tags</h4>
-              <ul>
-                <li><a href="#">Money</a></li>
-                <li><a href="#">Investments</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Stocks</a></li>
-                <li><a href="#">Idea</a></li>
-                <li><a href="#">Employee</a></li>
-                <li><a href="#">Solutions</a></li>
-                <li><a href="#">Team</a></li>
-                <li><a href="#">General</a></li>
-                <li><a href="#">Taxes</a></li>
-                <li><a href="#">Profite</a></li>
-                <li><a href="#">Industry</a></li>
-              </ul>
-            </div>
-            <!-- end widget -->
+
             <div class="widget gallery wow fadeIn">
-              <h4 class="widget-title">Gallery</h4>
-              <ul>
-                <li><a href="images/image04.jpg" data-fancybox="gallery"><img src="images/image04.jpg" alt="Image"></a></li>
-                <li><a href="images/image05.jpg" data-fancybox="gallery"><img src="images/image05.jpg" alt="Image"></a></li>
-                <li><a href="images/image06.jpg" data-fancybox="gallery"><img src="images/image06.jpg" alt="Image"></a></li>
-                <li><a href="images/image07.jpg" data-fancybox="gallery"><img src="images/image07.jpg" alt="Image"></a></li>
-                <li><a href="images/image08.jpg" data-fancybox="gallery"><img src="images/image08.jpg" alt="Image"></a></li>
-                <li><a href="images/image09.jpg" data-fancybox="gallery"><img src="images/image09.jpg" alt="Image"></a></li>
+              <h4 class="widget-title">Latest Article</h4>
+                <?php $blogs =  homeBlog($conn);  
+                  foreach ($blogs as $key => $blog) {
+                    extract($blog);
+                  ?>
+                <ul>
+                <a <?php echo 'href=blog-details?hid='.$hash_id.'' ?>>
+                <li> 
+                     <div style= "border-radius: 100px; padding: 0px; background:url(<?php echo $image_1; ?>); height:10vh; width: 10vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
+                </li>
+                <span><b>Title:</b> <?php echo $title; ?></span><br/>
+                <span><b>Date:</b> <?php echo $date_created; ?></span><br/> 
+                </a>
+
               </ul>
+               <?php } ?> 
               <!-- end gallery --> 
             </div>
             <!-- end widget --> 

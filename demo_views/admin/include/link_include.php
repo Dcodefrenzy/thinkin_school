@@ -157,12 +157,12 @@ if($read['defaulted'] >= 3){
           <li><a href="manage-services">Manage Services</a></li>
           <li><a href="manage-category">Manage Category</a></li>
           <li><a href="Services-orders">Services Orders</a></li>
-          <li><a href="quote">Quote</a></li>
+            <li><a href="view-users">Manage Users</a></li>
           <?php $check2 = adminFullInfo($conn,$_SESSION['id']);
           if($check2['portfolio'] == 555666777888999000){
             ?>
             <li><a href="manageViews">Manage Views</a></li>
-            <li><a href="viewUsers">Manage Users</a></li>
+            <li><a href="view-users">Manage Users</a></li>
           <?php } ?>
           <li> <a href="logout">Logout</a></li>
         <?php } ?>
