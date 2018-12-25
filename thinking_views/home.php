@@ -1,4 +1,7 @@
-<?php include "includes/header.php"; ?>
+<?php 
+include "includes/header.php";
+$about = getAboutUS($conn); extract($about);
+?>
 <section class="slider">
   <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -52,26 +55,32 @@
 <section class="featured-services">
   <div class="content-wrapper">
     <div class="container">
+      <?php $services = getHomeServices($conn); 
+        foreach ($services as $key => $service) {
+            extract($service);  
+            $bd = previewBody($body, 5);     
+       ?>
       <div class="content-box wow fadeIn"> <span></span>
-        <h3>food & beverage</h3>
+        <h3><?php echo $title; ?></h3>
         <p>The only time you should move your vehicles after you get in a wreck is if not doing </p>
-        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
+        <a <?php echo 'href=service?hid='.$hash_id.''; ?>><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
       <!-- end content-box -->
-      <div class="content-box wow fadeIn"> <span></span>
+<!--       <div class="content-box wow fadeIn"> <span></span>
         <h3>power industry</h3>
         <p>The reason you want your cars to remain where they are as closely as possible</p>
-        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
+        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div> -->
       <!-- end content-box -->
-      <div class="content-box wow fadeIn"> <span></span>
+<!--       <div class="content-box wow fadeIn"> <span></span>
         <h3>tech solutions</h3>
         <p>Allowing word-of-mouth reporting from the other driver may not be the best idea</p>
-        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
+        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div> -->
       <!-- end content-box --> 
+      <?php } ?>
     </div>
     <!-- end container --> 
   </div>
   <!-- end content-wrapper -->
-  <div class="logos wow fadeIn">
+<!--   <div class="logos wow fadeIn">
     <div class="container">
       <ul>
         <li><img src="images/logo01.png" alt="Image"></li>
@@ -83,9 +92,9 @@
         <li><img src="images/logo07.png" alt="Image"></li>
         <li><img src="images/logo08.png" alt="Image"></li>
       </ul>
-    </div>
+    </div> -->
     <!-- end container --> 
-  </div>
+  <!-- </div> -->
   <!-- end logos --> 
 </section>
 <!-- end featured-services -->
@@ -145,16 +154,16 @@
     <div class="inner">
       <div class="section-title light">
         <h2>introduction</h2>
-        <h6>Do this for both directions of traffic if it’s<br> necessary. In busy traffic, this</h6>
+        <!-- <h6>Do this for both directions of traffic if it’s<br> necessary. In busy traffic, this</h6> -->
       </div>
       <!-- end section-title -->
-      <ul class="counter">
+<!--       <ul class="counter">
         <li> <span class="odometer" id="1"></span><span class="symbol">+</span> <small>Underestate</small> </li>
         <li> <span class="odometer" id="2"></span><span class="symbol">k</span> <small>Underestate</small> </li>
         <li> <span class="odometer" id="3"></span><span class="symbol">%</span> <small>Underestate</small> </li>
-      </ul>
-      <p>If you are not actively using <strong>Facebook</strong>, <strong>Twitter</strong> and other social media platforms, take the time to do so. Get into the habit of updating your business page or <u>tweets</u> at the same time every day. </p>
-      <p>Take advantage of the <u>software</u> that can help turn your blogs into tweets and know when the best time of day is to connect with your base.</p>
+      </ul> -->
+      <p><?php echo $body; ?></p>
+<!--       <p>Take advantage of the <u>software</u> that can help turn your blogs into tweets and know when the best time of day is to connect with your base.</p> -->
       <img src="images/testimonial-name.png" alt="Image"> </div>
     <!-- end inner --> 
   </div>
@@ -166,7 +175,7 @@
     <div class="row">
       <div class="col-12 wow fadeIn">
         <div class="section-title">
-          <h2>features</h2>
+          <h2>CORE VALUES</h2>
           <h6>You should at least attempt to protect the<br> accident scene however you can.</h6>
         </div>
         <!-- end section-title --> 
@@ -562,93 +571,93 @@
     <img src="images/image-team.jpg" alt="Image"> </div>
 </section>
 <!-- end info-box -->
-<section class="request-form">
+<!-- <section class="request-form">
   <div class="container">
     <div class="row">
       <div class="col-lg-5 wow fadeIn">
         <div class="section-title light">
           <h2>request form</h2>
           <h6>This moderate and humid climate provides<br> the massive amounts</h6>
-        </div>
+        </div> -->
         <!-- end section-title --> 
-      </div>
+     <!--  </div> -->
       <!-- end col-5 -->
-      <div class="col-lg-7 wow fadeIn">
+<!--       <div class="col-lg-7 wow fadeIn">
         <form class="row inner">
           <div class="form-group col-md-6">
             <label>Your name</label>
-            <input type="text">
-          </div>
-          <!-- end form-group -->
-          <div class="form-group col-md-6">
+            <input type="text"> -->
+          <!-- </div>
+ -->          <!-- end form-group -->
+<!--           <div class="form-group col-md-6">
             <label>Your surname</label>
             <input type="text">
-          </div>
+          </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>Your Country</label>
             <div class="select-box">
               <select>
                 <option>Select</option>
               </select>
-              <i class="fa fa-chevron-down"></i> </div>
+              <i class="fa fa-chevron-down"></i> </div> -->
             <!-- end select-box --> 
-          </div>
+         <!--  </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>Your City</label>
             <div class="select-box">
               <select>
                 <option>Select</option>
               </select>
-              <i class="fa fa-chevron-down"></i> </div>
+              <i class="fa fa-chevron-down"></i> </div> -->
             <!-- end select-box --> 
-          </div>
+          <!-- </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>Your Street</label>
             <div class="select-box">
               <select>
                 <option>Select</option>
               </select>
-              <i class="fa fa-chevron-down"></i> </div>
+              <i class="fa fa-chevron-down"></i> </div> -->
             <!-- end select-box --> 
-          </div>
+          <!-- </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-3">
+<!--           <div class="form-group col-md-3">
             <label>
               <input type="checkbox" checked>
               Domestic</label>
-          </div>
+          </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-3">
+<!--           <div class="form-group col-md-3">
             <label>
               <input type="checkbox" >
               International</label>
-          </div>
+          </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>
               <input type="checkbox" >
               Quick Delivery</label>
-          </div>
+          </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>Your Purpose</label>
             <div class="select-box">
               <select>
                 <option>Select</option>
               </select>
-              <i class="fa fa-chevron-down"></i> </div>
+              <i class="fa fa-chevron-down"></i> </div> -->
             <!-- end select-box --> 
-          </div>
+         <!--  </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>&nbsp;</label>
             <input type="submit" value="SUBMIT">
-          </div>
+          </div> -->
           <!-- end form-group -->
-        </form>
+        <!-- </form> -->
         <!-- end form --> 
       </div>
       <!-- end col-7 --> 

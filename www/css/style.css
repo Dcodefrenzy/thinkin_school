@@ -1998,10 +1998,10 @@ label {
 }
 .latest-news .content-box {
     flex: 1;
-    height: 50vh;
+    height: 70vh;
     background: #fff;
-    margin-right: 1px;
-    padding: 22px 100px;
+    margin-right: 20px;
+    padding: 20px 50px;
 }
 .latest-news .content-box:last-child {
   margin-right: 0;

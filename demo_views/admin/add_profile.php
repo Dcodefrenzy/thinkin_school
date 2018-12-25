@@ -47,9 +47,6 @@ if(array_key_exists('submit', $_POST)){
   if(empty($_POST['twlink'])){
     $error['twlink'] = "Enter Twitter Link";
   }
-  if(empty($_POST['location'])){
-    $error['location'] = "Enter Location";
-  }
   if(empty($_POST['iglink'])){
     $error['iglink'] = "Enter Instagram Link";
   }
@@ -58,8 +55,6 @@ if(array_key_exists('submit', $_POST)){
   }
   if(empty($error)){
     $ver['a'] = compressImage($_FILES,'upload',50, 'uploads/' );
-    $ver['b'] = compressImage($_FILES,'uploada',50, 'uploads/' );
-    $ver['c'] = compressImage($_FILES,'uploadb',50, 'uploads/' );
     $clean = array_map('trim',$_POST);
     addProfile($conn, $clean, $ver,$hash_id);
   }

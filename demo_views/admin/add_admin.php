@@ -178,6 +178,7 @@ Register
 <input type="text" id="sender-email" class="form-control" name="phonenumber" placeholder="Phonenumber">
 </div>
 </div>
+
 <div class="form-group">
 <div class="input-icon">
   <?php $display = displayErrors($error, 'pword');

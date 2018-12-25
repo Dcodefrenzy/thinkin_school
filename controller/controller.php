@@ -1563,6 +1563,18 @@ function getServices($dbconn){
   }
   return $result;
 }
+function getHomeServices($dbconn){
+  $result = [];
+  $show = 'show';
+  $stmt= $dbconn->prepare("SELECT * FROM services WHERE visibility = :show LIMIT 4");
+  $stmt->bindParam(':show', $show);
+  $stmt->execute();
+  while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+    $result [] = $row;
+
+  }
+  return $result;
+}
 
 function getService($dbconn, $hid){
   $stmt= $dbconn->prepare("SELECT * FROM services WHERE hash_id = :hid");

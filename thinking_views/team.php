@@ -29,9 +29,15 @@
   </div>
   <!-- end container -->
   <div class="content-wrapper">
-    <figure class="member wow fadeIn"> <img src="images/team01.jpg" alt="Image" class="fist-image"> <img src="images/team01h.jpg" alt="Image" class="second-image">
+    <?php $teams = getTeam($conn); 
+      foreach ($teams as $key => $team) {
+        extract($team);
+      
+    ?>
+    <figure class="member wow fadeIn"> <div style="background:url(<?php echo $image_1; ?>); width: 50vh; height: 50vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="fist-image"></div><!-- <img src=<?phpimage_1; ?> alt="Image" class="fist-image"> -->
+     <img src="images/team01h.jpg" alt="Image" class="second-image">
       <figcaption>
-        <h5>Peter Abramers</h5>
+        <h5><?php echo $firstname." ".$lastname; ?></h5>
         <small>Ceo & Premium Board Member</small>
         <ul>
           <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -42,8 +48,9 @@
         </ul>
       </figcaption>
     </figure>
+  <?php } ?>
     <!-- end member -->
-    <figure class="member wow fadeIn"> <img src="images/team02.jpg" alt="Image" class="fist-image"> <img src="images/team02h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team02.jpg" alt="Image" class="fist-image"> <img src="images/team02h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -55,9 +62,9 @@
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member -->
-    <figure class="member  wow fadeIn"> <img src="images/team03.jpg" alt="Image" class="fist-image"> <img src="images/team03h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member  wow fadeIn"> <img src="images/team03.jpg" alt="Image" class="fist-image"> <img src="images/team03h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -69,9 +76,9 @@
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member -->
-    <figure class="member wow fadeIn"> <img src="images/team04.jpg" alt="Image" class="fist-image"> <img src="images/team04h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team04.jpg" alt="Image" class="fist-image"> <img src="images/team04h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -83,9 +90,9 @@
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member -->
-    <figure class="member wow fadeIn"> <img src="images/team05.jpg" alt="Image" class="fist-image"> <img src="images/team05h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team05.jpg" alt="Image" class="fist-image"> <img src="images/team05h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -97,9 +104,9 @@
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member --> 
-    <figure class="member wow fadeIn"> <img src="images/team06.jpg" alt="Image" class="fist-image"> <img src="images/team06h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team06.jpg" alt="Image" class="fist-image"> <img src="images/team06h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -111,9 +118,9 @@
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member --> 
-    <figure class="member wow fadeIn"> <img src="images/team05.jpg" alt="Image" class="fist-image"> <img src="images/team05h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team05.jpg" alt="Image" class="fist-image"> <img src="images/team05h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -125,9 +132,9 @@
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member --> 
-    <figure class="member wow fadeIn"> <img src="images/team07.jpg" alt="Image" class="fist-image"> <img src="images/team07h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team07.jpg" alt="Image" class="fist-image"> <img src="images/team07h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -139,9 +146,9 @@
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member -->  
-    <figure class="member wow fadeIn"> <img src="images/team01.jpg" alt="Image" class="fist-image"> <img src="images/team01h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team01.jpg" alt="Image" class="fist-image"> <img src="images/team01h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -154,8 +161,8 @@
         </ul>
       </figcaption>
     </figure>
-    <!-- end member --> 
-    <figure class="member wow fadeIn"> <img src="images/team08.jpg" alt="Image" class="fist-image"> <img src="images/team08h.jpg" alt="Image" class="second-image">
+ -->    <!-- end member --> 
+<!--     <figure class="member wow fadeIn"> <img src="images/team08.jpg" alt="Image" class="fist-image"> <img src="images/team08h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -167,7 +174,7 @@
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member --> 
   </div>
   <!-- end content-wrapper --> 

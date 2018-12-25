@@ -76,6 +76,11 @@ switch ($uri[1]) {
   include APP_PATH."/demo_views/admin/admin_home.php";
   break;
 
+  
+  case "add-admin":
+  include APP_PATH."/demo_views/admin/add_admin.php";
+  break;
+
   case "add-article":
   include APP_PATH."/demo_views/admin/add_news.php";
   break;
