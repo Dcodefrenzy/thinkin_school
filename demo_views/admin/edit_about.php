@@ -37,10 +37,10 @@ if(array_key_exists('submit', $_POST)){
     $lastn = $lname;*/
 /*    $uri = explode("/", $_SERVER['REQUEST_URI']);
     $url = $uri[1];
-     $to = "boardspeck@gmail.com";
-     $subject = "Boardspeck Web Office Content Upload";
+     $to = "Thinking school@gmail.com";
+     $subject = "Thinking school Web Office Content Upload";
      $txt = "Hello Admin, ($firstn $lastn)has added a content on "."$url"." page at the back office. Kindly check for and approval";
-     $headers = "From: info@boardspeck.com" . "\r\n" .
+     $headers = "From: info@Thinking school.com" . "\r\n" .
      "CC: banjimayowa@gmail.com";
      mail($to,$subject,$txt,$headers);*/
     editAbout($conn, $clean,$hash_id,$_GET['id']);
@@ -56,7 +56,7 @@ if(array_key_exists('submit', $_POST)){
         <div class="inner-box posting">
         <div class="alert alert-success alert-lg" role="alert">
         <h2 class="postin-title">✔ Successful! '.$msg.' </h2>
-        <p>Thank you '.ucwords($firstname).', BoardSpeck  is happy to have you around. </p>
+        <p>Thank you '.ucwords($firstname).', Thinking school  is happy to have you around. </p>
         </div>
         </div>
         </div>';

@@ -190,7 +190,7 @@ function addEvents($dbconn,$post,$destination,$sess){
   $split = explode(" ",$post['event_name']);
   $id = $rnd.cleans($split['0']);
   $hash_id = str_shuffle($id.'events');
-  $stmt = $dbconn->prepare("INSERT INTO events VALUES(NULL, :ht, :ve, :txt, :sta, :price, :hid, :img, :sess, :std, :timed,:endd, NOW(),NOW())");
+  $stmt = $dbconn->prepare("INSERT INTO events VALUES(NULL, :ht, :ve, :txt, :sta, :price, :hid, :img, :sess, :std, :endd, :timed, NOW(),NOW())");
   $data = [
     ':ht' => $post['event_name'],
     ':ve' => $post['venue'],
@@ -213,7 +213,7 @@ catch(PDOException $e){
   logs($dbconn, 'added', $post['event_name'],'events',$sess);
   $success = "Event Info Added";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/View-events?success=$succ");
+  header("Location:/view-events?success=$succ");
 }
 
 function cleans($string){
@@ -678,7 +678,7 @@ function addPackage($dbconn,$post, $sess){
 // }
 function addProfile($dbconn,$post,$destn,$sess){
   $profile_status = 1;
-  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn,lastname=:ln,portfolio=:pt,bio=:bi,phone_number=:pn,facebook_link=:fbl,twitter_link=:tlk,linkedin_link=:llk,instagram_link=:iglk,location=:lct,image_1=:img1,image_2=:img2,image_3=:img3,profile_status=:ps WHERE hash_id=:sess");
+  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn,lastname=:ln,portfolio=:pt,bio=:bi,phone_number=:pn,facebook_link=:fbl,twitter_link=:tlk,linkedin_link=:llk,instagram_link=:iglk,image_1=:img1,image_2=:img2,image_3=:img3,profile_status=:ps WHERE hash_id=:sess");
   $stmt->bindParam(":fn",$post['fname']);
   $stmt->bindParam(":ln",$post['lname']);
   $stmt->bindParam(":pt",$post['portfolio']);
@@ -688,10 +688,7 @@ function addProfile($dbconn,$post,$destn,$sess){
   $stmt->bindParam(":tlk",$post['twlink']);
   $stmt->bindParam(":llk",$post['lklink']);
   $stmt->bindParam(":iglk",$post['iglink']);
-  $stmt->bindParam(":lct",$post['location']);
   $stmt->bindParam(":img1",$destn['a']);
-  $stmt->bindParam(":img2",$destn['b']);
-  $stmt->bindParam(":img3",$destn['c']);
   $stmt->bindParam(":ps",$profile_status);
   $stmt->bindParam(":sess",$sess);
   $stmt->execute();
@@ -1960,6 +1957,17 @@ function getAdmin($dbconn){
     </tr>';
   }
 }
+
+function getTeam($dbconn){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM admin");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    $result [] = $row;
+  }
+  return $result;
+}
+
 function getUsers($dbconn){
   $ms = "MASTER";
   $stmt = $dbconn->prepare("SELECT * FROM user WHERE NOT level=:ms ");
@@ -2856,7 +2864,7 @@ function getEvents($dbconn,$tb,$get){
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
-    $bd = previewBody($description, 20);
+    $bd = previewBody($description, 10);
     $level =  adminLevel($dbconn,$get);
     if($level == 3 || $level == "MASTER"){
       echo '<tr><td class="add-img-td">
@@ -2908,6 +2916,11 @@ function getEvents($dbconn,$tb,$get){
       </a>
       <a href="event-status?id='.$hash_id.'&t=past">
       <button class="btn btn-basic btn-sm" type="submit">past</button>
+      </a>
+      </td>
+      <td class="ads-details-td">
+      <a href="manage-event-participant?t=event&hid='.$hash_id.'">
+      <button class="btn btn-common btn-sm" type="submit">Participant</button>
       </a>
       </td></tr>';
     }
@@ -3039,6 +3052,9 @@ function getTrainings($dbconn,$tb,$get){
       <a href="training-status?id='.$hash_id.'&t=past">
       <button class="btn btn-basic btn-sm" type="submit">past</button>
       </a>
+      </td>
+      <td class="ads-details-td">
+      <a href="manage-training-participant?t=training&hid='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Participant</button></a>
       </td></tr>';
     }
     if($level == 2 || $level == 4 || $level == 5 || $level == 6){
@@ -3828,6 +3844,165 @@ function PgetQuote($dbconn,$get){
       <td class="price-td">
       <p>You cannnot perform this action</p>
       </td></tr>';
+    }
+  }
+}
+function getTrainingBookings($dbconn,$get,$tb, $hid){
+  $stmt = $dbconn->prepare("SELECT * FROM booking WHERE booking = :event AND booking_id = :hid ORDER BY id DESC");
+  $data= [
+      ':event' => $tb,
+      ':hid' => $hid
+  ];
+  $stmt->execute($data);
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+
+    $level =  adminLevel($dbconn,$get);
+    if($level == 3 || $level == "MASTER"){
+      echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+    if($level == 2 || $level == 4 || $level == 5 || $level == 6){
+            echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+    if($level == 1){
+      echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+  }
+}
+
+function getEventBookings($dbconn,$get,$tb, $hid){
+  $stmt = $dbconn->prepare("SELECT * FROM booking WHERE booking = :event AND booking_id = :hid ORDER BY id DESC");
+  $data= [
+      ':event' => $tb,
+      ':hid' => $hid
+  ];
+  $stmt->execute($data);
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+
+    $level =  adminLevel($dbconn,$get);
+    if($level == 3 || $level == "MASTER"){
+      echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+    if($level == 2 || $level == 4 || $level == 5 || $level == 6){
+            echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
+    }
+    if($level == 1){
+      echo '<tr><td class="ads-details-td">
+      <h4><a href="">'.$name.'</a></h4>
+      <td class="add-img-td">
+      '.$email.'
+      </td>
+       <td class="add-img-td">
+      '.$phone_number.'
+      </td>
+      <td class="add-img-td">
+      '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$hash_id.'
+      </td>
+      <td class="price-td">
+      <a href="#">
+      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+      </a>
+      </td>
+   </tr>';
     }
   }
 }

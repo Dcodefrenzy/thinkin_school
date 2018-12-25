@@ -29,9 +29,9 @@
           <ul class="social-share">
 			<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
 			<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-			<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+<!-- 			<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
 			<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-			<li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+<!-- 			<li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li> -->
 		  </ul>
           <p><?php echo $body; ?> </p>
          	</div>
@@ -55,21 +55,27 @@
               </ul>
               </div>
               <div class="widget tags">
-              <h4 class="widget-title">Upcoming Event</h4>
+              <h4 class="widget-title">Latest Event</h4>
               <ul>
-                <li><img src="images/news01.jpg" alt="Image"></li>
-                <span>Event Name</span>
-                <span> Date</span>
-                <span> Venue</span>              
+                <?php $event =  getLatestEvent($conn);  extract($event)?>
+                <a <?php echo 'href=events-details?hid='.$hash_id.'' ?>>
+                <li><img src=<?php echo $image_1; ?> alt="Image"></li>
+                <span><b>Event Name:</b> <?php echo $event_name; ?></span><br/>
+                <span><b>Date:</b> <?php echo $date_created; ?></span><br/>
+                <span><b>Venue:</b> <?php echo $venue; ?></span> <br/>  
+                </a>           
               </ul>
               </div>
               <div class="widget tags">
-              <h4 class="widget-title">Upcoming Traning</h4>
+              <h4 class="widget-title">Latest Traning</h4>
               <ul>
-                <li><img src="images/news01.jpg" alt="Image"></li>
-                <span>Training Name</span>
-                <span> Date</span>
-                <span> Venue</span>              
+                <?php $training =  getLatestTraining($conn);  extract($training)?>
+                <a <?php echo 'href=training-details?hid='.$hash_id.'' ?>>
+                <li><img src=<?php echo $image_1; ?> alt="Image"></li>
+                <span><b>Event Name:</b> <?php echo $name; ?></span><br/>
+                <span><b>Date:</b> <?php echo $date_created; ?></span><br/>
+                <span><b>Venue:</b> <?php echo $venue; ?></span> <br/>  
+                </a>             
               </ul>
               </div> 
           </aside>
@@ -100,10 +106,10 @@
           extract($blog);
             $bd = previewBody($body, 10); 
           ?>
-        <div class="content-box wow fadeIn">  <div style="background:url(<?php echo $image_1; ?>); height:30vh; width: 50vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
-          <h4>How to develope item for themeforest</h4>
-          <small>February 21,2018</small>
-          <p>Stop wasting time and money on technology</p>
+        <div class="content-box wow fadeIn">             <div style= "border-radius: 100px; padding: 0px; background:url(<?php echo $image_1; ?>); height:30vh; width: 30vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
+          <h4><?php echo $title; ?></h4>
+          <small><?php echo $date_created; ?></small>
+          <p><?php echo $bd; ?></p>
            <a <?php echo 'href=blog-details?hid='.$hash_id.'';?>><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
           <?php } ?>
         <!-- end content-box -->

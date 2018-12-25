@@ -28,7 +28,7 @@ include "includes/header.php";
       <div class="col-12">
         <div class="section-title">
           <h2>Events</h2>
-          <h6>Because they may falsely report what happened wither<br> knowingly or simply due to confusion</h6>
+<!--           <h6>Because they may falsely report what happened wither<br> knowingly or simply due to confusion</h6> -->
         </div>
         <!-- end section-title -->
       </div>
@@ -36,11 +36,11 @@ include "includes/header.php";
               <?php     $events = getAllEvents($conn, $start_from, $record_per_page); ?>
               <?php foreach ($events as $key => $event) {
             extract($event);
-            $bd = previewBody($description, 20);
+            $bd = previewBody($description, 10);
           ?>
       <div class="col-md-4">
         <div class="price-box">
-         <div style="background:url(<?php echo $image_1; ?>); width: 100%; height: 250px; background-size: 150%;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
+         <div style="background:url(<?php echo $image_1; ?>); width: 100%; height: 200px; background-size: 100%;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
           <h3><?php echo $event_name; ?></h3>
             <h5></h5>
 
@@ -55,7 +55,7 @@ include "includes/header.php";
             <li><?php echo $bd; ?> <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></i></li>
 
           </ul>
-          <a <?php echo 'href=book-event?hid='.$hash_id.'&&t=event';?>>Book Now<span></span></a>
+          <a <?php echo 'href=book?hid='.$hash_id.'&&t=event';?>>Book Now<span></span></a>
           <br/><br/>
            <a <?php echo 'href=events-details?hid='.$hash_id.'';?>>View More Details<span></span></a> 
           </div>
