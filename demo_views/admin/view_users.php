@@ -12,13 +12,13 @@ if(isset($_SESSION['id'])){
 
 $check2 = adminFullInfo($conn,$_SESSION['id']);
 // die(var_dump($check2['portfolio']));
-if($check2['portfolio'] !=555666777888999000){
+/*if($check2['portfolio'] !=555666777888999000){
   setLogout($conn,$_SESSION['id']);
   session_destroy();
   $success = "Your Account Cannot View Users";
   $succ = preg_replace('/\s+/', '_', $success);
   header("Location: adminLogin?ssp=$succ");
-}
+}*/
 
 $info = adminInfo($conn,$session);
 extract($info);

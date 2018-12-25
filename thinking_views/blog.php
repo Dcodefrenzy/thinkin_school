@@ -1,7 +1,35 @@
 <?php include "includes/header.php"; 
+   $record_per_page = 2;
+     $page = "";
+  if(isset($_GET['page'])){
+  $page = $_GET['page'];
+  }else{
+  $page = 1;
+  }
+    $start_from = ($page-1)*$record_per_page;
+
   if (isset($_GET['hid'])) {
     $hid = $_GET['hid'];
+    $blogs =  blogs($conn, $hid, $start_from, $record_per_page);
+    $total_record = getTotalRecordForCatBlog($conn, $hid,  $record_per_page);
+  }else{
+    $blogs = allBlogs($conn, $start_from, $record_per_page);
+       $total_record  = getTotalRecordBlog($conn, $record_per_page);
   }
+
+      if($page > 1){
+      $prev = $page - 1;
+    }else{
+      $prev = 1;
+    }
+    if($total_record > 1 &&  $page != $total_record){
+      $next = $page + 1;
+    }
+    else{
+      $next = $total_record;
+    }
+
+
 ?>
 <!-- end header -->
 <section class="page-header">
@@ -44,9 +72,11 @@
               <li><a <?php echo 'href=blog?hid='.$hash_id.''; ?>><?php echo $category_name; ?></a></li>
             <?php } ?>
               </ul>
+         
             </div>
+
             <!-- end widget -->
-            <div class="widget gallery wow fadeIn">
+<!--             <div class="widget gallery wow fadeIn">
               <h4 class="widget-title">Gallery</h4>
               <ul>
                 <li><a href="images/image04.jpg" data-fancybox="gallery"><img src="images/image04.jpg" alt="Image"></a></li>
@@ -55,9 +85,9 @@
                 <li><a href="images/image07.jpg" data-fancybox="gallery"><img src="images/image07.jpg" alt="Image"></a></li>
                 <li><a href="images/image08.jpg" data-fancybox="gallery"><img src="images/image08.jpg" alt="Image"></a></li>
                 <li><a href="images/image09.jpg" data-fancybox="gallery"><img src="images/image09.jpg" alt="Image"></a></li>
-              </ul>
+              </ul> -->
               <!-- end gallery --> 
-            </div>
+           <!--  </div> -->
             <!-- end widget -->
      <!--        <div class="widget download-box wow fadeIn">
               <i class="fa fa-file-image-o"></i> <a href="#">DOWNLOAD</a> <small>DIGITAL BROCHURE</small> 
@@ -68,7 +98,7 @@
         </div>
         <!-- end col-5 --> 
         <div class="col-md-7 col-12">
-          <?php $blogs =  blogs($conn, $hid);
+          <?php 
             foreach ($blogs as $key => $blog) {
               extract($blog);
               $bd = previewBody($body, 20);
@@ -137,12 +167,23 @@
          <!-- </div> -->
          <!-- end post -->
           <ul class="pagination wow fadeIn">
+            <?php if (isset($_GET['hid'])) {
+              $hid = $_GET['hid'];
+             ?>
     <li class="page-item">
-      <a class="page-link" href="#" tabindex="-1">PREV</a>
+      <a class="page-link" <?php echo 'href=blogs?page='.$prev.'&hid='.$hid.''; ?> tabindex="-1">PREV</a>
     </li>
     <li class="page-item">
-      <a class="page-link" href="#">NEXT</a>
+      <a class="page-link" <?php echo 'href=blogs?page='.$next.'&hid='.$hid.''; ?>>NEXT</a>
     </li>
+  <?php }else{ ?>
+        <li class="page-item">
+      <a class="page-link" <?php echo 'href=blogs?page='.$prev.''; ?> tabindex="-1">PREV</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" <?php echo 'href=blogs?page='.$next.''; ?>>NEXT</a>
+    </li>
+  <?php } ?>
   </ul>
         </div>
         <!-- end col-7 -->

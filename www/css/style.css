@@ -1997,10 +1997,11 @@ label {
   display: flex;
 }
 .latest-news .content-box {
-  flex: 1;
-  background: #fff;
-  margin-right: 1px;
-  padding: 60px 40px;
+    flex: 1;
+    height: 70vh;
+    background: #fff;
+    margin-right: 20px;
+    padding: 20px 50px;
 }
 .latest-news .content-box:last-child {
   margin-right: 0;
@@ -2490,7 +2491,7 @@ label {
 .prices .price-box {
   width: 100%;
   float: left;
-  padding: 30px;
+  padding: 10px;
   border: 1px solid #eaebee;
 }
 .prices .price-box img {
@@ -2535,7 +2536,7 @@ label {
   width: 100%;
   display: block;
   margin: 0;
-  padding: 4px 0;
+  padding: 1px 0;
   list-style: none;
   color: #9aa0ae;
 }
@@ -2544,8 +2545,8 @@ label {
 }
 .prices .price-box a {
   display: inline-block;
-  height: 60px;
-  line-height: 58px;
+  height: 30px;
+  line-height: 28px;
   border: 1px solid #eaebee;
   color: #405089;
   padding: 0 44px;
@@ -2916,6 +2917,7 @@ label {
 }
 .press-relases figure figcaption {
   width: 100%;
+  height: 20vh;
   float: left;
   padding: 20px;
   background: #eaebee;

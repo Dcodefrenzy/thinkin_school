@@ -1,4 +1,7 @@
-<?php include "includes/header.php"; ?>
+<?php 
+include "includes/header.php";
+$about = getAboutUS($conn); extract($about);
+?>
 <section class="slider">
   <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -52,26 +55,32 @@
 <section class="featured-services">
   <div class="content-wrapper">
     <div class="container">
+      <?php $services = getHomeServices($conn); 
+        foreach ($services as $key => $service) {
+            extract($service);  
+            $bd = previewBody($body, 5);     
+       ?>
       <div class="content-box wow fadeIn"> <span></span>
-        <h3>food & beverage</h3>
+        <h3><?php echo $title; ?></h3>
         <p>The only time you should move your vehicles after you get in a wreck is if not doing </p>
-        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
+        <a <?php echo 'href=service?hid='.$hash_id.''; ?>><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
       <!-- end content-box -->
-      <div class="content-box wow fadeIn"> <span></span>
+<!--       <div class="content-box wow fadeIn"> <span></span>
         <h3>power industry</h3>
         <p>The reason you want your cars to remain where they are as closely as possible</p>
-        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
+        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div> -->
       <!-- end content-box -->
-      <div class="content-box wow fadeIn"> <span></span>
+<!--       <div class="content-box wow fadeIn"> <span></span>
         <h3>tech solutions</h3>
         <p>Allowing word-of-mouth reporting from the other driver may not be the best idea</p>
-        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
+        <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div> -->
       <!-- end content-box --> 
+      <?php } ?>
     </div>
     <!-- end container --> 
   </div>
   <!-- end content-wrapper -->
-  <div class="logos wow fadeIn">
+<!--   <div class="logos wow fadeIn">
     <div class="container">
       <ul>
         <li><img src="images/logo01.png" alt="Image"></li>
@@ -83,9 +92,9 @@
         <li><img src="images/logo07.png" alt="Image"></li>
         <li><img src="images/logo08.png" alt="Image"></li>
       </ul>
-    </div>
+    </div> -->
     <!-- end container --> 
-  </div>
+  <!-- </div> -->
   <!-- end logos --> 
 </section>
 <!-- end featured-services -->
@@ -93,7 +102,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 wow fadeIn">
-        <div class="section-title"> <span>01</span>
+        <div class="section-title">
           <h2>development</h2>
           <h6>Because they may falsely report what happened wither<br> knowingly or simply due to confusion</h6>
         </div>
@@ -143,18 +152,18 @@
   <!-- end sides -->
   <div class="sides bg-color wow fadeIn" data-background="#405089">
     <div class="inner">
-      <div class="section-title light"> <span>02</span>
+      <div class="section-title light">
         <h2>introduction</h2>
-        <h6>Do this for both directions of traffic if it’s<br> necessary. In busy traffic, this</h6>
+        <!-- <h6>Do this for both directions of traffic if it’s<br> necessary. In busy traffic, this</h6> -->
       </div>
       <!-- end section-title -->
-      <ul class="counter">
+<!--       <ul class="counter">
         <li> <span class="odometer" id="1"></span><span class="symbol">+</span> <small>Underestate</small> </li>
         <li> <span class="odometer" id="2"></span><span class="symbol">k</span> <small>Underestate</small> </li>
         <li> <span class="odometer" id="3"></span><span class="symbol">%</span> <small>Underestate</small> </li>
-      </ul>
-      <p>If you are not actively using <strong>Facebook</strong>, <strong>Twitter</strong> and other social media platforms, take the time to do so. Get into the habit of updating your business page or <u>tweets</u> at the same time every day. </p>
-      <p>Take advantage of the <u>software</u> that can help turn your blogs into tweets and know when the best time of day is to connect with your base.</p>
+      </ul> -->
+      <p><?php echo $body; ?></p>
+<!--       <p>Take advantage of the <u>software</u> that can help turn your blogs into tweets and know when the best time of day is to connect with your base.</p> -->
       <img src="images/testimonial-name.png" alt="Image"> </div>
     <!-- end inner --> 
   </div>
@@ -165,8 +174,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12 wow fadeIn">
-        <div class="section-title"> <span>03</span>
-          <h2>features</h2>
+        <div class="section-title">
+          <h2>CORE VALUES</h2>
           <h6>You should at least attempt to protect the<br> accident scene however you can.</h6>
         </div>
         <!-- end section-title --> 
@@ -243,7 +252,7 @@
         <div class="content-box wow fadeIn"> 
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
-              <div class="inner"> <span>04</span>
+              <div class="inner"> 
                 <h4>investment</h4>
                 <figure> <img src="images/icon04.png" alt="Image"> </figure>
               </div>
@@ -265,7 +274,7 @@
         <div class="content-box wow fadeIn"> 
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
-              <div class="inner"> <span>05</span>
+              <div class="inner">
                 <h4>researches</h4>
                 <figure> <img src="images/icon05.png" alt="Image"> </figure>
               </div>
@@ -298,7 +307,7 @@
       <div class="col-lg-4">
         <div class="section-title wow fadeIn">
           <h2> Projects</h2>
-         <!--  <h6>You will likely need proof to show your insurance company</h6> -->
+          <h6>You can view our otstanding projects here.</h6>
         </div>
         <!-- end section-title --> 
       </div>
@@ -376,63 +385,11 @@
   <!-- end container --> 
 </section>
 <!-- end image-content-over-box -->
-<section class="showcases">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 wow fadeIn">
-        <div class="section-title"> <span>05</span>
-          <h2>showcases</h2>
-          <h6>The smaller male cones release pollen, <br>which fertilizes the female </h6>
-        </div>
-        <!-- end section-title --> 
-      </div>
-      <!-- end col-12 -->
-      <div class="col-12 wow fadeIn">
-        <ul class="masonry">
-          <li>
-            <figure><a href="images/image10.jpg" data-fancybox><img src="images/image10.jpg" alt="Image"></a>
-              <figcaption>
-                <h6>REDWOOD INC</h6>
-                <small>Business Development</small></figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure><a href="images/image12.jpg" data-fancybox><img src="images/image12.jpg" alt="Image"></a>
-              <figcaption>
-                <h6>MOUNTAIN INC</h6>
-                <small>Business Development</small></figcaption>
-            </figure>
-          </li>
-          <li class="double">
-            <figure><a href="images/image13.jpg" data-fancybox><img src="images/image13.jpg" alt="Image"></a>
-              <figcaption>
-                <h6>POLLEN INC</h6>
-                <small>Business Development</small></figcaption>
-            </figure>
-          </li>
-          <li class="double">
-            <figure><a href="images/image11.jpg" data-fancybox><img src="images/image11.jpg" alt="Image"></a>
-              <figcaption>
-                <h6>SEEDS INC</h6>
-                <small>Business Development</small></figcaption>
-            </figure>
-          </li>
-        </ul>
-        </div>
-        <!-- end col-12 -->
-        <div class="col-12 text-center">
-          <a href="#" class="all-btn">SEE ALL CASES</a> 
-        </div>
-      <!-- end col-12 --> 
-    </div>
-    <!-- end row --> 
-  </div>
-  <!-- end container --> 
-</section>
+
 <!-- end showcases -->
 <section class="testimonials">
   <div class="container">
-    <div class="section-title light wow fadeIn"> <span>06</span>
+    <div class="section-title light wow fadeIn"> 
       <h2>what peoples say !</h2>
     </div>
     <!-- end section-title -->
@@ -488,7 +445,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 wow fadeIn">
-        <div class="section-title"> <span>07</span>
+        <div class="section-title">
           <h2>team members</h2>
           <h6>When the seeds reach maturity, the segments of<br> the cone open up and release</h6>
         </div>
@@ -578,38 +535,26 @@
   <div class="container">
     <div class="row">
       <div class="col-12 wow fadeIn">
-        <div class="section-title"> <span>08</span>
-          <h2>latest news</h2>
-          <h6>As the seed falls to the ground, it floats <br>along air currents due to its wing</h6>
+        <div class="section-title">
+          <h2>Similar Articles</h2>
+          <h6>You can read other articles on this category</h6>
         </div>
         <!-- end section-title --> 
       </div>
       <!-- end col-12 -->
       <div class="col-12">
-        <div class="content-box wow fadeIn"> <span>Business, Tips, Account</span>
-          <h4>How to develope item for themeforest</h4>
-          <small>February 21,2018</small>
-          <p>Stop wasting time and money on technology</p>
-          <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
-        <!-- end content-box -->
-        <div class="content-box wow fadeIn"> <span>Tips, Tech, Development</span>
-          <h4>We asked some of the leading business women</h4>
-          <small>February 21,2018</small>
-          <p>The smaller male cones release pollen</p>
-          <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
-        <!-- end content-box -->
-        <div class="content-box wow fadeIn"> <span>Development, Strategy</span>
-          <h4>How to develope item for our marketplace</h4>
-          <small>February 21,2018</small>
-          <p>Which fertilizes the female cones’ ovula.</p>
-          <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
-        <!-- end content-box -->
-        <div class="content-box wow fadeIn"> <span>Tech, Business, Parnership</span>
-          <h4>Never underestimate the power of social media</h4>
-          <small>February 21,2018</small>
-          <p>After this pollen release, male cones</p>
-          <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
-        <!-- end content-box --> 
+        <?php $blogs = homeBlog($conn); 
+          foreach ($blogs as $key => $blog) {
+            extract($blog);
+            $bd = previewBody($body, 10); 
+          ?>
+        <div class="content-box wow fadeIn"> 
+            <div style= "border-radius: 100px; padding: 0px; background:url(<?php echo $image_1; ?>); height:30vh; width: 30vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
+          <h4><?php echo $title; ?></h4>
+          <small><?php echo $date_created; ?></small>
+          <p><?php echo $bd; ?></p>
+           <a <?php echo 'href=blog-details?hid='.$hash_id.'';?>><img src="images/icon-right-arrow.svg" alt="Image"></a>  </div>
+        <?php } ?>
       </div>
       <!-- end col-12 --> 
     </div>
@@ -626,93 +571,93 @@
     <img src="images/image-team.jpg" alt="Image"> </div>
 </section>
 <!-- end info-box -->
-<section class="request-form">
+<!-- <section class="request-form">
   <div class="container">
     <div class="row">
       <div class="col-lg-5 wow fadeIn">
-        <div class="section-title light"> <span>09</span>
+        <div class="section-title light">
           <h2>request form</h2>
           <h6>This moderate and humid climate provides<br> the massive amounts</h6>
-        </div>
+        </div> -->
         <!-- end section-title --> 
-      </div>
+     <!--  </div> -->
       <!-- end col-5 -->
-      <div class="col-lg-7 wow fadeIn">
+<!--       <div class="col-lg-7 wow fadeIn">
         <form class="row inner">
           <div class="form-group col-md-6">
             <label>Your name</label>
-            <input type="text">
-          </div>
-          <!-- end form-group -->
-          <div class="form-group col-md-6">
+            <input type="text"> -->
+          <!-- </div>
+ -->          <!-- end form-group -->
+<!--           <div class="form-group col-md-6">
             <label>Your surname</label>
             <input type="text">
-          </div>
+          </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>Your Country</label>
             <div class="select-box">
               <select>
                 <option>Select</option>
               </select>
-              <i class="fa fa-chevron-down"></i> </div>
+              <i class="fa fa-chevron-down"></i> </div> -->
             <!-- end select-box --> 
-          </div>
+         <!--  </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>Your City</label>
             <div class="select-box">
               <select>
                 <option>Select</option>
               </select>
-              <i class="fa fa-chevron-down"></i> </div>
+              <i class="fa fa-chevron-down"></i> </div> -->
             <!-- end select-box --> 
-          </div>
+          <!-- </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>Your Street</label>
             <div class="select-box">
               <select>
                 <option>Select</option>
               </select>
-              <i class="fa fa-chevron-down"></i> </div>
+              <i class="fa fa-chevron-down"></i> </div> -->
             <!-- end select-box --> 
-          </div>
+          <!-- </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-3">
+<!--           <div class="form-group col-md-3">
             <label>
               <input type="checkbox" checked>
               Domestic</label>
-          </div>
+          </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-3">
+<!--           <div class="form-group col-md-3">
             <label>
               <input type="checkbox" >
               International</label>
-          </div>
+          </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>
               <input type="checkbox" >
               Quick Delivery</label>
-          </div>
+          </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>Your Purpose</label>
             <div class="select-box">
               <select>
                 <option>Select</option>
               </select>
-              <i class="fa fa-chevron-down"></i> </div>
+              <i class="fa fa-chevron-down"></i> </div> -->
             <!-- end select-box --> 
-          </div>
+         <!--  </div> -->
           <!-- end form-group -->
-          <div class="form-group col-md-4">
+<!--           <div class="form-group col-md-4">
             <label>&nbsp;</label>
             <input type="submit" value="SUBMIT">
-          </div>
+          </div> -->
           <!-- end form-group -->
-        </form>
+        <!-- </form> -->
         <!-- end form --> 
       </div>
       <!-- end col-7 --> 

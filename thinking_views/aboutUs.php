@@ -18,7 +18,7 @@ include "includes/header.php";
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<div class="section-title"> <span>01</span>
+				<div class="section-title">
           <h2>Thinking School.</h2>
         </div>
         <!-- end section-title -->
@@ -71,7 +71,7 @@ include "includes/header.php";
   <!-- end sides -->
   <div class="sides bg-color wow fadeIn" data-background="#405089">
     <div class="inner">
-      <div class="section-title light"> <span>01</span>
+      <div class="section-title light"> 
         <h2></h2>
         <h2>Mission Statement</h2>
       </div>
@@ -87,7 +87,7 @@ include "includes/header.php";
   <div class="container">
     <div class="row">
       <div class="col-12 wow fadeIn">
-        <div class="section-title"> <span>01</span>
+        <div class="section-title"> 
           <h2>features</h2>
           <h6>You should at least attempt to protect the<br> accident scene however you can.</h6>
         </div>
@@ -120,7 +120,7 @@ include "includes/header.php";
         <div class="content-box wow fadeIn">
 		 <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
-              <div class="inner"> <span>02</span>
+              <div class="inner"> 
                 <h4>marketting</h4>
                 <figure> <img src="images/icon02.png" alt="Image"> </figure>
               </div>
@@ -213,13 +213,13 @@ include "includes/header.php";
   <!-- end container --> 
 </section>
 <!-- end icon-content-box -->
-<section class="history-timeline">
+<!-- <section class="history-timeline">
 	<div class="container">
 	<div class="section-title light"> <span>01</span>
           <h2>uon history</h2>
-        </div>
+        </div> -->
         <!-- end section-title -->
-		<div class="cd-horizontal-timeline">
+<!-- 		<div class="cd-horizontal-timeline">
 	<div class="timeline">
 		<div class="events-wrapper">
 			<div class="events">
@@ -238,16 +238,16 @@ include "includes/header.php";
 				</ol>
 
 				<span class="filling-line" aria-hidden="true"></span>
-			</div> <!-- .events -->
-		</div> <!-- .events-wrapper -->
+			</div> events -->
+		<!-- </div>  --><!-- .events-wrapper -->
 			
-		<ul class="cd-timeline-navigation">
+<!-- 		<ul class="cd-timeline-navigation">
 			<li><a href="#0" class="prev inactive"><i class="fa fa-chevron-left"></i></a></li>
 			<li><a href="#0" class="next"><i class="fa fa-chevron-right"></i></a></li>
-		</ul> <!-- .cd-timeline-navigation -->
-	</div> 
+		</ul> --> <!-- .cd-timeline-navigation -->
+<!-- 	</div>  -->
 	<!-- end timeline -->
-
+<!-- 
 	<div class="events-content">
 		<ol>
 			<li class="selected" data-date="16/01/2018">
@@ -340,18 +340,18 @@ include "includes/header.php";
 				</p>
 			</li>
 		</ol>
-	</div> <!-- end events-content -->
-</div>
+	</div> --> <!-- end events-content -->
+<!-- </div> -->
 <!-- end cd-horizontal-timeline -->
-	</div>
+	<!-- </div> -->
 	<!-- end container -->
-</section>
+<!-- </section> -->
 <!-- end history-timeline -->
 <section class="image-content-box">
   <div class="container">
     <div class="row">
       <div class="col-12 wow fadeIn">
-        <div class="section-title"> <span>01</span>
+        <div class="section-title"> 
           <h2>development</h2>
           <h6>Because they may falsely report what happened wither<br> knowingly or simply due to confusion</h6>
         </div>

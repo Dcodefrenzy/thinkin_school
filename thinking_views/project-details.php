@@ -35,9 +35,9 @@
           <ul class="social-share">
 			<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
 			<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-			<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+<!-- 			<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
 			<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-			<li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+<!-- 			<li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li> -->
 		  </ul>
           <p><?php echo $about; ?></p>
       <!--         <p> Anyone carrying on an activity that earns them a profit is doing <u>business or running a business</u>, and perhaps this is why there is a misconception that business and company is the same thing.<br>

@@ -44,7 +44,7 @@
         <div class="col-lg-3 col-md-4">
             <a <?php echo 'href=project?hid='.$hash_id.'';?>>
       <figure>
-         <div style="background:url(<?php echo $image_1; ?>); width: 100%; height: 150px; background-size: 100%;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
+         <div style="background:url(<?php echo $image_1; ?>); width: 100%; height: 200px; background-size: 150%;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
         <figcaption>
           <h5><?php echo $project_name; ?></h5>
           <p><?php echo $bd; ?>n</p>

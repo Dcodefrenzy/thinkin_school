@@ -64,7 +64,6 @@
         <li><a href="#">Corpration</a>
           <ul class="dropdown">
             <li><a href="about">About Us</a></li>
-            <li><a href="gallery">Gallery</a></li>
             <li><a href="team-members">Team Members</a></li>
             <li><a href="clients">Clients</a></li>
             <li><a href="projects">Projects</a></li>
@@ -83,8 +82,8 @@
           </ul>
         </li>
         <li><a href="events">Events</a></li>
-        <li><a href="trainings">Trainings</a></li>
-        <li><a href="blog">Blog</a>
+        <li><a href="training">Trainings</a></li>
+        <li><a href="blogs">Blog</a>
         <ul class="dropdown">
         <?php $category = getCat($conn); 
         foreach ($category as $key => $categories) {
@@ -102,7 +101,7 @@
         </ul></li>';
 
         }else{
-          '<li><a href="user-register">Sign-Up</a>
+          echo '<li><a href="user-registration">Sign-Up</a>
         <ul class="dropdown">
            <li><a href="user-login">Loigin</a></li>
           </ul>
@@ -162,7 +161,6 @@
         <li><a href="#">Corpration</a>
           <ul class="dropdown">
             <li><a href="about">About Us</a></li>
-            <li><a href="gallery">Gallery</a></li>
             <li><a href="team-members">Team Members</a></li>
             <li><a href="clients">Clients</a></li>
             <li><a href="projects">Projects</a></li>
@@ -181,8 +179,8 @@
           </ul>
         </li>
         <li><a href="events">Events</a></li>
-        <li><a href="trainings">Trainings</a></li>
-        <li><a href="blog">Blog</a>
+        <li><a href="training">Trainings</a></li>
+        <li><a href="blogs">Blog</a>
         <ul class="dropdown">
         <?php $category = getCat($conn); 
         foreach ($category as $key => $categories) {
@@ -200,7 +198,7 @@
         </ul></li>';
 
         }else{
-          '<li><a href="user-register">Sign-Up</a>
+          echo '<li><a href="user-registration">Sign-Up</a>
         <ul class="dropdown">
            <li><a href="user-login">Loigin</a></li>
           </ul>

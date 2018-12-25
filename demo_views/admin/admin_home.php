@@ -6,23 +6,19 @@ include("include/authentication.php");
 authenticate();
 include("include/link_include.php");
 
-
  ?>
 
     <div id="carousel-area">
-
-
-
     <div id="carousel-slider" class="carousel slide" data-interval="3000">
     <div class="carousel-inner">
 
     <div class="item active" style="background-image: url(assets/img/slider/slide1.jpg);">
     <div class="carousel-caption">
     <h2>
-    Welcome to Advic Farms
+    Welcome to Thinking School.
     </h2>
     <h3>
-    THIS IS THE ADVIC FARMS WEB OFFICE.
+    THIS IS THE  Thinking School Content Management System .
     </h3
     </div>
     </div>

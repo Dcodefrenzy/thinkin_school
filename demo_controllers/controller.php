@@ -190,7 +190,7 @@ function addEvents($dbconn,$post,$destination,$sess){
   $split = explode(" ",$post['event_name']);
   $id = $rnd.cleans($split['0']);
   $hash_id = str_shuffle($id.'events');
-  $stmt = $dbconn->prepare("INSERT INTO events VALUES(NULL, :ht, :ve, :txt, :sta, :price, :hid, :img, :sess, :std, :timed,:endd, NOW(),NOW())");
+  $stmt = $dbconn->prepare("INSERT INTO events VALUES(NULL, :ht, :ve, :txt, :sta, :price, :hid, :img, :sess, :std, :endd, :timed, NOW(),NOW())");
   $data = [
     ':ht' => $post['event_name'],
     ':ve' => $post['venue'],
@@ -678,7 +678,7 @@ function addPackage($dbconn,$post, $sess){
 // }
 function addProfile($dbconn,$post,$destn,$sess){
   $profile_status = 1;
-  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn,lastname=:ln,portfolio=:pt,bio=:bi,phone_number=:pn,facebook_link=:fbl,twitter_link=:tlk,linkedin_link=:llk,instagram_link=:iglk,location=:lct,image_1=:img1,image_2=:img2,image_3=:img3,profile_status=:ps WHERE hash_id=:sess");
+  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn,lastname=:ln,portfolio=:pt,bio=:bi,phone_number=:pn,facebook_link=:fbl,twitter_link=:tlk,linkedin_link=:llk,instagram_link=:iglk,image_1=:img1,image_2=:img2,image_3=:img3,profile_status=:ps WHERE hash_id=:sess");
   $stmt->bindParam(":fn",$post['fname']);
   $stmt->bindParam(":ln",$post['lname']);
   $stmt->bindParam(":pt",$post['portfolio']);
@@ -688,10 +688,7 @@ function addProfile($dbconn,$post,$destn,$sess){
   $stmt->bindParam(":tlk",$post['twlink']);
   $stmt->bindParam(":llk",$post['lklink']);
   $stmt->bindParam(":iglk",$post['iglink']);
-  $stmt->bindParam(":lct",$post['location']);
   $stmt->bindParam(":img1",$destn['a']);
-  $stmt->bindParam(":img2",$destn['b']);
-  $stmt->bindParam(":img3",$destn['c']);
   $stmt->bindParam(":ps",$profile_status);
   $stmt->bindParam(":sess",$sess);
   $stmt->execute();
@@ -1960,6 +1957,17 @@ function getAdmin($dbconn){
     </tr>';
   }
 }
+
+function getTeam($dbconn){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM admin");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    $result [] = $row;
+  }
+  return $result;
+}
+
 function getUsers($dbconn){
   $ms = "MASTER";
   $stmt = $dbconn->prepare("SELECT * FROM user WHERE NOT level=:ms ");
