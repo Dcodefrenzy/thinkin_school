@@ -59,12 +59,12 @@ if(array_key_exists('submit', $_POST)){
       } ?>
       <div class="col-sm-12 col-md-10 col-md-offset-1">
         <div class="page-ads box">
-          <h2 class="title-2">Welcome to About Us page</h2>
+          <h2 class="title-2">Welcome to Client home  page</h2>
           <div class="row search-bar mb30 red-bg">
             <div class="advanced-search">
               <form class="search-form" method="get">
                 <div class="col-md-4 col-sm-12 search-col">
-                  <h3>Please About us.</h3>
+                  <h3>Please Content to your front page.</h3>
                 </div>
               </form>
             </div>

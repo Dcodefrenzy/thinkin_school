@@ -68,7 +68,7 @@ $msg = str_replace('_', ' ', $_GET['success']);
 
  <h3>Manage Client Home Page</h3>
  <hr>
- <h5>MANAGE FRONTAGE SLIDER</h5>
+ <h5>MANAGE FRONTAGE</h5>
  <div  class="alert alert-info" role="alert">
   <strong>NOTE</strong>
   <p><strong>*</strong>This page can not be deleted because it appears on the home page of Thinking School page But is can be edited.</p>
