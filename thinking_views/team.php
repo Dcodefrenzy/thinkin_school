@@ -8,7 +8,7 @@
 			<li class="breadcrumb-item active" aria-current="page">Team Members</li>
 		  </ol>
 		  <h2>TEAM MEMBERS</h2>
-		  <p>As the person who owns the legal rights to intellectual property, an author.</p>
+<!-- 		  <p>As the person who owns the legal rights to intellectual property, an author.</p> -->
 	</div>
 	<!-- end container -->
 </section>
@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-12 wow fadeIn">
         <div class="section-title">
-          <h2>team members</h2>
-          <h6>When the seeds reach maturity, the segments of<br> the cone open up and release</h6>
+          <h2>Team Members</h2>
+<!--           <h6>When the seeds reach maturity, the segments of<br> the cone open up and release</h6> -->
         </div>
         <!-- end section-title --> 
       </div>

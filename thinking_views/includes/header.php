@@ -57,7 +57,8 @@
 </div>
 <!-- end search-box -->
 <aside class="sandwich-menu">
-  <div class="logo"> <img src="images/logo.png" alt="Image"> </div>
+  <h1>Thinking school</h1>
+<!--   <div class="logo"> <img src="images/logo.png" alt="Image"> </div> -->
   <!-- end logo -->
       <ul class="nav-menu">
        <li><a href="home">Home</a></li>
@@ -65,9 +66,7 @@
           <ul class="dropdown">
             <li><a href="about">About Us</a></li>
             <li><a href="team-members">Team Members</a></li>
-            <li><a href="clients">Clients</a></li>
             <li><a href="projects">Projects</a></li>
-            <li><a href="#">Career</a></li>
           </ul>
         </li>
         <li><a href="#">Services</a>
@@ -154,7 +153,8 @@
   <!-- end topbar -->
   <nav class="navbar">
     <div class="container">
-      <div class="logo"> <a href="#"> <img src="images/logo.png" alt="Image"> </a> </div>
+        <h1>Thinking school</h1>
+ <!--      <div class="logo"> <a href="#"> <img src="images/logo.png" alt="Image"> </a> </div> -->
       <!-- end logo -->
       <ul class="nav-menu">
        <li><a href="home">Home</a></li>
@@ -162,9 +162,7 @@
           <ul class="dropdown">
             <li><a href="about">About Us</a></li>
             <li><a href="team-members">Team Members</a></li>
-            <li><a href="clients">Clients</a></li>
             <li><a href="projects">Projects</a></li>
-            <li><a href="#">Career</a></li>
           </ul>
         </li>
         <li><a href="#">Services</a>
@@ -207,10 +205,10 @@
      
       </ul>
       <!-- end nav-menu -->
-      <ul class="language">
+<!--       <ul class="language">
         <li><a href="#" class="active">EN</a></li>
         <li><a href="#">RU</a></li>
-      </ul>
+      </ul> -->
       <!-- end language -->
       <div class="search-btn"> <i class="fa fa-search"></i> </div>
       <!-- end search-btn -->

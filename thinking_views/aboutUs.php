@@ -3,7 +3,6 @@ include "includes/header.php";
 ?>
 <section class="page-header">
 	<div class="container">
-	 <a href="javascript:window.print()" class="print">PRINT PAGE <img src="images/icon-print.png" alt="Image"></a>
 		 <ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">Home</a></li>
 			<li class="breadcrumb-item"><a href="#">Corpration</a></li>
@@ -77,7 +76,7 @@ include "includes/header.php";
       </div>
       <!-- end section-title -->
       <p><?php echo $mission_statement; ?></p>
-      <img src="images/testimonial-name.png" alt="Image"> </div>
+<!--       <img src="images/testimonial-name.png" alt="Image"> </div> -->
     <!-- end inner --> 
   </div>
   <!-- end sides --> 

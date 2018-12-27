@@ -48,9 +48,12 @@ if(array_key_exists('submit', $_POST)){
              <h2 class="title-2"><?php echo $edit_info['project_name']  ?></h2>
           <?php }elseif ($_GET['t']== "about") {?>
              <h2 class="title-2"><?php echo "About Us"  ?></h2>
+           <?php }elseif($_GET['t']=="views") {?>
+          <h2 class="title-2"><?php echo "Views"  ?></h2>
           <?php }else{ ?>
             <h2 class="title-2"><?php echo $edit_info['title']  ?></h2>
           <?php } ?>
+
           <div class="row search-bar mb30">
             <div class="advanced-search">
               <form class="search-form" method="get">

@@ -43,17 +43,7 @@
         <div class="col-md-5 col-12">
           <aside class="sidebar">
             <!-- end widget -->
-            <div class="widget tags">
-              <h4 class="widget-title">Popular Tags</h4>
-              <ul>
-            <?php $category = getCat($conn); 
-                foreach ($category as $key => $categories) {
-                extract($categories);
-              ?>
-              <li><a <?php echo 'href=blog?hid='.$hash_id.''; ?>><?php echo $category_name; ?></a></li>
-            <?php } ?>
-              </ul>
-              </div>
+
               <div class="widget tags">
               <h4 class="widget-title">Latest Event</h4>
               <ul>
