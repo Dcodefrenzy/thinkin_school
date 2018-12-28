@@ -39,7 +39,7 @@
 			<li class="breadcrumb-item active" aria-current="page">Articles</li>
 		  </ol>
 		  <h2>ARTICLES</h2>
-		  <p>Text Here.</p>
+<!-- 		  <p>Text Here.</p> -->
 	</div>
 	<!-- end container -->
 </section>
@@ -62,18 +62,7 @@
               <!-- end side-menu --> 
             </div>
             <!-- end widget -->
-            <div class="widget tags wow fadeIn">
-              <h4 class="widget-title">Popular Tags</h4>
-              <ul>
-             <?php $category = getCat($conn); 
-                foreach ($category as $key => $categories) {
-                extract($categories);
-              ?>
-              <li><a <?php echo 'href=blog?hid='.$hash_id.''; ?>><?php echo $category_name; ?></a></li>
-            <?php } ?>
-              </ul>
-         
-            </div>
+
 
             <!-- end widget -->
 <!--             <div class="widget gallery wow fadeIn">

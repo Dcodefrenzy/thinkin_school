@@ -47,14 +47,14 @@ if(array_key_exists('submit', $_POST)){
 
  //      $from = "info@mckodev.com.ng"; //enter your email address
  // $to = "banjimayowa@gmail.com"; //enter the email address of the contact your sending to
- // $subject = "BOARDSPECK New Admin User Registration"; // subject of your email
+ // $subject = "Thinking school New Admin User Registration"; // subject of your email
 /*$firstname = $clean['firstname'];
 $lastname = $clean['lastname'];
 
- $to = "boardspeck@gmail.com";
- $subject = "Boardspeck Web Office Admin Registration";
+ $to = "Thinking school@gmail.com";
+ $subject = "Thinking school Web Office Admin Registration";
  $txt = "Hello Admin, A new Admin($firstname $lastname)  has registered to the web office. Kindly check for Verification";
- $headers = "From: info@boardspeck.com" . "\r\n" .
+ $headers = "From: info@Thinking school.com" . "\r\n" .
  "CC: banjimayowa@gmail.com";
 
  mail($to,$subject,$txt,$headers);*/
@@ -72,8 +72,8 @@ $lastname = $clean['lastname'];
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="author" content="BoardSpeck">
-<title>BoardSpeck Web Office </title>
+<meta name="author" content="Thinking school">
+<title>Thinking school Web Office </title>
 
 <link rel="shortcut icon" href="assets/img/favicon.png">
 
@@ -107,7 +107,7 @@ $lastname = $clean['lastname'];
 <div class="row">
 <div class="col-md-12">
 <div class="breadcrumb-wrapper">
-<h2 class="page-title">Register on the BoardSpeck Web Office</h2>
+<h2 class="page-title">Register on the Thinking school Web Office</h2>
 </div>
 </div>
 </div>
@@ -127,7 +127,7 @@ $msg = str_replace('_', ' ', $_GET['success']);
 <div class="inner-box posting">
 <div class="alert alert-success alert-lg" role="alert">
 <h2 class="postin-title">✔ Congratulations! '.$msg.' </h2>
-<p>Thank you, BoardSpeck is happy to have you around. Your Account will be Verified and you will be notified Via your Email Address</p>
+<p>Thank you, Thinking school is happy to have you around. Your Account will be Verified and you will be notified Via your Email Address</p>
 </div>
 </div>
 </div>';
@@ -212,7 +212,7 @@ Register
 </div>
 <input type="submit"  name="submit"
 <button class="btn btn-common log-btn"></button>
-<label for="remember">Already registered and Verified? <a href="adminLogin"> Sign In</a></label>
+<label for="remember">Already registered and Verified? <a href="admin-login"> Sign In</a></label>
 
 
 </form>

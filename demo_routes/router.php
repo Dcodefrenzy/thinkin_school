@@ -352,6 +352,10 @@ switch ($uri[1]) {
   include APP_PATH."/demo_views/admin/edit_about.php";
   break;
 
+  case "edit-views?id=$id":
+  include APP_PATH."/demo_views/admin/edit_views.php";
+  break;
+
   case "editInsight?id=$id":
   include APP_PATH."/demo_views/admin/edit_insight.php";
   break;
@@ -393,15 +397,27 @@ switch ($uri[1]) {
   include APP_PATH."/demo_views/admin/add_campus.php";
   break;
 
-  case "addProfile":
+  case "update-profile":
   include APP_PATH."/demo_views/admin/add_profile.php";
   break;
 
-  case "addProfile?success=$success":
+  case "update-profile?success=$success":
   include APP_PATH."/demo_views/admin/add_profile.php";
   break;
   case "add-about":
   include APP_PATH."/demo_views/admin/add_about.php";
+  break;
+
+  case "add-views":
+  include APP_PATH."/demo_views/admin/add_views.php";
+  break;
+  
+  case "manage-views":
+  include APP_PATH."/demo_views/admin/manage_views.php";
+  break;
+
+  case "manage-views?success=$success":
+  include APP_PATH."/demo_views/admin/manage_views.php";
   break;
 
   case "add-about?success=$success":

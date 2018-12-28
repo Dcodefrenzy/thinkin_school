@@ -1,16 +1,16 @@
 <?php 
 include "includes/header.php";
-$about = getAboutUS($conn); extract($about);
+$home = getHome($conn); extract($home);
 ?>
 <section class="slider">
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <div class="slide-inner bg-image" data-background="images/slide01.jpg" data-text="HOW WE CREATE<span>VEHICLES</span>">
+        <div class="slide-inner bg-image" data-background="images/slide01.jpg" data-text=" WE<span>ARE THINKERS</span>">
           <div class="container">
-            <h6 data-swiper-parallax="100">roadway</h6>
-            <h2 data-swiper-parallax="200"><span>.</span>vehicles inc</h2>
-            <p data-swiper-parallax="300">Getting into a fender-bender or a more serious accident is already stressful. You might be worried about someone being injured, damage to vehicles.</p>
+            <h6 data-swiper-parallax="100">Thinking</h6>
+            <h2 data-swiper-parallax="200"><span>.</span>School</h2>
+            <p data-swiper-parallax="300">With all give you a thought pattern, we present an atmosphere to express yourself</p>
             <div class="clearfix"></div>
             <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div>
           <!-- end container --> 
@@ -19,11 +19,11 @@ $about = getAboutUS($conn); extract($about);
       </div>
       <!-- end swiper-slide -->
       <div class="swiper-slide">
-        <div class="slide-inner bg-image" data-background="images/slide02.jpg" data-text="CYBERSPACE TECH<span>EQUIPMENTS</span>">
+        <div class="slide-inner bg-image" data-background="images/slide02.jpg" data-text="WE<span>ARE FUN</span>">
           <div class="container">
-            <h6 data-swiper-parallax="100">spaceship</h6>
-            <h2 data-swiper-parallax="200"><span>.</span>technology inc</h2>
-            <p data-swiper-parallax="300">With all the inconvenience associated with it, and, of course, insurance rates going up. With all these things going through your mind after an accident.</p>
+            <h6 data-swiper-parallax="100">We</h6>
+            <h2 data-swiper-parallax="200"><span>.</span>Are Fun</h2>
+            <p data-swiper-parallax="300">We dont just work without palying. we work hard and also play harder.</p>
             <div class="clearfix"></div>
             <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div>
           <!-- end container --> 
@@ -32,11 +32,11 @@ $about = getAboutUS($conn); extract($about);
       </div>
       <!-- end swiper-slide -->
       <div class="swiper-slide">
-        <div class="slide-inner bg-image" data-background="images/slide03.jpg" data-text="SOFTWARE APPS<span>DEVELOPMENT</span>">
+        <div class="slide-inner bg-image" data-background="images/slide03.jpg" data-text="WE ARE<span>CREATIVE</span>">
           <div class="container">
-            <h6 data-swiper-parallax="100">mouroao</h6>
-            <h2 data-swiper-parallax="200"><span>.</span>excoding inc</h2>
-            <p data-swiper-parallax="300">It can be challenging to get everything in order. You can take several steps to ensure safety and reduce your potential losses after an accident.</p>
+            <h6 data-swiper-parallax="100">We are</h6>
+            <h2 data-swiper-parallax="200"><span>.</span>Creative</h2>
+            <p data-swiper-parallax="300">It can be challenging to get everything in order But we have the right set of people who get things done creatively.</p>
             <div class="clearfix"></div>
             <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div>
           <!-- end container --> 
@@ -60,10 +60,11 @@ $about = getAboutUS($conn); extract($about);
             extract($service);  
             $bd = previewBody($body, 5);     
        ?>
-      <div class="content-box wow fadeIn"> <span></span>
+       <a <?php echo 'href=service?hid='.$hash_id.''; ?>>
+      <div class="content-box wow fadeIn"> 
         <h3><?php echo $title; ?></h3>
         <p>The only time you should move your vehicles after you get in a wreck is if not doing </p>
-        <a <?php echo 'href=service?hid='.$hash_id.''; ?>><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
+        <a <?php echo 'href=service?hid='.$hash_id.''; ?>><img src="images/icon-right-arrow.svg" alt="Image"></a> </div></a>
       <!-- end content-box -->
 <!--       <div class="content-box wow fadeIn"> <span></span>
         <h3>power industry</h3>
@@ -137,17 +138,17 @@ $about = getAboutUS($conn); extract($about);
 </section>
 <!-- end image-content-box -->
 <section class="side-image-content moved-space" id="counter">
-  <div class="sides bg-image wow fadeIn" data-background="images/side-image01.jpg">
-    <div class="video">
-      <video src="videos/video.mp4" loop autoplay muted></video>
+  <div class="sides bg-image wow fadeIn" style="background:url(<?php echo $image_1; ?>); width: 100%; height: 1050px; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive">
+    <div class="video" style="background:url(<?php echo $image_1; ?>); width: 100%; height: 1050px; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive">
+      <!-- <video src="videos/video.mp4" loop autoplay muted></video> -->
     </div>
     <!-- end video --> 
-    <a href="videos/video.mp4" class="play-btn" data-fancybox>
+<!--     <a href="videos/video.mp4" class="play-btn" data-fancybox>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
       <path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
       <circle class="video-play-circle" fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
-    </svg>
+    </svg> -->
     <span class="video-play-outline"></span> </a> </div>
   <!-- end sides -->
   <div class="sides bg-color wow fadeIn" data-background="#405089">
@@ -164,7 +165,7 @@ $about = getAboutUS($conn); extract($about);
       </ul> -->
       <p><?php echo $body; ?></p>
 <!--       <p>Take advantage of the <u>software</u> that can help turn your blogs into tweets and know when the best time of day is to connect with your base.</p> -->
-      <img src="images/testimonial-name.png" alt="Image"> </div>
+<!--       <img src="images/testimonial-name.png" alt="Image"> </div> -->
     <!-- end inner --> 
   </div>
   <!-- end sides --> 
@@ -400,7 +401,9 @@ $about = getAboutUS($conn); extract($about);
       <figure> <img src="images/avatar01.jpg" alt="Image" class="avatar">
         <figcaption> <img src="images/icon-quote.svg" alt="Image"> </figcaption>
       </figure>
-      <blockquote>
+      <blockquote>https://twitter.com/Frenzykul
+
+
         <p>The seeds are produced by cones that grow on the tree’s branches. Redwood trees develop both male and female and male cones. </p>
       </blockquote>
       <img src="images/testimonial-name.png" alt="Image" class="name-sign"> <small>Ceo & Premium Board Member</small> </div>
@@ -457,21 +460,28 @@ $about = getAboutUS($conn); extract($about);
   </div>
   <!-- end container -->
   <div class="content-wrapper">
-    <figure class="member wow fadeIn"> <img src="images/team01.jpg" alt="Image" class="fist-image"> <img src="images/team01h.jpg" alt="Image" class="second-image">
+    <?php $teams = getHomeTeam($conn); 
+      foreach ($teams as $key => $team) {
+        extract($team);
+      
+    ?>
+    <figure class="member wow fadeIn"> <div style="background:url(<?php echo $image_1; ?>); width: 50vh; height: 50vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="fist-image"></div><!-- <img src=<?phpimage_1; ?> alt="Image" class="fist-image"> -->
+     <img src="images/team01h.jpg" alt="Image" class="second-image">
       <figcaption>
-        <h5>Peter Abramers</h5>
+        <h5><?php echo $firstname." ".$lastname; ?></h5>
         <small>Ceo & Premium Board Member</small>
         <ul>
           <li><a href="#"><i class="fa fa-facebook"></i></a></li>
           <li><a href="#"><i class="fa fa-twitter"></i></a></li>
           <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-          <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+<!--           <li><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
+<!--           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li> -->
         </ul>
       </figcaption>
     </figure>
+  <?php } ?>
     <!-- end member -->
-    <figure class="member wow fadeIn"> <img src="images/team02.jpg" alt="Image" class="fist-image"> <img src="images/team02h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team02.jpg" alt="Image" class="fist-image"> <img src="images/team02h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -483,9 +493,9 @@ $about = getAboutUS($conn); extract($about);
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member -->
-    <figure class="member  wow fadeIn"> <img src="images/team03.jpg" alt="Image" class="fist-image"> <img src="images/team03h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member  wow fadeIn"> <img src="images/team03.jpg" alt="Image" class="fist-image"> <img src="images/team03h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -497,9 +507,9 @@ $about = getAboutUS($conn); extract($about);
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member -->
-    <figure class="member wow fadeIn"> <img src="images/team04.jpg" alt="Image" class="fist-image"> <img src="images/team04h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team04.jpg" alt="Image" class="fist-image"> <img src="images/team04h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -511,9 +521,9 @@ $about = getAboutUS($conn); extract($about);
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member -->
-    <figure class="member wow fadeIn"> <img src="images/team05.jpg" alt="Image" class="fist-image"> <img src="images/team05h.jpg" alt="Image" class="second-image">
+<!--     <figure class="member wow fadeIn"> <img src="images/team05.jpg" alt="Image" class="fist-image"> <img src="images/team05h.jpg" alt="Image" class="second-image">
       <figcaption>
         <h5>Peter Abramers</h5>
         <small>Ceo & Premium Board Member</small>
@@ -525,7 +535,7 @@ $about = getAboutUS($conn); extract($about);
           <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
         </ul>
       </figcaption>
-    </figure>
+    </figure> -->
     <!-- end member --> 
   </div>
   <!-- end content-wrapper --> 
@@ -536,8 +546,8 @@ $about = getAboutUS($conn); extract($about);
     <div class="row">
       <div class="col-12 wow fadeIn">
         <div class="section-title">
-          <h2>Similar Articles</h2>
-          <h6>You can read other articles on this category</h6>
+          <h2>Articles</h2>
+          <h6>Read Some Of Our Articles Here</h6>
         </div>
         <!-- end section-title --> 
       </div>

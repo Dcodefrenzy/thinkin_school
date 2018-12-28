@@ -489,6 +489,31 @@ catch(PDOException $e){
   $succ = preg_replace('/\s+/', '_', $success);
   header("Location:/manage-about?success=$succ");
 }
+
+function addViews($dbconn,$post,$destn,$sess){
+  try{
+  $rnd = rand(0000000000,9999999999);
+  $id = $rnd."views";
+  $hash_id = $id;
+  $stmt = $dbconn->prepare("INSERT INTO views VALUES(NULL,:bd, :img1,:sess,NOW(),NOW(),:hsh)");
+  $data = [
+    ':bd' => $post['body'],
+    ':img1' => $destn['a'],
+    ':sess' => $sess,
+    ':hsh' => $hash_id
+  ];
+  $stmt->execute($data);
+}
+catch(PDOException $e){
+  die("Something Went Wrong");
+
+}
+  logs($dbconn, 'added', $post['body'],'about',$sess);
+  $success = "Grant Post Uploaded";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location:/manage-views?success=$succ");
+}
+
 function addTraining($dbconn,$post,$destination,$sess){
   try{
   $rnd = rand(0000000000,9999999999);
@@ -678,23 +703,22 @@ function addPackage($dbconn,$post, $sess){
 // }
 function addProfile($dbconn,$post,$destn,$sess){
   $profile_status = 1;
-  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn,lastname=:ln,portfolio=:pt,bio=:bi,phone_number=:pn,facebook_link=:fbl,twitter_link=:tlk,linkedin_link=:llk,instagram_link=:iglk,image_1=:img1,image_2=:img2,image_3=:img3,profile_status=:ps WHERE hash_id=:sess");
+  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn, lastname=:ln,    
+    phone_number=:pn,facebook_link=:fbl, twitter_link=:tlk, linkedin_link=:llk, instagram_link=:iglk, image_1=:img1 WHERE hash_id=:sess");
+  /*die(var_dump($post, $destn));*/
   $stmt->bindParam(":fn",$post['fname']);
   $stmt->bindParam(":ln",$post['lname']);
-  $stmt->bindParam(":pt",$post['portfolio']);
-  $stmt->bindParam(":bi",$post['bio']);
   $stmt->bindParam(":pn",$post['phonenumber']);
   $stmt->bindParam(":fbl",$post['fblink']);
   $stmt->bindParam(":tlk",$post['twlink']);
   $stmt->bindParam(":llk",$post['lklink']);
   $stmt->bindParam(":iglk",$post['iglink']);
   $stmt->bindParam(":img1",$destn['a']);
-  $stmt->bindParam(":ps",$profile_status);
   $stmt->bindParam(":sess",$sess);
   $stmt->execute();
   $success = "Profile Successfully Uploaded";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/addProfile?success=$succ");
+  header("Location:/update-profile?success=$succ");
 }
 function adminInfo($dbconn,$sess){
   $stmt = $dbconn->prepare("SELECT hash_id,firstname,lastname,profile_status,email FROM admin WHERE hash_id = :sid");
@@ -866,6 +890,22 @@ function editAbout($dbconn,$post,$hid,$gid){
   $succ = preg_replace('/\s+/', '_', $success);
   header("Location:/manage-about?success=$succ");
 }
+
+function editViews($dbconn,$post,$hid,$gid){
+  $stmt = $dbconn->prepare("UPDATE views SET body=:bd, created_by=:eb WHERE hash_id=:hid");
+  $stmt->bindParam(":bd", $post['body']);
+  $stmt->bindParam(":eb", $hid);
+  $stmt->bindParam(":hid", $gid);
+  $stmt->execute();
+  if(isset($_SESSION['id'])){
+    $sess = $_SESSION['id'];
+  }
+  logs($dbconn, 'edited', $post['body'],'about',$sess);
+  $success = "edited Successfully";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location:/manage-views?success=$succ");
+}
+
 function editInsight($dbconn,$post,$gid){
   try{
   $stmt = $dbconn->prepare("UPDATE insight SET title=:tt,author=:at, category=:au, body=:bd WHERE hash_id=:hid");
@@ -980,18 +1020,33 @@ function frontageDetail($db,$get){
 }
 function viewFrontage($db){
 
-  $stmt= $db->prepare("SELECT * FROM frontage");
+  $stmt= $db->prepare("SELECT * FROM views");
 
   $stmt->execute();
 
 
-  while($record = $stmt->fetch()){
-    echo "<tr>";
-    echo "<td>".$record['header_title']."</td>";
-    echo "<td>".$record['text']."</td>";
-    echo "<td><div style='width:150px; height:100px; background:url(".$record['image']."); background-size: cover; background-position: center; background-repeat: no-repeat;'></div></td>";
-    echo "<td><a href=\"delete_frontage?id=".$record['id']."\"><span class=\"label label-danger\">Delete</span></a></td>";
-    echo "</tr>";
+  while($row = $stmt->fetch()){
+        extract($row);
+    $bd = previewBody($body, 20);
+          echo '<td class="ads-img-td">
+      <a href="view-body?id='.$id.'&t=about"><p>'.$bd.'</p></a>
+      </td>
+        <td class="add-img-td">
+        <a href="edit-image?id='.$hash_id.'&t=views">
+        <img class="img-responsive" src="'.$image_1.'">
+        </a>
+      </td>
+
+      <td class="add-img-td">
+      '.$created_by.'
+      </td>
+      <td class="add-img-td">
+      '.$date_created.'
+      </td>
+      <td class="ads-details-td">
+      <a href="edit-views?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+      </td>
+      </tr>';
   }
 }
 function deleteFrontage($db, $get){
@@ -1071,6 +1126,9 @@ function editImage($dbconn,$destn,$del,$get,$tb){
   }
   if($tb == "about"){
     header("location:manage-about");
+  }
+if($tb == "views"){
+    header("location:manage-views");
   }
 }
 function previewBody($string, $count){
@@ -1958,15 +2016,6 @@ function getAdmin($dbconn){
   }
 }
 
-function getTeam($dbconn){
-  $result = [];
-  $stmt = $dbconn->prepare("SELECT * FROM admin");
-  $stmt->execute();
-  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
-    $result [] = $row;
-  }
-  return $result;
-}
 
 function getUsers($dbconn){
   $ms = "MASTER";
