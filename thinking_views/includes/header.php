@@ -47,14 +47,14 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="search-box">
-  <div class="close-btn"> <span></span> <span></span> </div>
+<!-- <div class="search-box">
+  <div class="close-btn"> <span></span> <span></span> </div> -->
   <!-- end close-btn -->
-  <form>
+<!--   <form>
     <input type="search" placeholder="Type here to search...">
     <h6>Type above and press enter or press close to cancel.</h6>
   </form>
-</div>
+</div> -->
 <!-- end search-box -->
 <aside class="sandwich-menu">
   <h1>Thinking school</h1>
@@ -102,7 +102,7 @@
         }else{
           echo '<li><a href="user-registration">Sign-Up</a>
         <ul class="dropdown">
-           <li><a href="user-login">Loigin</a></li>
+           <li><a href="user-login">Login</a></li>
           </ul>
           </li>';
         } ?>
@@ -198,7 +198,7 @@
         }else{
           echo '<li><a href="user-registration">Sign-Up</a>
         <ul class="dropdown">
-           <li><a href="user-login">Loigin</a></li>
+           <li><a href="user-login">Login</a></li>
           </ul>
           </li>';
         } ?>
