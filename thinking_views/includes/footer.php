@@ -29,21 +29,19 @@
         <!-- end col-4 -->
         <div class="col-lg-2 col-md-6 wow fadeIn">
           <ul class="footer-menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Corpration</a></li>
-            <li><a href="#">Showcases</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="index">Home</a></li>
+            <li><a href="about">About Us</a></li>
+            <li><a href="projects">Project</a></li>
+            <li><a href="blogs">Blog</a></li>
+            <li><a href="contact">Contact</a></li>
           </ul>
         </div>
         <!-- end col-2 -->
         <div class="col-lg-2 col-md-6 wow fadeIn">
           <ul class="footer-menu">
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Consultation</a></li>
-            <li><a href="#">Career Training</a></li>
-            <li><a href="#">Management</a></li>
-            <li><a href="#">Startups</a></li>
+            <li><a href="team-members">Our Team</a></li>
+            <li><a href="events">Events</a></li>
+            <li><a href="training">Trainings</a></li>
           </ul>
         </div>
         <!-- end col-2 -->

@@ -1423,6 +1423,14 @@ $row = $stmt->fetch(PDO::FETCH_BOTH);
 return $row;
 }
 
+function getHome($dbconn){
+$stmt=$dbconn->prepare("SELECT * FROM about");
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_BOTH);
+
+return $row;
+}
+
 function viewBlog($dbconn, $hashID){
   $stmt= $dbconn->prepare('SELECT * FROM blog WHERE hash_id = :hid');
   $stmt->bindParam(':hid', $hashID);
@@ -1729,7 +1737,25 @@ try {
   
     return $row;
   }
+  function getTeam($dbconn){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM admin");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    $result [] = $row;
+  }
+  return $result;
+}
 
+function getHomeTeam($dbconn){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM admin LIMIT 8");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    $result [] = $row;
+  }
+  return $result;
+}
 
 
 

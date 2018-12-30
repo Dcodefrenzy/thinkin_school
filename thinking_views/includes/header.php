@@ -47,17 +47,18 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="search-box">
-  <div class="close-btn"> <span></span> <span></span> </div>
+<!-- <div class="search-box">
+  <div class="close-btn"> <span></span> <span></span> </div> -->
   <!-- end close-btn -->
-  <form>
+<!--   <form>
     <input type="search" placeholder="Type here to search...">
     <h6>Type above and press enter or press close to cancel.</h6>
   </form>
-</div>
+</div> -->
 <!-- end search-box -->
 <aside class="sandwich-menu">
-  <div class="logo"> <img src="images/logo.png" alt="Image"> </div>
+  <h1>Thinking school</h1>
+<!--   <div class="logo"> <img src="images/logo.png" alt="Image"> </div> -->
   <!-- end logo -->
       <ul class="nav-menu">
        <li><a href="home">Home</a></li>
@@ -65,9 +66,7 @@
           <ul class="dropdown">
             <li><a href="about">About Us</a></li>
             <li><a href="team-members">Team Members</a></li>
-            <li><a href="clients">Clients</a></li>
             <li><a href="projects">Projects</a></li>
-            <li><a href="#">Career</a></li>
           </ul>
         </li>
         <li><a href="#">Services</a>
@@ -103,7 +102,7 @@
         }else{
           echo '<li><a href="user-registration">Sign-Up</a>
         <ul class="dropdown">
-           <li><a href="user-login">Loigin</a></li>
+           <li><a href="user-login">Login</a></li>
           </ul>
           </li>';
         } ?>
@@ -154,7 +153,8 @@
   <!-- end topbar -->
   <nav class="navbar">
     <div class="container">
-      <div class="logo"> <a href="#"> <img src="images/logo.png" alt="Image"> </a> </div>
+        <h1>Thinking school</h1>
+ <!--      <div class="logo"> <a href="#"> <img src="images/logo.png" alt="Image"> </a> </div> -->
       <!-- end logo -->
       <ul class="nav-menu">
        <li><a href="home">Home</a></li>
@@ -162,9 +162,7 @@
           <ul class="dropdown">
             <li><a href="about">About Us</a></li>
             <li><a href="team-members">Team Members</a></li>
-            <li><a href="clients">Clients</a></li>
             <li><a href="projects">Projects</a></li>
-            <li><a href="#">Career</a></li>
           </ul>
         </li>
         <li><a href="#">Services</a>
@@ -200,17 +198,17 @@
         }else{
           echo '<li><a href="user-registration">Sign-Up</a>
         <ul class="dropdown">
-           <li><a href="user-login">Loigin</a></li>
+           <li><a href="user-login">Login</a></li>
           </ul>
           </li>';
         } ?>
      
       </ul>
       <!-- end nav-menu -->
-      <ul class="language">
+<!--       <ul class="language">
         <li><a href="#" class="active">EN</a></li>
         <li><a href="#">RU</a></li>
-      </ul>
+      </ul> -->
       <!-- end language -->
       <div class="search-btn"> <i class="fa fa-search"></i> </div>
       <!-- end search-btn -->

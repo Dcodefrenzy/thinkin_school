@@ -158,8 +158,8 @@ Login
 <input class="btn btn-common log-btn" type="submit" name="submit" value="submit">
 </form>
 <ul class="form-links">
-<li class="pull-left"><a href="adminRegistration">Don't have an account?</a></li>
-<li class="pull-right"><a href="forgot-password.html">Lost your password?</a></li>
+<li class="pull-left"><a href="user-registration">Don't have an account?</a></li>
+<li class="pull-right"><a href="forgot-password">Lost your password?</a></li>
 </ul>
 <br/>
 <a href="index">

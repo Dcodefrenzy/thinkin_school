@@ -20,24 +20,18 @@ if(array_key_exists('submit', $_POST)){
   if(empty($_FILES['upload']['name'])){
     $error['upload'] = "Please choose file";
   }
-  if(empty($_FILES['uploada']['name'])){
-    $error['uploada'] = "Please choose file";
-  }
-  if(empty($_FILES['uploadb']['name'])){
-    $error['uploadb'] = "Please choose file";
-  }
   if(empty($_POST['lname'])){
     $error['lname'] = "Enter  LastName";
   }
   if(empty($_POST['fname'])){
     $error['fname'] = "Enter FirstName";
   }
-  if(empty($_POST['portfolio'])){
+/*  if(empty($_POST['portfolio'])){
     $error['portfolio'] = "Enter Portfolio";
   }
   if(empty($_POST['bio'])){
     $error['bio'] = "Enter Bio";
-  }
+  }*/
   if(empty($_POST['phonenumber'])){
     $error['phonenumber'] = "Enter PhoneNumber";
   }
@@ -109,18 +103,6 @@ echo $display ?> <input class="form-control input-md" name="lname"  type="text" 
 </div>
 <div class="form-group mb30">
 
-<label class="control-label" for="textarea">PORTFOLIO</label>
-<?php $display = displayErrors($error, 'portfolio');
-echo $display ?>
-<textarea class="form-control" id="textarea" name="portfolio" placeholder="Enter Your Portfolio" rows="4"></textarea>
-</div>
-
-<div class="form-group mb30">
-<label class="control-label" for="textarea">BIO</label>
-<?php $display = displayErrors($error, 'bio');
-echo $display ?>
-<textarea class="form-control" id="textarea" name="bio" placeholder="Enter your bio" rows="4"></textarea>
-</div>
 
 <div class="form-group mb30">
 <label class="control-label">PHONE NUMBER</label><?php $display = displayErrors($error, 'phonenumber');
@@ -137,12 +119,6 @@ echo $display ?> <input class="form-control input-md" name="fblink"  type="text"
 echo $display ?> <input class="form-control input-md" name="twlink"  type="text" placeholder="Enter your twitter link"/>
 </div>
 
-<div class="form-group mb30">
-
-<label class="control-label">LOCATION</label>
-<?php $display = displayErrors($error, 'location');
-echo $display ?> <input class="form-control input-md" name="location"  type="text" placeholder="Enter your location"/>
-</div>
 
 <div class="form-group mb30">
 <label class="control-label">INSTAGRAM LINK</label><?php $display = displayErrors($error, 'iglink');
@@ -157,17 +133,10 @@ echo $display ?><input class="form-control input-md" name="lklink"  type="text" 
 <h2 class="title-2">UPLOAD IMAGE</h2>
 
 <div class="form-group">
-<label class="control-label">Add 3 photos of yourself</label><br>
+<label class="control-label">Add a photos of yourself</label><br>
 <?php $display = displayErrors($error, 'upload');
 echo $display ?>
- <input class="file" id="featured-img" type="file" name="upload"><br>
-<?php $display = displayErrors($error, 'uploada');
-echo $display ?>
-<input class="file" data-show-preview="featured-img" id="gallery-img-a" type="file" name="uploada"><br>
-<?php $display = displayErrors($error, 'uploadb');
-echo $display ?>
-<input class="file" data-show-preview="featured-img" id="gallery-img-b" type="file" name="uploadb"><br>
-
+ <input class="file" id="featured-img" type="file" name="upload"><br><br>
 </div>
 
 <input class="btn btn-common" name="submit" type="submit" value="Submit">

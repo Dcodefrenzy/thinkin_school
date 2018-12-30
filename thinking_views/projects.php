@@ -30,7 +30,7 @@
       <div class="col-12 wow fadeIn">
         <div class="section-title"> 
           <h2>Our Projects</h2>
-          <h6>Because they may falsely report what happened wither<br> knowingly or simply due to confusion</h6>
+          <h6>We also record fasinating projects<br> Here at Thinking School</h6>
         </div>
         <!-- end section-title -->
       </div>     
@@ -47,8 +47,8 @@
          <div style="background:url(<?php echo $image_1; ?>); width: 100%; height: 200px; background-size: 150%;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
         <figcaption>
           <h5><?php echo $project_name; ?></h5>
+         <small><?php echo $project_location; ?></small>
           <p><?php echo $bd; ?>n</p>
-          <small><?php echo $project_location; ?></small>
         </figcaption>
         </figure>
         </a>
