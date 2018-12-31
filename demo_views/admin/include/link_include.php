@@ -147,6 +147,7 @@ if($read['defaulted'] >= 3){
         <?php }else{ ?>
           <li><a href="admin">Home</a></li>
           <li><a href="add-admin">Add Admin</a></li> 
+          <li><a href="add-frontage">Add Frontage</a></li> 
           <li><a href="add-views">Add Views</a></li> 
             <li><a href="update-profile">Update Profile</a></li>
           <!-- <li><a href="contents">Contents</a></li> -->
@@ -167,7 +168,7 @@ if($read['defaulted'] >= 3){
           <li><a href="Services-orders">Services Orders</a></li>
             <li><a href="view-users">Manage Users</a></li>
             <li><a href="update-profile">Update Profile</a></li>
-
+            <li><a href="manage-frontage">Manage Frontage</a></li>
             <li><a href="manage-views">Manage Views</a></li>
             <li><a href="view-users">Manage Users</a></li>
        
