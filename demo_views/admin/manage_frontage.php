@@ -1,4 +1,4 @@
- <?php
+<?php
 ob_start();
 session_start();
 include("include/link_include.php");
@@ -6,70 +6,88 @@ include("include/authentication.php");
 include("include/levelcheck.php");
 include("include/student_limit.php");
 include("include/level1_limit.php");
-include("include/level2_limit.php");
 authenticate();
 if(isset($_SESSION['id'])){
   $session = $_SESSION['id'];
 }
 $info = adminInfo($conn,$session);
 extract($info);
-$fname = ucwords($firstname);
-$lname = ucwords($lastname);
-
-$edit_info = getEditInfo($conn,$_GET['id'], 'front');
 
 
-
-
-$error= [];
-
-if(array_key_exists('yes', $_POST)){
-
-deleteContent($conn,$_GET['id'],$_GET['t']);
-logs($conn, 'deleted', $edit_info['title'],'front',$hash_id);
-$succ = "Success";
-header("Location:manage-frontage?success=$succ");
-
+$error = [];
+if(array_key_exists('submit', $_POST)){
+  $ext = ["image/jpg", "image/JPG", "image/jpeg", "image/JPEG", "image/png", "image/PNG"];
+  if(empty($_FILES['upload']['name'])){
+    $error['upload'] = "Please choose file";
+  }
+  if(empty($_POST['header_title'])){
+    $error['header_title'] = "Enter Header Title";
+  }
+  if(empty($_POST['txt'])){
+    $error['txt'] = "Enter Text";
+}
+  if(empty($error)){
+    $ver = compressImage($_FILES,'upload',50, 'uploads/' );
+    $clean =  array_map('trim',$_POST );
+    addFrontage($conn, $clean, $ver,$hash_id);
+  }
 }
 
-if(array_key_exists('no', $_POST)){
-header("Location:manage-frontage");
-}
- ?>
+
+?>
+
+
+
+
+
+
+
 <section id="content">
 <div class="container">
 <div class="row">
-  <?php if (isset($_GET['success'])){
-  $msg = str_replace('_', ' ', $_GET['success']);
+<?php
 
-    echo '<div class="col-md-12">
-  <div class="inner-box posting">
-  <div class="alert alert-success alert-lg" role="alert">
-  <h2 class="postin-title">✔ Successful! '.$msg.' </h2>
-  <p>Thank you '.ucwords($firstname).', Thinking school is happy to have you around. </p>
-  </div>
-  </div>
-  </div>';
-  } ?>
-<div class="col-sm-12 col-md-10 col-md-offset-1">
-<div class="page-ads box">
-<h2 class="title-2">Are You Sure You Want to delete "<?php echo $edit_info['title'] ?>"</h2>
-<div class="row search-bar mb30">
-<div class="advanced-search">
+if (isset($_GET['success'])){
+$msg = str_replace('_', ' ', $_GET['success']);
+
+  echo '<div class="col-md-12">
+<div class="inner-box posting">
+<div class="alert alert-success alert-lg" role="alert">
+<h2 class="postin-title">✔ Successful! '.$msg.' </h2>
+<p>Thank you '.ucwords($firstname).', Thinking school is happy to have you around. </p>
 </div>
 </div>
-<form class="form-ad" action="" method="post">
-<input type="submit" class="btn btn-common" name="yes" value="Yes">
-<input type="submit" class="btn btn-danger" name="no" value="No">
-</form>
-</div>
-</div>
-</div>
-</div>
-</section>
-<a class="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
-<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->
+</div>';
+}
+
+ ?>
+
+
+
+
+
+ <h3>Manage Client Home Page</h3>
+ <hr>
+ <h5>MANAGE FRONTAGE</h5>
+ <div class="bs-docs-example">
+   <table class="table table-striped table-hover" >
+     <tr>
+        <th>Title</th>
+       <th >Content</th>
+       <th>IMAGE</th>
+        <th>Created By</th>
+         <th>Date Created</th>
+          <th>Edit</th>
+          <th>Delete</th>
+     </tr>
+     <tbody>
+       <?php
+       $vis = "show";
+       viewFrontage($conn) ?>
+     </tbody>
+   </table>
+ </div>
+ <hr>
 
 <script src="assets/js/jquery-min.js" type="text/javascript">
   </script>
@@ -105,9 +123,7 @@ header("Location:manage-frontage");
   </script>
 <script src="assets/js/fileinput.js">
   </script>
-
 </body>
 
 <!-- Mirrored from demo.graygrids.com/themes/classix-template/post-ads.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Nov 2017 11:40:57 GMT -->
 </html>
-

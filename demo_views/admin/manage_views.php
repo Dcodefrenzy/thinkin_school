@@ -85,7 +85,7 @@ $msg = str_replace('_', ' ', $_GET['success']);
      <tbody>
        <?php
        $vis = "show";
-       viewFrontage($conn) ?>
+       views($conn) ?>
      </tbody>
    </table>
  </div>

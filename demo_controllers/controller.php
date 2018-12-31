@@ -161,7 +161,7 @@ function compressImage($files, $name, $quality, $upDIR ) {
     imagejpeg($image, $destination_url, $quality);
     return $destination_url;
 }
-function addFrontage($dbconn,$post,$destination,$sess){
+/*function addFrontage($dbconn,$post,$destination,$sess){
   try{
   $stmt = $dbconn->prepare("INSERT INTO frontage VALUES(NULL, :ht,:txt,:img,NOW(),NOW(),:sess)");
   $data = [
@@ -175,11 +175,11 @@ function addFrontage($dbconn,$post,$destination,$sess){
 catch(PDOException $e){
   die("Something Went Wrong");
 
-}
-  $success = "Frontage Info Added";
+}*/
+/*  $success = "Frontage Info Added";
   $succ = preg_replace('/\s+/', '_', $success);
   header("Location:/manageViews?success=$succ");
-}
+}*/
 
 
 
@@ -512,6 +512,31 @@ catch(PDOException $e){
   $success = "Grant Post Uploaded";
   $succ = preg_replace('/\s+/', '_', $success);
   header("Location:/manage-views?success=$succ");
+}
+
+function addFrontage($dbconn,$post,$destn,$sess){
+  try{
+  $rnd = rand(0000000000,9999999999);
+  $id = $rnd."frontage";
+  $hash_id = $id;
+  $stmt = $dbconn->prepare("INSERT INTO front VALUES(NULL, :ti,:bd, :img1,:sess,NOW(),NOW(),:hsh)");
+  $data = [
+    ':bd' => $post['body'],
+    ':ti' => $post['title'],
+    ':img1' => $destn['a'],
+    ':sess' => $sess,
+    ':hsh' => $hash_id
+  ];
+  $stmt->execute($data);
+}
+catch(PDOException $e){
+  die("Something Went Wrong");
+
+}
+  logs($dbconn, 'added', $post['body'],'about',$sess);
+  $success = "Grant Post Uploaded";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location:/manage-frontage?success=$succ");
 }
 
 function addTraining($dbconn,$post,$destination,$sess){
@@ -906,6 +931,22 @@ function editViews($dbconn,$post,$hid,$gid){
   header("Location:/manage-views?success=$succ");
 }
 
+function editFrontage($dbconn,$post,$hid,$gid){
+  $stmt = $dbconn->prepare("UPDATE front SET title=:ti, body=:bd, created_by=:eb WHERE hash_id=:hid");
+  $stmt->bindParam(":bd", $post['body']);
+  $stmt->bindParam(":ti", $post['title']);
+  $stmt->bindParam(":eb", $hid);
+  $stmt->bindParam(":hid", $gid);
+  $stmt->execute();
+  if(isset($_SESSION['id'])){
+    $sess = $_SESSION['id'];
+  }
+  logs($dbconn, 'edited', $post['body'],'about',$sess);
+  $success = "edited Successfully";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location:/manage-frontage?success=$succ");
+}
+
 function editInsight($dbconn,$post,$gid){
   try{
   $stmt = $dbconn->prepare("UPDATE insight SET title=:tt,author=:at, category=:au, body=:bd WHERE hash_id=:hid");
@@ -1011,14 +1052,14 @@ function getEditInfo($dbconn,$get,$tb){
   return $result;
 }
 function frontageDetail($db,$get){
-  $stmt= $db->prepare("SELECT * FROM frontage WHERE id=:id");
+  $stmt= $db->prepare("SELECT * FROM front WHERE id=:id");
   $stmt -> bindParam(":id", $get['id']);
   $stmt->execute();
   while($record = $stmt->fetch(PDO::FETCH_BOTH)){
     return $record;
   }
 }
-function viewFrontage($db){
+function views($db){
 
   $stmt= $db->prepare("SELECT * FROM views");
 
@@ -1049,13 +1090,50 @@ function viewFrontage($db){
       </tr>';
   }
 }
+function viewFrontage($db){
+
+  $stmt= $db->prepare("SELECT * FROM front");
+
+  $stmt->execute();
+
+
+  while($row = $stmt->fetch()){
+        extract($row);
+    $bd = previewBody($body, 20);
+          echo '<td class="ads-img-td">     
+      '.$title.'
+      </td>
+      <td class="ads-img-td"> 
+      <a href="view-body?id='.$id.'&t=about"><p>'.$bd.'</p></a>
+      </td>
+        <td class="add-img-td">
+        <a href="edit-image?id='.$hash_id.'&t=front">
+        <img class="img-responsive" src="'.$image_1.'">
+        </a>
+      </td>
+
+      <td class="add-img-td">
+      '.$created_by.'
+      </td>
+      <td class="add-img-td">
+      '.$date_created.'
+      </td>
+      <td class="ads-details-td">
+      <a href="edit-frontage?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+      </td>
+      <td class="ads-details-td">
+      <a href="delete-frontage?id='.$hash_id.'&t=front""><button class="btn btn-danger btn-sm" type="submit">Delete</button></a>
+      </td>
+      </tr>';
+  }
+}
 function deleteFrontage($db, $get){
   $gt = frontageDetail($db, $get);
   extract($gt);
   $img = $image;
 
 
-  $stmt= $db->prepare("DELETE FROM frontage WHERE id=:id");
+  $stmt= $db->prepare("DELETE FROM front WHERE id=:id");
 
   $stmt -> bindParam(":id", $get['id']);
 
