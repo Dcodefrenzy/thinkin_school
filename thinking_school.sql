@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 30, 2018 at 08:11 PM
+-- Generation Time: Jan 01, 2019 at 07:31 PM
 -- Server version: 5.7.18
 -- PHP Version: 7.0.16-4+deb.sury.org~trusty+1
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `user_status` varchar(255) DEFAULT NULL,
   `defaulted` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `admin`
@@ -84,9 +84,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`id`, `firstname`, `lastname`, `email`, `hash`, `hash_id`, `position`, `phone_number`, `facebook_link`, `twitter_link`, `linkedin_link`, `instagram_link`, `image_1`, `time_created`, `date_created`, `last_login`, `last_logout`, `login_status`, `level`, `verification`, `profile_status`, `user_status`, `defaulted`) VALUES
 (7, 'Banji', 'Akole', 'banjimayowa@gmail.com', '$2y$10$nfIX.S/vu469XEOOr4nrjupfWxF2tHfUwpX7S0sH1eyaIY8tZivs.', 'j90819542aBn72i', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '14:25:12', '2018-02-28', '2018-05-21 23:02:42', '2018-05-17 16:23:50', 'Logged In', 'MASTER', '1', NULL, '1', NULL),
-(10, 'Kabiru', 'Shuaibu', 'kobyblaze@gmail.com', '$2y$10$siFhCK.SlD4mUgTMf0148.y4Emn8sA0AIAJuzyeDM6hc7Zb0tQJ9a', '3r543i0a57Kbu845', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '19:17:23', '2018-04-16', '2018-05-24 17:14:02', NULL, 'Logged In', '2', '1', NULL, '2', NULL),
+(10, 'Kabiru', 'Shuaibu', 'kobyblaze@gmail.com', '$2y$10$siFhCK.SlD4mUgTMf0148.y4Emn8sA0AIAJuzyeDM6hc7Zb0tQJ9a', '3r543i0a57Kbu845', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '19:17:23', '2018-04-16', '2018-05-24 17:14:02', NULL, 'Logged In', '1', '1', NULL, '2', NULL),
 (14, 'Akole', 'Banji', 'banjimayowa1@gmail.com', '$2y$10$jO/LwWCOtJ1I.oeP7PsAFum6ADpbjqPvsHRflxqIbNWfGasJj3vI6', 'admin9917900809', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:28:01', '2018-04-17', NULL, NULL, NULL, NULL, '1', NULL, '2', NULL),
-(17, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '$2y$10$38wjO4BJP3sEYSd47n/hTuetqf9.pXhhS/WWqDplvpDEMXgYsJUpC', 'jy95Ae4d739i4o02', NULL, '08133475878', 'facebook.com/deji', 'tweeter.com/frenzykul', 'linkedin.com/ayodeji', 'instagram.com/frenzykul', '1545775096mail13239229_487959851401256_5588409995275807808_n.jpg', '17:26:28', '2018-04-28', '2018-12-25 20:58:08', '2018-12-23 12:24:26', 'Logged In', '3', '1', NULL, '1', NULL),
+(17, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '$2y$10$38wjO4BJP3sEYSd47n/hTuetqf9.pXhhS/WWqDplvpDEMXgYsJUpC', 'jy95Ae4d739i4o02', NULL, '08133475878', 'facebook.com/deji', 'tweeter.com/frenzykul', 'linkedin.com/ayodeji', 'instagram.com/frenzykul', '1545775096mail13239229_487959851401256_5588409995275807808_n.jpg', '17:26:28', '2018-04-28', '2019-01-01 10:55:43', '2019-01-01 10:53:36', 'Logged In', '3', '1', NULL, '1', NULL),
 (18, 'Kolade', 'Koded', 'Fakunlekolade@gmail.com', '$2y$10$ZUhQTQ2Mi.1ApKHnyQggw.WoQx2mOyGWDapd3lnpggShxM8D4yKIy', 'admin7851792597', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '09:57:06', '2018-05-01', '2018-05-18 08:07:18', '2018-05-18 09:19:59', 'Logged Out', '3', '1', NULL, '1', NULL),
 (19, 'Odunola', 'Olabintan', 'olabintanodunola@yahoo.com', '$2y$10$AC6Bx8e6YYx7GTf2XRtK7OV0xIG0jyAMRga5XeJ2Fvb31L25LPQgW', 'admin5767077300', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:11:23', '2018-05-04', '2018-05-06 21:31:17', NULL, 'Logged In', '5', '1', NULL, '1', NULL),
 (20, 'Babatunde', 'Julius', 'Iambabatundejulius@gmail.com', '$2y$10$FN2UPoaxgfb9XdTD2odMM.pBy6MtJptEheK7tL0K.BapyEubyUHkq', 'admin6561856488', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '13:51:20', '2018-05-05', '2018-05-06 18:26:58', NULL, 'Logged In', '8', '1', NULL, '1', NULL),
@@ -98,7 +98,8 @@ INSERT INTO `admin` (`id`, `firstname`, `lastname`, `email`, `hash`, `hash_id`, 
 (26, 'test', 'test', 'mayur4rf_ji@yahoo.com', '$2y$10$42NQb5iz9nXw6ixy/2T4.uwYgvQ2miAahkAEP6pV9eh4a7qmDW44S', 'e238t723ts7106', NULL, '08168785598', NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '01:08:43', '2018-05-19', '2018-05-25 07:33:26', NULL, 'Logged In', '9', '1', NULL, '1', NULL),
 (27, 'Adedamola', 'Olabintan', 'damolaolabintan@gmail.com', '$2y$10$UvsATSk.IxUnbvD3fY.AsejJGR1v3IHwPtJNJbVKj7vFL8EljKHSi', '1lA81094d15a72deaom', NULL, '08107209469', NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:29:06', '2018-05-19', '2018-05-19 21:34:29', NULL, 'Logged In', '5', '1', NULL, '1', NULL),
 (28, 'Folorunso', 'Obasuyi', 'obasfot2017@gmail.com', '$2y$10$GdslqRTIgbBPasimeIUqNOt81ZY7d7kWNV2q2XNsvGs/2x.pfalM6', '5s730nFluoo12r0o978', NULL, '+601131899754', NULL, NULL, NULL, NULL, NULL, '17:38:58', '2018-05-24', '2018-05-25 08:45:04', NULL, 'Logged In', '9', '1', NULL, '1', NULL),
-(29, 'deejay', 'werecf', 'root@', '$2y$10$Xn7o1Ln.ltkMls7lQBbDLuos83K1OWcMWMe8hkQSJwJ0Wvp9ptT2W', '6j8e914d07y4ea10', NULL, '08133475878', NULL, NULL, NULL, NULL, NULL, '15:50:18', '2018-12-25', NULL, NULL, NULL, '3', '1', NULL, '1', NULL);
+(29, 'deejay', 'werecf', 'root@', '$2y$10$Xn7o1Ln.ltkMls7lQBbDLuos83K1OWcMWMe8hkQSJwJ0Wvp9ptT2W', '6j8e914d07y4ea10', NULL, '08133475878', NULL, NULL, NULL, NULL, NULL, '15:50:18', '2018-12-25', NULL, NULL, NULL, '3', '1', NULL, '1', NULL),
+(30, 'vickie', 'fakuns', 'fakunlevic@gmail.com', '$2y$10$.xY1N5AU.FP8qZI.KbEH0OYmfnnac.fPuaYNXKVF4LfSCPKnjVzvS', '54ive1147i51c4k4', NULL, '09024901335', NULL, NULL, NULL, NULL, NULL, '11:39:38', '2019-01-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `hash_id` varchar(255) NOT NULL,
   `category_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
 
 --
 -- Dumping data for table `blog`
@@ -150,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `date_created` date NOT NULL,
   `time_created` time NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `booking`
@@ -160,7 +161,12 @@ INSERT INTO `booking` (`id`, `booking`, `name`, `email`, `phone_number`, `verifi
 (1, 'event', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'tneu40243a96f36e3kveln', '936ov4e9eec8t3d8sn26', '2018-12-20', '19:56:19'),
 (2, 'event', 'Jane Doe', 'ricemiller@gmail.com', '08133475878', 'not verified', 'n88j0288eevn7ea0t32', '936ov4e9eec8t3d8sn26', '2018-12-20', '19:56:39'),
 (3, 'event', 'Sam Doe', 'kol@gmail.com', '08133475878', 'not verified', 'ea9nmt5e8700v250s4', '936ov4e9eec8t3d8sn26', '2018-12-20', '19:56:54'),
-(4, 'training', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'au270ia9erig94tln4fk9nn76', 'r6atiga5e71nig04lrn47e7n', '2018-12-20', '19:57:35');
+(4, 'training', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'au270ia9erig94tln4fk9nn76', 'r6atiga5e71nig04lrn47e7n', '2018-12-20', '19:57:35'),
+(5, 'event', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'u72le0t5ev72ak890nfen7', 'n3439svd42420eote0ce', '2019-01-01', '12:22:29'),
+(6, 'event', 'Fakunle Ayodeji', 'sam@gmail.com', '08133475878', 'not verified', 'f1la0k22eneetu201083vn', '936ov4e9eec8t3d8sn26', '2019-01-01', '12:24:11'),
+(7, 'training', 'Jane Doe', 'deji@gmail.com', '08133475878', 'not verified', 'tgr2e2an21naj27nii3277', 'r6atiga5e71nig04lrn47e7n', '2019-01-01', '12:32:56'),
+(8, 'training', 'Fakunle Ayodeji', 'sam@gmail.com', '08133475878', 'not verified', 'r9ti1neuka084fi919lnga8n', 'iln0u7e7a286ft9arkni62n3g', '2019-01-01', '12:34:50'),
+(9, 'training', 'President', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', '1ipnge92r6ti25ti26s3eanrdn3', 'iln0u7e7a286ft9arkni62n3g', '2019-01-01', '12:35:06');
 
 -- --------------------------------------------------------
 
@@ -175,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `created_by` varchar(255) NOT NULL,
   `date_created` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `category`
@@ -183,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 
 INSERT INTO `category` (`id`, `hash_id`, `category_name`, `created_by`, `date_created`) VALUES
 (12, '3027504528Cocoa', 'Business', 'jy95Ae4d739i4o02', '2018-07-18 15:21:34'),
-(13, '6855739774Fish', 'Writting', 'jy95Ae4d739i4o02', '2018-07-18 15:22:03');
+(13, '6855739774Fish', 'Writing', 'jy95Ae4d739i4o02', '2018-07-18 15:22:03');
 
 -- --------------------------------------------------------
 
@@ -207,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `date_created` date NOT NULL,
   `time_created` time NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `events`
@@ -215,8 +221,36 @@ CREATE TABLE IF NOT EXISTS `events` (
 
 INSERT INTO `events` (`id`, `event_name`, `venue`, `description`, `status`, `price`, `hash_id`, `image_1`, `created_by`, `start_date`, `end_date`, `event_time`, `date_created`, `time_created`) VALUES
 (2, 'Code', 'Abuja', '<p>Docker a tool that is design to make it easier to create, run and deploy applications by using containers When starting Docker you need to first install Docker ï¿½toolbox and this is where you run all your docker commands. Go to hub.docker.com the official website for docker where you can download packages/tools you want to use Images-&gt; What is an image in Docker? An image is an immutable file which are called upon from hub.docker.com/explore through the command build(commands will be attached at the end). An image can be a dependency, a library that is needed for web development, eg nginx(server) is an image in docker, phpmyadmin, mysql, and so on are images and examples of what might be needed for a successful, creation and deployment of any website. For instance if you want to create an application using PHP, which is a backend language that cannot be assessed on a browser without a server, we make use of a local server which will also be gotten as an image, also needed is mysql and phpmyadmin for a successful creation of an application. To pull/download an image, got to hub.docker.com click on Explore (check the image below) on the home button. On the next page you will see where different images names are, ensure to search for the particular image you want to download and verify if itï¿½s an official name of the particular library or dependencies you are about to download. Most official names comes with a sub name called official check the image below. After this process, return to your Docker environment and write a commsnd to pull the image you need using =&gt;docker p</p>', 'upcoming', '500000', '936ov4e9eec8t3d8sn26', '1545334884mail9aa253a5ca9ad3da9b000e3731d9942e.jpg', 'jy95Ae4d739i4o02', 'January/10/2019', 'January/20/2019', '10am-3pm', '2018-12-20', '19:41:24'),
-(3, 'Code', 'Abuja', '<p>Docker a tool that is design to make it easier to create, run and deploy applications by using containers When starting Docker you need to first install Docker ï¿½toolbox and this is where you run all your docker commands. Go to hub.docker.com the official website for docker where you can download packages/tools you want to use Images-&gt; What is an image in Docker? An image is an immutable file which are called upon from hub.docker.com/explore through the command build(commands will be attached at the end). An image can be a dependency, a library that is needed for web development, eg nginx(server) is an image in docker, phpmyadmin, mysql, and so on are images and examples of what might be needed for a successful, creation and deployment of any website. For instance if you want to create an application using PHP, which is a backend language that cannot be assessed on a browser without a server, we make use of a local server which will also be gotten as an image, also needed is mysql and phpmyadmin for a successful creation of an application. To pull/download an image, got to hub.docker.com click on Explore (check the image below) on the home button. On the next page you will see where different images names are, ensure to search for the particular image you want to download and verify if itï¿½s an official name of the particular library or dependencies you are about to download. Most official names comes with a sub name called official check the image below. After this process, return to your Docker environment and write a commsnd to pull the image you need using =&gt;docker .</p>', 'upcoming', '500000', 'n3439svd42420eote0ce', '1545420966mailformal_shoe.jpg', 'jy95Ae4d739i4o02', 'January/10/2019', 'January, 20, 2019', '10am-5pm', '2018-12-21', '19:36:06'),
+(3, 'Code', 'Abuja', '<p>Docker a tool that is design to make it easier to create, run and deploy applications by using containers When starting Docker you need to first install Docker ï¿½toolbox and this is where you run all your docker commands. Go to hub.docker.com the official website for docker where you can download packages/tools you want to use Images-&gt; What is an image in Docker? An image is an immutable file which are called upon from hub.docker.com/explore through the command build(commands will be attached at the end). An image can be a dependency, a library that is needed for web development, eg nginx(server) is an image in docker, phpmyadmin, mysql, and so on are images and examples of what might be needed for a successful, creation and deployment of any website. For instance if you want to create an application using PHP, which is a backend language that cannot be assessed on a browser without a server, we make use of a local server which will also be gotten as an image, also needed is mysql and phpmyadmin for a successful creation of an application. To pull/download an image, got to hub.docker.com click on Explore (check the image below) on the home button. On the next page you will see where different images names are, ensure to search for the particular image you want to download and verify if itï¿½s an official name of the particular library or dependencies you are about to download. Most official names comes with a sub name called official check the image below. After this process, return to your Docker environment and write a commsnd to pull the image you need using =&gt;docker .</p>', 'upcoming', '500000', 'n3439svd42420eote0ce', '1546343717mail514d9fdca04f678970d8f81caa30a910aa909d03.jpg', 'jy95Ae4d739i4o02', 'January/10/2019', 'January, 20, 2019', '10am-5pm', '2018-12-21', '19:36:06'),
 (4, 'Code Hour', 'Abuja', '<p>Docker a tool that is design to make it easier to create, run and deploy applications by using containers When starting Docker you need to first install Docker ï¿½toolbox and this is where you run all your docker commands. Go to hub.docker.com the official website for docker where you can download packages/tools you want to use Images-&gt; What is an image in Docker? An image is an immutable file which are called upon from hub.docker.com/explore through the command build(commands will be attached at the end). An image can be a dependency, a library that is needed for web development, eg nginx(server) is an image in docker, phpmyadmin, mysql, and so on are images and examples of what might be needed for a successful, creation and deployment of any website. For instance if you want to&nbsp;Docker a tool that is design to make it easier to create, run and deploy applications by using containers When starting Docker you need to first install Docker ï¿½toolbox and this is where you run all your docker commands. Go to hub.docker.com the official website for docker where you can download packages/tools you want to use Images-&gt; What is an image in Docker? An image is an immutable file which are called upon from hub.docker.com/explore through the command build(commands will be attached at the end). An image can be a dependency, a library that is needed for web development, eg nginx(server) is an image in docker, phpmyadmin, mysql, and so on are images and examples of what might be needed for a successful, creation and deployment of any website. For instance if you want to&nbsp;</p>', 'upcoming', '500000', '349ee967ts184ceodnv2', '1545422594mailSprayer.jpg', 'jy95Ae4d739i4o02', 'January/10/2019', 'January/20/2019', '10am-3pm', '2018-12-21', '20:03:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `front`
+--
+
+CREATE TABLE IF NOT EXISTS `front` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `image_1` text,
+  `created_by` varchar(255) NOT NULL,
+  `time_created` time NOT NULL,
+  `date_created` date NOT NULL,
+  `hash_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+
+--
+-- Dumping data for table `front`
+--
+
+INSERT INTO `front` (`id`, `title`, `body`, `image_1`, `created_by`, `time_created`, `date_created`, `hash_id`) VALUES
+(22, 'Thinking School', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', '1546287756mailCoinFlip_3.3.17_1500x500.jpg', 'jy95Ae4d739i4o02', '20:22:07', '2018-12-31', '7388563379frontage'),
+(23, 'Thinking School2', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', '1546287744mailBeautiful_Design_for_API_developer_portals_nordic_APIs.png', 'jy95Ae4d739i4o02', '20:22:24', '2018-12-31', '2994173401frontage'),
+(24, 'Thinking School2', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', '1546339833mail01Blog-Cover-image-Fullstack-Highres.jpg', 'jy95Ae4d739i4o02', '20:22:56', '2018-12-31', '1729254825frontage'),
+(25, 'Thinking School4', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', '1546287802mailwebsite-design-symbol.png', 'jy95Ae4d739i4o02', '20:23:22', '2018-12-31', '9126960895frontage');
 
 -- --------------------------------------------------------
 
@@ -234,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `date_created` date NOT NULL,
   `hash_id` varchar(225) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=784 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=836 ;
 
 --
 -- Dumping data for table `logs`
@@ -1025,7 +1059,59 @@ INSERT INTO `logs` (`id`, `type`, `content`, `category`, `action_by`, `time_crea
 (780, 'edited', '1545931096mailPMB-and-Trump-1.jpg', 'image', 'jy95Ae4d739i4o02', '17:18:16', '2018-12-27', 'log3p1m1mrti53394j09m-1bp-70u5a68177lp-g-n99ad'),
 (781, 'edited', '1545931217mailPMB-and-Trump-1.jpg', 'image', 'jy95Ae4d739i4o02', '17:20:17', '2018-12-27', 'log2918p-4m50116m1al7n9drjp3-74t5p1u4m5-bi-a9g'),
 (782, 'edited', '1545931520mailPMB-and-Trump-1.jpg', 'image', 'jy95Ae4d739i4o02', '17:25:20', '2018-12-27', 'log715idp11m6-0j2a3b845gmu5ar3-9-1823n3p1mltp-'),
-(783, 'edited', '1545931577mailPMB-and-Trump-1.jpg', 'image', 'jy95Ae4d739i4o02', '17:26:17', '2018-12-27', 'log5ppaib9p575001n1u4rmg3jd20-9t759a5-1ml-7-m1');
+(783, 'edited', '1545931577mailPMB-and-Trump-1.jpg', 'image', 'jy95Ae4d739i4o02', '17:26:17', '2018-12-27', 'log5ppaib9p575001n1u4rmg3jd20-9t759a5-1ml-7-m1'),
+(784, 'added', '<p>With all give you a thought pattern, we present an atmosphere to express yourself&nbsp;With all give you a thought pattern, we present an atmosphere to express yourself&nbsp;With all give you a thought pattern, we present an atmosphere to express yourself&nbsp;With all give you a thought pattern, we present an atmosphere to express yourself</p>', 'about', 'jy95Ae4d739i4o02', '19:53:54', '2018-12-31', 'log8-t8g0twl34t-6i6h1-p56'),
+(785, 'edited', '<p>With all give you a thought pattern, we present an atmosphere to express yourself&nbsp;With all give you a thought pattern, we present an atmosphere to express yourself&nbsp;With all give you a thought pattern, we present an atmosphere to express yourself&nbsp;With all give you a thought pattern, we present an atmosphere to express yourself</p>', 'about', 'jy95Ae4d739i4o02', '20:09:26', '2018-12-31', 'log172hg86w633tp--tli-3t2'),
+(786, 'edited', '<p>With all give you a thought pattern, we present an atmosphere to express yourself&nbsp;</p>', 'about', 'jy95Ae4d739i4o02', '20:09:36', '2018-12-31', 'logw55lp--581it1h670tt-9g'),
+(787, 'edited', '<p>With all give you a thought pattern, we present an atmosphere to express yourself&nbsp;</p>', 'about', 'jy95Ae4d739i4o02', '20:09:41', '2018-12-31', 'log782httwgl18t8p2-8-i0-2'),
+(788, 'deleted', 'frontage with the title:', 'Frontage', 'jy95Ae4d739i4o02', '20:13:28', '2018-12-31', 'log4t7039oger65a7n5f4'),
+(789, 'deleted', 'frontage with the title:', 'Frontage', 'jy95Ae4d739i4o02', '20:13:38', '2018-12-31', 'log2r1n2oea46350t15fg'),
+(790, 'deleted', 'frontage with the title:', 'Frontage', 'jy95Ae4d739i4o02', '20:15:03', '2018-12-31', 'log3o8fe354110ag36nrt'),
+(791, 'deleted', 'frontage with the title:', 'Frontage', 'jy95Ae4d739i4o02', '20:18:11', '2018-12-31', 'log1e19no79a6f938grt9'),
+(792, 'deleted', 'Thinking School', 'front', 'jy95Ae4d739i4o02', '20:21:44', '2018-12-31', 'logt3ki9871n3nihg0315'),
+(793, 'added', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', 'about', 'jy95Ae4d739i4o02', '20:22:07', '2018-12-31', 'log17l8tiw-h0gt12762t--p6'),
+(794, 'added', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', 'about', 'jy95Ae4d739i4o02', '20:22:24', '2018-12-31', 'logt1t-t156pw-596i-g9hl70'),
+(795, 'edited', '1546287756mailCoinFlip_3.3.17_1500x500.jpg', 'image', 'jy95Ae4d739i4o02', '20:22:36', '2018-12-31', 'log66g57-9c58l0-1mj8635ina32-ip4081i5274x70of3p00l317--'),
+(796, 'added', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', 'about', 'jy95Ae4d739i4o02', '20:22:56', '2018-12-31', 'logpt7l177i6--twht-002g29'),
+(797, 'added', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', 'about', 'jy95Ae4d739i4o02', '20:23:22', '2018-12-31', 'log-lth12w5p8tg-4t87-i469'),
+(798, 'edited', '1546339833mail01Blog-Cover-image-Fullstack-Highres.jpg', 'image', 'jy95Ae4d739i4o02', '10:50:33', '2019-01-01', 'log9rf7ec-urvl37-0-k31olajlechmai95stpgb48g-73gae6g3oi3-l2s143ih47m'),
+(799, 'edited', 'Writing', 'category', 'jy95Ae4d739i4o02', '11:14:49', '2019-01-01', 'log8in03w0i0604g6tr1'),
+(800, 'added', '<p><strong>ELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDP</strong></p>', 'about', 'jy95Ae4d739i4o02', '11:45:33', '2019-01-01', 'logrg6o1ts4e-glplg8ct-8-1oeti29-t3--tnl8nt'),
+(801, 'edited', '<p><strong>ELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDP</strong></p>', 'about', 'jy95Ae4d739i4o02', '11:45:57', '2019-01-01', 'logt9o-gtpstc-o90g---lntl57riee92tnl-2t7g2'),
+(802, 'edited', '1546343173mail5-signs-that-you-are-stuck-in-a-loveless-marriage.jpg', 'image', 'jy95Ae4d739i4o02', '11:46:13', '2019-01-01', 'log6gaaee3ns-18t3ea-e67i---aslmrcvt-oalsj5-7asgn-lirtrp5ui132h7u74o0-sk4i-yg054m'),
+(803, 'deleted', 'ELECTION 2019;APC OR', 'front', 'jy95Ae4d739i4o02', '11:46:28', '2019-01-01', 'log64ee1t5l5i46no7c23'),
+(804, 'added', '<p>ELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDP</p>', 'about', 'jy95Ae4d739i4o02', '11:46:41', '2019-01-01', 'loge-t4o3i7l-ln883gpce31t42-t'),
+(805, 'edited', '1546343209mail514d9fdca04f678970d8f81caa30a910aa909d03.jpg', 'image', 'jy95Ae4d739i4o02', '11:46:49', '2019-01-01', 'logpd1676f3j11ac70339299d-af50m1a495943c54a10a980i8aa457030750840lfddg3'),
+(806, 'edited', '<p>ELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC&nbsp;</p>', 'about', 'jy95Ae4d739i4o02', '11:47:01', '2019-01-01', 'log882-e11nl8o-li5c4ttte-2g9p'),
+(807, 'added', 'Poultry', 'article', 'jy95Ae4d739i4o02', '11:47:34', '2019-01-01', 'logl22o05u636ryp805t'),
+(808, 'edited', 'Poultry Discuss', 'article', 'jy95Ae4d739i4o02', '11:47:44', '2019-01-01', 'log33996p2r0uol7y1t'),
+(809, 'edited', '1546343276mail514d9fdca04f678970d8f81caa30a910aa909d03.jpg', 'image', 'jy95Ae4d739i4o02', '11:47:56', '2019-01-01', 'log4af2f3a7adc0a081946419i0303-5fa8ad8g5599091d640736am6172jc49893p37dl'),
+(810, 'deleted', 'Poultry Discuss', 'article', 'jy95Ae4d739i4o02', '11:48:03', '2019-01-01', 'logtru519l247y83o3p2'),
+(811, 'added', 'business plan', 'category', 'jy95Ae4d739i4o02', '11:48:25', '2019-01-01', 'logbn2s47si7es303135u'),
+(812, 'edited', 'Business Plan', 'category', 'jy95Ae4d739i4o02', '11:48:36', '2019-01-01', 'log0s8b09i53n19sus7e8'),
+(813, 'added', 'Code', 'events', 'jy95Ae4d739i4o02', '11:49:14', '2019-01-01', 'logce89o39030d6'),
+(814, 'edited', 'Code22', 'events', 'jy95Ae4d739i4o02', '11:49:55', '2019-01-01', 'logd678e2c02o872480'),
+(815, 'deleted', 'Code22', 'events', 'jy95Ae4d739i4o02', '11:50:01', '2019-01-01', 'log59de8co022882805'),
+(816, 'edited', '1546343717mail514d9fdca04f678970d8f81caa30a910aa909d03.jpg', 'image', 'jy95Ae4d739i4o02', '11:55:17', '2019-01-01', 'log7a-714fm060d87130745ig0j97f9037f18166a9d7493d3c9a9l11ap82a508d4ca9a'),
+(817, 'added', 'frenzy', 'project', 'jy95Ae4d739i4o02', '11:55:42', '2019-01-01', 'log67zn767r478yfe64'),
+(818, 'deleted', 'fvanjl', 'project', 'jy95Ae4d739i4o02', '11:56:00', '2019-01-01', 'log7nf63la162v836j4'),
+(819, 'added', 'Fakunle Ayodeji', 'training', 'jy95Ae4d739i4o02', '11:56:25', '2019-01-01', 'log4le3u4nfk42a26119'),
+(820, 'edited', '1546343852mail514d9fdca04f678970d8f81caa30a910aa909d03.jpg', 'image', 'jy95Ae4d739i4o02', '11:57:32', '2019-01-01', 'log3d298fg8a9039aa6950ca4ap6dfjd90133f68014l9345a8-i8a0439m50177dc10280'),
+(821, 'edited', '1546344037mail01Blog-Cover-image-Fullstack-Highres.jpg', 'image', 'jy95Ae4d739i4o02', '12:00:37', '2019-01-01', 'log91e-r3uaks9oh305bel62-7i-cairggv44mh11j767amll08-fg3ogcp4-lites4'),
+(822, 'edited', '1546344069mail7d0f141657a2b14897324bf98fc492f9a4dbff06.jpg', 'image', 'jy95Ae4d739i4o02', '12:01:10', '2019-01-01', 'log219a47f3l01b44p40f3836gf9441494752-ab27bd439m16cf4ff9668406a68jd22i5'),
+(823, 'edited', 'Fakunle', 'training', 'jy95Ae4d739i4o02', '12:05:07', '2019-01-01', 'logf157n0k3e181lu88a'),
+(824, 'edited', 'General', 'training', 'jy95Ae4d739i4o02', '12:10:22', '2019-01-01', 'log39r61e5eg41n6l0a8'),
+(825, 'added', 'Fakunle Ayodeji 33', 'training', 'jy95Ae4d739i4o02', '12:11:37', '2019-01-01', 'log156ne3a90fu1l7k54'),
+(826, 'edited', 'Fakunle', 'training', 'jy95Ae4d739i4o02', '12:12:41', '2019-01-01', 'loglf057n9ak862e58u9'),
+(827, 'deleted', 'Fakunle', 'quote', 'jy95Ae4d739i4o02', '12:13:17', '2019-01-01', 'log30k40a7550n3le4uf'),
+(828, 'edited', 'General', 'training', 'jy95Ae4d739i4o02', '12:13:41', '2019-01-01', 'logg2e13r138le9a820n'),
+(829, 'added', 'Ikorodu Nigeria West Africa â€“ The Emerging Commercial And Residential City of Lagos State', 'services', 'jy95Ae4d739i4o02', '12:14:23', '2019-01-01', 'log6d7u8kr041oi353o9'),
+(830, 'edited', '1546344870mail5-signs-that-you-are-stuck-in-a-loveless-marriage.jpg', 'image', 'jy95Ae4d739i4o02', '12:14:31', '2019-01-01', 'logs6-amisksouien-0l4c17v-ta8ry5ji-m3ute-5aa-71aegagorsr34-s-6-5nlgphl-405t2e79i'),
+(831, 'edited', 'Ikorodu Nigeria West Africa â€“', 'services', 'jy95Ae4d739i4o02', '12:16:24', '2019-01-01', 'log342k5ou7dro2i2442'),
+(832, 'deleted', 'Ikorodu Nigeria West Africa â€“', 'campus_article', 'jy95Ae4d739i4o02', '12:16:32', '2019-01-01', 'logi8odrok08886308u'),
+(833, 'edited', '2', 'admin level for 3r543i0a57Kbu845', 'jy95Ae4d739i4o02', '12:17:07', '2019-01-01', 'log57971092737'),
+(834, 'edited', '1', 'admin level for 3r543i0a57Kbu845', 'jy95Ae4d739i4o02', '12:18:34', '2019-01-01', 'log38498625111'),
+(835, 'edited', 'Fakunle', 'training', 'jy95Ae4d739i4o02', '12:25:12', '2019-01-01', 'log31n3u6ale098f678k');
 
 -- --------------------------------------------------------
 
@@ -1073,7 +1159,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `date_created` date NOT NULL,
   `created_by` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `project`
@@ -1104,7 +1190,7 @@ CREATE TABLE IF NOT EXISTS `services` (
   `date_created` date NOT NULL,
   `hash_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `services`
@@ -1195,14 +1281,15 @@ CREATE TABLE IF NOT EXISTS `training` (
   `time_created` time NOT NULL,
   `hash_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `training`
 --
 
 INSERT INTO `training` (`id`, `name`, `venue`, `description`, `status`, `price`, `image_1`, `created_by`, `start_date`, `end_date`, `training_time`, `date_created`, `time_created`, `hash_id`) VALUES
-(1, 'General Election', 'Abuja', '<p>DOCKER Docker is a tool that is design to make it easier to create, run and deploy applications by using containers When starting Docker you need to first install Docker ï¿½toolbox and this is where you run all your docker commands. Go to hub.docker.com the official website for docker where you can download packages/tools you want to use Images-&gt; What is an image in Docker? An image is an immutable file which are called upon from hub.docker.com/explore through the command build(commands will be attached at the end). An image can be a dependency, a library that is needed for web development, eg nginx(server) is an image in docker, phpmyadmin, mysql, and so on are images and examples of what might be needed for a successful, creation and deployment of any website. For instance if you want to create an application using PHP, which is a backend language that cannot be assessed on a browser without a server, we make use of a local server which will also be gotten as an image, also needed is mysql and phpmyadmin for a successful creation of an application. To pull/download an image, got to hub.docker.com click on Explore (check the image below) on the home button. On the next page you will see where different images names are, ensure to search for the particular image you want to download and verify if itï¿½s an official name of the particular library or dependencies you are about to download. Most official names comes with a sub name called official check the image below. After this process, return to your Docker environment and write a commsnd to pull the image you need using =&gt;docker pull&nbsp;</p>', 'upcoming', 'upcoming', '1545562975mailCoinFlip_3.3.17_1500x500.jpg', 'January/10/2019', '10am-3pm', 'January/ 20/ 2019', 'jy95Ae4d739i4o02', '2018-12-20', '19:35:24', 'r6atiga5e71nig04lrn47e7n');
+(1, 'General', 'Abuja', '<p>DOCKER Docker is a tool that is design to make it easier to create, run and deploy applications by using containers When starting Docker you need to first install Docker ï¿½toolbox and this is where you run all your docker commands. Go to hub.docker.com the official website for docker where you can download packages/tools you want to use Images-&gt; What is an image in Docker? An image is an immutable file which are called upon from hub.docker.com/explore through the command build(commands will be attached at the end). An image can be a dependency, a library that is needed for web development, eg nginx(server) is an image in docker, phpmyadmin, mysql, and so on are images and examples of what might be needed for a successful, creation and deployment of any website. For instance if you want to create an application using PHP, which is a backend language that cannot be assessed on a browser without a server, we make use of a local server which will also be gotten as an image, also needed is mysql and phpmyadmin for a successful creation of an application. To pull/download an image, got to hub.docker.com click on Explore (check the image below) on the home button. On the next page you will see where different images names are, ensure to search for the particular image you want to download and verify if itï¿½s an official name of the particular library or dependencies you are about to download. Most official names comes with a sub name called official check the image below. After this process, return to your Docker environment and write a commsnd to pull the image you need using =&gt;docker pull&nbsp;</p>', 'upcoming', '500000', '1545562975mailCoinFlip_3.3.17_1500x500.jpg', 'January/10/2019', 'January/10/2019', 'January/ 20/ 2019', '10am-3pm', '2018-12-20', '19:35:24', 'r6atiga5e71nig04lrn47e7n'),
+(3, 'Fakunle', 'Abuja', '<p>:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,</p>\r\n\r\n<p>:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,:endd,</p>', 'upcoming', '500000', '1546344697mail7d0f141657a2b14897324bf98fc492f9a4dbff06.jpg', 'jy95Ae4d739i4o02', 'January/10/2019', 'December 34, 2018', '12am-3pm', '2019-01-01', '12:11:37', 'iln0u7e7a286ft9arkni62n3g');
 
 -- --------------------------------------------------------
 
@@ -1250,14 +1337,15 @@ CREATE TABLE IF NOT EXISTS `views` (
   `date_created` date NOT NULL,
   `hash_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `views`
 --
 
 INSERT INTO `views` (`id`, `body`, `image_1`, `created_by`, `time_created`, `date_created`, `hash_id`) VALUES
-(20, '<p>They lives by teaching them how to code and helping them develop a successful career in Software Development Irrespective of your academic background, as long as you can read, write and comprehend, we can groom you from novice to entry-level Software Developer or Front End Developer or User Experience Designer(within a space of 3 to 4 months)Our next batch of coding classes begins 7th May, 2018. Registration Fee is N10,000. Training fee for each course(Web Development Immersive, Front End Development Immersive, User Experience Design) is N200,000. Please visit www.swapspacesystems.com for more enquiries and register on the apply page.To talk to our representative(s): 07039069923, 08078650258Please go a step further and join us to transform more lives by sharing this information with your contacts. Someday, they will thank you for itWe transform people&#39;s lives by teaching them how to code and helping them develop a successful career in Software Development Irrespective of your academic background, as long as you can read, write and comprehend, we can groom you from novice to entry-level Software Developer or Front End Developer or User Experience Designer(within a space of 3 to 4 months)Our next batch of coding classes begins 7th May, 2018. Registration Fee is N10,000. Training fee for each course(Web Development Immersive, Front End Development Immersive, User Experience Design) is N200,000. Please visit www.swapspacesystems.com for more enquiries and register on the apply page.To talk to our representative(s): 07039069923, 08078650258Please go a step further and join us to transform more lives by sharing this information with your contacts. Someday, they will thank you for it</p>', '1545931577mailPMB-and-Trump-1.jpg', 'jy95Ae4d739i4o02', '17:01:17', '2018-12-27', '3806584984views');
+(20, '<p>They lives by teaching them how to code and helping them develop a successful career in Software Development Irrespective of your academic background, as long as you can read, write and comprehend, we can groom you from novice to entry-level Software Developer or Front End Developer or User Experience Designer(within a space of 3 to 4 months)Our next batch of coding classes begins 7th May, 2018. Registration Fee is N10,000. Training fee for each course(Web Development Immersive, Front End Development Immersive, User Experience Design) is N200,000. Please visit www.swapspacesystems.com for more enquiries and register on the apply page.To talk to our representative(s): 07039069923, 08078650258Please go a step further and join us to transform more lives by sharing this information with your contacts. Someday, they will thank you for itWe transform people&#39;s lives by teaching them how to code and helping them develop a successful career in Software Development Irrespective of your academic background, as long as you can read, write and comprehend, we can groom you from novice to entry-level Software Developer or Front End Developer or User Experience Designer(within a space of 3 to 4 months)Our next batch of coding classes begins 7th May, 2018. Registration Fee is N10,000. Training fee for each course(Web Development Immersive, Front End Development Immersive, User Experience Design) is N200,000. Please visit www.swapspacesystems.com for more enquiries and register on the apply page.To talk to our representative(s): 07039069923, 08078650258Please go a step further and join us to transform more lives by sharing this information with your contacts. Someday, they will thank you for it</p>', '1545931577mailPMB-and-Trump-1.jpg', 'jy95Ae4d739i4o02', '17:01:17', '2018-12-27', '3806584984views'),
+(21, '<p>ELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC OR PDPELECTION 2019;APC&nbsp;</p>', '1546343209mail514d9fdca04f678970d8f81caa30a910aa909d03.jpg', 'jy95Ae4d739i4o02', '11:46:41', '2019-01-01', '2463357253views');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
