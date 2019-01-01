@@ -23,7 +23,7 @@
   <div class="content-wrapper">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 wow fadeIn"> <img src="images/logo.png" alt="Image" class="logo">
+        <div class="col-lg-4 wow fadeIn"> <h3 style="color:white">Thinking School</h3>
           <p>Abundant rainfall is created by the nearby ocean, with as much as 122 inches of precipitation each year. Also, as the cool moist breeze.</p>
         </div>
         <!-- end col-4 -->
