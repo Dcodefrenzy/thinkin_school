@@ -18,7 +18,7 @@ if($check2['portfolio'] !=555666777888999000){
   session_destroy();
   $success = "Your Account Cannot View Users";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location: adminLogin?ssp=$succ");
+  header("Location: admin-login?ssp=$succ");
 }
 
 $info = adminInfo($conn,$session);

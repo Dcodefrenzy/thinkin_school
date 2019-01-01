@@ -7,7 +7,7 @@ if($read['defaulted'] >= 3){
   session_destroy();
   $success = "Your Account has Been Suspended";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location: adminLogin?ssp=$succ");
+  header("Location: admin-login?ssp=$succ");
 }
  ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if($read['defaulted'] >= 3){
     echo $page_title;
   }else{
   ?>
-  Advic Farms
+  Thinking School
 <?php } ?>
 </title>
   <!-- <script type="text/javascript" src="/assets/ckeditor5-build-classic/ckeditor.js"></script> -->

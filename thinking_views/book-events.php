@@ -41,8 +41,8 @@ if(array_key_exists('submit', $_POST)){
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="author" content="BoardSpeck">
-<title>BoardSpeck Web Office </title>
+<meta name="author" content="Thinking School">
+<title>Thinking School Web Office </title>
 
 <link rel="shortcut icon" href="assets/img/favicon.png">
 
@@ -108,7 +108,7 @@ $msg = str_replace('_', ' ', $_GET['wn']);
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
 <h2 class="postin-title">Warning! '.$msg.' </h2>
-<p>BoardSpeck will verify your account once you are confirmed as a BoardSpeck Admin. You will be Notified via mail. Thanks</p>
+<p>Thinking School will verify your account once you are confirmed as a Thinking School Admin. You will be Notified via mail. Thanks</p>
 </div>
 </div>
 </div>';

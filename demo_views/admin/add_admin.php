@@ -201,7 +201,7 @@ Register
 </div>
 <input type="submit"  name="submit"
 <button class="btn btn-common log-btn"></button>
-<label for="remember">Already registered and Verified? <a href="adminLogin"> Sign In</a></label>
+<label for="remember">Already registered and Verified? <a href="admin-login"> Sign In</a></label>
 
 
 </form>

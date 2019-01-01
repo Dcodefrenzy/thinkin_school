@@ -102,7 +102,7 @@ function adminLogin($dbconn, $input){
   if($stmt->rowCount() !=1 || !password_verify($input['pword'], $row['hash'])){
     $suc = 'Invalid Email or Password';
     $message = preg_replace('/\s+/', '_', $suc);
-    header("Location:adminLogin?err=$message");
+    header("Location:admin-login?err=$message");
   }else{
     $verification = 1;
     $statement = $dbconn->prepare("SELECT * FROM admin WHERE email = :e AND verification=:ver ");
@@ -115,9 +115,9 @@ function adminLogin($dbconn, $input){
       $state->execute();
       $row = $state->fetch(PDO::FETCH_BOTH);
       extract($row);
-      $suc = 'Dear '.ucwords($firstname).', You Have Not been Verified as BoardSpeck Admin';
+      $suc = 'Dear '.ucwords($firstname).', You Have Not been Verified as Thinking School Admin';
       $message = preg_replace('/\s+/', '_', $suc);
-      header("Location:adminLogin?wn=$message");
+      header("Location:admin-login?wn=$message");
     }else{
       extract($row);
       $_SESSION['id'] = $hash_id;
@@ -728,7 +728,7 @@ function addPackage($dbconn,$post, $sess){
 // }
 function addProfile($dbconn,$post,$destn,$sess){
   $profile_status = 1;
-  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn, lastname=:ln,    
+  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn, lastname=:ln,
     phone_number=:pn,facebook_link=:fbl, twitter_link=:tlk, linkedin_link=:llk, instagram_link=:iglk, image_1=:img1 WHERE hash_id=:sess");
   /*die(var_dump($post, $destn));*/
   $stmt->bindParam(":fn",$post['fname']);
@@ -1098,10 +1098,10 @@ function viewFrontage($db){
   while($row = $stmt->fetch()){
         extract($row);
     $bd = previewBody($body, 20);
-          echo '<td class="ads-img-td">     
+          echo '<td class="ads-img-td">
       '.$title.'
       </td>
-      <td class="ads-img-td"> 
+      <td class="ads-img-td">
       <a href="view-body?id='.$id.'&t=about"><p>'.$bd.'</p></a>
       </td>
         <td class="add-img-td">
