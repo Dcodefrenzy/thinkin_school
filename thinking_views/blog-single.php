@@ -25,7 +25,7 @@
          	<figure class="post-image"> <img src=<?php echo $image_1 ?> alt="Image"></figure>
          	<div class="post-content">
           <h4><?php echo $title; ?></h4>
-          <small><b>By</b> <?php echo $author."  <b>| Published On</b> ".$date_created; ?></small>
+          <small><b>By</b> <?php echo $author."  <b>| Published On</b> ".date("d, F, Y", strtotime($date("d, F, Y", strtotime($date_created)))); ?></small>
           <ul class="social-share">
 			<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
 			<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -51,7 +51,7 @@
                 <a <?php echo 'href=events-details?hid='.$hash_id.'' ?>>
                 <li><img src=<?php echo $image_1; ?> alt="Image"></li>
                 <span><b>Event Name:</b> <?php echo $event_name; ?></span><br/>
-                <span><b>Date:</b> <?php echo $date_created; ?></span><br/>
+                <span><b>Date:</b> <?php echo date("d, F, Y", strtotime($date("d, F, Y", strtotime($date_created)))); ?></span><br/>
                 <span><b>Venue:</b> <?php echo $venue; ?></span> <br/>  
                 </a>           
               </ul>
@@ -63,7 +63,7 @@
                 <a <?php echo 'href=training-details?hid='.$hash_id.'' ?>>
                 <li><img src=<?php echo $image_1; ?> alt="Image"></li>
                 <span><b>Event Name:</b> <?php echo $name; ?></span><br/>
-                <span><b>Date:</b> <?php echo $date_created; ?></span><br/>
+                <span><b>Date:</b> <?php echo date("d, F, Y", strtotime($date_created)); ?></span><br/>
                 <span><b>Venue:</b> <?php echo $venue; ?></span> <br/>  
                 </a>             
               </ul>
@@ -98,7 +98,7 @@
           ?>
         <div class="content-box wow fadeIn">             <div style= "border-radius: 100px; padding: 0px; background:url(<?php echo $image_1; ?>); height:30vh; width: 30vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
           <h4><?php echo $title; ?></h4>
-          <small><?php echo $date_created; ?></small>
+          <small><?php echo date("d, F, Y", strtotime($date_created)); ?></small>
           <p><?php echo $bd; ?></p>
            <a <?php echo 'href=blog-details?hid='.$hash_id.'';?>><img src="images/icon-right-arrow.svg" alt="Image"></a> </div>
           <?php } ?>

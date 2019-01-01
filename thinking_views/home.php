@@ -1,48 +1,54 @@
 <?php 
 include "includes/header.php";
 $home = getHome($conn); extract($home);
+
 ?>
 <section class="slider">
   <div class="swiper-container">
     <div class="swiper-wrapper">
+      <?php $fronts = getHomeFront($conn); foreach ($fronts as $key => $front) {
+        extract($front);
+        $bd =  previewBody($body, 5)
+       ?>
       <div class="swiper-slide">
-        <div class="slide-inner bg-image" data-background="images/slide01.jpg" data-text=" WE<span>ARE THINKERS</span>">
+        <div class="slide-inner bg-image" data-background="<?php echo $image_1; ?>" data-text=" <span><?php echo ucwords($title); ?></span>">
           <div class="container">
-            <h6 data-swiper-parallax="100">Thinking</h6>
-            <h2 data-swiper-parallax="200"><span>.</span>School</h2>
-            <p data-swiper-parallax="300">With all give you a thought pattern, we present an atmosphere to express yourself</p>
+            <!-- <h6 data-swiper-parallax="100">Thinking</h6> -->
+            <h2 data-swiper-parallax="200"><span>.</span><?php echo $title; ?></h2>
+            <p data-swiper-parallax="300"><?php echo $body; ?></p>
             <div class="clearfix"></div>
-            <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div>
+            <a href="about" data-swiper-parallax="200">Discover More<span></span></a> </div>
           <!-- end container --> 
         </div>
         <!-- end slide-inner --> 
       </div>
+    <?php } ?>
       <!-- end swiper-slide -->
-      <div class="swiper-slide">
+      <!-- <div class="swiper-slide">
         <div class="slide-inner bg-image" data-background="images/slide02.jpg" data-text="WE<span>ARE FUN</span>">
           <div class="container">
             <h6 data-swiper-parallax="100">We</h6>
             <h2 data-swiper-parallax="200"><span>.</span>Are Fun</h2>
             <p data-swiper-parallax="300">We dont just work without palying. we work hard and also play harder.</p>
             <div class="clearfix"></div>
-            <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div>
+            <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div> -->
           <!-- end container --> 
-        </div>
+        <!-- </div> -->
         <!-- end slide-inner --> 
-      </div>
+     <!--  </div> -->
       <!-- end swiper-slide -->
-      <div class="swiper-slide">
+      <!-- <div class="swiper-slide">
         <div class="slide-inner bg-image" data-background="images/slide03.jpg" data-text="WE ARE<span>CREATIVE</span>">
           <div class="container">
             <h6 data-swiper-parallax="100">We are</h6>
             <h2 data-swiper-parallax="200"><span>.</span>Creative</h2>
             <p data-swiper-parallax="300">It can be challenging to get everything in order But we have the right set of people who get things done creatively.</p>
             <div class="clearfix"></div>
-            <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div>
+            <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div> -->
           <!-- end container --> 
-        </div>
+       <!--  </div> -->
         <!-- end slide-inner --> 
-      </div>
+      <!-- </div> -->
       <!-- end swiper-slide --> 
     </div>
     <!-- end swiper-wrapper -->
@@ -573,13 +579,13 @@ $home = getHome($conn); extract($home);
   <!-- end container --> 
 </section>
 <!-- end latest-news -->
-<section class="info-box">
+<!-- <section class="info-box">
   <div class="container wow fadeIn">
     <h3>Let’s get started</h3>
     <h6>The pollinated female cones remain attached to the branches?</h6>
     <p>The climate of coastal California and Oregon creates the ideal environment<br> for the trees a redwood tree needs </p>
     <img src="images/image-team.jpg" alt="Image"> </div>
-</section>
+</section> -->
 <!-- end info-box -->
 <!-- <section class="request-form">
   <div class="container">
