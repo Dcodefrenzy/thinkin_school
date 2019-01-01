@@ -440,7 +440,7 @@ function userLogin($dbconn,$input){
     if($stmt->rowCount() > 0 && password_verify($input['pword'], $row['hash'])){
       extract($row);
       $_SESSION['username'] = $username;
-      $_SESSION['id'] = $hash_id;
+      $_SESSION['hash_id'] = $hash_id;
       header("Location:/home");
     }else{
       $mes = "Invalid Email or Password";
@@ -1447,10 +1447,10 @@ function blogs($dbconn, $hashID, $start, $record){
       $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-    $result [] = $row; 
+    $result [] = $row;
 
   }
-  
+
   return $result;
 }
 
@@ -1461,10 +1461,10 @@ function allBlogs($dbconn, $start, $record){
     $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-    $result [] = $row; 
+    $result [] = $row;
 
   }
-  
+
   return $result;
 }
 
@@ -1476,10 +1476,10 @@ function Catblog($dbconn, $hashID){
     $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-      
-    $result [] = $row; 
+
+    $result [] = $row;
   }
- 
+
   return $result;
 }
 function getTotalRecordBlog($dbconn,  $record){
@@ -1513,10 +1513,10 @@ function homeBlog($dbconn){
       $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-      
-    $result [] = $row; 
+
+    $result [] = $row;
   }
- 
+
   return $result;
 }
 
@@ -1589,7 +1589,7 @@ function getService($dbconn, $hid){
   $stmt->bindParam(':hid', $hid);
   $stmt->execute();
    $row = $stmt->fetch(PDO::FETCH_BOTH);
-    return $row; 
+    return $row;
 }
 // function getAllServices($dbconn){
 //   $result = [];
@@ -1703,7 +1703,7 @@ function getAllEvents($dbconn,$start, $record){
 
   function book($dbconn, $post, $hid, $book){
 try {
-           
+
   $rnd = rand(0000000000,9999999999);
   $split = explode(" ",$post['name']);
   $id = $rnd.cleans($split['0']);
@@ -1720,7 +1720,7 @@ try {
     ];
 
     $stmt->execute($data);
-  
+
   }catch(PDOException $e){
     die("Something Went Wrong");
   }
@@ -1734,7 +1734,7 @@ try {
   $stmt->bindParam(':hid', $hid);
   $stmt->execute();
   $row = $stmt->fetch(PDO::FETCH_BOTH);
-  
+
     return $row;
   }
   function getTeam($dbconn){

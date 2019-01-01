@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "includes/header.php";
 $home = getHome($conn); extract($home);
 
@@ -18,9 +18,9 @@ $home = getHome($conn); extract($home);
             <p data-swiper-parallax="300"><?php echo $body; ?></p>
             <div class="clearfix"></div>
             <a href="about" data-swiper-parallax="200">Discover More<span></span></a> </div>
-          <!-- end container --> 
+          <!-- end container -->
         </div>
-        <!-- end slide-inner --> 
+        <!-- end slide-inner -->
       </div>
     <?php } ?>
       <!-- end swiper-slide -->
@@ -32,9 +32,9 @@ $home = getHome($conn); extract($home);
             <p data-swiper-parallax="300">We dont just work without palying. we work hard and also play harder.</p>
             <div class="clearfix"></div>
             <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div> -->
-          <!-- end container --> 
+          <!-- end container -->
         <!-- </div> -->
-        <!-- end slide-inner --> 
+        <!-- end slide-inner -->
      <!--  </div> -->
       <!-- end swiper-slide -->
       <!-- <div class="swiper-slide">
@@ -45,29 +45,29 @@ $home = getHome($conn); extract($home);
             <p data-swiper-parallax="300">It can be challenging to get everything in order But we have the right set of people who get things done creatively.</p>
             <div class="clearfix"></div>
             <a href="#" data-swiper-parallax="200">Discover More<span></span></a> </div> -->
-          <!-- end container --> 
+          <!-- end container -->
        <!--  </div> -->
-        <!-- end slide-inner --> 
+        <!-- end slide-inner -->
       <!-- </div> -->
-      <!-- end swiper-slide --> 
+      <!-- end swiper-slide -->
     </div>
     <!-- end swiper-wrapper -->
     <div class="swiper-custom-pagination"></div>
-    <!-- end swiper-custom-pagination --> 
+    <!-- end swiper-custom-pagination -->
   </div>
-  <!-- end swiper-container --> 
+  <!-- end swiper-container -->
 </section>
 <!-- end slider -->
 <section class="featured-services">
   <div class="content-wrapper">
     <div class="container">
-      <?php $services = getHomeServices($conn); 
+      <?php $services = getHomeServices($conn);
         foreach ($services as $key => $service) {
-            extract($service);  
-            $bd = previewBody($body, 5);     
+            extract($service);
+            $bd = previewBody($body, 5);
        ?>
        <a <?php echo 'href=service?hid='.$hash_id.''; ?>>
-      <div class="content-box wow fadeIn"> 
+      <div class="content-box wow fadeIn">
         <h3><?php echo $title; ?></h3>
         <p>The only time you should move your vehicles after you get in a wreck is if not doing </p>
         <a <?php echo 'href=service?hid='.$hash_id.''; ?>><img src="images/icon-right-arrow.svg" alt="Image"></a> </div></a>
@@ -81,10 +81,10 @@ $home = getHome($conn); extract($home);
         <h3>tech solutions</h3>
         <p>Allowing word-of-mouth reporting from the other driver may not be the best idea</p>
         <a href="#"><img src="images/icon-right-arrow.svg" alt="Image"></a> </div> -->
-      <!-- end content-box --> 
+      <!-- end content-box -->
       <?php } ?>
     </div>
-    <!-- end container --> 
+    <!-- end container -->
   </div>
   <!-- end content-wrapper -->
 <!--   <div class="logos wow fadeIn">
@@ -100,9 +100,9 @@ $home = getHome($conn); extract($home);
         <li><img src="images/logo08.png" alt="Image"></li>
       </ul>
     </div> -->
-    <!-- end container --> 
+    <!-- end container -->
   <!-- </div> -->
-  <!-- end logos --> 
+  <!-- end logos -->
 </section>
 <!-- end featured-services -->
 <section class="image-content-box">
@@ -113,7 +113,7 @@ $home = getHome($conn); extract($home);
           <h2>development</h2>
           <h6>Because they may falsely report what happened wither<br> knowingly or simply due to confusion</h6>
         </div>
-        <!-- end section-title --> 
+        <!-- end section-title -->
       </div>
       <!-- end col-12 -->
       <div class="col-12">
@@ -134,48 +134,16 @@ $home = getHome($conn); extract($home);
           <h4>Motivation Mettings</h4>
           <p>Vehicles a full warning that something has happened and they need to.</p>
         </div>
-        <!-- end content-box --> 
+        <!-- end content-box -->
       </div>
-      <!-- end col-12 --> 
+      <!-- end col-12 -->
     </div>
-    <!-- end row --> 
+    <!-- end row -->
   </div>
-  <!-- end container --> 
+  <!-- end container -->
 </section>
 <!-- end image-content-box -->
-<section class="side-image-content moved-space" id="counter">
-  <div class="sides bg-image wow fadeIn" style="background:url(<?php echo $image_1; ?>); width: 100%; height: 1050px; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive">
-    <div class="video" style="background:url(<?php echo $image_1; ?>); width: 100%; height: 1050px; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive">
-      <!-- <video src="videos/video.mp4" loop autoplay muted></video> -->
-    </div>
-    <!-- end video --> 
-<!--     <a href="videos/video.mp4" class="play-btn" data-fancybox>
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
-      <path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
-      <circle class="video-play-circle" fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
-    </svg> -->
-    <span class="video-play-outline"></span> </a> </div>
-  <!-- end sides -->
-  <div class="sides bg-color wow fadeIn" data-background="#405089">
-    <div class="inner">
-      <div class="section-title light">
-        <h2>introduction</h2>
-        <!-- <h6>Do this for both directions of traffic if it’s<br> necessary. In busy traffic, this</h6> -->
-      </div>
-      <!-- end section-title -->
-<!--       <ul class="counter">
-        <li> <span class="odometer" id="1"></span><span class="symbol">+</span> <small>Underestate</small> </li>
-        <li> <span class="odometer" id="2"></span><span class="symbol">k</span> <small>Underestate</small> </li>
-        <li> <span class="odometer" id="3"></span><span class="symbol">%</span> <small>Underestate</small> </li>
-      </ul> -->
-      <p><?php echo $body; ?></p>
-<!--       <p>Take advantage of the <u>software</u> that can help turn your blogs into tweets and know when the best time of day is to connect with your base.</p> -->
-<!--       <img src="images/testimonial-name.png" alt="Image"> </div> -->
-    <!-- end inner --> 
-  </div>
-  <!-- end sides --> 
-</section>
+
 <!-- end side-image-content -->
 <section class="icon-content-box">
   <div class="container">
@@ -185,10 +153,10 @@ $home = getHome($conn); extract($home);
           <h2>CORE VALUES</h2>
           <h6>You should at least attempt to protect the<br> accident scene however you can.</h6>
         </div>
-        <!-- end section-title --> 
+        <!-- end section-title -->
       </div>
       <!-- end col-12 -->
-      
+
       <div class="col-12">
         <div class="content-box wow fadeIn">
           <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
@@ -197,7 +165,7 @@ $home = getHome($conn); extract($home);
                 <h4>analyses</h4>
                 <figure> <img src="images/icon01.png" alt="Image"> </figure>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
             <!-- end flip-box-front -->
             <div class="flip-box-back">
@@ -205,11 +173,11 @@ $home = getHome($conn); extract($home);
                   <h4>analyses</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
-            <!-- end end flip-box-back --> 
+            <!-- end end flip-box-back -->
           </div>
-          <!-- end flip-box --> 
+          <!-- end flip-box -->
         </div>
         <!-- end content-box -->
         <div class="content-box wow fadeIn">
@@ -219,7 +187,7 @@ $home = getHome($conn); extract($home);
                 <h4>marketting</h4>
                 <figure> <img src="images/icon02.png" alt="Image"> </figure>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
             <!-- end flip-box-front -->
             <div class="flip-box-back">
@@ -227,21 +195,21 @@ $home = getHome($conn); extract($home);
                   <h4>marketting</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
-            <!-- end end flip-box-back --> 
+            <!-- end end flip-box-back -->
           </div>
-          <!-- end flip-box -->   
+          <!-- end flip-box -->
        </div>
         <!-- end content-box -->
-        <div class="content-box wow fadeIn"> 
+        <div class="content-box wow fadeIn">
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
               <div class="inner"> <span>03</span>
                 <h4>presentation</h4>
                 <figure> <img src="images/icon03.png" alt="Image"> </figure>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
             <!-- end flip-box-front -->
             <div class="flip-box-back">
@@ -249,21 +217,21 @@ $home = getHome($conn); extract($home);
                   <h4>presentation</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
-            <!-- end end flip-box-back --> 
+            <!-- end end flip-box-back -->
           </div>
-          <!-- end flip-box --> 
+          <!-- end flip-box -->
           </div>
         <!-- end content-box -->
-        <div class="content-box wow fadeIn"> 
+        <div class="content-box wow fadeIn">
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
-              <div class="inner"> 
+              <div class="inner">
                 <h4>investment</h4>
                 <figure> <img src="images/icon04.png" alt="Image"> </figure>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
             <!-- end flip-box-front -->
             <div class="flip-box-back">
@@ -271,21 +239,21 @@ $home = getHome($conn); extract($home);
                   <h4>investment</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
-            <!-- end end flip-box-back --> 
+            <!-- end end flip-box-back -->
           </div>
-          <!-- end flip-box --> 
+          <!-- end flip-box -->
           </div>
         <!-- end content-box -->
-        <div class="content-box wow fadeIn"> 
+        <div class="content-box wow fadeIn">
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
               <div class="inner">
                 <h4>researches</h4>
                 <figure> <img src="images/icon05.png" alt="Image"> </figure>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
             <!-- end flip-box-front -->
             <div class="flip-box-back">
@@ -293,19 +261,19 @@ $home = getHome($conn); extract($home);
                   <h4>researches</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
-              <!-- end inner --> 
+              <!-- end inner -->
             </div>
-            <!-- end end flip-box-back --> 
+            <!-- end end flip-box-back -->
           </div>
-          <!-- end flip-box --> 
+          <!-- end flip-box -->
           </div>
-        <!-- end content-box --> 
+        <!-- end content-box -->
       </div>
-      <!-- end col-12 --> 
+      <!-- end col-12 -->
     </div>
-    <!-- end row --> 
+    <!-- end row -->
   </div>
-  <!-- end container --> 
+  <!-- end container -->
 </section>
 <!-- end icon-content-box -->
  <section class="image-content-over-box">
@@ -316,7 +284,7 @@ $home = getHome($conn); extract($home);
           <h2> Projects</h2>
           <h6>You can view our otstanding projects here.</h6>
         </div>
-        <!-- end section-title --> 
+        <!-- end section-title -->
       </div>
       <!-- end col-3 -->
       <div class="col-lg-8">
@@ -329,7 +297,7 @@ $home = getHome($conn); extract($home);
           ?>
             <div class="swiper-slide">
               <a <?php echo 'href=project?hid='.$hash_id.'';?>>
-              <figure> 
+              <figure>
                 <div style="background:url(<?php echo $image_1; ?>); height:50vh; width: 450px; background-size: cover;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
                 <figcaption>
                   <h4><?php echo $project_name; ?></h4>
@@ -378,25 +346,25 @@ $home = getHome($conn); extract($home);
                   <small>Business Constultation</small> </figcaption>
               </figure>
             </div> -->
-            <!-- end swiper-slide --> 
+            <!-- end swiper-slide -->
           </div>
           <!--end swiper-wrapper -->
           <div class="swiper-button-next"><img src="images/icon-right-arrow.svg" alt="Image"></div>
           <div class="swiper-button-prev"><img src="images/icon-right-arrow.svg" alt="Image"></div>
         </div>
-        <!-- end swiper-carousel --> 
+        <!-- end swiper-carousel -->
       </div>
-      <!-- end col-6 --> 
+      <!-- end col-6 -->
     </div>
   </div>
-  <!-- end container --> 
+  <!-- end container -->
 </section>
 <!-- end image-content-over-box -->
 
 <!-- end showcases -->
 <section class="testimonials">
   <div class="container">
-    <div class="section-title light wow fadeIn"> 
+    <div class="section-title light wow fadeIn">
       <h2>what peoples say !</h2>
     </div>
     <!-- end section-title -->
@@ -413,7 +381,7 @@ $home = getHome($conn); extract($home);
         <p>The seeds are produced by cones that grow on the tree’s branches. Redwood trees develop both male and female and male cones. </p>
       </blockquote>
       <img src="images/testimonial-name.png" alt="Image" class="name-sign"> <small>Ceo & Premium Board Member</small> </div>
-    <!-- end testimonial --> 
+    <!-- end testimonial -->
     </div>
     <!-- end swiper-slide -->
       <div class="swiper-slide">
@@ -425,7 +393,7 @@ $home = getHome($conn); extract($home);
         <p>The cones act as “incubators” for the seeds of the tree. The smaller male cones release pollen, which fertilizes the female </p>
       </blockquote>
       <img src="images/testimonial-name.png" alt="Image" class="name-sign"> <small>Ceo & Premium Board Member</small> </div>
-    <!-- end testimonial --> 
+    <!-- end testimonial -->
     </div>
     <!-- end swiper-slide -->
       <div class="swiper-slide">
@@ -437,7 +405,7 @@ $home = getHome($conn); extract($home);
         <p>After this pollen release, male cones are shed by the tree and drop to the forest floor. The pollinated female cones remain attached </p>
       </blockquote>
       <img src="images/testimonial-name.png" alt="Image" class="name-sign"> <small>Ceo & Premium Board Member</small></div>
-    <!-- end testimonial --> 
+    <!-- end testimonial -->
     </div>
     <!-- end swiper-slide -->
     </div>
@@ -458,18 +426,18 @@ $home = getHome($conn); extract($home);
           <h2>team members</h2>
           <h6>When the seeds reach maturity, the segments of<br> the cone open up and release</h6>
         </div>
-        <!-- end section-title --> 
+        <!-- end section-title -->
       </div>
-      <!-- end col-12 --> 
+      <!-- end col-12 -->
     </div>
-    <!-- end row --> 
+    <!-- end row -->
   </div>
   <!-- end container -->
   <div class="content-wrapper">
-    <?php $teams = getHomeTeam($conn); 
+    <?php $teams = getHomeTeam($conn);
       foreach ($teams as $key => $team) {
         extract($team);
-      
+
     ?>
     <figure class="member wow fadeIn"> <div style="background:url(<?php echo $image_1; ?>); width: 50vh; height: 50vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="fist-image"></div><!-- <img src=<?phpimage_1; ?> alt="Image" class="fist-image"> -->
      <img src="images/team01h.jpg" alt="Image" class="second-image">
@@ -542,9 +510,9 @@ $home = getHome($conn); extract($home);
         </ul>
       </figcaption>
     </figure> -->
-    <!-- end member --> 
+    <!-- end member -->
   </div>
-  <!-- end content-wrapper --> 
+  <!-- end content-wrapper -->
 </section>
 <!-- end team-members -->
 <section class="latest-news">
@@ -555,16 +523,16 @@ $home = getHome($conn); extract($home);
           <h2>Articles</h2>
           <h6>Read Some Of Our Articles Here</h6>
         </div>
-        <!-- end section-title --> 
+        <!-- end section-title -->
       </div>
       <!-- end col-12 -->
       <div class="col-12">
-        <?php $blogs = homeBlog($conn); 
+        <?php $blogs = homeBlog($conn);
           foreach ($blogs as $key => $blog) {
             extract($blog);
-            $bd = previewBody($body, 10); 
+            $bd = previewBody($body, 10);
           ?>
-        <div class="content-box wow fadeIn"> 
+        <div class="content-box wow fadeIn">
             <div style= "border-radius: 100px; padding: 0px; background:url(<?php echo $image_1; ?>); height:30vh; width: 30vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
           <h4><?php echo $title; ?></h4>
           <small><?php echo $date_created; ?></small>
@@ -572,11 +540,11 @@ $home = getHome($conn); extract($home);
            <a <?php echo 'href=blog-details?hid='.$hash_id.'';?>><img src="images/icon-right-arrow.svg" alt="Image"></a>  </div>
         <?php } ?>
       </div>
-      <!-- end col-12 --> 
+      <!-- end col-12 -->
     </div>
-    <!-- end row --> 
+    <!-- end row -->
   </div>
-  <!-- end container --> 
+  <!-- end container -->
 </section>
 <!-- end latest-news -->
 <!-- <section class="info-box">
@@ -595,7 +563,7 @@ $home = getHome($conn); extract($home);
           <h2>request form</h2>
           <h6>This moderate and humid climate provides<br> the massive amounts</h6>
         </div> -->
-        <!-- end section-title --> 
+        <!-- end section-title -->
      <!--  </div> -->
       <!-- end col-5 -->
 <!--       <div class="col-lg-7 wow fadeIn">
@@ -617,7 +585,7 @@ $home = getHome($conn); extract($home);
                 <option>Select</option>
               </select>
               <i class="fa fa-chevron-down"></i> </div> -->
-            <!-- end select-box --> 
+            <!-- end select-box -->
          <!--  </div> -->
           <!-- end form-group -->
 <!--           <div class="form-group col-md-4">
@@ -627,7 +595,7 @@ $home = getHome($conn); extract($home);
                 <option>Select</option>
               </select>
               <i class="fa fa-chevron-down"></i> </div> -->
-            <!-- end select-box --> 
+            <!-- end select-box -->
           <!-- </div> -->
           <!-- end form-group -->
 <!--           <div class="form-group col-md-4">
@@ -637,7 +605,7 @@ $home = getHome($conn); extract($home);
                 <option>Select</option>
               </select>
               <i class="fa fa-chevron-down"></i> </div> -->
-            <!-- end select-box --> 
+            <!-- end select-box -->
           <!-- </div> -->
           <!-- end form-group -->
 <!--           <div class="form-group col-md-3">
@@ -665,7 +633,7 @@ $home = getHome($conn); extract($home);
                 <option>Select</option>
               </select>
               <i class="fa fa-chevron-down"></i> </div> -->
-            <!-- end select-box --> 
+            <!-- end select-box -->
          <!--  </div> -->
           <!-- end form-group -->
 <!--           <div class="form-group col-md-4">
@@ -674,13 +642,13 @@ $home = getHome($conn); extract($home);
           </div> -->
           <!-- end form-group -->
         <!-- </form> -->
-        <!-- end form --> 
+        <!-- end form -->
       </div>
-      <!-- end col-7 --> 
+      <!-- end col-7 -->
     </div>
-    <!-- end row --> 
+    <!-- end row -->
   </div>
-  <!-- end container --> 
+  <!-- end container -->
 </section>
 <!-- end consultation-form -->
 <?php include "includes/footer.php"; ?>
