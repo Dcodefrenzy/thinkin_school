@@ -19,9 +19,9 @@ if(array_key_exists('submit', $_POST)){
   if(empty($_POST['title'])){
     $error['title']="Enter a Title";
   }
-  if(empty($_POST['author'])){
+/*  if(empty($_POST['author'])){
     $error['author']="Enter a Author";
-  }
+  }*/
   if(empty($_POST['body'])){
     $error['body']="Enter a body";
   }
@@ -63,9 +63,6 @@ if(array_key_exists('submit', $_POST)){
               <label class="control-label">Article Title</label><?php $display = displayErrors($error, 'title');
               echo $display ?> <input class="form-control input-md" name="title" placeholder="Write a suitable title for your article" value="<?php echo $edit_info['title']      ?>"  type="text">
             </div>
-            <div class="form-group mb30">
-              <label class="control-label">Author Name</label><?php $display = displayErrors($error, 'author');
-              echo $display ?> <input class="form-control input-md" name="author" placeholder="Enter your fullname here" value="<?php echo $edit_info['author']      ?>"  type="text">
               <div class="form-group mb30">
                 <label class="control-label" for="textarea">Body</label>
                 <?php $display = displayErrors($error, 'body');

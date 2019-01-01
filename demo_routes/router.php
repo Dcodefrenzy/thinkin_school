@@ -202,6 +202,7 @@ switch ($uri[1]) {
   case "delete-user?id=$id":
   include APP_PATH."/demo_views/admin/delete_user.php";
   break;
+  
   case "delete-client?id=$id":
   include APP_PATH."/demo_views/admin/delete_client.php";
   break;

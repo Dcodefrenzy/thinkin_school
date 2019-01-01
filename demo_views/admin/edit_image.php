@@ -42,10 +42,12 @@ if(array_key_exists('submit', $_POST)){
       } ?>
       <div class="col-sm-12 col-md-10 col-md-offset-1">
         <div class="page-ads box">
-          <?php if($_GET['t'] == "event"){ ?>
+          <?php if($_GET['t'] == "events"){ ?>
             <h2 class="title-2"><?php echo $edit_info['event_name']  ?></h2>
           <?php }elseif ($_GET['t']== "project") {?>
              <h2 class="title-2"><?php echo $edit_info['project_name']  ?></h2>
+           <?php }elseif ($_GET['t']== "training") {?>
+             <h2 class="title-2"><?php echo $edit_info['name']  ?></h2>
           <?php }elseif ($_GET['t']== "about") {?>
              <h2 class="title-2"><?php echo "About Us"  ?></h2>
            <?php }elseif($_GET['t']=="views") {?>
