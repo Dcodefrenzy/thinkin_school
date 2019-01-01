@@ -140,7 +140,7 @@ function viewSubCategories($dbconn){
     echo "<td>".$sub_category_id."</td>";
     echo "<td>".$category_id."</td>";
     echo "<td>".$sub_category_name."</td>";
-    echo "<td>".$date_created."</td>";
+    echo "<td>".$date("d, F, Y", strtotime($date_created))."</td>";
     $red = preg_replace('/\s+/', '_', $sub_category_name);
     echo "<td><a href=\"editSubCategory?id=".$hash_id."\">edit</a></td>";
     echo "<td><a href=\"deleteSubCategory?id=".$hash_id."\">delete</a></td>";
@@ -158,7 +158,7 @@ function viewCategories($dbconn){
     echo "<tr>";
     echo "<td>".$category_id."</td>";
     echo "<td>".$category_name."</td>";
-    echo "<td>".$date_created."</td>";
+    echo "<td>".$date("d, F, Y", strtotime($date_created))."</td>";
     $red = preg_replace('/\s+/', '_', $category_name);
     echo "<td><a href=\"editCategory?id=".$hash_id."\">edit</a></td>";
     echo "<td><a href=\"deleteCategory?id=".$hash_id."\">delete</a></td>";
@@ -579,9 +579,9 @@ header("Location:cart");
 
 
 function displayErrorsUser($dummy, $what) {
-  $result = "";
+  $result = [];
+  if(isset($dummy[$what])) {"";
 
-  if(isset($dummy[$what])) {
 
     $result = '<p class="form-error">'. $dummy[$what]. '</p>';
 
@@ -1750,6 +1750,16 @@ try {
 function getHomeTeam($dbconn){
   $result = [];
   $stmt = $dbconn->prepare("SELECT * FROM admin LIMIT 8");
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    $result [] = $row;
+  }
+  return $result;
+}
+
+function getHomeFront($dbconn){
+  $result = [];
+  $stmt = $dbconn->prepare("SELECT * FROM front LIMIT 5");
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     $result [] = $row;

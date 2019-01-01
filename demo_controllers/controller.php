@@ -161,7 +161,7 @@ function compressImage($files, $name, $quality, $upDIR ) {
     imagejpeg($image, $destination_url, $quality);
     return $destination_url;
 }
-function addFrontage($dbconn,$post,$destination,$sess){
+/*function addFrontage($dbconn,$post,$destination,$sess){
   try{
   $stmt = $dbconn->prepare("INSERT INTO frontage VALUES(NULL, :ht,:txt,:img,NOW(),NOW(),:sess)");
   $data = [
@@ -175,11 +175,11 @@ function addFrontage($dbconn,$post,$destination,$sess){
 catch(PDOException $e){
   die("Something Went Wrong");
 
-}
-  $success = "Frontage Info Added";
+}*/
+/*  $success = "Frontage Info Added";
   $succ = preg_replace('/\s+/', '_', $success);
   header("Location:/manageViews?success=$succ");
-}
+}*/
 
 
 
@@ -514,13 +514,38 @@ catch(PDOException $e){
   header("Location:/manage-views?success=$succ");
 }
 
+function addFrontage($dbconn,$post,$destn,$sess){
+  try{
+  $rnd = rand(0000000000,9999999999);
+  $id = $rnd."frontage";
+  $hash_id = $id;
+  $stmt = $dbconn->prepare("INSERT INTO front VALUES(NULL, :ti,:bd, :img1,:sess,NOW(),NOW(),:hsh)");
+  $data = [
+    ':bd' => $post['body'],
+    ':ti' => $post['title'],
+    ':img1' => $destn['a'],
+    ':sess' => $sess,
+    ':hsh' => $hash_id
+  ];
+  $stmt->execute($data);
+}
+catch(PDOException $e){
+  die("Something Went Wrong");
+
+}
+  logs($dbconn, 'added', $post['body'],'about',$sess);
+  $success = "Grant Post Uploaded";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location:/manage-frontage?success=$succ");
+}
+
 function addTraining($dbconn,$post,$destination,$sess){
   try{
   $rnd = rand(0000000000,9999999999);
   $split = explode(" ",$post['name']);
   $id = $rnd.cleans($split['0']);
   $hash_id = str_shuffle($id.'training');
-  $stmt = $dbconn->prepare("INSERT INTO training VALUES(NULL, :ht, :ve, :txt, :img, :sta, :price, :std, :timed,:endd, :sess, NOW(),NOW(),:hid)");
+  $stmt = $dbconn->prepare("INSERT INTO training VALUES(NULL, :ht, :ve, :txt, :sta, :price, :img, :sess, :std, :endd, :timed,  NOW(),NOW(),:hid)");
   $data = [
     ':ht' => $post['name'],
     ':ve' => $post['venue'],
@@ -817,10 +842,8 @@ function editServices($dbconn,$post,$gid){
   header("Location:/manage-services?success=$succ");
 }
 function editCategory($dbconn,$post,$gid){
-/*    $rnd = rand(0000000000,9999999999);
-  $id = $rnd.cleans($post['category']);
-  $hash_id = $id;*/
-  $stmt = $dbconn->prepare("UPDATE category SET category_name=:tt,  WHERE hash_id=:hid");
+
+  $stmt = $dbconn->prepare("UPDATE category SET category_name=:tt  WHERE hash_id=:hid");
   $stmt->bindParam(":tt", $post['category']);
   $stmt->bindParam(":hid", $gid);
   $stmt->execute();
@@ -906,6 +929,22 @@ function editViews($dbconn,$post,$hid,$gid){
   header("Location:/manage-views?success=$succ");
 }
 
+function editFrontage($dbconn,$post,$hid,$gid){
+  $stmt = $dbconn->prepare("UPDATE front SET title=:ti, body=:bd, created_by=:eb WHERE hash_id=:hid");
+  $stmt->bindParam(":bd", $post['body']);
+  $stmt->bindParam(":ti", $post['title']);
+  $stmt->bindParam(":eb", $hid);
+  $stmt->bindParam(":hid", $gid);
+  $stmt->execute();
+  if(isset($_SESSION['id'])){
+    $sess = $_SESSION['id'];
+  }
+  logs($dbconn, 'edited', $post['body'],'about',$sess);
+  $success = "edited Successfully";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location:/manage-frontage?success=$succ");
+}
+
 function editInsight($dbconn,$post,$gid){
   try{
   $stmt = $dbconn->prepare("UPDATE insight SET title=:tt,author=:at, category=:au, body=:bd WHERE hash_id=:hid");
@@ -939,7 +978,7 @@ function setLevel($dbconn,$post,$gid){
   logs($dbconn, 'edited', $post,'admin level'.' for '.$gid,$sess);
   $success = "Level Successfully";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/viewUsers?success=$succ");
+  header("Location:/view-users?success=$succ");
 }
 function editContent($dbconn,$post,$gid,$tb){
   try{
@@ -1011,14 +1050,14 @@ function getEditInfo($dbconn,$get,$tb){
   return $result;
 }
 function frontageDetail($db,$get){
-  $stmt= $db->prepare("SELECT * FROM frontage WHERE id=:id");
+  $stmt= $db->prepare("SELECT * FROM front WHERE id=:id");
   $stmt -> bindParam(":id", $get['id']);
   $stmt->execute();
   while($record = $stmt->fetch(PDO::FETCH_BOTH)){
     return $record;
   }
 }
-function viewFrontage($db){
+function views($db){
 
   $stmt= $db->prepare("SELECT * FROM views");
 
@@ -1041,10 +1080,47 @@ function viewFrontage($db){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-views?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+      </td>
+      </tr>';
+  }
+}
+function viewFrontage($db){
+
+  $stmt= $db->prepare("SELECT * FROM front");
+
+  $stmt->execute();
+
+
+  while($row = $stmt->fetch()){
+        extract($row);
+    $bd = previewBody($body, 20);
+          echo '<td class="ads-img-td">     
+      '.$title.'
+      </td>
+      <td class="ads-img-td"> 
+      <a href="view-body?id='.$id.'&t=about"><p>'.$bd.'</p></a>
+      </td>
+        <td class="add-img-td">
+        <a href="edit-image?id='.$hash_id.'&t=front">
+        <img class="img-responsive" src="'.$image_1.'">
+        </a>
+      </td>
+
+      <td class="add-img-td">
+      '.$created_by.'
+      </td>
+      <td class="add-img-td">
+      '.date("d, F, Y", strtotime($date_created)).'
+      </td>
+      <td class="ads-details-td">
+      <a href="edit-frontage?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+      </td>
+      <td class="ads-details-td">
+      <a href="delete-frontage?id='.$hash_id.'&t=front""><button class="btn btn-danger btn-sm" type="submit">Delete</button></a>
       </td>
       </tr>';
   }
@@ -1055,7 +1131,7 @@ function deleteFrontage($db, $get){
   $img = $image;
 
 
-  $stmt= $db->prepare("DELETE FROM frontage WHERE id=:id");
+  $stmt= $db->prepare("DELETE FROM front WHERE id=:id");
 
   $stmt -> bindParam(":id", $get['id']);
 
@@ -1121,6 +1197,9 @@ function editImage($dbconn,$destn,$del,$get,$tb){
   if($tb == "events"){
     header("location:view-events");
   }
+    if($tb == "training"){
+    header("location:manage-trainings");
+  }
     if($tb == "services"){
     header("location:manage-services");
   }
@@ -1129,6 +1208,9 @@ function editImage($dbconn,$destn,$del,$get,$tb){
   }
 if($tb == "views"){
     header("location:manage-views");
+  }
+  if($tb == "front"){
+    header("location:manage-frontage");
   }
 }
 function previewBody($string, $count){
@@ -1162,7 +1244,7 @@ function getServicesView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime(date("d, F, Y", strtotime($date_created)))).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1200,7 +1282,7 @@ function getServicesView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1231,7 +1313,7 @@ function getServicesView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1265,7 +1347,7 @@ function getCategoryView($dbconn,$get){
       '.$hash_id.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-category?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -1286,7 +1368,7 @@ function getCategoryView($dbconn,$get){
       '.$hash_id.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editCategory?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -1307,7 +1389,7 @@ function getCategoryView($dbconn,$get){
       '.$hash_id.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <p>You cannnot perform this action</p>
@@ -1345,7 +1427,7 @@ function PgetServicesView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1385,7 +1467,7 @@ function PgetServicesView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1416,7 +1498,7 @@ function PgetServicesView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1449,7 +1531,7 @@ function PgetCategoryView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-category?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -1466,7 +1548,7 @@ function PgetCategoryView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-category?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -1484,7 +1566,7 @@ function PgetCategoryView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <p>You cannnot perform this action</p>
@@ -1523,7 +1605,7 @@ function getProject($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-project?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -1552,7 +1634,7 @@ function getProject($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-project?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -1596,7 +1678,7 @@ function getProject($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1640,7 +1722,7 @@ function PgetProject($dbconn, $get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-project?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -1668,7 +1750,7 @@ function PgetProject($dbconn, $get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-project?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -1704,7 +1786,7 @@ function PgetProject($dbconn, $get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       </tr>';
     }
@@ -1737,7 +1819,7 @@ function getCampusNewsView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1779,7 +1861,7 @@ function getCampusNewsView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1815,7 +1897,7 @@ function getCampusNewsView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1861,7 +1943,7 @@ function PgetCampusNewsView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1903,7 +1985,7 @@ function PgetCampusNewsView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1939,7 +2021,7 @@ function PgetCampusNewsView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -1999,7 +2081,7 @@ function getAdmin($dbconn){
     <a href="setLevel?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Set Level</button></a>
     </td>
     <td class="price-td">
-    <a href="deleteUser?id='.$hash_id.'">
+    <a href="delete-user?id='.$hash_id.'">
     <button class="btn btn-danger btn-sm" type="submit">Delete</button>
     </a>
     </td>
@@ -2154,7 +2236,7 @@ function getArticleView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2194,7 +2276,7 @@ function getArticleView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2227,7 +2309,7 @@ function getArticleView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2270,7 +2352,7 @@ function PgetArticleView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2310,7 +2392,7 @@ function PgetArticleView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2343,7 +2425,7 @@ function PgetArticleView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2387,7 +2469,7 @@ function getInsightView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2429,7 +2511,7 @@ function getInsightView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2464,7 +2546,7 @@ function getInsightView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2509,7 +2591,7 @@ function PgetInsightView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2551,7 +2633,7 @@ function PgetInsightView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2586,7 +2668,7 @@ function PgetInsightView($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -2641,7 +2723,7 @@ function getEvent($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editEvent?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -2670,7 +2752,7 @@ function getEvent($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editContent?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -2697,7 +2779,7 @@ function getEvent($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <p>You cannot Perform This Action</p>
@@ -2733,7 +2815,7 @@ function PgetEvent($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editEvent?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -2762,7 +2844,7 @@ function PgetEvent($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editContent?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -2789,7 +2871,7 @@ function PgetEvent($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <p>You cannot Perform This Action</p>
@@ -2826,7 +2908,7 @@ function getAbout($dbconn, $get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-about?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -2844,7 +2926,7 @@ function getAbout($dbconn, $get){
       '.$last_edited_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-about?id='.$id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -2862,7 +2944,7 @@ function getAbout($dbconn, $get){
       '.$last_edited_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <p>You cannot Perform This Action</p>
@@ -2950,7 +3032,7 @@ function getEvents($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-events?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -2998,7 +3080,7 @@ function getEvents($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editProduct?id='.$hash_id.'&t='.$tb.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -3029,7 +3111,7 @@ function getEvents($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <p>You cannot perform this action</p>
@@ -3085,7 +3167,7 @@ function getTrainings($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="edit-trainings?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -3131,7 +3213,7 @@ function getTrainings($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editProduct?id='.$hash_id.'&t='.$tb.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -3162,7 +3244,7 @@ function getTrainings($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <p>You cannot perform this action</p>
@@ -3209,7 +3291,7 @@ function PgetProduct($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editProduct?id='.$hash_id.'&t='.$tb.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -3245,7 +3327,7 @@ function PgetProduct($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <a href="editProduct?id='.$hash_id.'&t='.$tb.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
@@ -3276,7 +3358,7 @@ function PgetProduct($dbconn,$tb,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="ads-details-td">
       <p>You cannot perform this action</p>
@@ -3316,7 +3398,7 @@ function getLog($dbconn){
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
     $adminInfo =   adminInfo($dbconn,$action_by);
-    echo "<tr><td>A content with title \"$content\" was <strong>$type</strong> in category of $category by <strong>".$adminInfo['firstname'].' '.$adminInfo['lastname']."</strong></td><td>$time_created</td><td>$date_created</td></tr>";
+    echo "<tr><td>A content with title \"$content\" was <strong>$type</strong> in category of $category by <strong>".$adminInfo['firstname'].' '.$adminInfo['lastname']."</strong></td><td>$time_created</td><td>'".$adminInfo['date_created']."'</td></tr>";
   }
 }
 function deleteArticle($dbconn,$img,$hid){
@@ -3530,7 +3612,7 @@ function getServiceOrder($dbconn, $get){
       '.$service_id.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$time_created.'
@@ -3561,7 +3643,7 @@ function getServiceOrder($dbconn, $get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -3596,7 +3678,7 @@ function getServiceOrder($dbconn, $get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -3641,7 +3723,7 @@ function Pget($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -3683,7 +3765,7 @@ function Pget($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -3718,7 +3800,7 @@ function Pget($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -3760,7 +3842,7 @@ function getQuote($dbconn, $get){
       '.$quantity.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$time_created.'
@@ -3802,7 +3884,7 @@ function PgetQuote($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -3844,7 +3926,7 @@ function PgetQuote($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'
@@ -3879,7 +3961,7 @@ function PgetQuote($dbconn,$get){
       '.$created_by.'
       </td>
       <td class="add-img-td">
-      '.$date_created.'
+      '.date("d, F, Y", strtotime($date_created)).'
       </td>
       <td class="add-img-td">
       '.$visibility.'

@@ -99,7 +99,7 @@
          
           <div class="post-content">
         <h4><?php echo $title; ?></h4>
-          <small>Written By <?php echo $author.",  Published On ".$date_created; ?></small>
+          <small>Written By <?php echo $author.",  Published On ".date("d, F, Y", strtotime($date_created)); ?></small>
           <p><?php echo $bd; ?></p>
           <a <?php echo 'href=blog-details?hid='.$hash_id.'';?>><img src="images/icon-right-arrow.svg" alt="Image"></a>
          	</div>

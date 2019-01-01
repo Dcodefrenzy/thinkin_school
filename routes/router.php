@@ -270,6 +270,10 @@ switch ($uri[1]) {
   include APP_PATH."/thinking_views/events.php";
   break;
 
+  case "event":
+  include APP_PATH."/thinking_views/events.php";
+  break;
+
 
   case "training-details?hid=$hid":
   include APP_PATH."/thinking_views/training_details.php";

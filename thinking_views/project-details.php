@@ -30,7 +30,7 @@
          	<div class="post-content">
 
           <h4><?php echo $project_name; ?></h4>
-          <small><?php echo $date_created; ?></small>
+          <small><?php echo date("d, F, Y", strtotime($date_created)); ?></small>
           <small><?php echo $project_location; ?></small>
           <ul class="social-share">
 			<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>

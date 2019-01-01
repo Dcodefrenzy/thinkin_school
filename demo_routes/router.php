@@ -202,6 +202,7 @@ switch ($uri[1]) {
   case "delete-user?id=$id":
   include APP_PATH."/demo_views/admin/delete_user.php";
   break;
+  
   case "delete-client?id=$id":
   include APP_PATH."/demo_views/admin/delete_client.php";
   break;
@@ -419,6 +420,29 @@ switch ($uri[1]) {
   case "manage-views?success=$success":
   include APP_PATH."/demo_views/admin/manage_views.php";
   break;
+
+  case "add-frontage":
+  include APP_PATH."/demo_views/admin/add_frontage.php";
+  break;
+
+  case "manage-frontage":
+  include APP_PATH."/demo_views/admin/manage_frontage.php";
+  break;
+
+  case "manage-frontage?success=$success":
+  include APP_PATH."/demo_views/admin/manage_frontage.php";
+  break;
+
+  case "edit-frontage?id=$id":
+  include APP_PATH."/demo_views/admin/edit_frontage.php";
+  break;
+
+
+  case "delete-frontage?id=$id&t=$t":
+  include APP_PATH."/demo_views/admin/delete_frontage.php";
+  break;
+
+  
 
   case "add-about?success=$success":
   include APP_PATH."/demo_views/admin/add_about.php";
