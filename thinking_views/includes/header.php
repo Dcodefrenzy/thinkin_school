@@ -57,7 +57,7 @@
 </div> -->
 <!-- end search-box -->
 <aside class="sandwich-menu">
-  <h1>Thinking school</h1>
+  <h4>Thinking school</h4>
 <!--   <div class="logo"> <img src="images/logo.png" alt="Image"> </div> -->
   <!-- end logo -->
       <ul class="nav-menu">

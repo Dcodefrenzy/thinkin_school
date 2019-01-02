@@ -42,14 +42,15 @@ extract($training);
           <small><?php echo $start_date." <b>-</b> ".$end_date; ?></small>
           <small><?php echo "<b>Time:</b> ".$training_time; ?></small>
           <p><?php echo $description; ?></p>
-                   <div class="form-group col-md-4">
-            <label>&nbsp;</label>
-             <a <?php echo 'href=book?hid='.$hash_id.'&&t=training';?>>
-            <input type="submit" value="Book Event" name="submit">
-            </a>
-          </div>
+
 <!--           <a href="news-single.html"><img src="images/icon-right-arrow.svg" alt="Image"></a> -->
          	</div>
+          <div class="form-group col-md-4">
+   <label>&nbsp;</label>
+    <a <?php echo 'href=book?hid='.$hash_id.'&&t=training';?>>
+   <input type="submit" value="Book Event" name="submit">
+   </a>
+ </div>
          	<!-- end post-content -->
          </div>
          <!-- end post -->
@@ -116,8 +117,8 @@ extract($training);
                 <li>
                  <div style= "border-radius: 100px; padding: 0px; background:url(<?php echo $image_1; ?>); height:10vh; width: 10vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
                 </li>
-                <span><b>Title:</b> <?php echo $title; ?></span><br/>
-                <span><b>Date:</b> <?php echo $date_created; ?></span><br/>
+                <span><?php echo $title; ?></span><br/>
+                <span><?php echo $date_created; ?></span><br/>
                 </a>
               </ul>
                <?php } ?>

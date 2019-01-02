@@ -17,7 +17,7 @@ $home = getHome($conn); extract($home);
             <h2 data-swiper-parallax="200"><span>.</span><?php echo $title; ?></h2>
             <p data-swiper-parallax="300"><?php echo $body; ?></p>
             <div class="clearfix"></div>
-            <a href="about" data-swiper-parallax="200">Discover More<span></span></a> </div>
+            <!-- <a href="about" data-swiper-parallax="200">Discover More<span></span></a> </div> -->
           <!-- end container -->
         </div>
         <!-- end slide-inner -->
@@ -162,7 +162,7 @@ $home = getHome($conn); extract($home);
           <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
               <div class="inner"> <span>01</span>
-                <h4>analyses</h4>
+                <h4>Analysis</h4>
                 <figure> <img src="images/icon01.png" alt="Image"> </figure>
               </div>
               <!-- end inner -->
@@ -170,7 +170,7 @@ $home = getHome($conn); extract($home);
             <!-- end flip-box-front -->
             <div class="flip-box-back">
               <div class="inner">
-                  <h4>analyses</h4>
+                  <h4>Analysis</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
               <!-- end inner -->
@@ -184,7 +184,7 @@ $home = getHome($conn); extract($home);
      <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
               <div class="inner"> <span>02</span>
-                <h4>marketting</h4>
+                <h4>Marketting</h4>
                 <figure> <img src="images/icon02.png" alt="Image"> </figure>
               </div>
               <!-- end inner -->
@@ -192,7 +192,7 @@ $home = getHome($conn); extract($home);
             <!-- end flip-box-front -->
             <div class="flip-box-back">
               <div class="inner">
-                  <h4>marketting</h4>
+                  <h4>Marketting</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
               <!-- end inner -->
@@ -206,7 +206,7 @@ $home = getHome($conn); extract($home);
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
               <div class="inner"> <span>03</span>
-                <h4>presentation</h4>
+                <h4>Presentation</h4>
                 <figure> <img src="images/icon03.png" alt="Image"> </figure>
               </div>
               <!-- end inner -->
@@ -214,7 +214,7 @@ $home = getHome($conn); extract($home);
             <!-- end flip-box-front -->
             <div class="flip-box-back">
               <div class="inner">
-                  <h4>presentation</h4>
+                  <h4>Presentation</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
               <!-- end inner -->
@@ -227,8 +227,8 @@ $home = getHome($conn); extract($home);
         <div class="content-box wow fadeIn">
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
-              <div class="inner">
-                <h4>investment</h4>
+              <div class="inner"><span>04</span>
+                <h4>Investment</h4>
                 <figure> <img src="images/icon04.png" alt="Image"> </figure>
               </div>
               <!-- end inner -->
@@ -236,7 +236,7 @@ $home = getHome($conn); extract($home);
             <!-- end flip-box-front -->
             <div class="flip-box-back">
               <div class="inner">
-                  <h4>investment</h4>
+                  <h4>Investment</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
               <!-- end inner -->
@@ -249,7 +249,7 @@ $home = getHome($conn); extract($home);
         <div class="content-box wow fadeIn">
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
-              <div class="inner">
+              <div class="inner"><span>05</span>
                 <h4>Researches</h4>
                 <figure> <img src="images/icon05.png" alt="Image"> </figure>
               </div>
@@ -258,7 +258,7 @@ $home = getHome($conn); extract($home);
             <!-- end flip-box-front -->
             <div class="flip-box-back">
               <div class="inner">
-                  <h4>researches</h4>
+                  <h4>Researches</h4>
                   <p>Instead of giving up immediately, go back to the drawing doesn't something need.</p>
               </div>
               <!-- end inner -->
