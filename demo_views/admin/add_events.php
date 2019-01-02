@@ -26,10 +26,16 @@ if(array_key_exists('submit', $_POST)){
     if(empty($_POST['venue'])){
     $error['venue']="Enter a Venue";
   }
-  
+
   if(empty($_POST['price'])){
     $error['price']="Enter a Price";
   }
+  if($_POST['price'] !== "FREE"){
+    if(!is_numeric($_POST['price'])){
+      $error['price']="Enter Only Numeric Values or FREE";
+    }
+  }
+
   if(empty($_POST['description'])){
     $error['description']="Enter a description";
   }
@@ -39,9 +45,14 @@ if(array_key_exists('submit', $_POST)){
       if(empty($_POST['end_date'])){
     $error['end_date']="Enter a end date";
   }
+  if($_POST['start_date'] > $_POST['end_date'] ){
+    $error['end_date'] =  "Ending Date can not be earlier than starting Date";
+  }
       if(empty($_POST['time'])){
     $error['time']="Enter a time";
   }
+
+
   if(empty($error)){
      $_POST['status'] = "upcoming";
     $ver['a'] = compressImage($_FILES,'upload',90, 'uploads/' );
@@ -93,8 +104,8 @@ if(array_key_exists('submit', $_POST)){
 echo $display ?> <input class="form-control input-md" name="event_name" placeholder="Write a Event name"  type="text">
 </div>
 <div class="form-group mb30">
-<label class="control-label">Price</label><?php $display = displayErrors($error, 'price');
-echo $display ?> <input class="form-control input-md" name="price" placeholder="Enter News price here"  type="number">
+<label class="control-label">Price(Enter "FREE" if the event is free)</label><?php $display = displayErrors($error, 'price');
+echo $display ?> <input class="form-control input-md" name="price" placeholder="Enter event price here"  type="text">
 </div>
 <div class="form-group mb30">
 <label class="control-label">venue</label><?php $display = displayErrors($error, 'venue');
@@ -102,11 +113,12 @@ echo $display ?> <input class="form-control input-md" name="venue" placeholder="
 </div>
 <div class="form-group mb30">
 <label class="control-label">Start Date</label><?php $display = displayErrors($error, 'start_date');
-echo $display ?> <input class="form-control input-md" name="start_date" placeholder="format: December/10/2018"  type="text">
+echo $display ?> <input class="form-control input-md" name="start_date"   type="date">
 </div>
+
 <div class="form-group mb30">
 <label class="control-label">End Date</label><?php $display = displayErrors($error, 'end_date');
-echo $display ?> <input class="form-control input-md" name="end_date" placeholder="format: December/10/2018"  type="text">
+echo $display ?> <input class="form-control input-md" name="end_date"   type="date">
 </div>
 <div class="form-group mb30">
 <label class="control-label">Time</label><?php $display = displayErrors($error, 'time');

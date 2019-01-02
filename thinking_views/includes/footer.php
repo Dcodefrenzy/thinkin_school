@@ -3,12 +3,12 @@
     <div class="container">
       <div class="content-box wow fadeIn"> <img src="images/footer-icon01.png" alt="Image">
         <h3>address infos</h3>
-        <p>Boryssa Himry 124 B Block Pozniaky IvanaFrankovsk - Ukraine</p>
+        <p>Basiri Old sss, Ado Ekiti</p>
       </div>
       <!-- end content-box -->
       <div class="content-box wow fadeIn"> <img src="images/footer-icon02.png" alt="Image">
         <h3>working hours</h3>
-        <p>Monday to Friday 09:00 to 18:30 and Saturday we work until 15:30</p>
+        <p>Monday to Friday 09:00 to 6:30 and Saturday we work until 12:30</p>
       </div>
       <!-- end content-box -->
       <div class="content-box wow fadeIn"> <img src="images/footer-icon03.png" alt="Image">

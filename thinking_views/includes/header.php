@@ -210,7 +210,7 @@
         <li><a href="#">RU</a></li>
       </ul> -->
       <!-- end language -->
-      <div class="search-btn"> <i class="fa fa-search"></i> </div>
+      <!-- <div class="search-btn"> <i class="fa fa-search"></i> </div> -->
       <!-- end search-btn -->
       <div class="sandwich-btn"> <span></span> <span></span> <span></span> </div>
       <!-- end sandwich-btn -->

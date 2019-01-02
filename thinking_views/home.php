@@ -110,7 +110,7 @@ $home = getHome($conn); extract($home);
     <div class="row">
       <div class="col-12 wow fadeIn">
         <div class="section-title">
-          <h2>development</h2>
+          <h2>Development</h2>
           <h6>Because they may falsely report what happened wither<br> knowingly or simply due to confusion</h6>
         </div>
         <!-- end section-title -->
@@ -250,7 +250,7 @@ $home = getHome($conn); extract($home);
       <div class="flip-box" data-flip-direction="horizontal-to-left" data-h_text_align="left" data-v_text_align="center">
             <div class="flip-box-front" data-bg-overlay="true" data-text-color="light">
               <div class="inner">
-                <h4>researches</h4>
+                <h4>Researches</h4>
                 <figure> <img src="images/icon05.png" alt="Image"> </figure>
               </div>
               <!-- end inner -->
@@ -380,7 +380,7 @@ $home = getHome($conn); extract($home);
 
         <p>The seeds are produced by cones that grow on the tree’s branches. Redwood trees develop both male and female and male cones. </p>
       </blockquote>
-      <img src="images/testimonial-name.png" alt="Image" class="name-sign"> <small>Ceo & Premium Board Member</small> </div>
+      <img src="images/testimonial-name.png" alt="Image" class="name-sign"> <small> Mckodev</small> </div>
     <!-- end testimonial -->
     </div>
     <!-- end swiper-slide -->

@@ -16,6 +16,99 @@ function displaySubCategory($dbconn, $id){
   return $result;
 }
 
+function decodeDate($date){
+  $split = explode('-',$date);
+  $month = $split[1];
+  $day = $split[2];
+  $year = $split[0];
+  if($month == 1 ){
+    $month = "January";
+  }
+  if($month == 2 ){
+    $month = "February";
+  }
+  if($month == 3 ){
+    $month = "March";
+  }
+  if($month == 4){
+    $month = "April";
+  }
+  if($month == 5){
+    $month = "May";
+  }
+  if($month == 6 ){
+    $month = "June";
+  }
+  if($month == 7 ){
+    $month = "July";
+  }
+  if($month == 8 ){
+    $month = "August";
+  }
+  if($month == 9 ){
+    $month = "September";
+  }
+  if($month == 10 ){
+    $month = "October";
+  }
+  if($month == 11 ){
+    $month = "November";
+  }
+  if($month == 12 ){
+    $month = "December";
+  }
+  $newDate = $month.' '.$day.', '.$year;
+  return $newDate;
+}
+
+function decodePartDate($date){
+  $split = explode('-',$date);
+  $month = $split[1];
+  $day = $split[2];
+  $year = $split[0];
+  if($month == 1 ){
+    $month = "January";
+  }
+  if($month == 2 ){
+    $month = "February";
+  }
+  if($month == 3 ){
+    $month = "March";
+  }
+  if($month == 4){
+    $month = "April";
+  }
+  if($month == 5){
+    $month = "May";
+  }
+  if($month == 6 ){
+    $month = "June";
+  }
+  if($month == 7 ){
+    $month = "July";
+  }
+  if($month == 8 ){
+    $month = "August";
+  }
+  if($month == 9 ){
+    $month = "September";
+  }
+  if($month == 10 ){
+    $month = "October";
+  }
+  if($month == 11 ){
+    $month = "November";
+  }
+  if($month == 12 ){
+    $month = "December";
+  }
+  $newDate['month'] = $month;
+  $newDate['day'] = $day;
+  $newDate['year'] = $year;
+
+  return $newDate;
+}
+
 function displayCategories($dbconn){
   $stmt =$dbconn->prepare("SELECT * FROM category");
   $stmt->execute();
