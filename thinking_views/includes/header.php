@@ -100,11 +100,8 @@
         </ul></li>';
 
         }else{
-          echo '<li><a href="user-registration">Sign-Up</a>
-        <ul class="dropdown">
-           <li><a href="user-login">Login</a></li>
-          </ul>
-          </li>';
+          echo '<li><a href="user-login">Login</a></li>
+          <li><a href="user-registration">Sign Up</a></li>';
         } ?>
 
       </ul>
@@ -196,11 +193,8 @@
         </ul></li>';
 
         }else{
-          echo '<li><a href="user-registration">Sign-Up</a>
-        <ul class="dropdown">
-           <li><a href="user-login">Login</a></li>
-          </ul>
-          </li>';
+          echo '<li><a href="user-login">Login</a></li>
+          <li><a href="user-registration">Sign Up</a></li>';
         } ?>
 
       </ul>

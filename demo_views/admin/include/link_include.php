@@ -110,14 +110,14 @@ if($read['defaulted'] >= 3){
         <?php }elseif($level == 4){ ?>
 
           <li><a href="addCampusNews">Add Campus News</a></li>
-            <li><a href="update-profile">Update Profile</a></li>
+            <!-- <li><a href="update-profile">Update Profile</a></li> -->
           <li><a href="addCampusArticle">Add Campus Article</a></li>
           <li><a href="manageCampusNews">Manage Campus News</a></li>
           <li><a href="manageCampusArticles">Manage Campus Articles</a></li>
            <li> <a href="logout">Logout</a></li>
 <?php  }elseif($level == 5){ ?>
           <li><a href="addInsight">Add Insight</a></li>
-            <li><a href="update-profile">Update Profile</a></li>
+            <!-- <li><a href="update-profile">Update Profile</a></li> -->
   <li><a href="manageInsights">Manage Article</a></li>
        <li><a href="addArticle">Add Article</a></li>
           <li><a href="manageInsights">Manage Insights</a></li>
@@ -127,7 +127,7 @@ if($read['defaulted'] >= 3){
 <!--           <li><a href="addNews">Add News</a></li>
           <li><a href="addCampusNews">Add Campus News</a></li> -->
           <li><a href="addEvent">Add Event</a></li>
-            <li><a href="update-profile">Update Profile</a></li>
+            <!-- <li><a href="update-profile">Update Profile</a></li> -->
           <li><a href="manageNews">Manage News</a></li>
           <li><a href="manageCampusNews">Manage Campus News</a></li>
           <li><a href="manageEvent">Manage Events</a></li>
@@ -135,21 +135,21 @@ if($read['defaulted'] >= 3){
 <?php }elseif($level == 7){ ?>
  <li><a href="admin">Home</a></li>
             <li><a href="add-training">Add Training</a></li>
-              <li><a href="update-profile">Update Profile</a></li>
+              <!-- <li><a href="update-profile">Update Profile</a></li> -->
           <li><a href="manage-trainings">Manage Trainings</a></li>
            <li> <a href="logout">Logout</a></li>
 <?php }elseif($level == 8){ ?>
  <li><a href="admin">Home</a></li>
             <li><a href="addExploit">Add Exploit</a></li>
-              <li><a href="update-profile">Update Profile</a></li>
+              <!-- <li><a href="update-profile">Update Profile</a></li> -->
           <li><a href="manageExploits">Manage Exploit</a></li>
            <li> <a href="logout">Logout</a></li>
         <?php }else{ ?>
           <li><a href="admin">Home</a></li>
-          <li><a href="add-admin">Add Admin</a></li> 
-          <li><a href="add-frontage">Add Frontage</a></li> 
-          <li><a href="add-views">Add Views</a></li> 
-            <li><a href="update-profile">Update Profile</a></li>
+          <li><a href="add-admin">Add Admin</a></li>
+          <li><a href="add-frontage">Add Frontage</a></li>
+          <li><a href="add-views">Add Views</a></li>
+            <!-- <li><a href="update-profile">Update Profile</a></li> -->
           <!-- <li><a href="contents">Contents</a></li> -->
           <li><a href="add-article">Add Article</a></li>
           <li><a href="add-category">Add Category</a></li>
@@ -166,12 +166,12 @@ if($read['defaulted'] >= 3){
           <li><a href="manage-services">Manage Services</a></li>
           <li><a href="manage-category">Manage Category</a></li>
           <li><a href="Services-orders">Services Orders</a></li>
-            <li><a href="view-admins">Manage Users</a></li>
-            <li><a href="update-profile">Update Profile</a></li>
-            <li><a href="manage-frontage">Manage Frontage</a></li>
-            <li><a href="manage-views">Manage Views</a></li>
             <li><a href="view-users">Manage Users</a></li>
-       
+            <!-- <li><a href="update-profile">Update Profile</a></li> -->
+            <li><a href="manage-frontage">Manage Frontage</a></li>
+            <!-- <li><a href="manage-views">Manage Views</a></li> -->
+            <!-- <li><a href="view-users">Manage Users</a></li> -->
+
           <li> <a href="logout">Logout</a></li>
         <?php } ?>
       </ul>

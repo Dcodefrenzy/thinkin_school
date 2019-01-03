@@ -118,8 +118,6 @@ $msg = str_replace('_', ' ', $_GET['ssp']);
 </div>';
 }
 
-
-
  ?>
 
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
   include "includes/header.php";
   if (isset($_GET['hid'])) {
       $hid = $_GET['hid'];
@@ -25,12 +25,12 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-12">
          <div class="post no-margin">
-         	<figure class="post-image">          
+         	<figure class="post-image">
             <div style="background:url(<?php echo $image_1; ?>); height:50vh; width: 80vh; background-size: cover;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div></figure>
          	<div class="post-content">
-
+  <?php   $SDate = decodeDate($date_created); ?>
           <h4><?php echo $project_name; ?></h4>
-          <small><?php echo date("d, F, Y", strtotime($date_created)); ?></small>
+          <small><?php echo $SDate ?></small>
           <small><?php echo $project_location; ?></small>
           <ul class="social-share">
 			<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -64,11 +64,11 @@
         </div>
         <!-- end col-8 -->
       </div>
-      <!-- end row --> 
+      <!-- end row -->
     </div>
-    <!-- end container --> 
+    <!-- end container -->
   </section>
-  <!-- end blog --> 
+  <!-- end blog -->
   <section class="image-content-over-box">
   <div class="container">
     <div class="row">
@@ -77,7 +77,7 @@
           <h2>Other Projects</h2>
           <h6>You will likely need proof to show your insurance company</h6>
         </div>
-        <!-- end section-title --> 
+        <!-- end section-title -->
       </div>
       <!-- end col-3 -->
       <div class="col-lg-8">
@@ -87,11 +87,11 @@
         <?php foreach ($projects as $key => $project) {
             extract($project);
             $bd = previewBody($about, 5);
-          
+
           ?>
             <div class="swiper-slide">
               <a <?php echo 'href=project?hid='.$hash_id.'';?>>
-              <figure> 
+              <figure>
                 <div style="background:url(<?php echo $image_1; ?>); height:50vh; width: 450px; background-size: cover;; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
                 <figcaption>
                   <h4><?php echo $project_name; ?></h4>
@@ -140,20 +140,20 @@
                   <small>Business Constultation</small> </figcaption>
               </figure>
             </div> -->
-            <!-- end swiper-slide --> 
+            <!-- end swiper-slide -->
           </div>
           <!--end swiper-wrapper -->
           <div class="swiper-button-next"><img src="images/icon-right-arrow.svg" alt="Image"></div>
           <div class="swiper-button-prev"><img src="images/icon-right-arrow.svg" alt="Image"></div>
         </div>
-        <!-- end swiper-carousel --> 
+        <!-- end swiper-carousel -->
       </div>
-      <!-- end col-6 --> 
+      <!-- end col-6 -->
     </div>
   </div>
-  <!-- end container --> 
+  <!-- end container -->
 </section>
 <!-- end image-content-over-box -->
-<?php 
+<?php
   include "includes/footer.php";
  ?>

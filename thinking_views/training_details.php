@@ -28,6 +28,10 @@ extract($training);
         <div class="col-md-7 col-12">
          <div class="post wow fadeIn">
          	<figure class="post-image"> <img src=" <?php echo $image_1; ?>" alt="Image"></figure>
+          <?php   $EDate2 = decodePartDate($end_date);
+            $SDate2 = decodePartDate($start_date);
+            $SDate = decodeDate($start_date);
+            $EDate = decodeDate($end_date); ?>
          	<div class="post-content">
           <ul class="social-share">
             <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -39,7 +43,15 @@ extract($training);
           <h4><?php echo $name; ?></h4>
           <span><?php echo "<b>Event Status:</b>".$status; ?></span>
           <small><?php echo "<b>Location:</b> ".$venue; ?></small>
-          <small><?php echo $start_date." <b>-</b> ".$end_date; ?></small>
+          <small>  <?php if($start_date == $end_date){
+              echo $SDate;
+            }elseif($SDate2['month'] == $EDate2['month']){
+                echo $SDate2['month']." ".$SDate2['day']." - ". $EDate2['day'].", ".$SDate2['year'];
+            }elseif($SDate2['month'] !== $EDate2['month']){
+                echo $SDate2['month']." ".$SDate2['day']." - ".$EDate2['month']." ".$EDate2['day'].", ".$SDate2['year'];
+            }else{
+                echo $SDate ." - ".$EDate ;
+            } ?></small>
           <small><?php echo "<b>Time:</b> ".$training_time; ?></small>
           <p><?php echo $description; ?></p>
 
