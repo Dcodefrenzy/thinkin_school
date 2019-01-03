@@ -26,7 +26,7 @@ $lname = ucwords($lastname);
   <div class="inner-box posting">
   <div class="alert alert-success alert-lg" role="alert">
   <h2 class="postin-title">✔ Successful! '.$msg.' </h2>
-  <p>Thank you '.ucwords($firstname).', BoardSpeck is happy to have you around. </p>
+  <p>Thank you '.ucwords($firstname).', Thinking School is happy to have you around. </p>
   </div>
   </div>
   </div>';
@@ -196,7 +196,7 @@ function ajax(url, method){
   xhr.open(method, url, true);
   xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   xhr.setRequestHeader("Authorization","Bearer 1a6c9b047b5e445cab79d79694c9ff4b");
-  // xhr.setRequestHeader("Access-Control-Allow-Origin","https://boardspeck.com");
+  // xhr.setRequestHeader("Access-Control-Allow-Origin","https://Thinking School.com");
   // xhr.setRequestHeader("ACCEPT","*/*");
   var sd = xhr.send();
   //console.log(sd);

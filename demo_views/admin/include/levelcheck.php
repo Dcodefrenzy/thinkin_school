@@ -7,7 +7,7 @@ if($check['user_status'] == 2 ){
   session_destroy();
   $success = "Your Account has Been Suspended";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location: adminLogin?ssp=$succ");
+  header("Location: admin-login?ssp=$succ");
 }
 
 
@@ -16,7 +16,7 @@ if($check = false ){
   session_destroy();
   $success = "You don't have an account";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location: adminLogin?wrn=$succ");
+  header("Location: admin-login?wrn=$succ");
 }
 
 

@@ -18,7 +18,7 @@ if($check['level'] == 4 ){
   session_destroy();
   $success = "You have accessed a level your account is forbidden to access and You can be suspended for this, A notification has been sent to admin";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location: adminLogin?ssp=$succ");
+  header("Location: admin-login?ssp=$succ");
 }
 
 

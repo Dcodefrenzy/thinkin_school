@@ -1,4 +1,4 @@
-<?php 
+<?php
 ob_start();
 include "includes/header.php";
 if (isset($_GET['hid'])) {
@@ -114,35 +114,33 @@ extract($event);
         <!-- end col-7 -->
         <div class="col-md-5 col-12">
           <aside class="sidebar">
-
             <div class="widget gallery wow fadeIn">
               <h4 class="widget-title">Latest Article</h4>
-                <?php $blogs =  homeBlog($conn);  
+                <?php $blogs =  homeBlog($conn);
                   foreach ($blogs as $key => $blog) {
                     extract($blog);
                   ?>
                 <ul>
                 <a <?php echo 'href=blog-details?hid='.$hash_id.'' ?>>
-                <li> 
+                <li>
                      <div style= "border-radius: 100px; padding: 0px; background:url(<?php echo $image_1; ?>); height:10vh; width: 10vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
                 </li>
-                <span><b>Title:</b> <?php echo $title; ?></span><br/>
-                <span><b>Date:</b> <?php echo $date_created; ?></span><br/> 
+                <span> <?php echo $title; ?></span><br/>
+                <span> <?php echo $date_created; ?></span><br/>
                 </a>
-
               </ul>
-               <?php } ?> 
-              <!-- end gallery --> 
+               <?php } ?>
+              <!-- end gallery -->
             </div>
-            <!-- end widget --> 
+            <!-- end widget -->
           </aside>
-          <!-- end side-bar --> 
+          <!-- end side-bar -->
         </div>
-        <!-- end col-5 --> 
+        <!-- end col-5 -->
       </div>
-      <!-- end row --> 
+      <!-- end row -->
     </div>
-    <!-- end container --> 
+    <!-- end container -->
   </section>
-  <!-- end blog --> 
+  <!-- end blog -->
 <?php include "includes/footer.php"; ?>

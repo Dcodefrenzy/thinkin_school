@@ -1,6 +1,7 @@
 <?php
 ob_start();
-session_start();
+// include "includes/header.php";
+// session_start();
 
   $error = [];
 if(array_key_exists('submit', $_POST)){
@@ -22,43 +23,32 @@ if(array_key_exists('submit', $_POST)){
 
  ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Mirrored from demo.graygrids.com/themes/classix-template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Nov 2017 11:40:54 GMT -->
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="author" content="BoardSpeck">
-<title>BoardSpeck Web Office </title>
-
-<link rel="shortcut icon" href="assets/img/favicon.png">
-
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
-
-<link rel="stylesheet" href="assets/css/material-kit.css" type="text/css">
-
-<link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="assets/fonts/line-icons/line-icons.css" type="text/css">
-
-<link rel="stylesheet" href="assets/css/main.css" type="text/css">
-
-<link rel="stylesheet" href="assets/extras/animate.css" type="text/css">
-
-<link rel="stylesheet" href="assets/extras/owl.carousel.css" type="text/css">
-<link rel="stylesheet" href="assets/extras/owl.theme.css" type="text/css">
-<link rel="stylesheet" href="assets/extras/settings.css" type="text/css">
-
-<link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
-
-<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
-</head>
-<body>
-
+ <!DOCTYPE html>
+ <html lang="en">
+ <!-- Mirrored from demo.graygrids.com/themes/classix-template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Nov 2017 11:40:54 GMT -->
+ <head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta http-equiv="content-type" content="text/html; charset=utf-8">
+ <meta name="author" content="">
+ <title>Boardspeck Share Login</title>
+ <link rel="shortcut icon" href="assets/img/favicon.png">
+ <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+ <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
+ <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
+ <link rel="stylesheet" href="assets/css/material-kit.css" type="text/css">
+ <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">
+ <link rel="stylesheet" href="assets/fonts/line-icons/line-icons.css" type="text/css">
+ <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+ <link rel="stylesheet" href="assets/extras/animate.css" type="text/css">
+ <link rel="stylesheet" href="assets/extras/owl.carousel.css" type="text/css">
+ <link rel="stylesheet" href="assets/extras/owl.theme.css" type="text/css">
+ <link rel="stylesheet" href="assets/extras/settings.css" type="text/css">
+ <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
+ <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+ </head>
+ <body>
 
 
 <div class="page-header" style="background: url(assets/img/banner1.jpg);">
@@ -66,7 +56,7 @@ if(array_key_exists('submit', $_POST)){
 <div class="row">
 <div class="col-md-12">
 <div class="breadcrumb-wrapper">
-<h2 class="page-title">Login to your the BoardSpeck Web Office</h2>
+<h2 class="page-title">Login to your the Thinking School account</h2>
 </div>
 </div>
 </div>
@@ -98,7 +88,7 @@ $msg = str_replace('_', ' ', $_GET['wn']);
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
 <h2 class="postin-title">Warning! '.$msg.' </h2>
-<p>BoardSpeck will verify your account once you are confirmed as a BoardSpeck Admin. You will be Notified via mail. Thanks</p>
+<p>Thinking School will verify your account once you are confirmed as a Thinking School Admin. You will be Notified via mail. Thanks</p>
 </div>
 </div>
 </div>';
@@ -110,7 +100,7 @@ $msg = str_replace('_', ' ', $_GET['sgn']);
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
 <h2 class="postin-title">Warning! '.$msg.' </h2>
-<p>BoardSpeck admin pages cannot be accessed without signin. Thanks</p>
+<p>Thinking School admin pages cannot be accessed without signin. Thanks</p>
 </div>
 </div>
 </div>';
@@ -122,7 +112,7 @@ $msg = str_replace('_', ' ', $_GET['ssp']);
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
 <h2 class="postin-title">Warning! '.$msg.' </h2>
-<p>Contact BoardSpeck Admin. Thanks</p>
+<p>Contact Thinking School Admin. Thanks</p>
 </div>
 </div>
 </div>';

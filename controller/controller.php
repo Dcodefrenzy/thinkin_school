@@ -16,6 +16,99 @@ function displaySubCategory($dbconn, $id){
   return $result;
 }
 
+function decodeDate($date){
+  $split = explode('-',$date);
+  $month = $split[1];
+  $day = $split[2];
+  $year = $split[0];
+  if($month == 1 ){
+    $month = "January";
+  }
+  if($month == 2 ){
+    $month = "February";
+  }
+  if($month == 3 ){
+    $month = "March";
+  }
+  if($month == 4){
+    $month = "April";
+  }
+  if($month == 5){
+    $month = "May";
+  }
+  if($month == 6 ){
+    $month = "June";
+  }
+  if($month == 7 ){
+    $month = "July";
+  }
+  if($month == 8 ){
+    $month = "August";
+  }
+  if($month == 9 ){
+    $month = "September";
+  }
+  if($month == 10 ){
+    $month = "October";
+  }
+  if($month == 11 ){
+    $month = "November";
+  }
+  if($month == 12 ){
+    $month = "December";
+  }
+  $newDate = $month.' '.$day.', '.$year;
+  return $newDate;
+}
+
+function decodePartDate($date){
+  $split = explode('-',$date);
+  $month = $split[1];
+  $day = $split[2];
+  $year = $split[0];
+  if($month == 1 ){
+    $month = "January";
+  }
+  if($month == 2 ){
+    $month = "February";
+  }
+  if($month == 3 ){
+    $month = "March";
+  }
+  if($month == 4){
+    $month = "April";
+  }
+  if($month == 5){
+    $month = "May";
+  }
+  if($month == 6 ){
+    $month = "June";
+  }
+  if($month == 7 ){
+    $month = "July";
+  }
+  if($month == 8 ){
+    $month = "August";
+  }
+  if($month == 9 ){
+    $month = "September";
+  }
+  if($month == 10 ){
+    $month = "October";
+  }
+  if($month == 11 ){
+    $month = "November";
+  }
+  if($month == 12 ){
+    $month = "December";
+  }
+  $newDate['month'] = $month;
+  $newDate['day'] = $day;
+  $newDate['year'] = $year;
+
+  return $newDate;
+}
+
 function displayCategories($dbconn){
   $stmt =$dbconn->prepare("SELECT * FROM category");
   $stmt->execute();
@@ -1447,10 +1540,10 @@ function blogs($dbconn, $hashID, $start, $record){
       $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-    $result [] = $row; 
+    $result [] = $row;
 
   }
-  
+
   return $result;
 }
 
@@ -1461,10 +1554,10 @@ function allBlogs($dbconn, $start, $record){
     $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-    $result [] = $row; 
+    $result [] = $row;
 
   }
-  
+
   return $result;
 }
 
@@ -1476,10 +1569,10 @@ function Catblog($dbconn, $hashID){
     $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-      
-    $result [] = $row; 
+
+    $result [] = $row;
   }
- 
+
   return $result;
 }
 function getTotalRecordBlog($dbconn,  $record){
@@ -1513,10 +1606,10 @@ function homeBlog($dbconn){
       $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-      
-    $result [] = $row; 
+
+    $result [] = $row;
   }
- 
+
   return $result;
 }
 
@@ -1589,7 +1682,7 @@ function getService($dbconn, $hid){
   $stmt->bindParam(':hid', $hid);
   $stmt->execute();
    $row = $stmt->fetch(PDO::FETCH_BOTH);
-    return $row; 
+    return $row;
 }
 // function getAllServices($dbconn){
 //   $result = [];
@@ -1703,7 +1796,7 @@ function getAllEvents($dbconn,$start, $record){
 
   function book($dbconn, $post, $hid, $book){
 try {
-           
+
   $rnd = rand(0000000000,9999999999);
   $split = explode(" ",$post['name']);
   $id = $rnd.cleans($split['0']);
@@ -1720,7 +1813,7 @@ try {
     ];
 
     $stmt->execute($data);
-  
+
   }catch(PDOException $e){
     die("Something Went Wrong");
   }
@@ -1734,7 +1827,7 @@ try {
   $stmt->bindParam(':hid', $hid);
   $stmt->execute();
   $row = $stmt->fetch(PDO::FETCH_BOTH);
-  
+
     return $row;
   }
   function getTeam($dbconn){

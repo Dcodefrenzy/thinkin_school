@@ -94,7 +94,7 @@ switch ($uri[1]) {
 
 
   case "admin?msg=$msg":
-  include APP_PATH."/views/admin/adminlogin.php";
+  include APP_PATH."/views/admin/admin-login.php";
   break;
 
   case "admin_register":
