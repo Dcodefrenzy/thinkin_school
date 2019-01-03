@@ -211,7 +211,7 @@ switch ($uri[1]) {
   include APP_PATH."/demo_views/admin/add_category.php";
   break;
 
-  case "view-users":
+  case "view-admins":
   include APP_PATH."/demo_views/admin/view_users.php";
   break;
 
@@ -267,7 +267,7 @@ switch ($uri[1]) {
   include APP_PATH."/demo_views/admin/log.php";
   break;
 
-  case "view-users?success=$success":
+  case "view-admins?success=$success":
   include APP_PATH."/demo_views/admin/view_users.php";
   break;
 

@@ -978,7 +978,7 @@ function setLevel($dbconn,$post,$gid){
   logs($dbconn, 'edited', $post,'admin level'.' for '.$gid,$sess);
   $success = "Level Successfully";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/view-users?success=$succ");
+  header("Location:/view-admins?success=$succ");
 }
 function editContent($dbconn,$post,$gid,$tb){
   try{
@@ -3421,7 +3421,7 @@ function deleteAdmin($dbconn,$hid){
   $stmt->execute();
   $success = "Deleted";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/viewUsers?success=$succ");
+  header("Location:/view-admins?success=$succ");
 }
 function deleteClient($dbconn,$hid){
   $stmt = $dbconn->prepare("DELETE FROM user WHERE hash_id=:hid");

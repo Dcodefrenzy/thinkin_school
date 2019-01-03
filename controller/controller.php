@@ -440,7 +440,7 @@ function userLogin($dbconn,$input){
     if($stmt->rowCount() > 0 && password_verify($input['pword'], $row['hash'])){
       extract($row);
       $_SESSION['username'] = $username;
-      $_SESSION['id'] = $hash_id;
+      $_SESSION['hash_id'] = $hash_id;
       header("Location:/home");
     }else{
       $mes = "Invalid Email or Password";
