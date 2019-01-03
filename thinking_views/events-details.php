@@ -8,6 +8,10 @@ if (isset($_GET['hid'])) {
 }
  $event = getOneEvent($conn, $hash);
 extract($event);
+$EDate2 = decodePartDate($end_date);
+$SDate2 = decodePartDate($start_date);
+$SDate = decodeDate($start_date);
+$EDate = decodeDate($end_date);
  ?>
 <!-- end header -->
 <section class="page-header">
@@ -18,7 +22,7 @@ extract($event);
 			<li class="breadcrumb-item active" aria-current="page">Event Details</li>
 		  </ol>
 		  <h2>EVENT</h2>
-		  <p>As the person who owns the legal rights to intellectual property, an author.</p>
+		 
 	</div>
 	<!-- end container -->
 </section>
@@ -40,7 +44,15 @@ extract($event);
           <h4><?php echo $event_name; ?></h4>
           <span><?php echo "<b>Event Status:</b>".$status; ?></span>
           <small><?php echo "<b>Location:</b> ".$venue; ?></small>
-          <small><?php echo $start_date." <b>-</b> ".$end_date; ?></small>
+          <small><?php if($start_date == $end_date){
+              echo $SDate;
+            }elseif($SDate2['month'] == $EDate2['month']){
+                echo $SDate2['month']." ".$SDate2['day']." - ". $EDate2['day'].", ".$SDate2['year'];
+            }elseif($SDate2['month'] !== $EDate2['month']){
+                echo $SDate2['month']." ".$SDate2['day']." - ".$EDate2['month']." ".$EDate2['day'].", ".$SDate2['year'];
+            }else{
+                echo $SDate ." - ".$EDate ;
+            } ?></small>
           <small><?php echo "<b>Time:</b> ".$event_time; ?></small>
           <p><?php echo $description; ?></p>
                    <div class="form-group col-md-4">

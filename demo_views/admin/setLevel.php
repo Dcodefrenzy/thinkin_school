@@ -76,12 +76,7 @@ if(array_key_exists("submit", $_POST)){
    <option value="1">Readers</option>
    <option value="2">Limited Managers</option>
    <option value="3">Trusteed Managers</option>
-   <option value="4">Students(self)</option>
-   <option value="5">Articles and Insights(self)</option>
-   <option value="6">Enactus(self)</option>
-   <option value="7">Trainers(only)</option>
-   <option value="8">Exploits(only)</option>
-   </select>
+
    <br/>
    <br/>
    </div>

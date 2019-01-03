@@ -801,12 +801,12 @@ function getBody($dbconn,$gid,$tb){
   echo $body;
 }
 function getEventBody($dbconn,$gid,$tb){
-  $stmt = $dbconn->prepare("SELECT about,start_date,end_date,venue FROM $tb WHERE hash_id=:hid");
+  $stmt = $dbconn->prepare("SELECT description,start_date,end_date,venue FROM $tb WHERE hash_id=:hid");
   $stmt->bindParam(":hid", $gid);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH))
   extract($row);
-  echo $about;
+  echo $description;
   echo "<br>";
   echo "<p>Start Date : $start_date</p>";
   echo "<p>End Date : $start_date</p>";
@@ -1102,7 +1102,7 @@ function viewFrontage($db){
       '.$title.'
       </td>
       <td class="ads-img-td">
-      <a href="view-body?id='.$id.'&t=about"><p>'.$bd.'</p></a>
+      <a href="view-body?id='.$id.'&t=front"><p>'.$bd.'</p></a>
       </td>
         <td class="add-img-td">
         <a href="edit-image?id='.$hash_id.'&t=front">
@@ -3599,8 +3599,8 @@ function getServiceOrder($dbconn, $get){
     if($level == 3 || $level == "MASTER"){
       echo '<tr><td class="ads-details-td">
       <h4><a href="">'.$name.'</a></h4></td>
-      <td><p> '.$phone_number.'</p> </td>
-      <td><p>'.$email.'</p>
+      <td><a href=tel:'.$phone_number.'><p> '.$phone_number.'</p></a> </td>
+      <td><a href=mailto:'.$email.'><p>'.$email.'</p></a>
       </td>
        <td class="add-img-td">
       '.$adress.'

@@ -420,37 +420,7 @@ $home = getHome($conn); extract($home);
 <!-- end testimonials -->
 
 <!-- end team-members -->
-<section class="latest-news">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 wow fadeIn">
-        <div class="section-title">
-          <h2>Articles</h2>
-          <h6>Read Some Of Our Articles Here</h6>
-        </div>
-        <!-- end section-title -->
-      </div>
-      <!-- end col-12 -->
-      <div class="col-12">
-        <?php $blogs = homeBlog($conn);
-          foreach ($blogs as $key => $blog) {
-            extract($blog);
-            $bd = previewBody($body, 10);
-          ?>
-        <div class="content-box wow fadeIn">
-            <div style= "border-radius: 100px; padding: 0px; background:url(<?php echo $image_1; ?>); height:30vh; width: 30vh; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div>
-          <h4><?php echo $title; ?></h4>
-          <small><?php echo $date_created; ?></small>
-          <p><?php echo $bd; ?></p>
-           <a <?php echo 'href=blog-details?hid='.$hash_id.'';?>><img src="images/icon-right-arrow.svg" alt="Image"></a>  </div>
-        <?php } ?>
-      </div>
-      <!-- end col-12 -->
-    </div>
-    <!-- end row -->
-  </div>
-  <!-- end container -->
-</section>
+
 <!-- end latest-news -->
 <!-- <section class="info-box">
   <div class="container wow fadeIn">
