@@ -66,7 +66,7 @@ if(array_key_exists('submit', $_POST)){
 <div class="row">
 <div class="col-md-12">
 <div class="breadcrumb-wrapper">
-<h2 class="page-title">Login to your the Thinking school Web Office</h2>
+<h2 class="page-title">Login to your Thinking school Web Office</h2>
 </div>
 </div>
 </div>

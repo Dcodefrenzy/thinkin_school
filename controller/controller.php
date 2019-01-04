@@ -281,14 +281,6 @@ function editfinalCategory($dbconn, $post, $get){
 
   header("Location: final_category");
 }
-// function getIdByHashId($dbconn,$id_name,$id,$table,$hash_id){
-//   $stmt = $dbconn->prepare("SELECT $id_name FROM $table WHERE hash_id = :hid ");
-//   $stmt->bindParam(":hid", $hash_id);
-//   $stmt->execute();
-//   $row = $stmt->fetch(PDO::FETCH_BOTH);
-//   return $row[$id_name];
-// }
-
 
 
 function getCat($dbconn){
@@ -504,7 +496,7 @@ function doUserRegister($dbconn, $input){
     $emailtop = explode("@",$input['email']);
     $hash_id = $emailtop[0].$rand.$emailtop[1];
 
-    $stmt =$dbconn->prepare("INSERT INTO users(firstname,lastname,email,phone_number,username,hash, hash_id) VALUES(:fname, :lname, :em, :pm, :uname, :h, :hid)");
+    $stmt =$dbconn->prepare("INSERT INTO users(firstname,lastname,email,phone_number,username,hash, hash_id, subscription_status) VALUES(:fname, :lname, :em, :pm, :uname, :h, :hid, :ss)");
 
     $stmt->bindParam(":fname", $input['firstname']);
     $stmt->bindParam(":lname", $input['lastname']);
@@ -513,6 +505,7 @@ function doUserRegister($dbconn, $input){
     $stmt->bindParam(":uname", $input['username']);
     $stmt->bindParam(":h", $hash);
     $stmt->bindParam(":hid", $hash_id);
+    $stmt->bindParam(":ss", $input['subscription_status']);
     $stmt->execute();
     userLogin($dbconn,$input);
   }catch(PDOException $e){
@@ -522,7 +515,7 @@ function doUserRegister($dbconn, $input){
 }
 
 
-function userLogin($dbconn,$input){
+function userLogin($dbconn,$input, $redirect){
   try{
 
     $stmt = $dbconn->prepare("SELECT * FROM users WHERE email = :e ");
@@ -534,7 +527,8 @@ function userLogin($dbconn,$input){
       extract($row);
       $_SESSION['username'] = $username;
       $_SESSION['hash_id'] = $hash_id;
-      header("Location:/home");
+      setLogin($dbconn,"users",$hash_id);
+      header("Location:/$redirect");
     }else{
       $mes = "Invalid Email or Password";
       $err = preg_replace('/\s+/', '_', $mes);
@@ -544,6 +538,25 @@ function userLogin($dbconn,$input){
       die("no");
     }
 
+}
+
+function authentication(){
+  if (!isset($_SESSION['username'])) {
+        $success = "You are not signed in";
+         $msg= preg_replace('/\s+/', '_', $success);
+           header("Location:user_login?msg=$msg");
+  }
+}
+
+function checkSubscription($dbconn, $id){
+  $stmt = $dbconn->prepare("SELECT * FROM users WHERE hash_id=:id");
+  $stmt->bindParam(':id', $id);
+  $stmt->execute();
+  $row = $stmt->fetch(PDO::FETCH_BOTH);
+  extract($row);
+  if ($subscription_status != "subscribed") {
+    header("Location:index");
+  }
 }
 
 function update_user($dbconn, $hid, $input){

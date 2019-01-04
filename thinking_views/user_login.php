@@ -1,7 +1,13 @@
 <?php
 ob_start();
 // include "includes/header.php";
-// session_start();
+session_start();
+$redirection = "";
+if (isset($msg)) {
+  $redirection = "podcast";
+}else{
+  $redirection = "index";
+}
 
   $error = [];
 if(array_key_exists('submit', $_POST)){
@@ -16,7 +22,7 @@ if(array_key_exists('submit', $_POST)){
 
   if(empty($error)){
     $clean = array_map('trim', $_POST);
-    userLogin($conn, $clean);
+    userLogin($conn, $clean, $redirection );
   }
 }
 
@@ -32,7 +38,7 @@ if(array_key_exists('submit', $_POST)){
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <meta http-equiv="content-type" content="text/html; charset=utf-8">
  <meta name="author" content="">
- <title>Boardspeck Share Login</title>
+ <title>TS Users Login</title>
  <link rel="shortcut icon" href="assets/img/favicon.png">
  <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
  <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
@@ -56,7 +62,7 @@ if(array_key_exists('submit', $_POST)){
 <div class="row">
 <div class="col-md-12">
 <div class="breadcrumb-wrapper">
-<h2 class="page-title">Login to your the Thinking School account</h2>
+<h2 class="page-title">Login to your Thinking School account</h2>
 </div>
 </div>
 </div>
@@ -93,14 +99,14 @@ $msg = str_replace('_', ' ', $_GET['wn']);
 </div>
 </div>';
 }
-if (isset($_GET['sgn'])){
-$msg = str_replace('_', ' ', $_GET['sgn']);
+if (isset($_GET['msg'])){
+$msg = str_replace('_', ' ', $_GET['msg']);
 
   echo '<div class="col-md-12">
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
 <h2 class="postin-title">Warning! '.$msg.' </h2>
-<p>Thinking School admin pages cannot be accessed without signin. Thanks</p>
+<p>Thinking School  Podcast page cannot be accessed without signin. Thanks</p>
 </div>
 </div>
 </div>';
@@ -119,7 +125,6 @@ $msg = str_replace('_', ' ', $_GET['ssp']);
 }
 
  ?>
-
 
 <div class="col-sm-6 col-sm-offset-4 col-md-4 col-md-offset-4">
 <div class="page-login-form box">

@@ -1,7 +1,7 @@
 <?php
 session_start();
-setLogout($conn,$_SESSION['id']);
+setLogout($conn,"admin",$_SESSION['id']);
 unset($_SESSION['id']);
-session_destroy();
+/*session_destroy();*/
 header("Location: admin-login");
  ?>

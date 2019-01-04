@@ -200,7 +200,11 @@ switch ($uri[1]) {
   break;
 
   case "delete-user?id=$id":
-  include APP_PATH."/demo_views/admin/delete_user.php";
+  include APP_PATH."/demo_views/admin/delete_users.php";
+  break;
+
+  case "delete-admin?id=$id":
+  include APP_PATH."/demo_views/admin/delete_admin.php";
   break;
 
   case "delete-client?id=$id":
@@ -212,7 +216,7 @@ switch ($uri[1]) {
   break;
 
   case "view-admins":
-  include APP_PATH."/demo_views/admin/view_users.php";
+  include APP_PATH."/demo_views/admin/view_admins.php";
   break;
 
   case "view-events?success=$success":
@@ -268,7 +272,7 @@ switch ($uri[1]) {
   break;
 
   case "view-admins?success=$success":
-  include APP_PATH."/demo_views/admin/view_users.php";
+  include APP_PATH."/demo_views/admin/view_admins.php";
   break;
 
   case "manageNews":
@@ -751,6 +755,21 @@ switch ($uri[1]) {
 
   case "viewUsers":
   include APP_PATH."/demo_views/admin/view_users.php";
+  break;
+
+  case "view-users":
+  include APP_PATH."/demo_views/admin/view_users.php";
+  break;
+  case "view-users?success=$success":
+  include APP_PATH."/demo_views/admin/view_users.php";
+  break;
+
+  case "subscribe?id=$id":
+  include APP_PATH."/demo_views/admin/subscribe.php";
+  break;
+
+  case "unsubscribe?id=$id":
+  include APP_PATH."/demo_views/admin/unsubscribe.php";
   break;
 
   case "viewProducts":

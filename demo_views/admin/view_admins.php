@@ -50,13 +50,14 @@ $lname = ucwords($lastname);
   <tr>
 
     <th>Login Details</th>
-    <th>Subscription Status</th>
+    <th>Level & Status</th>
+    <th>Set Level</th>
     <th>Delete</th>
-    <th>manage subsciption</th>
+    <th>Suspend</th>
   </tr>
 <tbody>
 <tr>
-  <?php getUsers($conn); ?>
+  <?php getAdmin($conn); ?>
 
 <!-- </tr>
 <tr>

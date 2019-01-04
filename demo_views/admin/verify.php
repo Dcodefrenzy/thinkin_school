@@ -71,7 +71,7 @@ mail($to,$subject,$txt,$headers);
 
 // die(var_dump($userinfo));
 // if($tb == ""){
-header("location:viewUsers");
+header("location:view-admins");
 // }
 
 

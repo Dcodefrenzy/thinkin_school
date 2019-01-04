@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+?>
 <!doctype html>
 <html lang="en">
 
@@ -82,6 +84,7 @@
         </li>
         <li><a href="events">Events</a></li>
         <li><a href="training">Trainings</a></li>
+        <li><a href="podcast">Podcast</a></li>
         <li><a href="blogs">Blog</a>
         <ul class="dropdown">
         <?php $category = getCat($conn);
@@ -96,7 +99,7 @@
         <?php if (isset($_SESSION['username'])) {
           echo '<li><a href="#">Welcome '.$_SESSION['username'].'</a>
         <ul class="dropdown">';
-        echo '<li><a href="logout">Logout</a></li>
+        echo '<li><a href="user-logout">Logout</a></li>
         </ul></li>';
 
         }else{
@@ -175,6 +178,7 @@
         </li>
         <li><a href="events">Events</a></li>
         <li><a href="training">Trainings</a></li>
+        <li><a href="podcast">Podcast</a></li>
         <li><a href="blogs">Blog</a>
         <ul class="dropdown">
         <?php $category = getCat($conn);
@@ -189,7 +193,7 @@
         <?php if (isset($_SESSION['username'])) {
           echo '<li><a href="#">Welcome '.$_SESSION['username'].'</a>
         <ul class="dropdown">';
-        echo '<li><a href="logout">Logout</a></li>
+        echo '<li><a href="user-logout">Logout</a></li>
         </ul></li>';
 
         }else{
