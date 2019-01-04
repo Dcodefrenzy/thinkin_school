@@ -102,7 +102,7 @@ function adminLogin($dbconn, $input){
   if($stmt->rowCount() !=1 || !password_verify($input['pword'], $row['hash'])){
     $suc = 'Invalid Email or Password';
     $message = preg_replace('/\s+/', '_', $suc);
-    header("Location:adminLogin?err=$message");
+    header("Location:admin-login?err=$message");
   }else{
     $verification = 1;
     $statement = $dbconn->prepare("SELECT * FROM admin WHERE email = :e AND verification=:ver ");
@@ -115,13 +115,13 @@ function adminLogin($dbconn, $input){
       $state->execute();
       $row = $state->fetch(PDO::FETCH_BOTH);
       extract($row);
-      $suc = 'Dear '.ucwords($firstname).', You Have Not been Verified as BoardSpeck Admin';
+      $suc = 'Dear '.ucwords($firstname).', You Have Not been Verified as Thinking School Admin';
       $message = preg_replace('/\s+/', '_', $suc);
-      header("Location:adminLogin?wn=$message");
+      header("Location:admin-login?wn=$message");
     }else{
       extract($row);
       $_SESSION['id'] = $hash_id;
-      setLogin($dbconn,$hash_id);
+      setLogin($dbconn,"admin",$hash_id);
       header("Location:admin");
     }
   }
@@ -728,7 +728,7 @@ function addPackage($dbconn,$post, $sess){
 // }
 function addProfile($dbconn,$post,$destn,$sess){
   $profile_status = 1;
-  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn, lastname=:ln,    
+  $stmt = $dbconn->prepare("UPDATE admin SET firstname=:fn, lastname=:ln,
     phone_number=:pn,facebook_link=:fbl, twitter_link=:tlk, linkedin_link=:llk, instagram_link=:iglk, image_1=:img1 WHERE hash_id=:sess");
   /*die(var_dump($post, $destn));*/
   $stmt->bindParam(":fn",$post['fname']);
@@ -801,12 +801,12 @@ function getBody($dbconn,$gid,$tb){
   echo $body;
 }
 function getEventBody($dbconn,$gid,$tb){
-  $stmt = $dbconn->prepare("SELECT about,start_date,end_date,venue FROM $tb WHERE hash_id=:hid");
+  $stmt = $dbconn->prepare("SELECT description,start_date,end_date,venue FROM $tb WHERE hash_id=:hid");
   $stmt->bindParam(":hid", $gid);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH))
   extract($row);
-  echo $about;
+  echo $description;
   echo "<br>";
   echo "<p>Start Date : $start_date</p>";
   echo "<p>End Date : $start_date</p>";
@@ -978,7 +978,7 @@ function setLevel($dbconn,$post,$gid){
   logs($dbconn, 'edited', $post,'admin level'.' for '.$gid,$sess);
   $success = "Level Successfully";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/view-users?success=$succ");
+  header("Location:/view-admins?success=$succ");
 }
 function editContent($dbconn,$post,$gid,$tb){
   try{
@@ -1098,11 +1098,11 @@ function viewFrontage($db){
   while($row = $stmt->fetch()){
         extract($row);
     $bd = previewBody($body, 20);
-          echo '<td class="ads-img-td">     
+          echo '<td class="ads-img-td">
       '.$title.'
       </td>
-      <td class="ads-img-td"> 
-      <a href="view-body?id='.$id.'&t=about"><p>'.$bd.'</p></a>
+      <td class="ads-img-td">
+      <a href="view-body?id='.$id.'&t=front"><p>'.$bd.'</p></a>
       </td>
         <td class="add-img-td">
         <a href="edit-image?id='.$hash_id.'&t=front">
@@ -2063,7 +2063,7 @@ function getAdmin($dbconn){
     echo '
     <tr>
     <td class="ads-details-td">
-    <h3><a href="ads-details.html">'.ucwords($firstname).' '.ucwords($lastname).'</a></h3>
+    <h3><a href="#">'.ucwords($firstname).' '.ucwords($lastname).'</a></h3>
     <p> <strong> Last Login </strong>:
     '.$last_login.'</p>
     <p> <strong> Last Logout </strong>:
@@ -2081,7 +2081,7 @@ function getAdmin($dbconn){
     <a href="setLevel?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Set Level</button></a>
     </td>
     <td class="price-td">
-    <a href="delete-user?id='.$hash_id.'">
+    <a href="delete-admin?id='.$hash_id.'">
     <button class="btn btn-danger btn-sm" type="submit">Delete</button>
     </a>
     </td>
@@ -2101,55 +2101,37 @@ function getAdmin($dbconn){
 
 function getUsers($dbconn){
   $ms = "MASTER";
-  $stmt = $dbconn->prepare("SELECT * FROM user WHERE NOT level=:ms ");
+  $stmt = $dbconn->prepare("SELECT * FROM users");
   $stmt->bindParam(":ms", $ms);
   $stmt->execute();
   while($row = $stmt->fetch(PDO::FETCH_BOTH)){
     extract($row);
-    if($verification == 1){
-      $verification = "Verified";
-    }else{
-      $verification = "Not Verified";
-    }
-    if($user_status == 1){
-      $user_status = "Active";
-    }
-    if($user_status == 2){
-      $user_status = "Suspended";
-    }
     echo '
     <tr>
-    <td class="ads-details-td">
-    <h3><a href="ads-details.html">'.ucwords($firstname).' '.ucwords($lastname).'</a></h3>
+<td class="ads-details-td">
+    <h3><a href="#">'.ucwords($firstname).' '.ucwords($lastname).'</a></h3>
+    <p><strong> Username </strong>:'.$username.'</p>
     <p> <strong> Last Login </strong>:
     '.$last_login.'</p>
     <p> <strong> Last Logout </strong>:
     '.$last_logout.'</p>
-    <p> <strong>Login Status </strong>: '.$login_status.'&nbsp&nbsp<strong>Email</strong> <a target=_blank href="mailto:'.$email.'">'.$email.'</a></p>
-
+    <p> <strong>Login Status </strong>: '.$login_status.'&nbsp&nbsp<strong>Email</strong> <a target="_blank" href="mailto:'.$email.'">'.$email.'</a></p>
     </td>
+ 
     <td class="ads-details-td">
-    <p> <strong> Level </strong>:
-    '.$level.'</p>
-    <p> <strong> Account Status</strong>:
-    '.$user_status.'</p>
-    <p> <strong>Verification Status </strong>: '.$verification.'</p>
-    </td>
-    <td class="ads-details-td">
-    <a href="setLevel?id='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Set Level</button></a>
+  <p>'.$subscription_status.'</p>
     </td>
     <td class="price-td">
-    <a href="deleteUser?id='.$hash_id.'">
+    <a href="delete-user?id='.$hash_id.'">
     <button class="btn btn-danger btn-sm" type="submit">Delete</button>
     </a>
     </td>
     <td class="price-td">
-    <a href="suspend?id='.$hash_id.'">
-    <button class="btn btn-basic btn-sm" type="submit">Suspend</button>
-    <!-- <button class="btn btn-success btn-sm" type="submit">Verify</button> -->
+    <a href="subscribe?id='.$hash_id.'">
+    <button class="btn btn-success btn-sm" type="submit">subscribe</button>
     </a>
-    <a href="verify?id='.$hash_id.'">
-    <button class="btn btn-success btn-sm" type="submit">Verify</button>
+    <a href="unsubscribe?id='.$hash_id.'">
+        <button class="btn btn-basic btn-sm" type="submit">Unsuscribe</button>
     </a>
     </td>
     </tr>';
@@ -2685,16 +2667,16 @@ function PgetInsightView($dbconn,$get){
     }
   }
 }
-function setLogin($dbconn,$id){
+function setLogin($dbconn, $tb,$id){
   $lg = "Logged In";
-  $stmt = $dbconn->prepare("UPDATE admin SET last_login=NOW(),login_status=:lg WHERE hash_id=:id");
+  $stmt = $dbconn->prepare("UPDATE $tb SET last_login=NOW(),login_status=:lg WHERE hash_id=:id");
   $stmt->bindParam(":id",$id);
   $stmt->bindParam(":lg",$lg);
   $stmt->execute();
 }
-function setLogout($dbconn,$id){
+function setLogout($dbconn,$tb,$id){
   $lg = "Logged Out";
-  $stmt = $dbconn->prepare("UPDATE admin SET last_logout=NOW(),login_status=:lg WHERE hash_id=:id");
+  $stmt = $dbconn->prepare("UPDATE $tb SET last_logout=NOW(),login_status=:lg WHERE hash_id=:id");
   $stmt->bindParam(":id",$id);
   $stmt->bindParam(":lg",$lg);
   $stmt->execute();
@@ -3421,7 +3403,15 @@ function deleteAdmin($dbconn,$hid){
   $stmt->execute();
   $success = "Deleted";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/viewUsers?success=$succ");
+  header("Location:/view-admins?success=$succ");
+}
+function deleteUser($dbconn,$hid){
+  $stmt = $dbconn->prepare("DELETE FROM users WHERE hash_id=:hid");
+  $stmt->bindParam(":hid", $hid);
+  $stmt->execute();
+  $success = "Deleted";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location:/view-users?success=$succ");
 }
 function deleteClient($dbconn,$hid){
   $stmt = $dbconn->prepare("DELETE FROM user WHERE hash_id=:hid");
@@ -3599,8 +3589,8 @@ function getServiceOrder($dbconn, $get){
     if($level == 3 || $level == "MASTER"){
       echo '<tr><td class="ads-details-td">
       <h4><a href="">'.$name.'</a></h4></td>
-      <td><p> '.$phone_number.'</p> </td>
-      <td><p>'.$email.'</p>
+      <td><a href=tel:'.$phone_number.'><p> '.$phone_number.'</p></a> </td>
+      <td><a href=mailto:'.$email.'><p>'.$email.'</p></a>
       </td>
        <td class="add-img-td">
       '.$adress.'

@@ -56,10 +56,10 @@ if(array_key_exists('submit', $_POST)){
     $lastn = $lname;
     $uri = explode("/", $_SERVER['REQUEST_URI']);
     $url = $uri[1];
-     $to = "boardspeck@gmail.com";
-     $subject = "Boardspeck Web Office Content Upload";
+     $to = "Thinking School@gmail.com";
+     $subject = "Thinking School Web Office Content Upload";
      $txt = "Hello Admin, ($firstn $lastn)has added a content on "."$url"." page at the back office. Kindly check for and approval";
-     $headers = "From: info@boardspeck.com" . "\r\n" .
+     $headers = "From: info@Thinking School.com" . "\r\n" .
      "CC: banjimayowa@gmail.com";
      mail($to,$subject,$txt,$headers);*/
       addServices($conn, $clean,$ver,$hash_id);

@@ -12,7 +12,7 @@ $stmt->execute();
 
 
 // if($tb == ""){
-header("location:viewUsers");
+header("location:view-admins");
 // }
 
 

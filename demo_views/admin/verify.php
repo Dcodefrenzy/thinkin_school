@@ -21,7 +21,7 @@ $lastname = $userinfo['lastname'];
 
 $to = $email;
 $subject = "Thinking school Web Office Verification";
-$txt = "Hello $firstname $lastname, You have been Verified from the Thinking school Web Office. Login at https://Thinking school.com/adminLogin";
+$txt = "Hello $firstname $lastname, You have been Verified from the Thinking school Web Office. Login at https://Thinking school.com/admin-login";
 $headers = "From: info@Thinking school.com" . "\r\n" .
 "CC: Thinking school@gmail.com";
 
@@ -39,7 +39,7 @@ mail($to,$subject,$txt,$headers);
 // $headers = array ('From' => $from,'To' => $to, 'Subject' => $subject);
 //
 // // $text = ''; // text versions of email.
-// $html = "<html><body>Hello, $firstname $lastname <br>You have been verified at the Thinking school Web Office. You can now login to the Web Office at \"https://news.mckodev.com.ng/adminLogin"; // html versions of email.
+// $html = "<html><body>Hello, $firstname $lastname <br>You have been verified at the Thinking school Web Office. You can now login to the Web Office at \"https://news.mckodev.com.ng/admin-login"; // html versions of email.
 //
 // $crlf = "\n";
 //
@@ -71,7 +71,7 @@ mail($to,$subject,$txt,$headers);
 
 // die(var_dump($userinfo));
 // if($tb == ""){
-header("location:viewUsers");
+header("location:view-admins");
 // }
 
 

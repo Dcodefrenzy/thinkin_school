@@ -31,10 +31,10 @@ if(array_key_exists('submit', $_POST)){
   	//Send Severcies Ordered For To Mail.
 /*    $uri = explode("/", $_SERVER['REQUEST_URI']);
     $url = $uri[1];*/
-/*     $to = "boardspeck@gmail.com";
-     $subject = "Boardspeck Web Office Content Upload";
+/*     $to = "Thinking School@gmail.com";
+     $subject = "Thinking School Web Office Content Upload";
      $txt = "Hello Admin, a service has been booked for "."$url"." page at the back office. Kindly check.";
-     $headers = "From: info@boardspeck.com" . "\r\n" .
+     $headers = "From: info@Thinking School.com" . "\r\n" .
      "CC: banjimayowa@gmail.com";*/
 /*     mail($to,$subject,$txt,$headers);*/
 // var_dump($clean);

@@ -39,6 +39,7 @@ if(array_key_exists('submit', $_POST)){
   if($_POST['pword']!=$_POST['cpword']){
     $error['pword'] ="Password mismatch";
   }
+       $_POST['subscription_status'] = "unsubscribed";
 
   if(empty($error)){
     $clean = array_map('trim', $_POST);

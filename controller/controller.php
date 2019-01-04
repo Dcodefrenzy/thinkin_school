@@ -16,6 +16,99 @@ function displaySubCategory($dbconn, $id){
   return $result;
 }
 
+function decodeDate($date){
+  $split = explode('-',$date);
+  $month = $split[1];
+  $day = $split[2];
+  $year = $split[0];
+  if($month == 1 ){
+    $month = "January";
+  }
+  if($month == 2 ){
+    $month = "February";
+  }
+  if($month == 3 ){
+    $month = "March";
+  }
+  if($month == 4){
+    $month = "April";
+  }
+  if($month == 5){
+    $month = "May";
+  }
+  if($month == 6 ){
+    $month = "June";
+  }
+  if($month == 7 ){
+    $month = "July";
+  }
+  if($month == 8 ){
+    $month = "August";
+  }
+  if($month == 9 ){
+    $month = "September";
+  }
+  if($month == 10 ){
+    $month = "October";
+  }
+  if($month == 11 ){
+    $month = "November";
+  }
+  if($month == 12 ){
+    $month = "December";
+  }
+  $newDate = $month.' '.$day.', '.$year;
+  return $newDate;
+}
+
+function decodePartDate($date){
+  $split = explode('-',$date);
+  $month = $split[1];
+  $day = $split[2];
+  $year = $split[0];
+  if($month == 1 ){
+    $month = "January";
+  }
+  if($month == 2 ){
+    $month = "February";
+  }
+  if($month == 3 ){
+    $month = "March";
+  }
+  if($month == 4){
+    $month = "April";
+  }
+  if($month == 5){
+    $month = "May";
+  }
+  if($month == 6 ){
+    $month = "June";
+  }
+  if($month == 7 ){
+    $month = "July";
+  }
+  if($month == 8 ){
+    $month = "August";
+  }
+  if($month == 9 ){
+    $month = "September";
+  }
+  if($month == 10 ){
+    $month = "October";
+  }
+  if($month == 11 ){
+    $month = "November";
+  }
+  if($month == 12 ){
+    $month = "December";
+  }
+  $newDate['month'] = $month;
+  $newDate['day'] = $day;
+  $newDate['year'] = $year;
+
+  return $newDate;
+}
+
 function displayCategories($dbconn){
   $stmt =$dbconn->prepare("SELECT * FROM category");
   $stmt->execute();
@@ -188,14 +281,6 @@ function editfinalCategory($dbconn, $post, $get){
 
   header("Location: final_category");
 }
-// function getIdByHashId($dbconn,$id_name,$id,$table,$hash_id){
-//   $stmt = $dbconn->prepare("SELECT $id_name FROM $table WHERE hash_id = :hid ");
-//   $stmt->bindParam(":hid", $hash_id);
-//   $stmt->execute();
-//   $row = $stmt->fetch(PDO::FETCH_BOTH);
-//   return $row[$id_name];
-// }
-
 
 
 function getCat($dbconn){
@@ -411,7 +496,7 @@ function doUserRegister($dbconn, $input){
     $emailtop = explode("@",$input['email']);
     $hash_id = $emailtop[0].$rand.$emailtop[1];
 
-    $stmt =$dbconn->prepare("INSERT INTO users(firstname,lastname,email,phone_number,username,hash, hash_id) VALUES(:fname, :lname, :em, :pm, :uname, :h, :hid)");
+    $stmt =$dbconn->prepare("INSERT INTO users(firstname,lastname,email,phone_number,username,hash, hash_id, subscription_status) VALUES(:fname, :lname, :em, :pm, :uname, :h, :hid, :ss)");
 
     $stmt->bindParam(":fname", $input['firstname']);
     $stmt->bindParam(":lname", $input['lastname']);
@@ -420,6 +505,7 @@ function doUserRegister($dbconn, $input){
     $stmt->bindParam(":uname", $input['username']);
     $stmt->bindParam(":h", $hash);
     $stmt->bindParam(":hid", $hash_id);
+    $stmt->bindParam(":ss", $input['subscription_status']);
     $stmt->execute();
     userLogin($dbconn,$input);
   }catch(PDOException $e){
@@ -429,7 +515,7 @@ function doUserRegister($dbconn, $input){
 }
 
 
-function userLogin($dbconn,$input){
+function userLogin($dbconn,$input, $redirect){
   try{
 
     $stmt = $dbconn->prepare("SELECT * FROM users WHERE email = :e ");
@@ -440,8 +526,9 @@ function userLogin($dbconn,$input){
     if($stmt->rowCount() > 0 && password_verify($input['pword'], $row['hash'])){
       extract($row);
       $_SESSION['username'] = $username;
-      $_SESSION['id'] = $hash_id;
-      header("Location:/home");
+      $_SESSION['hash_id'] = $hash_id;
+      setLogin($dbconn,"users",$hash_id);
+      header("Location:/$redirect");
     }else{
       $mes = "Invalid Email or Password";
       $err = preg_replace('/\s+/', '_', $mes);
@@ -451,6 +538,25 @@ function userLogin($dbconn,$input){
       die("no");
     }
 
+}
+
+function authentication(){
+  if (!isset($_SESSION['username'])) {
+        $success = "You are not signed in";
+         $msg= preg_replace('/\s+/', '_', $success);
+           header("Location:user_login?msg=$msg");
+  }
+}
+
+function checkSubscription($dbconn, $id){
+  $stmt = $dbconn->prepare("SELECT * FROM users WHERE hash_id=:id");
+  $stmt->bindParam(':id', $id);
+  $stmt->execute();
+  $row = $stmt->fetch(PDO::FETCH_BOTH);
+  extract($row);
+  if ($subscription_status != "subscribed") {
+    header("Location:index");
+  }
 }
 
 function update_user($dbconn, $hid, $input){
@@ -1447,10 +1553,10 @@ function blogs($dbconn, $hashID, $start, $record){
       $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-    $result [] = $row; 
+    $result [] = $row;
 
   }
-  
+
   return $result;
 }
 
@@ -1461,10 +1567,10 @@ function allBlogs($dbconn, $start, $record){
     $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-    $result [] = $row; 
+    $result [] = $row;
 
   }
-  
+
   return $result;
 }
 
@@ -1476,10 +1582,10 @@ function Catblog($dbconn, $hashID){
     $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-      
-    $result [] = $row; 
+
+    $result [] = $row;
   }
- 
+
   return $result;
 }
 function getTotalRecordBlog($dbconn,  $record){
@@ -1513,10 +1619,10 @@ function homeBlog($dbconn){
       $stmt->bindParam(':show', $show);
   $stmt->execute();
   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-      
-    $result [] = $row; 
+
+    $result [] = $row;
   }
- 
+
   return $result;
 }
 
@@ -1589,7 +1695,7 @@ function getService($dbconn, $hid){
   $stmt->bindParam(':hid', $hid);
   $stmt->execute();
    $row = $stmt->fetch(PDO::FETCH_BOTH);
-    return $row; 
+    return $row;
 }
 // function getAllServices($dbconn){
 //   $result = [];
@@ -1703,7 +1809,7 @@ function getAllEvents($dbconn,$start, $record){
 
   function book($dbconn, $post, $hid, $book){
 try {
-           
+
   $rnd = rand(0000000000,9999999999);
   $split = explode(" ",$post['name']);
   $id = $rnd.cleans($split['0']);
@@ -1720,7 +1826,7 @@ try {
     ];
 
     $stmt->execute($data);
-  
+
   }catch(PDOException $e){
     die("Something Went Wrong");
   }
@@ -1734,7 +1840,7 @@ try {
   $stmt->bindParam(':hid', $hid);
   $stmt->execute();
   $row = $stmt->fetch(PDO::FETCH_BOTH);
-  
+
     return $row;
   }
   function getTeam($dbconn){

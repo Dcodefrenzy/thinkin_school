@@ -94,7 +94,7 @@ switch ($uri[1]) {
 
 
   case "admin?msg=$msg":
-  include APP_PATH."/views/admin/adminlogin.php";
+  include APP_PATH."/views/admin/admin-login.php";
   break;
 
   case "admin_register":
@@ -187,6 +187,10 @@ switch ($uri[1]) {
   include APP_PATH."/views/admin/logout.php";
   break;
 
+  case "user-logout":
+  include APP_PATH."/thinking_views/users_logout.php";
+  break;
+
 
   case "quote?hid=$hid":
   include APP_PATH."/views/users/users_quote.php";
@@ -213,6 +217,11 @@ switch ($uri[1]) {
 
   case "home":
   include APP_PATH."/thinking_views/home.php";
+  break;
+
+
+  case "podcast":
+  include APP_PATH."/thinking_views/podcast.php";
   break;
 
   case "about":
@@ -377,7 +386,7 @@ switch ($uri[1]) {
 
 
   case "user_login?msg=$msg":
-  include APP_PATH."/views/users/users_login.php";
+  include APP_PATH."/thinking_views/user_login.php";
   break;
 
   case "user-register":

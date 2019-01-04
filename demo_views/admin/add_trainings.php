@@ -26,12 +26,17 @@ if(array_key_exists('submit', $_POST)){
     if(empty($_POST['venue'])){
     $error['venue']="Enter a Venue";
   }
-  
+
   if(empty($_POST['price'])){
     $error['price']="Enter a Price";
   }
   if(empty($_POST['description'])){
     $error['description']="Enter a description";
+  }
+  if($_POST['price'] !== "FREE"){
+    if(!is_numeric($_POST['price'])){
+      $error['price']="Enter only numeric values or FREE";
+    }
   }
     if(empty($_POST['start_date'])){
     $error['start_date']="Enter a start date";
@@ -50,13 +55,13 @@ if(array_key_exists('submit', $_POST)){
     $lastn = $lname;
 /*    $uri = explode("/", $_SERVER['REQUEST_URI']);
     $url = $uri[1];
-     $to = "boardspeck@gmail.com";
-     $subject = "Boardspeck Web Office Content Upload";
+     $to = "Thinking School@gmail.com";
+     $subject = "Thinking School Web Office Content Upload";
      $txt = "Hello Admin, ($firstn $lastn)has added a content on "."$url"." page at the back office. Kindly check for and approval";
-     $headers = "From: info@boardspeck.com" . "\r\n" .
+     $headers = "From: info@Thinking School.com" . "\r\n" .
      "CC: banjimayowa@gmail.com";
      mail($to,$subject,$txt,$headers);*/
-     
+
     addTraining($conn,$clean,$ver,$hash_id);
   }
 }
@@ -93,8 +98,8 @@ if(array_key_exists('submit', $_POST)){
 echo $display ?> <input class="form-control input-md" name="name" placeholder="Write a training name"  type="text">
 </div>
 <div class="form-group mb30">
-<label class="control-label">Price</label><?php $display = displayErrors($error, 'price');
-echo $display ?> <input class="form-control input-md" name="price" placeholder="Enter News price here"  type="number">
+<label class="control-label">Price (Enter "FREE" if training is free)</label><?php $display = displayErrors($error, 'price');
+echo $display ?> <input class="form-control input-md" name="price" placeholder="Enter News price here"  type="text">
 </div>
 <div class="form-group mb30">
 <label class="control-label">venue</label><?php $display = displayErrors($error, 'venue');
@@ -102,11 +107,11 @@ echo $display ?> <input class="form-control input-md" name="venue" placeholder="
 </div>
 <div class="form-group mb30">
 <label class="control-label">Start Date</label><?php $display = displayErrors($error, 'start_date');
-echo $display ?> <input class="form-control input-md" name="start_date" placeholder="format: December/10/2018"  type="text">
+echo $display ?> <input class="form-control input-md" name="start_date"  type="date">
 </div>
 <div class="form-group mb30">
 <label class="control-label">End Date</label><?php $display = displayErrors($error, 'end_date');
-echo $display ?> <input class="form-control input-md" name="end_date" placeholder="format: December/10/2018"  type="text">
+echo $display ?> <input class="form-control input-md" name="end_date"   type="date">
 </div>
 <div class="form-group mb30">
 <label class="control-label">Time</label><?php $display = displayErrors($error, 'time');

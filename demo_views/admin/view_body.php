@@ -27,7 +27,7 @@ $edit_info = getEditInfo($conn,$_GET['id'],$_GET['t']);
   <div class="inner-box posting">
   <div class="alert alert-success alert-lg" role="alert">
   <h2 class="postin-title">✔ Successful! '.$msg.' </h2>
-  <p>Thank you '.ucwords($firstname).', BoardSpeck is happy to have you around. </p>
+  <p>Thank you '.ucwords($firstname).', Thinking School is happy to have you around. </p>
   </div>
   </div>
   </div>';
@@ -50,10 +50,10 @@ $edit_info = getEditInfo($conn,$_GET['id'],$_GET['t']);
   echo '<a href="manageReports"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
   if($_GET['t'] == "training"){
-  echo '<a href="managePrograms"> <button class="btn btn-common" type="submit">Back</button></a>';
+  echo '<a href="manage-trainings"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
-  if($_GET['t'] == "event"){
-  echo '<a href="manageEvent"> <button class="btn btn-common" type="submit">Back</button></a>';
+  if($_GET['t'] == "events"){
+  echo '<a href="view-events"> <button class="btn btn-common" type="submit">Back</button></a>';
 }
   if($_GET['t'] == "about"){
   echo '<a href="manageAbout"> <button class="btn btn-common" type="submit">Back</button></a>';
@@ -80,17 +80,28 @@ $edit_info = getEditInfo($conn,$_GET['id'],$_GET['t']);
     <?php if($_GET['t'] == "news" || $_GET['t'] == "campus_news"){ ?>
   <h4 class="post-title"><a href="#"><?php echo $edit_info['headline'] ?></a></h4>
     <?php getBody($conn,$_GET['id'],$_GET['t']) ?>
-<?php }elseif($_GET['t'] ==  "event"){ ?>
-  <h4 class="post-title"><a href="#"><?php echo $edit_info['name'] ?></a></h4>
+<?php }elseif($_GET['t'] ==  "events"){ ?>
+  <h4 class="post-title"><a href="#"><?php echo $edit_info['event_name'] ?></a></h4>
     <?php getEventBody($conn,$_GET['id'],$_GET['t']) ?>
 <?php }elseif($_GET['t'] ==  "about"){ ?>
 
   <?php
 $edit_info2 = getEditInfo2($conn,$_GET['id'],$_GET['t']);
-   echo $edit_info2['body'] ?>
+   echo $edit_info2['body'];
+// var_dump($edit_info2);
+    ?>
 <?php }elseif($_GET['t'] ==  "project"){ ?>
 <h4 class="post-title"><a href="#"><?php echo $edit_info['project_name'] ?></a></h4>
   <?php echo $edit_info['about'] ?>
+<?php }elseif($_GET['t'] ==  "front"){
+  $edit_info2 = getEditInfo2($conn,$_GET['id'],$_GET['t']);
+
+  ?>
+<h4 class="post-title"><a href="#"><?php echo $edit_info2['title'] ?></a></h4>
+  <?php echo $edit_info2['body'] ?>
+<?php }elseif($_GET['t'] ==  "training"){ ?>
+<h4 class="post-title"><a href="#"><?php echo $edit_info['name'] ?></a></h4>
+  <?php echo $edit_info['description'] ?>
 
 <?php }elseif($_GET['t'] ==  "product"){ ?>
 <h4 class="post-title"><a href="#"><?php echo $edit_info['product_name'] ?></a></h4>

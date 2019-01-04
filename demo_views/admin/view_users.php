@@ -17,7 +17,7 @@ $check2 = adminFullInfo($conn,$_SESSION['id']);
   session_destroy();
   $success = "Your Account Cannot View Users";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location: adminLogin?ssp=$succ");
+  header("Location: admin-login?ssp=$succ");
 }*/
 
 $info = adminInfo($conn,$session);
@@ -50,14 +50,13 @@ $lname = ucwords($lastname);
   <tr>
 
     <th>Login Details</th>
-    <th>Level & Status</th>
-    <th>Set Level</th>
+    <th>Subscription Status</th>
     <th>Delete</th>
-    <th>Suspend</th>
+    <th>manage subsciption</th>
   </tr>
 <tbody>
 <tr>
-  <?php getAdmin($conn); ?>
+  <?php getUsers($conn); ?>
 
 <!-- </tr>
 <tr>

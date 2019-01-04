@@ -20,10 +20,10 @@ $lastname = $userinfo['lastname'];
 
 /*
 $to = $email;
-$subject = "Boardspeck Web Office Sharer Verification";
-$txt = "Hello $firstname $lastname, You have been Verified from the Boardspeck Web Office to earn from sharing Posts. Login at https://boardspeck.com/userLogin";
-$headers = "From: info@boardspeck.com" . "\r\n" .
-"CC: boardspeck@gmail.com";*/
+$subject = "Thinking School Web Office Sharer Verification";
+$txt = "Hello $firstname $lastname, You have been Verified from the Thinking School Web Office to earn from sharing Posts. Login at https://Thinking School.com/userLogin";
+$headers = "From: info@Thinking School.com" . "\r\n" .
+"CC: Thinking School@gmail.com";*/
 
 mail($to,$subject,$txt,$headers);
 
@@ -34,12 +34,12 @@ mail($to,$subject,$txt,$headers);
 //
 //       $from = "info@mckodev.com.ng"; //enter your email address
 //  $to = $email; //enter the email address of the contact your sending to
-//  $subject = "BOARDSPECK VERIFICATION"; // subject of your email
+//  $subject = "Thinking School VERIFICATION"; // subject of your email
 //
 // $headers = array ('From' => $from,'To' => $to, 'Subject' => $subject);
 //
 // // $text = ''; // text versions of email.
-// $html = "<html><body>Hello, $firstname $lastname <br>You have been verified at the Boardspeck Web Office. You can now login to the Web Office at \"https://news.mckodev.com.ng/adminLogin"; // html versions of email.
+// $html = "<html><body>Hello, $firstname $lastname <br>You have been verified at the Thinking School Web Office. You can now login to the Web Office at \"https://news.mckodev.com.ng/admin-login"; // html versions of email.
 //
 // $crlf = "\n";
 //
