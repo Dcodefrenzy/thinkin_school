@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 03, 2019 at 09:56 AM
+-- Generation Time: Jan 07, 2019 at 12:03 PM
 -- Server version: 5.7.18
 -- PHP Version: 7.0.16-4+deb.sury.org~trusty+1
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `mckodevc_demo`
+-- Database: `thinking_school`
 --
 
 -- --------------------------------------------------------
@@ -84,9 +84,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`id`, `firstname`, `lastname`, `email`, `hash`, `hash_id`, `position`, `phone_number`, `facebook_link`, `twitter_link`, `linkedin_link`, `instagram_link`, `image_1`, `time_created`, `date_created`, `last_login`, `last_logout`, `login_status`, `level`, `verification`, `profile_status`, `user_status`, `defaulted`) VALUES
 (7, 'Banji', 'Akole', 'banjimayowa@gmail.com', '$2y$10$nfIX.S/vu469XEOOr4nrjupfWxF2tHfUwpX7S0sH1eyaIY8tZivs.', 'j90819542aBn72i', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '14:25:12', '2018-02-28', '2019-01-03 08:14:17', '2019-01-01 19:53:53', 'Logged In', 'MASTER', '1', NULL, '1', NULL),
-(10, 'Kabiru', 'Shuaibu', 'kobyblaze@gmail.com', '$2y$10$siFhCK.SlD4mUgTMf0148.y4Emn8sA0AIAJuzyeDM6hc7Zb0tQJ9a', '3r543i0a57Kbu845', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '19:17:23', '2018-04-16', '2018-05-24 17:14:02', NULL, 'Logged In', '1', '1', NULL, '2', NULL),
-(14, 'Akole', 'Banji', 'banjimayowa1@gmail.com', '$2y$10$jO/LwWCOtJ1I.oeP7PsAFum6ADpbjqPvsHRflxqIbNWfGasJj3vI6', 'admin9917900809', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:28:01', '2018-04-17', NULL, NULL, NULL, NULL, '1', NULL, '2', NULL),
-(17, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '$2y$10$38wjO4BJP3sEYSd47n/hTuetqf9.pXhhS/WWqDplvpDEMXgYsJUpC', 'jy95Ae4d739i4o02', NULL, '08133475878', 'facebook.com/deji', 'tweeter.com/frenzykul', 'linkedin.com/ayodeji', 'instagram.com/frenzykul', '1545775096mail13239229_487959851401256_5588409995275807808_n.jpg', '17:26:28', '2018-04-28', '2019-01-01 10:55:43', '2019-01-01 10:53:36', 'Logged In', '3', '1', NULL, '1', NULL),
+(10, 'Kabiru', 'Shuaibu', 'kobyblaze@gmail.com', '$2y$10$siFhCK.SlD4mUgTMf0148.y4Emn8sA0AIAJuzyeDM6hc7Zb0tQJ9a', '3r543i0a57Kbu845', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '19:17:23', '2018-04-16', '2018-05-24 17:14:02', NULL, 'Logged In', '1', '1', NULL, '1', NULL),
+(14, 'Akole', 'Banji', 'banjimayowa1@gmail.com', '$2y$10$jO/LwWCOtJ1I.oeP7PsAFum6ADpbjqPvsHRflxqIbNWfGasJj3vI6', 'admin9917900809', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:28:01', '2018-04-17', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL),
+(17, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '$2y$10$38wjO4BJP3sEYSd47n/hTuetqf9.pXhhS/WWqDplvpDEMXgYsJUpC', 'jy95Ae4d739i4o02', NULL, '08133475878', 'facebook.com/deji', 'tweeter.com/frenzykul', 'linkedin.com/ayodeji', 'instagram.com/frenzykul', '1545775096mail13239229_487959851401256_5588409995275807808_n.jpg', '17:26:28', '2018-04-28', '2019-01-04 12:53:51', '2019-01-04 12:53:45', 'Logged In', '3', '1', NULL, '1', NULL),
 (18, 'Kolade', 'Koded', 'Fakunlekolade@gmail.com', '$2y$10$ZUhQTQ2Mi.1ApKHnyQggw.WoQx2mOyGWDapd3lnpggShxM8D4yKIy', 'admin7851792597', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '09:57:06', '2018-05-01', '2018-05-18 08:07:18', '2018-05-18 09:19:59', 'Logged Out', '3', '1', NULL, '1', NULL),
 (19, 'Odunola', 'Olabintan', 'olabintanodunola@yahoo.com', '$2y$10$AC6Bx8e6YYx7GTf2XRtK7OV0xIG0jyAMRga5XeJ2Fvb31L25LPQgW', 'admin5767077300', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:11:23', '2018-05-04', '2018-05-06 21:31:17', NULL, 'Logged In', '5', '1', NULL, '1', NULL),
 (20, 'Babatunde', 'Julius', 'Iambabatundejulius@gmail.com', '$2y$10$FN2UPoaxgfb9XdTD2odMM.pBy6MtJptEheK7tL0K.BapyEubyUHkq', 'admin6561856488', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '13:51:20', '2018-05-05', '2018-05-06 18:26:58', NULL, 'Logged In', '8', '1', NULL, '1', NULL),
@@ -98,7 +98,6 @@ INSERT INTO `admin` (`id`, `firstname`, `lastname`, `email`, `hash`, `hash_id`, 
 (26, 'test', 'test', 'mayur4rf_ji@yahoo.com', '$2y$10$42NQb5iz9nXw6ixy/2T4.uwYgvQ2miAahkAEP6pV9eh4a7qmDW44S', 'e238t723ts7106', NULL, '08168785598', NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '01:08:43', '2018-05-19', '2019-01-01 20:08:52', NULL, 'Logged In', '9', '1', NULL, '1', NULL),
 (27, 'Adedamola', 'Olabintan', 'damolaolabintan@gmail.com', '$2y$10$UvsATSk.IxUnbvD3fY.AsejJGR1v3IHwPtJNJbVKj7vFL8EljKHSi', '1lA81094d15a72deaom', NULL, '08107209469', NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:29:06', '2018-05-19', '2018-05-19 21:34:29', NULL, 'Logged In', '5', '1', NULL, '1', NULL),
 (28, 'Folorunso', 'Obasuyi', 'obasfot2017@gmail.com', '$2y$10$GdslqRTIgbBPasimeIUqNOt81ZY7d7kWNV2q2XNsvGs/2x.pfalM6', '5s730nFluoo12r0o978', NULL, '+601131899754', NULL, NULL, NULL, NULL, NULL, '17:38:58', '2018-05-24', '2018-05-25 08:45:04', NULL, 'Logged In', '9', '1', NULL, '1', NULL),
-(29, 'deejay', 'werecf', 'root@', '$2y$10$Xn7o1Ln.ltkMls7lQBbDLuos83K1OWcMWMe8hkQSJwJ0Wvp9ptT2W', '6j8e914d07y4ea10', NULL, '08133475878', NULL, NULL, NULL, NULL, NULL, '15:50:18', '2018-12-25', NULL, NULL, NULL, '3', '1', NULL, '1', NULL),
 (30, 'vickie', 'fakuns', 'fakunlevic@gmail.com', '$2y$10$.xY1N5AU.FP8qZI.KbEH0OYmfnnac.fPuaYNXKVF4LfSCPKnjVzvS', '54ive1147i51c4k4', NULL, '09024901335', NULL, NULL, NULL, NULL, NULL, '11:39:38', '2019-01-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -263,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `date_created` date NOT NULL,
   `hash_id` varchar(225) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=875 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=876 ;
 
 --
 -- Dumping data for table `logs`
@@ -1145,7 +1144,8 @@ INSERT INTO `logs` (`id`, `type`, `content`, `category`, `action_by`, `time_crea
 (871, 'deleted', 'Demo Model Title', 'article', 'j90819542aBn72i', '09:13:22', '2019-01-03', 'log901m22o07e655d'),
 (872, 'deleted', 'Docker.', 'article', 'j90819542aBn72i', '09:13:26', '2019-01-03', 'log28d3k8rce8o16076'),
 (873, 'edited', 'Demo Project', 'article', 'j90819542aBn72i', '09:13:47', '2019-01-03', 'log681271d4me429o'),
-(874, 'edited', '1546506836mailWorkPlace-Ethics.png', 'image', 'j90819542aBn72i', '09:13:56', '2019-01-03', 'logi220h16pketl3ir473e-6w3lam6p85sa233ogc3n-c75');
+(874, 'edited', '1546506836mailWorkPlace-Ethics.png', 'image', 'j90819542aBn72i', '09:13:56', '2019-01-03', 'logi220h16pketl3ir473e-6w3lam6p85sa233ogc3n-c75'),
+(875, 'edited', '1', 'admin level for 3r543i0a57Kbu845', 'jy95Ae4d739i4o02', '12:11:40', '2019-01-04', 'log38385120910');
 
 -- --------------------------------------------------------
 
@@ -1339,21 +1339,25 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(50) NOT NULL,
   `hash` varchar(255) NOT NULL,
   `hash_id` varchar(255) NOT NULL,
+  `subscription_status` varchar(255) NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `last_logout` datetime DEFAULT NULL,
+  `login_status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `phone_number`, `username`, `hash`, `hash_id`) VALUES
-(4, 'kayode', 'Mayowa', 'kay@gmail.com', '', 'root', '$2y$10$d/2hiay/h/aEMOYvHL4xYuf1yc1/RpIROvmVXYQuEnwKCLAcORkkC', 'b53ca374f7d4a9af823aae88df5f937e'),
-(5, 'vicky', 'Fakunle', 'vicky@gmail.com', '', 'vicky', '$2y$10$0.guh52r/42OLEjeD.De9.zGvXVJvuqxY40ECm7pAVacfkpLkLavG', 'id7729920987'),
-(6, 'deji', 'Fakunle', 'deji@gmail.com', '', 'deji', '$2y$10$Lit4qe6T.QpW2Wvsr455iefURhBMvDNew46I4PlOh5i4TyXE2OR.G', 'id2419747868'),
-(9, 'Tese', 'Test', 'test@gmail.com', '', 'test', '$2y$10$TkVO5WaDyaGhMyhxFo02Ou2r9dbuXVPyllkuUrMKvW3W8/wmcJv/C', 'id9026759201'),
-(10, 'tset', 'Test', 't@gmail.com', '', 'tee', '$2y$10$JPwFXIAYDNlwYip9mEs/3eybYYHQZlbv9PGYRCxTXcxnocDDo0LuS', 'b53ca374f7d4a9af823aae88df5f937e'),
-(12, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'Frenzy', '$2y$10$nJNdMb77k65HBMTRovoRU.LKm7kZpbbB7EydcTzQLrwIlpVDM8Gky', 'ayodejisamuelfakunle781131gmail.com'),
-(13, 'Ayodeji', 'samuel', 'sam@gmail.com', '08133475878', 'sammy', '$2y$10$JCAwugoZdFK1TiaJzPUhbeIggh.H3n6Vua8f.coOLzy85uPjNnMfi', 'sam33949045gmail.com');
+INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `phone_number`, `username`, `hash`, `hash_id`, `subscription_status`, `last_login`, `last_logout`, `login_status`) VALUES
+(4, 'kayode', 'Mayowa', 'kay@gmail.com', '', 'root', '$2y$10$d/2hiay/h/aEMOYvHL4xYuf1yc1/RpIROvmVXYQuEnwKCLAcORkkC', 'b53ca374f7d4a9af823aae88df5f937e', 'subscribed', NULL, NULL, ''),
+(9, 'Tese', 'Test', 'test@gmail.com', '', 'test', '$2y$10$TkVO5WaDyaGhMyhxFo02Ou2r9dbuXVPyllkuUrMKvW3W8/wmcJv/C', 'id9026759201', 'subscribed', NULL, NULL, ''),
+(10, 'tset', 'Test', 't@gmail.com', '', 'tee', '$2y$10$JPwFXIAYDNlwYip9mEs/3eybYYHQZlbv9PGYRCxTXcxnocDDo0LuS', 'b53ca374f7d4a9af823aae88df5f937e', 'subscribed', NULL, NULL, ''),
+(12, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'Frenzy', '$2y$10$nJNdMb77k65HBMTRovoRU.LKm7kZpbbB7EydcTzQLrwIlpVDM8Gky', 'ayodejisamuelfakunle781131gmail.com', 'subscribed', '2019-01-04 12:54:48', '2019-01-04 12:54:51', 'Logged Out'),
+(13, 'Ayodeji', 'samuel', 'sam@gmail.com', '08133475878', 'sammy', '$2y$10$JCAwugoZdFK1TiaJzPUhbeIggh.H3n6Vua8f.coOLzy85uPjNnMfi', 'sam33949045gmail.com', 'subscribed', NULL, NULL, ''),
+(14, 'John', 'Doe', 'john@gmail.com', '08133475878', 'JohnDoe', '$2y$10$rk14BPB2V71rP7pKES./2ePYqmHN8PZ7MP.6N3juHgg1T4Eg4Rg.C', 'john42289224gmail.com', 'subscribed', NULL, NULL, ''),
+(15, 'vicky', 'Fakunle', 'vicky@gmail.com', '09024901335', 'vicky', '$2y$10$QKn9nbbdaM/Ohh0kISIQoOONENcrGRmK0VcQfvHjmuNTTRqa7smWC', 'vicky20405758gmail.com', 'subscribed', '2019-01-04 12:57:45', NULL, 'Logged In');
 
 -- --------------------------------------------------------
 
