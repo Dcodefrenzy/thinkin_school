@@ -40,6 +40,11 @@ if (isset($_GET['hid']) AND ($_GET['t'])) {
 
 <h2 class="title-2"><i class="fa fa-star-o"></i>Boooked Users</h2>
 <br>
+<div align="right">
+    <a href="manage-trainings">
+        <button class="btn btn-info btn-sm" type="submit">Go Back</button>
+      </a>
+</div>
 <div class="table-responsive">
 <table class="table table-striped table-bordered add-manage-table">
   <tr>
@@ -47,6 +52,8 @@ if (isset($_GET['hid']) AND ($_GET['t'])) {
     <th>Email</th>
     <th>Phone Number</th>
      <th>Verification</th>
+     <th>Payment Status</th>
+     <th>Invoice Code</th>
     <th>User Id</th>
     <th>Delete</th>
 
