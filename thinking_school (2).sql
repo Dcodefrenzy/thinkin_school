@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 07, 2019 at 12:03 PM
+-- Generation Time: Jan 08, 2019 at 04:00 PM
 -- Server version: 5.7.18
 -- PHP Version: 7.0.16-4+deb.sury.org~trusty+1
 
@@ -86,7 +86,7 @@ INSERT INTO `admin` (`id`, `firstname`, `lastname`, `email`, `hash`, `hash_id`, 
 (7, 'Banji', 'Akole', 'banjimayowa@gmail.com', '$2y$10$nfIX.S/vu469XEOOr4nrjupfWxF2tHfUwpX7S0sH1eyaIY8tZivs.', 'j90819542aBn72i', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '14:25:12', '2018-02-28', '2019-01-03 08:14:17', '2019-01-01 19:53:53', 'Logged In', 'MASTER', '1', NULL, '1', NULL),
 (10, 'Kabiru', 'Shuaibu', 'kobyblaze@gmail.com', '$2y$10$siFhCK.SlD4mUgTMf0148.y4Emn8sA0AIAJuzyeDM6hc7Zb0tQJ9a', '3r543i0a57Kbu845', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '19:17:23', '2018-04-16', '2018-05-24 17:14:02', NULL, 'Logged In', '1', '1', NULL, '1', NULL),
 (14, 'Akole', 'Banji', 'banjimayowa1@gmail.com', '$2y$10$jO/LwWCOtJ1I.oeP7PsAFum6ADpbjqPvsHRflxqIbNWfGasJj3vI6', 'admin9917900809', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:28:01', '2018-04-17', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL),
-(17, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '$2y$10$38wjO4BJP3sEYSd47n/hTuetqf9.pXhhS/WWqDplvpDEMXgYsJUpC', 'jy95Ae4d739i4o02', NULL, '08133475878', 'facebook.com/deji', 'tweeter.com/frenzykul', 'linkedin.com/ayodeji', 'instagram.com/frenzykul', '1545775096mail13239229_487959851401256_5588409995275807808_n.jpg', '17:26:28', '2018-04-28', '2019-01-04 12:53:51', '2019-01-04 12:53:45', 'Logged In', '3', '1', NULL, '1', NULL),
+(17, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '$2y$10$38wjO4BJP3sEYSd47n/hTuetqf9.pXhhS/WWqDplvpDEMXgYsJUpC', 'jy95Ae4d739i4o02', NULL, '08133475878', 'facebook.com/deji', 'tweeter.com/frenzykul', 'linkedin.com/ayodeji', 'instagram.com/frenzykul', '1545775096mail13239229_487959851401256_5588409995275807808_n.jpg', '17:26:28', '2018-04-28', '2019-01-08 09:15:28', '2019-01-04 12:53:45', 'Logged In', '3', '1', NULL, '1', NULL),
 (18, 'Kolade', 'Koded', 'Fakunlekolade@gmail.com', '$2y$10$ZUhQTQ2Mi.1ApKHnyQggw.WoQx2mOyGWDapd3lnpggShxM8D4yKIy', 'admin7851792597', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '09:57:06', '2018-05-01', '2018-05-18 08:07:18', '2018-05-18 09:19:59', 'Logged Out', '3', '1', NULL, '1', NULL),
 (19, 'Odunola', 'Olabintan', 'olabintanodunola@yahoo.com', '$2y$10$AC6Bx8e6YYx7GTf2XRtK7OV0xIG0jyAMRga5XeJ2Fvb31L25LPQgW', 'admin5767077300', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:11:23', '2018-05-04', '2018-05-06 21:31:17', NULL, 'Logged In', '5', '1', NULL, '1', NULL),
 (20, 'Babatunde', 'Julius', 'Iambabatundejulius@gmail.com', '$2y$10$FN2UPoaxgfb9XdTD2odMM.pBy6MtJptEheK7tL0K.BapyEubyUHkq', 'admin6561856488', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '13:51:20', '2018-05-05', '2018-05-06 18:26:58', NULL, 'Logged In', '8', '1', NULL, '1', NULL),
@@ -145,25 +145,34 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `verification` varchar(255) NOT NULL,
   `hash_id` varchar(255) NOT NULL,
   `booking_id` varchar(255) NOT NULL,
+  `payment_status` varchar(255) NOT NULL,
+  `invoice_code` varchar(255) NOT NULL,
   `date_created` date NOT NULL,
   `time_created` time NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `booking`, `name`, `email`, `phone_number`, `verification`, `hash_id`, `booking_id`, `date_created`, `time_created`) VALUES
-(1, 'event', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'tneu40243a96f36e3kveln', '936ov4e9eec8t3d8sn26', '2018-12-20', '19:56:19'),
-(2, 'event', 'Jane Doe', 'ricemiller@gmail.com', '08133475878', 'not verified', 'n88j0288eevn7ea0t32', '936ov4e9eec8t3d8sn26', '2018-12-20', '19:56:39'),
-(3, 'event', 'Sam Doe', 'kol@gmail.com', '08133475878', 'not verified', 'ea9nmt5e8700v250s4', '936ov4e9eec8t3d8sn26', '2018-12-20', '19:56:54'),
-(4, 'training', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'au270ia9erig94tln4fk9nn76', 'r6atiga5e71nig04lrn47e7n', '2018-12-20', '19:57:35'),
-(5, 'event', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'u72le0t5ev72ak890nfen7', 'n3439svd42420eote0ce', '2019-01-01', '12:22:29'),
-(6, 'event', 'Fakunle Ayodeji', 'sam@gmail.com', '08133475878', 'not verified', 'f1la0k22eneetu201083vn', '936ov4e9eec8t3d8sn26', '2019-01-01', '12:24:11'),
-(7, 'training', 'Jane Doe', 'deji@gmail.com', '08133475878', 'not verified', 'tgr2e2an21naj27nii3277', 'r6atiga5e71nig04lrn47e7n', '2019-01-01', '12:32:56'),
-(8, 'training', 'Fakunle Ayodeji', 'sam@gmail.com', '08133475878', 'not verified', 'r9ti1neuka084fi919lnga8n', 'iln0u7e7a286ft9arkni62n3g', '2019-01-01', '12:34:50'),
-(9, 'training', 'President', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', '1ipnge92r6ti25ti26s3eanrdn3', 'iln0u7e7a286ft9arkni62n3g', '2019-01-01', '12:35:06');
+INSERT INTO `booking` (`id`, `booking`, `name`, `email`, `phone_number`, `verification`, `hash_id`, `booking_id`, `payment_status`, `invoice_code`, `date_created`, `time_created`) VALUES
+(1, 'event', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'tneu40243a96f36e3kveln', '936ov4e9eec8t3d8sn26', '', '', '2018-12-20', '19:56:19'),
+(2, 'event', 'Jane Doe', 'ricemiller@gmail.com', '08133475878', 'not verified', 'n88j0288eevn7ea0t32', '936ov4e9eec8t3d8sn26', '', '', '2018-12-20', '19:56:39'),
+(3, 'event', 'Sam Doe', 'kol@gmail.com', '08133475878', 'not verified', 'ea9nmt5e8700v250s4', '936ov4e9eec8t3d8sn26', '', '', '2018-12-20', '19:56:54'),
+(4, 'training', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'au270ia9erig94tln4fk9nn76', 'r6atiga5e71nig04lrn47e7n', '', '', '2018-12-20', '19:57:35'),
+(5, 'event', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'u72le0t5ev72ak890nfen7', 'n3439svd42420eote0ce', '', '', '2019-01-01', '12:22:29'),
+(6, 'event', 'Fakunle Ayodeji', 'sam@gmail.com', '08133475878', 'not verified', 'f1la0k22eneetu201083vn', '936ov4e9eec8t3d8sn26', '', '', '2019-01-01', '12:24:11'),
+(7, 'training', 'Jane Doe', 'deji@gmail.com', '08133475878', 'not verified', 'tgr2e2an21naj27nii3277', 'r6atiga5e71nig04lrn47e7n', '', '', '2019-01-01', '12:32:56'),
+(8, 'training', 'Fakunle Ayodeji', 'sam@gmail.com', '08133475878', 'not verified', 'r9ti1neuka084fi919lnga8n', 'iln0u7e7a286ft9arkni62n3g', '', '', '2019-01-01', '12:34:50'),
+(9, 'training', 'President', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', '1ipnge92r6ti25ti26s3eanrdn3', 'iln0u7e7a286ft9arkni62n3g', '', '', '2019-01-01', '12:35:06'),
+(10, 'training', 'Fakunle Ayodeji', 'sam@gmail.com', '08133475878', 'not verified', 'kan4niga234lf46n7i46u1ter', 'ntnk8iia8g5h2759i7tngri8n5', 'not paid', 'training-3899713633', '2019-01-07', '15:54:45'),
+(12, 'event', 'Sam Doe', 'deji@gmail.com', '08133475878', 'not verified', '5st1ee234a1n194mv', '961tv53e0ns537s7te', 'not paid', '2n3541e19et4v1', '2019-01-08', '09:13:50'),
+(13, 'event', 'Jane Doe', 'sam@gmail.com', '08133475878', 'not verified', '65an2jt49e31n4ee8v0', '961tv53e0ns537s7te', 'not paid', 't3951e0824e64nv', '2019-01-08', '09:39:22'),
+(14, 'event', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', '7ltnkn2e767euv495ea3f', '961tv53e0ns537s7te', 'paid', 'e94v277ent7563', '2019-01-08', '10:09:23'),
+(15, 'event', 'Fakunle Ayodeji', 'kol@gmail.com', '08133475878', 'not verified', '385v5kul1nt1464efne9ae', '961tv53e0ns537s7te', 'paid', '146ne45138vte59', '2019-01-08', '14:53:34'),
+(16, 'training', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'not verified', 'n7i7t2a5fiu7nnar9g8e138lk', 'ntnk8iia8g5h2759i7tngri8n5', 'paid', 't51a2i7i8gn7783rn9', '2019-01-08', '15:07:08'),
+(17, 'event', 'Jane Doe', 'vicky@gmail.com', '08133475878', 'not verified', 'e2etn9a95n01ej575v', '961tv53e0ns537s7te', 'not paid', '71e29555e0tv9n', '2019-01-08', '15:47:05');
 
 -- --------------------------------------------------------
 
@@ -217,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `events` (
 --
 
 INSERT INTO `events` (`id`, `event_name`, `venue`, `description`, `status`, `price`, `hash_id`, `image_1`, `created_by`, `start_date`, `end_date`, `event_time`, `date_created`, `time_created`) VALUES
-(9, 'TS Event', 'Old SSS Office , Bassiri, Ado Ekiti', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'upcoming', 'FREE', '961tv53e0ns537s7te', '1546501160mailWHO.jpg', 'j90819542aBn72i', '2019-01-04', '2019-01-24', '2pm', '2019-01-02', '15:01:13');
+(9, 'TS Event', 'Old SSS Office , Bassiri, Ado Ekiti', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'upcoming', '10', '961tv53e0ns537s7te', '1546501160mailWHO.jpg', 'j90819542aBn72i', '2019-01-04', '2019-01-24', '2pm', '2019-01-02', '15:01:13');
 
 -- --------------------------------------------------------
 
@@ -244,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `front` (
 INSERT INTO `front` (`id`, `title`, `body`, `image_1`, `created_by`, `time_created`, `date_created`, `hash_id`) VALUES
 (22, 'Thinking School', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', '1546287756mailCoinFlip_3.3.17_1500x500.jpg', 'jy95Ae4d739i4o02', '20:22:07', '2018-12-31', '7388563379frontage'),
 (23, 'Thinking School2', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', '1546287744mailBeautiful_Design_for_API_developer_portals_nordic_APIs.png', 'jy95Ae4d739i4o02', '20:22:24', '2018-12-31', '2994173401frontage'),
-(24, 'Thinking School2', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', '1546339833mail01Blog-Cover-image-Fullstack-Highres.jpg', 'jy95Ae4d739i4o02', '20:22:56', '2018-12-31', '1729254825frontage');
+(24, 'Thinking School2', '<p>With all give you a thought pattern, we present an atmosphere to express yourselfWith all give you a thought pattern, we present an atmosphere to express yourself</p>', '1546872980mail1545562975mailCoinFlip_3.3.17_1500x500.jpg', 'jy95Ae4d739i4o02', '20:22:56', '2018-12-31', '1729254825frontage');
 
 -- --------------------------------------------------------
 
@@ -262,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `date_created` date NOT NULL,
   `hash_id` varchar(225) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=876 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=877 ;
 
 --
 -- Dumping data for table `logs`
@@ -1145,7 +1154,8 @@ INSERT INTO `logs` (`id`, `type`, `content`, `category`, `action_by`, `time_crea
 (872, 'deleted', 'Docker.', 'article', 'j90819542aBn72i', '09:13:26', '2019-01-03', 'log28d3k8rce8o16076'),
 (873, 'edited', 'Demo Project', 'article', 'j90819542aBn72i', '09:13:47', '2019-01-03', 'log681271d4me429o'),
 (874, 'edited', '1546506836mailWorkPlace-Ethics.png', 'image', 'j90819542aBn72i', '09:13:56', '2019-01-03', 'logi220h16pketl3ir473e-6w3lam6p85sa233ogc3n-c75'),
-(875, 'edited', '1', 'admin level for 3r543i0a57Kbu845', 'jy95Ae4d739i4o02', '12:11:40', '2019-01-04', 'log38385120910');
+(875, 'edited', '1', 'admin level for 3r543i0a57Kbu845', 'jy95Ae4d739i4o02', '12:11:40', '2019-01-04', 'log38385120910'),
+(876, 'edited', '1546872980mail1545562975mailCoinFlip_3.3.17_1500x500.jpg', 'image', 'jy95Ae4d739i4o02', '14:56:20', '2019-01-07', 'logl7p7m-62-g3783-1i2ai508ic3n41p49l557aj516im-9004515356-7lxf53o7010');
 
 -- --------------------------------------------------------
 
@@ -1321,7 +1331,7 @@ CREATE TABLE IF NOT EXISTS `training` (
 
 INSERT INTO `training` (`id`, `name`, `venue`, `description`, `status`, `price`, `image_1`, `created_by`, `start_date`, `end_date`, `training_time`, `date_created`, `time_created`, `hash_id`) VALUES
 (5, 'Thinking School  Leadership Training', 'OOdua Hall Eksu', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'upcoming', 'FREE', '1546440554mailpic-1-5.jpg', 'j90819542aBn72i', '2019-01-02', '2019-01-03', '2pm', '2019-01-02', '14:49:14', 'ktght94nrn1083i1n02i2ganii'),
-(6, 'Thinking', 'Old Sss office, Basiri', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'upcoming', '5000', '1546440894mailWorkPlace-Ethics.png', 'j90819542aBn72i', '2019-01-02', '2019-01-02', '2pm', '2019-01-02', '14:51:07', 'ntnk8iia8g5h2759i7tngri8n5'),
+(6, 'Thinking', 'Old Sss office, Basiri', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'upcoming', '5', '1546440894mailWorkPlace-Ethics.png', 'j90819542aBn72i', '2019-01-02', '2019-01-02', '2pm', '2019-01-02', '14:51:07', 'ntnk8iia8g5h2759i7tngri8n5'),
 (7, 'Thinking Tank', 'adehun, ado ekiti', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'upcoming', '10000', '1546440960mailmindset.jpg', 'j90819542aBn72i', '2019-01-24', '2019-02-05', '10pm', '2019-01-02', '14:56:00', 'i2nhkgtiir5874ai5n7gtnn0');
 
 -- --------------------------------------------------------
@@ -1354,7 +1364,7 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `phone_number`
 (4, 'kayode', 'Mayowa', 'kay@gmail.com', '', 'root', '$2y$10$d/2hiay/h/aEMOYvHL4xYuf1yc1/RpIROvmVXYQuEnwKCLAcORkkC', 'b53ca374f7d4a9af823aae88df5f937e', 'subscribed', NULL, NULL, ''),
 (9, 'Tese', 'Test', 'test@gmail.com', '', 'test', '$2y$10$TkVO5WaDyaGhMyhxFo02Ou2r9dbuXVPyllkuUrMKvW3W8/wmcJv/C', 'id9026759201', 'subscribed', NULL, NULL, ''),
 (10, 'tset', 'Test', 't@gmail.com', '', 'tee', '$2y$10$JPwFXIAYDNlwYip9mEs/3eybYYHQZlbv9PGYRCxTXcxnocDDo0LuS', 'b53ca374f7d4a9af823aae88df5f937e', 'subscribed', NULL, NULL, ''),
-(12, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'Frenzy', '$2y$10$nJNdMb77k65HBMTRovoRU.LKm7kZpbbB7EydcTzQLrwIlpVDM8Gky', 'ayodejisamuelfakunle781131gmail.com', 'subscribed', '2019-01-04 12:54:48', '2019-01-04 12:54:51', 'Logged Out'),
+(12, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'Frenzy', '$2y$10$nJNdMb77k65HBMTRovoRU.LKm7kZpbbB7EydcTzQLrwIlpVDM8Gky', 'ayodejisamuelfakunle781131gmail.com', 'subscribed', '2019-01-07 12:07:16', '2019-01-04 12:54:51', 'Logged In'),
 (13, 'Ayodeji', 'samuel', 'sam@gmail.com', '08133475878', 'sammy', '$2y$10$JCAwugoZdFK1TiaJzPUhbeIggh.H3n6Vua8f.coOLzy85uPjNnMfi', 'sam33949045gmail.com', 'subscribed', NULL, NULL, ''),
 (14, 'John', 'Doe', 'john@gmail.com', '08133475878', 'JohnDoe', '$2y$10$rk14BPB2V71rP7pKES./2ePYqmHN8PZ7MP.6N3juHgg1T4Eg4Rg.C', 'john42289224gmail.com', 'subscribed', NULL, NULL, ''),
 (15, 'vicky', 'Fakunle', 'vicky@gmail.com', '09024901335', 'vicky', '$2y$10$QKn9nbbdaM/Ohh0kISIQoOONENcrGRmK0VcQfvHjmuNTTRqa7smWC', 'vicky20405758gmail.com', 'subscribed', '2019-01-04 12:57:45', NULL, 'Logged In');

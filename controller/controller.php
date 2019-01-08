@@ -1799,7 +1799,7 @@ function getAllEvents($dbconn,$start, $record){
     $stmt->execute($data);
      $row = $stmt->rowCount();
       if ( $row>= 1) {
-       $msg= $post['name'];
+       $msg= "Email exist"; 
       $err = preg_replace('/\s+/', '_', $msg);
       header("Location:book?hid=$hid&&t=$book&&err=$err");
     }else{
@@ -1814,7 +1814,9 @@ try {
   $split = explode(" ",$post['name']);
   $id = $rnd.cleans($split['0']);
   $hash_id = str_shuffle($id.$book);
-    $stmt = $dbconn->prepare("INSERT INTO booking(booking, name, email, phone_number, verification, hash_id, booking_id, date_created, time_created) VALUES(:bo, :na, :email, :phone_number, :verification, :hash, :book_id, NOW(),NOW())");
+  $invoice_code = str_shuffle($book.$rnd);
+  
+    $stmt = $dbconn->prepare("INSERT INTO booking(booking, name, email, phone_number, verification, hash_id, booking_id, payment_status, invoice_code, date_created, time_created) VALUES(:bo, :na, :email, :phone_number, :verification, :hash, :book_id, :ps, :inv, NOW(),NOW())");
     $data = [
         ':bo' => $book,
         ':na' => $post['name'],
@@ -1822,7 +1824,9 @@ try {
         ':phone_number' => $post['number'],
         ':verification' =>$post['verification'],
         ':hash' => $hash_id,
-        ':book_id' => $hid
+        ':book_id' => $hid,
+        ':inv'=> $invoice_code,
+        ':ps'=> $post['payment_status'],
     ];
 
     $stmt->execute($data);
@@ -1830,9 +1834,80 @@ try {
   }catch(PDOException $e){
     die("Something Went Wrong");
   }
-    $success = $post['name'];
+   /* send mail and include hash_id associated with the account. i have created
+    a function to verify any one who is booking and a page for payment after verification.*/ 
+    $success = $hash_id;
   $note = preg_replace('/\s+/', '_', $success);
   header("Location:book?hid=$hid&&t=$book&&note=$note");
+}
+
+function getEvenForPayment($dbconn, $t, $hid){
+
+      $stmt = $dbconn->prepare("SELECT * FROM $t WHERE hash_id = :ev");
+        $stmt->bindParam(":ev", $hid);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_BOTH);
+        return $row;
+      }
+    function getPaidAmount($dbconn, $hid){
+      $t ="";
+        $stmt = $dbconn->prepare("SELECT * FROM booking WHERE invoice_code = :ev");
+        $stmt->bindParam(":ev", $hid);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_BOTH);
+        extract($row);
+        if ($booking == "event") {
+          $t = "events";
+        }elseif($booking== "training"){
+          $t = "training";
+        }
+        $result = getEvenForPayment($dbconn, $t, $booking_id);
+        extract($result);
+        return $price;
+    }
+
+  function updateBookingPayment($dbconn, $hid){
+  try {
+    $paid ="paid";
+ $stmt = $dbconn->prepare("UPDATE booking SET payment_status=:pd WHERE invoice_code= :ic");
+        $stmt->bindParam(":ic", $hid);
+        $stmt->bindParam(":pd", $paid);
+        $stmt->execute();
+
+  }catch(PDOException $e){
+    die("Something Went Wrong");
+  }
+    $success = $hash_id;
+  $note = preg_replace('/\s+/', '_', $success);
+  header("Location:index");
+}
+
+
+
+function findBookeUser($dbconn, $id){
+    $stmt = $dbconn->prepare("SELECT * FROM booking WHERE hash_id = :hid");
+    $data = [
+        ':hid' => $id
+    ];
+    $stmt->execute($data);
+    $row = $stmt->fetch(PDO::FETCH_BOTH);
+    return $row;
+}
+
+  function verifiMail($dbconn, $hid){
+  try {
+    $verification ="verified";
+ $stmt = $dbconn->prepare("UPDATE booking SET verification=:ver WHERE hash_id= :ic");
+        $stmt->bindParam(":ic", $hid);
+        $stmt->bindParam(":ver", $verification);
+        $stmt->execute();
+
+  }catch(PDOException $e){
+    die("Something Went Wrong");
+  }
+    $success = $hash_id;
+  $note = preg_replace('/\s+/', '_', $success);
+  header("Location:index");
 }
 
   function getOneProject($dbconn,$hid){

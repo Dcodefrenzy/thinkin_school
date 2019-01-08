@@ -55,6 +55,10 @@ if (isset($_GET['sub_cat_id'])) {
 
 
   $hid = NULL;
+  $resp = NULL;
+  if (isset($_GET['resp'])) {
+    $resp = $_GET['resp'];
+  }
   if(isset($_GET['hid'])){
     $hid = $_GET['hid'];
   }
@@ -81,6 +85,14 @@ if (isset($_GET['sub_cat_id'])) {
   $page = NULL;
   if (isset($_GET['page'])) {
     $page = $_GET['page'];
+  }
+  $paybooking = NULL;
+  if (isset($_GET['paybooking'])) {
+    $paybooking = $_GET['paybooking'];
+  }
+  $event = NULL;
+  if (isset($_GET['event'])) {
+    $event = $_GET['event'];
   }
 
 $t = NULL;
@@ -298,8 +310,12 @@ switch ($uri[1]) {
   break;
 
 
-  case "book?hid=$hid&&t=$t":
+  case "book?hid=$hid&&t=$t&&err=$err":
   include APP_PATH."/thinking_views/book-events.php";
+  break;
+
+  case "get-payment-details?paybooking=$paybooking&&event=$event":
+  include APP_PATH."/thinking_views/ajax/ajax_pay.php";
   break;
 
 
@@ -308,7 +324,7 @@ switch ($uri[1]) {
   include APP_PATH."/thinking_views/book-events.php";
   break;
 
-  case "book?hid=$hid&&t=$t&&err=$err":
+  case "book?hid=$hid&&t=$t":
   include APP_PATH."/thinking_views/book-events.php";
   break;
 
@@ -440,6 +456,11 @@ switch ($uri[1]) {
   include APP_PATH."/views/users/book_services.php";
   break;
 
+  //link to verify mail.
+  case "verify-mail?hid=$hid":
+  include APP_PATH."/thinking_views/verify_mail.php";
+  break;
+
   case 'user-registration':
   include APP_PATH."/thinking_views/users_register.php";
   break;
@@ -455,6 +476,18 @@ switch ($uri[1]) {
   include APP_PATH. "/thinking_views/team.php";
   break;
 
+  case 'pay':
+  include APP_PATH. "/thinking_views/pay.php";
+  break;
+
+
+  case "pay?paybooking=$paybooking":
+  include APP_PATH. "/thinking_views/pay.php";
+  break;
+
+  case "pay-result?resp=$resp":
+  include APP_PATH. "/thinking_views/pay-result.php";
+  break;
 
 }
 

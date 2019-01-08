@@ -6,33 +6,10 @@ if (isset($_GET['hid'])|| ($_GET['t'])) {
   $hid = $_GET['hid'];
   $booking = $_GET['t'];
 }
-if (isset($_GET['note'])) {
-  $msg = str_replace('_', ' ', $_GET['note']);
-$name = findBookeUser($conn, $msg);
-extract($name);
-}
+if (isset($_GET['hid'])) {
 
-  $error = [];
-if(array_key_exists('submit', $_POST)){
-
-  if(empty($_POST['email'])){
-    $error['email']="Enter a email";
-  }
-
-  if(empty($_POST['number'])){
-    $error['number']="Enter a Phone Number";
-  }
-
-  if(empty($_POST['name'])){
-    $error['name']="Enter your Full Name";
-  }
-
-  if(empty($error)){
-    $_POST['verification'] = 'not verified';
-    $_POST['payment_status'] = 'not paid';
-    $clean = array_map('trim', $_POST);
-    checkBooking($conn, $clean, $hid, $booking);
-  }
+$user= findBookeUserById($conn, $msg);
+extract($user);
 }
 
 

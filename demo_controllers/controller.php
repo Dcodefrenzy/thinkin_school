@@ -3992,6 +3992,12 @@ function getTrainingBookings($dbconn,$get,$tb, $hid){
       '.$verification.'
       </td>
       <td class="add-img-td">
+      '.$payment_status.'
+      </td>
+       <td class="add-img-td">
+      '.$invoice_code.'
+      </td>
+      <td class="add-img-td">
       '.$hash_id.'
       </td>
       <td class="price-td">
@@ -4002,7 +4008,7 @@ function getTrainingBookings($dbconn,$get,$tb, $hid){
    </tr>';
     }
     if($level == 2 || $level == 4 || $level == 5 || $level == 6){
-            echo '<tr><td class="ads-details-td">
+           echo '<tr><td class="ads-details-td">
       <h4><a href="">'.$name.'</a></h4>
       <td class="add-img-td">
       '.$email.'
@@ -4012,6 +4018,12 @@ function getTrainingBookings($dbconn,$get,$tb, $hid){
       </td>
       <td class="add-img-td">
       '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$payment_status.'
+      </td>
+       <td class="add-img-td">
+      '.$invoice_code.'
       </td>
       <td class="add-img-td">
       '.$hash_id.'
@@ -4024,7 +4036,7 @@ function getTrainingBookings($dbconn,$get,$tb, $hid){
    </tr>';
     }
     if($level == 1){
-      echo '<tr><td class="ads-details-td">
+                 echo '<tr><td class="ads-details-td">
       <h4><a href="">'.$name.'</a></h4>
       <td class="add-img-td">
       '.$email.'
@@ -4034,6 +4046,12 @@ function getTrainingBookings($dbconn,$get,$tb, $hid){
       </td>
       <td class="add-img-td">
       '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$payment_status.'
+      </td>
+       <td class="add-img-td">
+      '.$invoice_code.'
       </td>
       <td class="add-img-td">
       '.$hash_id.'
@@ -4072,6 +4090,12 @@ function getEventBookings($dbconn,$get,$tb, $hid){
       '.$verification.'
       </td>
       <td class="add-img-td">
+      '.$payment_status.'
+      </td>
+      <td class="add-img-td">
+      '.$invoice_code.'
+      </td>
+      <td class="add-img-td">
       '.$hash_id.'
       </td>
       <td class="price-td">
@@ -4094,6 +4118,12 @@ function getEventBookings($dbconn,$get,$tb, $hid){
       '.$verification.'
       </td>
       <td class="add-img-td">
+      '.$payment_status.'
+      </td>
+      <td class="add-img-td">
+      '.$invoice_code.'
+      </td>
+      <td class="add-img-td">
       '.$hash_id.'
       </td>
       <td class="price-td">
@@ -4114,6 +4144,12 @@ function getEventBookings($dbconn,$get,$tb, $hid){
       </td>
       <td class="add-img-td">
       '.$verification.'
+      </td>
+      <td class="add-img-td">
+      '.$payment_status.'
+      </td>
+      <td class="add-img-td">
+      '.$invoice_code.'
       </td>
       <td class="add-img-td">
       '.$hash_id.'
