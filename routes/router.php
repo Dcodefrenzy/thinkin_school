@@ -99,6 +99,14 @@ $t = NULL;
 if(isset($_GET['t'])){
   $t = $_GET['t'];
 }
+$preSub= NULL;
+if (isset($_GET['preSub'])) {
+  $preSub = $_GET['preSub'];
+}
+$sub= NULL;
+if (isset($_GET['sub'])) {
+  $sub = $_GET['sub'];
+}
 
 switch ($uri[1]) {
 
@@ -314,9 +322,34 @@ switch ($uri[1]) {
   include APP_PATH."/thinking_views/book-events.php";
   break;
 
+
+  case "book-podcast?hid=$hid&&err=$err":
+  include APP_PATH."/thinking_views/book_podcast.php";
+  break;
+
+  case "book-podcast?hid=$hid&&preSub=$preSub&&err=$err":
+  include APP_PATH."/thinking_views/book_podcast.php";
+  break;
+
+  case "podcast?hid=$hid&&sub=$sub&&err=$err":
+  include APP_PATH."/thinking_views/podcast.php";
+  break;
+
+
+  case "book-podcast?hid=$hid":
+  include APP_PATH."/thinking_views/book_podcast.php";
+  break;
+
   case "get-payment-details?paybooking=$paybooking&&event=$event":
   include APP_PATH."/thinking_views/ajax/ajax_pay.php";
   break;
+
+
+  case "get-payment-subscription?paybooking=$paybooking&&hash_id=$hash_id":
+  include APP_PATH."/thinking_views/ajax/ajax_podcast.php";
+  break;
+
+  
 
 
 
@@ -488,6 +521,22 @@ switch ($uri[1]) {
   case "pay-result?resp=$resp":
   include APP_PATH. "/thinking_views/pay-result.php";
   break;
+
+
+  case "pay-podcast?resp=$resp":
+  include APP_PATH. "/thinking_views/podcast_payment.php";
+  break;
+
+
+  case "podcast-subscription?hid=$hid":
+  include APP_PATH. "/thinking_views/podcast_details.php";
+  break;
+
+  case "podcast-subscription":
+  include APP_PATH. "/thinking_views/podcast_sub.php";
+  break; 
+
+  
 
 }
 

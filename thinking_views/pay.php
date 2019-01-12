@@ -7,9 +7,9 @@ include "includes/header.php";
   <div class="container">
      <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Podcast</li>
+      <li class="breadcrumb-item active" aria-current="page">Payment</li>
       </ol>
-      <h2>PODCAST</h2>
+      <h2>PAYMENT PAGE</h2>
      
   </div>
   <!-- end container -->
@@ -39,13 +39,16 @@ include "includes/header.php";
 </form> -->
 <form>
     <script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-    <button type="button" onClick="payWithRave()">Pay Now</button>
+    <div align="center">
+    <button style="background:#3498db" class="alert alert-success alert-lg" role="alert" type="button" onClick="payWithRave()">Pay Now</button>
+  </div>
 </form>
 
 <script>
 
   window.addEventListener("load", getDetails, false);
-  var customerEmail, customerPhone, Payment, invoiceCode, eventName; var data = {};
+  var customerEmail, customerPhone, payment, customerName, invoiceCode, orderName, paymentName; 
+  var data = {};
   function getDetails(event){
     event.preventDefault();
     var href =  window.location.href;
@@ -60,8 +63,8 @@ include "includes/header.php";
     var dataurl;
     if (data.paybooking && data.event) {
       dataurl = "get-payment-details?paybooking="+data.paybooking+"&&event="+data.event;
-    }else if(data.paybooking && data.userid){
-      "get-payment-subscription?paybooking="+data.paybooking+"&&userid="+data.userid;
+    }else if(data.paybooking && data.hash_id){
+      dataurl = "get-payment-subscription?paybooking="+data.paybooking+"&&hash_id="+data.hash_id;
     }
     var url = dataurl;
     var method = 'GET';
@@ -75,18 +78,36 @@ include "includes/header.php";
         xhr.onreadystatechange = function(){
           if (xhr.readyState == 4) {
             var res = xhr.responseText;
-            /*console.log(res);*/
+            console.log(res);
             var data = JSON.parse(res);
-            /*console.log(data.response[0][3]);*///email
+            /*console.log(data);
+*/            /*console.log(data.response[0][3]);*///email
             /*console.log(data.response[0][4]);*///phone number
             /*console.log(data.response[0][9])*/;//transaction code
             /*console.log(data.response[1][1])*/;//event name
             /*console.log(data.response[1][5])*/;//price
+            if (data.response[0][1] =="event" || data.response[0][1] == "training") {
+              
             customerEmail = data.response[0][3];
             customerPhone = data.response[0][4].slice(1);
-            Payment = data.response[1][5]; 
+            Payment = data.response[1]['price']; 
             invoiceCode = data.response[0][9];
-            eventName = data.response[1][1];
+            paymentName = data.response[1][1];
+            orderName = data.response[0][1];
+            customerName = data.response[0][2];
+          }else if(data.response[0][1] == "podcast"){
+              customerEmail= data.response[0]['email']; 
+              customerPhone= data.response[0][4].slice(1);
+              payment=data.response[1]['price'];
+              invoiceCode= data.response[0][9];
+              paymentName = data.response[1][1];
+              orderName = data.response[0][1];
+              customerName = data.response[0][2];
+
+          }else{
+            //
+          }
+
 
           }
        }
@@ -94,34 +115,40 @@ include "includes/header.php";
          xhr.send();
     }
   }
-    const API_publicKey = "publc key";
+    const API_publicKey = "FLWPUBK-d3c593b304c7d03cab03cf029f31babf-X";
 
 
     function payWithRave() {
         var x = getpaidSetup({
             PBFPubKey: API_publicKey,
             customer_email: customerEmail,
-            amount: Payment,
+            amount: payment,
             customer_phone: "234"+customerPhone,
             currency: "NGN",
-            payment_plan: eventName, // pass your plan ID here
+            payment_plan: data.event, // pass your plan ID here
             txref: invoiceCode,
             meta: [{
-                metaname: "flightID",
-                metavalue: "AP1234"
+                metaname: paymentName,
+                metavalue: data.event
             }],
             onclose: function() {},
             callback: function(response) {
                 var txref = response.tx.txRef; // collect flwRef returned and pass to a           server page to complete status check.
                 console.log("This is the response returned after a charge", response);
+                var resUrl;
+                if (data.hash_id) {
+                  resUrl = "pay-podcast?resp="+txref;
+                }else if(data.event){
+                  resUrl ="pay-result?resp="+txref;
+                }
                 if (
                     response.tx.chargeResponseCode == "00" ||
                     response.tx.chargeResponseCode == "0"
                 ) {
-                   window.location = "pay-result?resp="+txref;
+                   window.location = resUrl;
                     // redirect to a success page
                 } else {
-                   window.location = "pay-failure?resp="+txref;
+                   window.location = "pay-result?resp="+txref;
                     // redirect to a failure page.
                 }
 

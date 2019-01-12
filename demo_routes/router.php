@@ -115,6 +115,23 @@ switch ($uri[1]) {
   include APP_PATH."/demo_views/admin/add_events.php";
   break;
 
+  case "add-podcast-subscription":
+  include APP_PATH."/demo_views/admin/add_podservices.php";
+  break;
+
+  case "manage-podcast-details?success=$success":
+  include APP_PATH."/demo_views/admin/manage_podservices.php"; 
+  break;
+
+
+  case   "edit-podcast-details?hid=$hid":
+  include APP_PATH."/demo_views/admin/edit_podservices.php"; 
+  break;
+
+  case "manage-podcast-details":
+  include APP_PATH."/demo_views/admin/manage_podservices.php"; 
+  break;
+
   case "edit-events":
   include APP_PATH."/demo_views/admin/edit_events.php";
   break;

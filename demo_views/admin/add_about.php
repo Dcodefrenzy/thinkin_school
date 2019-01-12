@@ -79,7 +79,6 @@ if(array_key_exists('submit', $_POST)){
                 echo $display ?>
                 <textarea class="form-control"  id="editor1" name="body" placeholder="Write about us details here" rows="4"></textarea>
               </div>
-
                 <div class="form-group mb30">
                 <label class="control-label" for="textarea">Mission Statement</label>
                 <?php $display = displayErrors($error, 'mission_statement');

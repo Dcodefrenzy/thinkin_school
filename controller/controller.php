@@ -491,12 +491,13 @@ if(file_exists($old_image)){
 
 function doUserRegister($dbconn, $input){
   try{
+    $verification = "not verified";
     $hash = password_hash($input['pword'], PASSWORD_BCRYPT);
     $rand = rand(0000000000,111111111);
     $emailtop = explode("@",$input['email']);
     $hash_id = $emailtop[0].$rand.$emailtop[1];
 
-    $stmt =$dbconn->prepare("INSERT INTO users(firstname,lastname,email,phone_number,username,hash, hash_id, subscription_status) VALUES(:fname, :lname, :em, :pm, :uname, :h, :hid, :ss)");
+    $stmt =$dbconn->prepare("INSERT INTO users(firstname,lastname,email,phone_number,username,hash, hash_id, subscription_status) VALUES(:fname, :lname, :em, :pm, :uname, :h, :hid, :ss, :ver)");
 
     $stmt->bindParam(":fname", $input['firstname']);
     $stmt->bindParam(":lname", $input['lastname']);
@@ -506,6 +507,7 @@ function doUserRegister($dbconn, $input){
     $stmt->bindParam(":h", $hash);
     $stmt->bindParam(":hid", $hash_id);
     $stmt->bindParam(":ss", $input['subscription_status']);
+    $stmt->bindParam(":ver", $verification);
     $stmt->execute();
     userLogin($dbconn,$input);
   }catch(PDOException $e){
@@ -540,6 +542,14 @@ function userLogin($dbconn,$input, $redirect){
 
 }
 
+function getUser($dbconn, $hid){
+  $stmt= $dbconn->prepare("SELECT * FROM users WHERE hash_id=:hid");
+  $stmt->bindParam(':hid', $hid);
+  $stmt->execute();
+  $row = $stmt->fetch(PDO::FETCH_BOTH);
+  return $row;
+}
+
 function authentication(){
   if (!isset($_SESSION['username'])) {
         $success = "You are not signed in";
@@ -555,7 +565,7 @@ function checkSubscription($dbconn, $id){
   $row = $stmt->fetch(PDO::FETCH_BOTH);
   extract($row);
   if ($subscription_status != "subscribed") {
-    header("Location:index");
+    header("Location:podcast-subscription");
   }
 }
 
@@ -1697,16 +1707,24 @@ function getService($dbconn, $hid){
    $row = $stmt->fetch(PDO::FETCH_BOTH);
     return $row;
 }
-// function getAllServices($dbconn){
-//   $result = [];
-//   $stmt= $dbconn->prepare("SELECT * FROM services");
-//   $stmt->execute();
-//   while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
-//     $result [] = $row;
-//
-//   }
-//   return $result;
-// }
+function getAllPodcast($dbconn){
+  $result = [];
+  $stmt= $dbconn->prepare("SELECT * FROM podcast");
+  $stmt->execute();
+  while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
+    $result [] = $row;
+
+  }
+  return $result;
+}
+function getOnePodcast($dbconn, $hid){
+
+  $stmt= $dbconn->prepare("SELECT * FROM podcast WHERE hash_id=:hid");
+  $stmt->bindParam(':hid', $hid);
+  $stmt->execute();
+  $row = $stmt->fetch(PDO::FETCH_BOTH);
+  return $row;
+}
 function getFirstServices($dbconn){
   $result = [];
   $stmt= $dbconn->prepare("SELECT * FROM services LIMIT 1");
@@ -1806,6 +1824,8 @@ function getAllEvents($dbconn,$start, $record){
        book($dbconn, $post, $hid, $book);
     }
   }
+ /**/
+
 
   function book($dbconn, $post, $hid, $book){
 try {
@@ -1840,6 +1860,105 @@ try {
   $note = preg_replace('/\s+/', '_', $success);
   header("Location:book?hid=$hid&&t=$book&&note=$note");
 }
+//check podcast for users for subscription status.
+ function checkPodBooking($dbconn, $post, $hid, $book){
+  $status = "subscribed";
+  $paid = "paid";
+    $stmt = $dbconn->prepare("SELECT * FROM podcast_booking WHERE email = :email AND booking_id = :book_id");
+    $data = [
+
+        ':email' => $post['email'],
+        ':book_id' => $hid
+    ];
+
+    $stmt->execute($data);
+    $check = $stmt->fetch(PDO::FETCH_BOTH);
+    /*die(var_dump($check));*/
+      $row = $stmt->rowCount();
+      if ($check['subscription_status'] == 'subscribed') {
+       $msg= "You are currently on subscription to the podcast channel"; 
+            $err = preg_replace('/\s+/', '_', $msg);
+            $invoice  = $check['invoice_code'];
+        header("Location:podcast?hid=$hid&&sub=$invoice&&err=$err");
+    }elseif ($check['subscription_status'] == 'pre-subscription') {
+             $msg= "You have already pre subscribed, please finish your subscription here"; 
+            $err = preg_replace('/\s+/', '_', $msg);
+            $invoice  = $check['invoice_code'];
+
+        header("Location:book-podcast?hid=$hid&&preSub=$invoice&&err=$err");
+    } else{
+       bookPod($dbconn, $post, $hid, $book);
+    }
+  }
+ 
+ //if user have not subscribed before and subscription stats is not unsuscribed thenwe can 
+ //instanciate a new subscription.
+  function bookPod($dbconn, $post, $hid, $book){
+try {
+  $rnd = rand(0000000000,9999999999);
+  $split = explode(" ",$post['name']);
+  $id = $rnd.cleans($split['0']);
+  $hash_id = str_shuffle($id.$book);
+  
+    $stmt = $dbconn->prepare("INSERT INTO podcast_booking(booking, name, email, phone_number, verification, hash_id, booking_id, payment_status, invoice_code, date_created, time_created, subscription_status) VALUES(:bo, :na, :email, :phone_number, :verification, :hash, :book_id, :ps, :inv, NOW(),NOW(), :sub)");
+    $data = [
+        ':bo' => $book,
+        ':na' => $post['name'],
+        ':email' => $post['email'],
+        ':phone_number' => $post['phone_number'],
+        ':verification' =>$post['verification'],
+        ':hash' => $hash_id,
+        ':book_id' => $hid,
+        ':inv'=> $post['invoice_code'],
+        ':ps'=> $post['payment_status'],
+        ':sub'=> $post['subscription_status']
+    ];
+    $stmt->execute($data);
+
+  }catch(PDOException $e){
+    die("Something Went Wrong");
+  }
+ 
+}
+function getAmount($dbconn, $hid){
+        $stmt = $dbconn->prepare("SELECT * FROM podcast_booking WHERE invoice_code = :ev");
+        $stmt->bindParam(":ev", $hid);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_BOTH);
+        extract($row);        
+       $result = getPodcastAmount($dbconn, "podcast", $booking_id);
+       return $result;
+}
+
+
+function getPodcastAmount($dbconn, $t, $hid){
+$stmt = $dbconn->prepare("SELECT * FROM $t WHERE hash_id = :ev");
+        $stmt->bindParam(":ev", $hid);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_BOTH);
+        return $row;
+}
+
+  function updatePodcastPayment($dbconn, $hid){
+  try {
+    $paid ="paid";
+    $subscription = "subscribed";
+    $start_date =  date('Y-M-d H:i:s');
+    $end_date = date('Y-M-d H:i:s', strtotime('+1 month'));
+    /*die(var_dump($end_date." ".$start_date));*/
+ $stmt = $dbconn->prepare("UPDATE podcast_booking SET payment_status=:pd, subscription_status= :sub, date_paid = :sdate, date_end=:enddate WHERE invoice_code= :ic");
+        $stmt->bindParam(":ic", $hid);
+        $stmt->bindParam(":pd", $paid);
+        $stmt->bindParam(":sub", $subscription);
+        $stmt->bindParam(":sdate", $start_date);
+        $stmt->bindParam(":enddate", $end_date);
+        $stmt->execute();
+
+  }catch(PDOException $e){
+    die("Something Went Wrong");
+  }
+
+}
 
 function getEvenForPayment($dbconn, $t, $hid){
 
@@ -1851,19 +1970,14 @@ function getEvenForPayment($dbconn, $t, $hid){
       }
     function getPaidAmount($dbconn, $hid){
       $t ="";
+      $result="";
         $stmt = $dbconn->prepare("SELECT * FROM booking WHERE invoice_code = :ev");
         $stmt->bindParam(":ev", $hid);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_BOTH);
         extract($row);
-        if ($booking == "event") {
-          $t = "events";
-        }elseif($booking== "training"){
-          $t = "training";
-        }
-        $result = getEvenForPayment($dbconn, $t, $booking_id);
-        extract($result);
-        return $price;
+        $result = getEvenForPayment($dbconn, $t, $booking_id);  
+        return $result; 
     }
 
   function updateBookingPayment($dbconn, $hid){
@@ -1877,12 +1991,23 @@ function getEvenForPayment($dbconn, $t, $hid){
   }catch(PDOException $e){
     die("Something Went Wrong");
   }
-    $success = $hash_id;
-  $note = preg_replace('/\s+/', '_', $success);
-  header("Location:index");
+
 }
+  function updateUserSubscription($dbconn, $mail){
+  try {
+    $subscription="subscribed";
+ $stmt = $dbconn->prepare("UPDATE users SET subscription_status=:pd WHERE email= :em");
+        $stmt->bindParam(":em", $mail);
+        $stmt->bindParam(":pd", $subscription);
+        $stmt->execute();
 
-
+  }catch(PDOException $e){
+    die("Something Went Wrong");
+  }
+/*    $success = $hash_id;
+  $note = preg_replace('/\s+/', '_', $success);
+  header("Location:index");*/
+}
 
 function findBookeUser($dbconn, $id){
     $stmt = $dbconn->prepare("SELECT * FROM booking WHERE hash_id = :hid");
