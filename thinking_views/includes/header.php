@@ -178,7 +178,6 @@ session_start();
         </li>
         <li><a href="events">Events</a></li>
         <li><a href="training">Trainings</a></li>
-        <li><a href="podcast">Podcast</a></li>
         <li><a href="blogs">Blog</a>
         <ul class="dropdown">
         <?php $category = getCat($conn);
@@ -189,6 +188,7 @@ session_start();
        <?php } ?>
           </ul>
           </li>
+          <li><a href="podcast">Podcast</a></li>
         <!-- <li><a href="#">Contact</a></li> -->
         <?php if (isset($_SESSION['username'])) {
           echo '<li><a href="#">Welcome '.$_SESSION['username'].'</a>

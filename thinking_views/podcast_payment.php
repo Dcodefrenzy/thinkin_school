@@ -7,9 +7,9 @@ include "includes/header.php";
   <div class="container">
      <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Podcast</li>
+      <li class="breadcrumb-item active" aria-current="page">Podcast Subscription</li>
       </ol>
-      <h2>PODCAST</h2>
+      <h2>PAYMENT RESULT</h2>
      
   </div>
   <!-- end container -->
@@ -27,8 +27,9 @@ include "includes/header.php";
 <?php
     if (isset($_GET['resp'])) {
         $ref = $_GET['resp'];
-        $book = getPaidAmount($conn, $ref);
+        $book = getAmount($conn,  $ref);
         extract($book);
+       /* die(var_dump($price));*/
         $amount = $price; //Correct Amount from Server
         $currency = "NGN"; //Correct Currency from Server
         
@@ -65,16 +66,15 @@ include "includes/header.php";
         $customerMail = $resp['data']['custemail'];
 
         if (($chargeResponsecode == "00" || $chargeResponsecode == "0") && ($chargeAmount == $amount)  && ($chargeCurrency == $currency)) {
-           updateBookingPayment($conn, $ref);
+           updatePodcastPayment($conn, $ref);
+          updateUserSubscription($conn, $customerMail);
                 echo '<div class="col-md-12">
             <div class="inner-box posting">
             <div  style="background:#3498db" class="alert alert-success alert-lg" role="alert">
             <h2 class="postin-title">Success!</h2>
             <p style="color:white">You have successfully paid. Please keep checking your mail '.$customerMail.' for futher information. Thanks</p>
             </div>
-            </div>
-            <div align="center"><a href=pay?paybooking='.$ref.'?event='.$hash_id.';>
-            <button style="background:#3498db" align="center" class="alert alert-success alert-lg" role="alert"> Home</button></a></div>';
+            </div>';
 
           // transaction was successful...
          // please check other things like whether you already gave value for this ref

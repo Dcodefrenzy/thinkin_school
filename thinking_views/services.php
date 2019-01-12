@@ -155,32 +155,32 @@ if(array_key_exists('submit', $_POST)){
         <form class="row inner" method="POST">
           <div class="form-group col-md-6">
             <label>Your Name</label>
-            <?php $display = displayErrors($error, 'name'); echo $display; ?>
-            <input type="text" name="name">
+            <?php $display = displayErrors($error, 'name'); echo '<p style="color:white">'.$display.'</p>'; ?>
+            <input type="text" name="name" required="">
           </div>
           <!-- end form-group -->
           <div class="form-group col-md-6">
             <label>Email</label>
-            <?php $display = displayErrors($error, 'email'); echo $display; ?>
-            <input type="email" name="email">
+            <?php $display = displayErrors($error, 'email'); echo '< style="color:white">'.$display.'</p>'; ?>
+            <input type="email" name="email" required="">
           </div>
           <!-- end form-group -->
            <div class="form-group col-md-6">
             <label>Adress</label>
-            <?php $display = displayErrors($error, 'adress'); echo $display; ?>
+            <?php $display = displayErrors($error, 'adress');echo '<label style="color:black">'.$display.'</label>'; ?>
             <input type="text" name="adress">
           </div>
           <!-- end form-group -->
           <div class="form-group col-md-6">
             <label>Phone Number</label>
-            <?php $display = displayErrors($error, 'phone_number'); echo $display; ?>
-            <input type="Number" name="phone_number">
+            <?php $display = displayErrors($error, 'phone_number'); echo '<p style="color:white">'.$display.'</p>'; ?>
+            <input type="Number" name="phone_number" required="">
           </div>
           <!-- end form-group -->
             <div class="form-group col-md-6">
             <label>Purpose</label>
-            <?php $display = displayErrors($error, 'order'); echo $display; ?>
-            <input type="text" name="order">
+            <?php $display = displayErrors($error, 'order'); echo '<p style="color:white">'.$display.'</p>'; ?>
+            <input type="text" name="order" required="">
           </div>
           <!-- end form-group -->
           <div class="form-group col-md-4">

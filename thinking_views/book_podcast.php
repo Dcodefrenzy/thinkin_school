@@ -1,41 +1,34 @@
 <?php
 ob_start();
 session_start();
+ if (isset($_GET['hid'])) {
+    $booking_id = $_GET['hid'];
+ }
  
-
-if (isset($_GET['hid'])|| ($_GET['t'])) {
-  $hid = $_GET['hid'];
-  $booking = $_GET['t'];
+//if no user session send them to login page.
+//if session fetch user and
+if (isset($_SESSION['hash_id'])) {
+  $hash_id = $_SESSION['hash_id'];
+   $user = getUser($conn, $hash_id);
+  //get user.
+}else{
+  header("Location: user-login");
 }
-if (isset($_GET['note'])) {
-  $msg = str_replace('_', ' ', $_GET['note']);
-$name = findBookeUser($conn, $msg);
-extract($name);
+if (isset($_GET['preSub'])) {
+    $invoice_code = $_GET['preSub'];
+}else{
+$clean['email']= $user['email'];
+$clean['name'] = $user['lastname']." ".$user['firstname'];
+$clean['phone_number'] = $user['phone_number'];
+$clean['verification'] = $user['verification'];
+$clean['payment_status'] = 'not paid';
+$clean['subscription_status'] = 'pre-subscription';
+$rnd = rand(0000000000,9999999999);
+$invoice_code = str_shuffle("podcast".$rnd);
+$clean['invoice_code'] = $invoice_code;
+/*var_dump($clean);*/
+checkPodBooking($conn, $clean, $booking_id, "podcast");
 }
-
-  $error = [];
-if(array_key_exists('submit', $_POST)){
-
-  if(empty($_POST['email'])){
-    $error['email']="Enter a email";
-  }
-
-  if(empty($_POST['number'])){
-    $error['number']="Enter a Phone Number";
-  }
-
-  if(empty($_POST['name'])){
-    $error['name']="Enter your Full Name";
-  }
-
-  if(empty($error)){
-    $_POST['verification'] = 'not verified';
-    $_POST['payment_status'] = 'not paid';
-    $clean = array_map('trim', $_POST);
-    checkBooking($conn, $clean, $hid, $booking);
-  }
-}
-
 
  ?>
 
@@ -97,13 +90,13 @@ if(array_key_exists('submit', $_POST)){
 
 <?php
 if (isset($_GET['err'])){
-
+$message = str_replace('_', ' ', $_GET['err']);
 
   echo '<div class="col-md-12">
 <div class="inner-box posting">
 <div class="alert alert-danger alert-lg" role="alert">
 <h2 class="postin-title">x Ops!  </h2>
-<p>You have already used this email to Register for this '.$booking.'</p>
+<p>'.$message.'</p>
 </div>
 </div>
 </div>';
@@ -132,14 +125,14 @@ $msg = str_replace('_', ' ', $_GET['success']);
 </div>
 </div>';
 }
-if (isset($_GET['note'])){
+if (isset($_GET['hash_id'])){
 
 
   echo '<div class="col-md-12">
 <div class="inner-box posting">
 <div class="alert alert-warning alert-lg" role="alert">
-<h2 class="postin-title">Note! '.$name.' </h2>
-<p>A link will be send to your mail to, please click the link for verification.Note: Only the verified are allowed to partake in this '.$booking.' Thanks</p>
+<h2 class="postin-title">Note! '.$user['lastname']." ".$user['firstname'].'</h2>
+<p>A link will be send to your mail to so if you are not will Thanks</p>
 </div>
 </div>
 </div>';
@@ -149,58 +142,37 @@ if (isset($_GET['note'])){
 
  ?>
 
-
+<?php if (!isset($_GET['sub'])) {
+  
+ ?>
 <div class="col-sm-6 col-sm-offset-4 col-md-4 col-md-offset-4">
 <div class="page-login-form box">
-
-<?php if (!isset($_GET['note'])): ?>
-  <h3>
-Book
-</h3>
-<form role="form" class="login-form" method="POST" action="">
-<div class="form-group">
-  <?php $display = displayErrors($error, 'email'); echo $display?>
-<div class="input-icon">
-<i class="icon fa fa-user"></i>
-<input type="text" id="sender-email" class="form-control" name="email" placeholder="Email" required="">
-</div>
-</div>
-<?php $display = displayErrors($error, 'name'); echo $display?>
-<div class="form-group">
-<div class="input-icon">
-<i class="icon fa fa-user"></i>
-<input type="text" id="sender-email" class="form-control" name="name" placeholder="Name" required="">
-</div>
-</div>
-<div class="form-group">
-  <?php $display = displayErrors($error, 'number'); echo $display?>
-<div class="input-icon">
-<i class="icon fa fa-user"></i>
-<input type="number" id="sender-email" class="form-control" name="number" placeholder="Phone Number" required="">
-</div>
-</div>
-<input class="btn btn-common log-btn" type="submit" name="submit" value="submit">
-</form>
-<a href=<?php echo $booking; ?>>
-<button class="btn btn-common red-btn">Go Back</button>
-</a>
-<?php endif ?>
-  
-<?php if (isset($_GET['note'])): ?>
-
-         <h4 align="center"><b>Make Payment for this <?php echo $booking;?></b></h4><br/>
+     <h4 align="center"><b>Subscribe For Our Podcast</b></h4><br/>
+     <p align="center">Email: <?php echo $user['email']; ?></p>
+      <p align="center">Name: <?php echo $user['lastname']." ".$user['firstname']; ?></p>
+       <p align="center">Phone Number: <?php echo $user['phone_number']; ?></p>
   <div align="center">
-  <a href=<?php echo 'pay?paybooking='.$invoice_code.'?event='.$booking_id.''; ?>>
+  <a href=<?php echo 'pay?paybooking='.$invoice_code.'?hash_id='.$booking_id.''; ?>>
     <button  class="btn btn-common red-btn">Make Payment</button>
 </a>
 </div>
-<?php endif ?>
+<?php }if (isset($_GET['sub'])) {
+
+ ?>
+<div class="col-sm-6 col-sm-offset-4 col-md-4 col-md-offset-4">
+<div class="page-login-form box">
+     <h4 align="center"><b>You have already subscribed for podcast</b></h4><br/>
+     <p align="center">Email: <?php echo $user['email']; ?></p>
+      <p align="center">Name: <?php echo $user['lastname']." ".$user['firstname']; ?></p>
+       <p align="center">Phone Number: <?php echo $user['phone_number']; ?></p>
+     </div>
 
 </div>
 </div>
 </div>
 </div>
 </section>
+<?php } ?>
 
 
 

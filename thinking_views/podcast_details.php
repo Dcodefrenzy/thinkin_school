@@ -1,19 +1,30 @@
 <?php
 ob_start();
 include "includes/header.php";
-authentication();
-checkSubscription($conn, $_SESSION['hash_id']);
+if (isset($_GET['hid'])) {
+  $hash = $_GET['hid'];
+}else{
+  header("Location: events");
+}
+ $podcast = getOnePodcast($conn, $hash);
+extract($podcast);
+/*$EDate2 = decodePartDate($end_date);
+$SDate2 = decodePartDate($start_date);
+$SDate = decodeDate($start_date);
+$EDate = decodeDate($end_date)*/;
  ?>
 <!-- end header -->
 <section class="page-header">
 	<div class="container">
 		 <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Home</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Podcast</li>
+			<li class="breadcrumb-item"><a href="index">Home</a></li>
+			<li class="breadcrumb-item"><a href="#">Podcast</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Subscription Details</li>
 		  </ol>
 		  <h2>PODCAST</h2>
 		 
 	</div>
+	<!-- end container -->
 </section>
 <!-- end page-header -->
   <section class="blog">
@@ -21,34 +32,27 @@ checkSubscription($conn, $_SESSION['hash_id']);
       <div class="row justify-content-center">
         <div class="col-md-7 col-12">
          <div class="post wow fadeIn">
-  <!-- end container -->
-    <?php 
-if (isset($_GET['err'])){
-$msg = str_replace('_', ' ', $_GET['err']);
-  echo '<div class="col-md-12">
-<div class="inner-box posting">
-<div class="alert alert-success alert-lg" role="alert">
-<h2 class="postin-title">Note!</h2>
-<p style="color:white">'.$msg.'</p>
-</div>
-</div>
-</div>';
-}
-   ?>
-         	<figure class="post-image">          		      
-     	</figure>
+         	<figure class="post-image"> <img src=" <?php echo $image_1; ?>" alt="Image"></figure>
          	<div class="post-content">
-         		   <iframe id="multi_iframe" frameborder="0" scrolling="yes" allowfullscreen="" src="https://www.podbean.com/media/player/multi?playlist=http%3A%2F%2Fplaylist.podbean.com%2F4130616%2Fplaylist_multi.xml&vjs=1&kdsowie31j4k1jlf913=e4dfafe7985f87a04995d42c321005753db52bec&size=240&skin=0&auto=0&download=1" width="100%" height="430"></iframe>
-                      <!-- <ul class="social-share"> -->
-<!--       <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+                      <ul class="social-share">
+      <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+      <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
 <!--      <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
-     <!--  <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
+      <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
 <!--      <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li> -->
-      <!-- </ul> -->
+      </ul>
+          <h4><?php echo $subscription; ?></h4>
+          <h5 style="color:green"><?php echo "<b>Price: </b>&#8358;".$price; ?></h5>
+          <p><?php echo $body; ?></p>
+                   <div class="form-group col-md-4">
+            <label>&nbsp;</label>
+             <a <?php echo 'href=book-podcast?hid='.$hash_id.'';?>>
+            <input type="submit" value="Subscribe" name="submit">
+            </a>
           </div>
-        </div>
-        <!-- end post-content -->
+         	</div>
+         	<!-- end post-content -->
+         </div>
         </div>
         <!-- end col-7 -->
         <div class="col-md-5 col-12">

@@ -161,25 +161,34 @@ function compressImage($files, $name, $quality, $upDIR ) {
     imagejpeg($image, $destination_url, $quality);
     return $destination_url;
 }
-/*function addFrontage($dbconn,$post,$destination,$sess){
+function addPodcastSubscription($dbconn,$post,$destination,$sess){
   try{
-  $stmt = $dbconn->prepare("INSERT INTO frontage VALUES(NULL, :ht,:txt,:img,NOW(),NOW(),:sess)");
+  
+      $rnd = rand(0000000000,9999999999);
+  $split = explode(" ",$post['subscription']);
+  $id = $rnd.cleans($split['0']);
+  $hash_id = str_shuffle($id.'podcast');
+  $stmt = $dbconn->prepare("INSERT INTO podcast VALUES(NULL, :sub,NOW(),   
+    NOW(), :img, :pr,:hid, :bd, :sess)");
   $data = [
-    ':ht' => $post['header_title'],
-    ':txt' => $post['txt'],
-    ':img' => $destination,
-    ':sess' => $sess
+    ':sub' => $post['subscription'],
+    ':bd'=> $post['body'],
+    ':pr' => $post['price'],
+    ':img' => $destination['a'],
+    ':hid' => $hash_id,
+    ':sess' => $sess,
   ];
+
   $stmt->execute($data);
 }
 catch(PDOException $e){
   die("Something Went Wrong");
 
-}*/
-/*  $success = "Frontage Info Added";
+}
+  $success = "podcast subscription Added";
   $succ = preg_replace('/\s+/', '_', $success);
-  header("Location:/manageViews?success=$succ");
-}*/
+  header("Location:/manage-podcast-details?success=$succ");
+}
 
 
 
@@ -1125,6 +1134,59 @@ function viewFrontage($db){
       </tr>';
   }
 }
+function viewPodcast($db){
+
+  $stmt= $db->prepare("SELECT * FROM podcast");
+
+  $stmt->execute();
+
+  while($row = $stmt->fetch()){
+        extract($row);
+  $bd = previewBody($body, 30);
+          echo '<td class="ads-img-td">
+      '.$subscription.'
+      </td>      
+      <td class="ads-img-td">
+      <a><p>'.$bd.'</p></a>
+      </td>
+      <td class="ads-img-td">
+      <a><p>'.$price.'</p></a>
+      </td>
+        <td class="add-img-td">
+        <a href="edit-image?id='.$hash_id.'&t=front">
+        <img class="img-responsive" src="'.$image_1.'">
+        </a>
+      </td>
+
+      <td class="add-img-td">
+      '.$created_by.'
+      </td>
+      <td class="add-img-td">
+      '.date("d, F, Y", strtotime($date_created)).'
+      </td>
+      <td class="ads-details-td">
+      <a href="edit-podcast-details?hid='.$hash_id.'"><button class="btn btn-common btn-sm" type="submit">Edit</button></a>
+      </td>
+      </tr>';
+  }
+}
+function updatePodcast($dbconn, $post, $hid){
+  try {
+
+ $stmt = $dbconn->prepare("UPDATE podcast SET subscription=:ss, price =:pr, body=:bd WHERE hash_id= :hid");
+        $stmt->bindParam(":hid", $hid);
+        $stmt->bindParam(":pr", $post['price']);
+        $stmt->bindParam(":bd", $post['body']);
+        $stmt->bindParam(":ss", $post['subscription']);
+        $stmt->execute();
+
+  }catch(PDOException $e){
+    die("Something Went Wrong");
+  }
+    $success = "Update Sucessful";
+  $succ = preg_replace('/\s+/', '_', $success);
+  header("Location:manage-podcast-details?success=$succ");
+}
 function deleteFrontage($db, $get){
   $gt = frontageDetail($db, $get);
   extract($gt);
@@ -1145,6 +1207,7 @@ function deleteFrontage($db, $get){
 header("Location:manageViews?success=$success");
 
 }
+
 
 
 

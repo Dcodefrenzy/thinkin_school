@@ -47,7 +47,7 @@ include "includes/header.php";
          <div style="background:url(<?php echo $image_1; ?>);background-position: center; background-size: cover; background-repeat: no-repeat; width: 100%; height: 250px; background-size: 150%; " class="img-responsive"></div>
          <h4><?php echo strtoupper($name); ?></h4>
 
-         <p>Price: <?php echo $price ?></p>
+         <p>Price: &#8358;<?php echo $price ?></p>
                    <p ><?php echo $venue; ?></p>
             <!-- <small></small> -->
 
