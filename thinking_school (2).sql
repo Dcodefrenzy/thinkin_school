@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 11, 2019 at 05:34 AM
+-- Generation Time: Jan 12, 2019 at 12:31 PM
 -- Server version: 5.7.18
 -- PHP Version: 7.0.16-4+deb.sury.org~trusty+1
 
@@ -86,7 +86,7 @@ INSERT INTO `admin` (`id`, `firstname`, `lastname`, `email`, `hash`, `hash_id`, 
 (7, 'Banji', 'Akole', 'banjimayowa@gmail.com', '$2y$10$nfIX.S/vu469XEOOr4nrjupfWxF2tHfUwpX7S0sH1eyaIY8tZivs.', 'j90819542aBn72i', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '14:25:12', '2018-02-28', '2019-01-03 08:14:17', '2019-01-01 19:53:53', 'Logged In', 'MASTER', '1', NULL, '1', NULL),
 (10, 'Kabiru', 'Shuaibu', 'kobyblaze@gmail.com', '$2y$10$siFhCK.SlD4mUgTMf0148.y4Emn8sA0AIAJuzyeDM6hc7Zb0tQJ9a', '3r543i0a57Kbu845', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '19:17:23', '2018-04-16', '2018-05-24 17:14:02', NULL, 'Logged In', '1', '1', NULL, '1', NULL),
 (14, 'Akole', 'Banji', 'banjimayowa1@gmail.com', '$2y$10$jO/LwWCOtJ1I.oeP7PsAFum6ADpbjqPvsHRflxqIbNWfGasJj3vI6', 'admin9917900809', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:28:01', '2018-04-17', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL),
-(17, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '$2y$10$38wjO4BJP3sEYSd47n/hTuetqf9.pXhhS/WWqDplvpDEMXgYsJUpC', 'jy95Ae4d739i4o02', NULL, '08133475878', 'facebook.com/deji', 'tweeter.com/frenzykul', 'linkedin.com/ayodeji', 'instagram.com/frenzykul', '1545775096mail13239229_487959851401256_5588409995275807808_n.jpg', '17:26:28', '2018-04-28', '2019-01-09 20:18:44', '2019-01-04 12:53:45', 'Logged In', '3', '1', NULL, '1', NULL),
+(17, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '$2y$10$38wjO4BJP3sEYSd47n/hTuetqf9.pXhhS/WWqDplvpDEMXgYsJUpC', 'jy95Ae4d739i4o02', NULL, '08133475878', 'facebook.com/deji', 'tweeter.com/frenzykul', 'linkedin.com/ayodeji', 'instagram.com/frenzykul', '1545775096mail13239229_487959851401256_5588409995275807808_n.jpg', '17:26:28', '2018-04-28', '2019-01-12 10:31:36', '2019-01-04 12:53:45', 'Logged In', '3', '1', NULL, '1', NULL),
 (18, 'Kolade', 'Koded', 'Fakunlekolade@gmail.com', '$2y$10$ZUhQTQ2Mi.1ApKHnyQggw.WoQx2mOyGWDapd3lnpggShxM8D4yKIy', 'admin7851792597', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '09:57:06', '2018-05-01', '2018-05-18 08:07:18', '2018-05-18 09:19:59', 'Logged Out', '3', '1', NULL, '1', NULL),
 (19, 'Odunola', 'Olabintan', 'olabintanodunola@yahoo.com', '$2y$10$AC6Bx8e6YYx7GTf2XRtK7OV0xIG0jyAMRga5XeJ2Fvb31L25LPQgW', 'admin5767077300', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '21:11:23', '2018-05-04', '2018-05-06 21:31:17', NULL, 'Logged In', '5', '1', NULL, '1', NULL),
 (20, 'Babatunde', 'Julius', 'Iambabatundejulius@gmail.com', '$2y$10$FN2UPoaxgfb9XdTD2odMM.pBy6MtJptEheK7tL0K.BapyEubyUHkq', 'admin6561856488', NULL, NULL, NULL, NULL, NULL, NULL, '1545335942mailIMG-20181022-WA0003.jpg', '13:51:20', '2018-05-05', '2018-05-06 18:26:58', NULL, 'Logged In', '8', '1', NULL, '1', NULL),
@@ -1186,7 +1186,39 @@ CREATE TABLE IF NOT EXISTS `podcast` (
 --
 
 INSERT INTO `podcast` (`id`, `subscription`, `date_created`, `time_created`, `image_1`, `price`, `hash_id`, `body`, `created_by`) VALUES
-(2, 'Basic', '2019-01-09', '13:56:10', '1547042170mailCoinFlip_3.3.17_1500x500.jpg', '5', '9ct58aso05s837cd42bpai', '<p>Basic subscription entails free unlimited use of thinking school podcast services for a period of one month.</p>', 'jy95Ae4d739i4o02');
+(2, 'Basic', '2019-01-09', '13:56:10', '1547042170mailCoinFlip_3.3.17_1500x500.jpg', '1', '9ct58aso05s837cd42bpai', '<p>Basic subscription entails free unlimited use of thinking school podcast services for a period of one month.</p>', 'jy95Ae4d739i4o02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `podcast_booking`
+--
+
+CREATE TABLE IF NOT EXISTS `podcast_booking` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `booking` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
+  `verification` varchar(255) NOT NULL,
+  `hash_id` varchar(255) NOT NULL,
+  `booking_id` varchar(255) NOT NULL,
+  `payment_status` varchar(255) NOT NULL,
+  `invoice_code` varchar(255) NOT NULL,
+  `date_created` date NOT NULL,
+  `time_created` time NOT NULL,
+  `subscription_status` varchar(255) NOT NULL,
+  `date_paid` varchar(255) DEFAULT NULL,
+  `date_end` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+
+--
+-- Dumping data for table `podcast_booking`
+--
+
+INSERT INTO `podcast_booking` (`id`, `booking`, `name`, `email`, `phone_number`, `verification`, `hash_id`, `booking_id`, `payment_status`, `invoice_code`, `date_created`, `time_created`, `subscription_status`, `date_paid`, `date_end`) VALUES
+(34, 'podcast', 'Fakunle Ayodeji', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'verified', '16l2n77aak8e1su9do4f1tcp', '9ct58aso05s837cd42bpai', 'paid', 'ds33a4030t12pc09o', '2019-01-12', '10:01:08', 'subscribed', '2019-Jan-12 12:21:00', '2019-Feb-12 12:21:00');
 
 -- --------------------------------------------------------
 
@@ -1381,6 +1413,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `hash` varchar(255) NOT NULL,
   `hash_id` varchar(255) NOT NULL,
   `subscription_status` varchar(255) NOT NULL,
+  `verification` varchar(255) NOT NULL,
   `last_login` datetime DEFAULT NULL,
   `last_logout` datetime DEFAULT NULL,
   `login_status` varchar(255) DEFAULT NULL,
@@ -1391,14 +1424,14 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `phone_number`, `username`, `hash`, `hash_id`, `subscription_status`, `last_login`, `last_logout`, `login_status`) VALUES
-(4, 'kayode', 'Mayowa', 'kay@gmail.com', '', 'root', '$2y$10$d/2hiay/h/aEMOYvHL4xYuf1yc1/RpIROvmVXYQuEnwKCLAcORkkC', 'b53ca374f7d4a9af823aae88df5f937e', 'subscribed', NULL, NULL, ''),
-(9, 'Tese', 'Test', 'test@gmail.com', '', 'test', '$2y$10$TkVO5WaDyaGhMyhxFo02Ou2r9dbuXVPyllkuUrMKvW3W8/wmcJv/C', 'id9026759201', 'subscribed', NULL, NULL, ''),
-(10, 'tset', 'Test', 't@gmail.com', '', 'tee', '$2y$10$JPwFXIAYDNlwYip9mEs/3eybYYHQZlbv9PGYRCxTXcxnocDDo0LuS', 'b53ca374f7d4a9af823aae88df5f937e', 'subscribed', NULL, NULL, ''),
-(12, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'Frenzy', '$2y$10$nJNdMb77k65HBMTRovoRU.LKm7kZpbbB7EydcTzQLrwIlpVDM8Gky', 'ayodejisamuelfakunle781131gmail.com', 'subscribed', '2019-01-10 22:02:06', '2019-01-04 12:54:51', 'Logged In'),
-(13, 'Ayodeji', 'samuel', 'sam@gmail.com', '08133475878', 'sammy', '$2y$10$JCAwugoZdFK1TiaJzPUhbeIggh.H3n6Vua8f.coOLzy85uPjNnMfi', 'sam33949045gmail.com', 'subscribed', NULL, NULL, ''),
-(14, 'John', 'Doe', 'john@gmail.com', '08133475878', 'JohnDoe', '$2y$10$rk14BPB2V71rP7pKES./2ePYqmHN8PZ7MP.6N3juHgg1T4Eg4Rg.C', 'john42289224gmail.com', 'subscribed', NULL, NULL, ''),
-(15, 'vicky', 'Fakunle', 'vicky@gmail.com', '09024901335', 'vicky', '$2y$10$QKn9nbbdaM/Ohh0kISIQoOONENcrGRmK0VcQfvHjmuNTTRqa7smWC', 'vicky20405758gmail.com', 'subscribed', '2019-01-04 12:57:45', NULL, 'Logged In');
+INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `phone_number`, `username`, `hash`, `hash_id`, `subscription_status`, `verification`, `last_login`, `last_logout`, `login_status`) VALUES
+(4, 'kayode', 'Mayowa', 'kay@gmail.com', '', 'root', '$2y$10$d/2hiay/h/aEMOYvHL4xYuf1yc1/RpIROvmVXYQuEnwKCLAcORkkC', 'b53ca374f7d4a9af823aae88df5f937e', 'unsubscribe', 'not verified', NULL, NULL, ''),
+(9, 'Tese', 'Test', 'test@gmail.com', '', 'test', '$2y$10$TkVO5WaDyaGhMyhxFo02Ou2r9dbuXVPyllkuUrMKvW3W8/wmcJv/C', 'id9026759201', 'unsubscribe', 'not verified', NULL, NULL, ''),
+(10, 'tset', 'Test', 't@gmail.com', '', 'tee', '$2y$10$JPwFXIAYDNlwYip9mEs/3eybYYHQZlbv9PGYRCxTXcxnocDDo0LuS', 'b53ca374f7d4a9af823aae88df5f937e', 'unsubscribe', 'not verified', NULL, NULL, ''),
+(12, 'Ayodeji', 'Fakunle', 'ayodejisamuelfakunle@gmail.com', '08133475878', 'Frenzy', '$2y$10$nJNdMb77k65HBMTRovoRU.LKm7kZpbbB7EydcTzQLrwIlpVDM8Gky', 'ayodejisamuelfakunle781131gmail.com', 'subscribed', 'verified', '2019-01-12 11:34:03', '2019-01-04 12:54:51', 'Logged In'),
+(13, 'Ayodeji', 'samuel', 'sam@gmail.com', '08133475878', 'sammy', '$2y$10$JCAwugoZdFK1TiaJzPUhbeIggh.H3n6Vua8f.coOLzy85uPjNnMfi', 'sam33949045gmail.com', 'unsubscribe', 'verified', NULL, NULL, ''),
+(14, 'John', 'Doe', 'john@gmail.com', '08133475878', 'JohnDoe', '$2y$10$rk14BPB2V71rP7pKES./2ePYqmHN8PZ7MP.6N3juHgg1T4Eg4Rg.C', 'john42289224gmail.com', 'unsubscribe', 'not verified', NULL, NULL, ''),
+(15, 'vicky', 'Fakunle', 'vicky@gmail.com', '09024901335', 'vicky', '$2y$10$QKn9nbbdaM/Ohh0kISIQoOONENcrGRmK0VcQfvHjmuNTTRqa7smWC', 'vicky20405758gmail.com', 'subscribed', 'verified', '2019-01-04 12:57:45', NULL, 'Logged In');
 
 -- --------------------------------------------------------
 
